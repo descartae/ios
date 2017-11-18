@@ -1,0 +1,6 @@
+framework module Pods_DescartaeTests {
+  umbrella header "Pods-DescartaeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

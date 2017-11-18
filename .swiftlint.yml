@@ -1,0 +1,10 @@
+opt_in_rules:
+  - force_unwrapping
+excluded:
+  - Pods
+line_length: 300
+reporter: "xcode"
+
+identifier_name:
+  excluded:
+    - id
