@@ -1,6 +1,0 @@
-framework module Pods_Descartae {
-  umbrella header "Pods-Descartae-umbrella.h"
-
-  export *
-  module * { export * }
-}
