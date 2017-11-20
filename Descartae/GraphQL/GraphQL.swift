@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import Apollo
+
+struct GraphQL {
+
+    static let graphQLEndpoint = "http://descartae-api.gcp.planejei.com:7000/graphql"
+    static let client = ApolloClient(url: URL(string: graphQLEndpoint)!) // swiftlint:disable:this force_unwrapping
+
+}
