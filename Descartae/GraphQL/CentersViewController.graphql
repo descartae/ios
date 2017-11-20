@@ -1,27 +1,3 @@
-fragment Center on Center {
-    _id
-    name
-    location {
-        address
-        municipality
-        coordinates {
-            latitude
-            longitude
-        }
-    }
-    typesOfWaste {
-        ...TypeOfWaste
-    }
-    website
-    telephone
-}
-
-fragment TypeOfWaste on TypeOfWaste {
-    _id
-    name
-    icon
-}
-
 query allCenters {
     centers {
         ...Center
