@@ -1,6 +1,7 @@
 opt_in_rules:
   - force_unwrapping
 excluded:
+  - Descartae/GraphQL/API.swift
   - Pods
 line_length: 300
 reporter: "xcode"
