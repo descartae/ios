@@ -10,7 +10,7 @@ import UIKit
 
 final class CentersViewController: UIViewController {
 
-    var centers: [Center] = []
+    var centers: [CenterData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ final class CentersViewController: UIViewController {
                 return
             }
 
-            self.centers = Center.collection(fromQueryResult: centersQueryFragment)
+            self.centers = centersQueryFragment.map({ $0.fragments.centerData })
         }
     }
 

@@ -1,4 +1,4 @@
-fragment Center on Center {
+fragment CenterData on Center {
     _id
     name
     location {
