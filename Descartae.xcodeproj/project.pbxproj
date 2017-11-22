@@ -22,6 +22,7 @@
 		99A651101FC0B2B70076167D /* DescartaeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6510F1FC0B2B70076167D /* DescartaeTests.swift */; };
 		99A6511B1FC0B2B70076167D /* DescartaeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */; };
 		99ED00A11FC5DCDD00AA4613 /* CenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */; };
+		99ED00A31FC5DFEB00AA4613 /* CenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A21FC5DFEB00AA4613 /* CenterTableViewCell.swift */; };
 		AFC22FA37952E50B287C965C /* Pods_DescartaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF555B44255A5C72FA8D771E /* Pods_DescartaeUITests.framework */; };
 		C963FC606615C16DCBF176E5 /* Pods_DescartaeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB8EF0FE1C03111DA979687 /* Pods_DescartaeTests.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartaeUITests.swift; sourceTree = "<group>"; };
 		99A6511C1FC0B2B70076167D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CenterTableViewCell.xib; sourceTree = "<group>"; };
+		99ED00A21FC5DFEB00AA4613 /* CenterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterTableViewCell.swift; sourceTree = "<group>"; };
 		A344FA797E01962EC45EE6DD /* Pods-Descartae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.release.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.release.xcconfig"; sourceTree = "<group>"; };
 		AB6237E7D0CAE9C768BDD3D2 /* Pods-DescartaeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B294C55808F20DCA2A754145 /* Pods-DescartaeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */,
+				99ED00A21FC5DFEB00AA4613 /* CenterTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			files = (
 				990A1DD81FC3A8B400DD5D81 /* CenterData.swift in Sources */,
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
+				99ED00A31FC5DFEB00AA4613 /* CenterTableViewCell.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* CentersViewController.swift in Sources */,
 				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,

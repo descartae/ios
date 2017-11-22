@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="sHm-at-htW">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="sHm-at-htW" customClass="CenterTableViewCell" customModule="Descartae" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sHm-at-htW" id="WSo-7E-VMG">
@@ -70,6 +70,11 @@
                     <constraint firstAttribute="bottom" secondItem="Fji-2e-DGv" secondAttribute="bottom" constant="13.5" id="wED-YV-Xyb"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="address" destination="pJN-J6-SDG" id="OiC-C7-Lc2"/>
+                <outlet property="distanceTo" destination="Fji-2e-DGv" id="13l-A5-uQj"/>
+                <outlet property="name" destination="tTy-96-7Iq" id="oLC-wb-T74"/>
+            </connections>
             <point key="canvasLocation" x="97.5" y="19"/>
         </tableViewCell>
     </objects>
