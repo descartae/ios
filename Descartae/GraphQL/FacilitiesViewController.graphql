@@ -1,5 +1,5 @@
 query allCenters {
     centers {
-        ...CenterData
+        ...Facility
     }
 }

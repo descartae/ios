@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		92C666CA557B3658A306718A /* Pods_Descartae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D1CC5D04C543BF4E6ABEA0 /* Pods_Descartae.framework */; };
-		990A1DCC1FC384EE00DD5D81 /* CentersViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DCB1FC384EE00DD5D81 /* CentersViewController.graphql */; };
+		990A1DCC1FC384EE00DD5D81 /* FacilitiesViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DCB1FC384EE00DD5D81 /* FacilitiesViewController.graphql */; };
 		990A1DCE1FC3870300DD5D81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCD1FC3870300DD5D81 /* API.swift */; };
 		990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */; };
-		990A1DD41FC38DD400DD5D81 /* CenterFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DD31FC38DD400DD5D81 /* CenterFragment.graphql */; };
+		990A1DD41FC38DD400DD5D81 /* FacilityFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DD31FC38DD400DD5D81 /* FacilityFragment.graphql */; };
 		990A1DD61FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DD51FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql */; };
-		990A1DD81FC3A8B400DD5D81 /* CenterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DD71FC3A8B400DD5D81 /* CenterData.swift */; };
-		997EBEA61FC0BCEE00BECF17 /* CentersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* CentersViewController.swift */; };
+		990A1DD81FC3A8B400DD5D81 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DD71FC3A8B400DD5D81 /* Facility.swift */; };
+		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
 		99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A650FA1FC0B2B70076167D /* AppDelegate.swift */; };
 		99A651001FC0B2B70076167D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A650FE1FC0B2B70076167D /* Main.storyboard */; };
 		99A651021FC0B2B70076167D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A651011FC0B2B70076167D /* Assets.xcassets */; };
 		99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A651031FC0B2B70076167D /* LaunchScreen.storyboard */; };
 		99A651101FC0B2B70076167D /* DescartaeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6510F1FC0B2B70076167D /* DescartaeTests.swift */; };
 		99A6511B1FC0B2B70076167D /* DescartaeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */; };
-		99ED00A11FC5DCDD00AA4613 /* CenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */; };
-		99ED00A31FC5DFEB00AA4613 /* CenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A21FC5DFEB00AA4613 /* CenterTableViewCell.swift */; };
+		99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */; };
+		99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */; };
 		AFC22FA37952E50B287C965C /* Pods_DescartaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF555B44255A5C72FA8D771E /* Pods_DescartaeUITests.framework */; };
 		C963FC606615C16DCBF176E5 /* Pods_DescartaeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB8EF0FE1C03111DA979687 /* Pods_DescartaeTests.framework */; };
 /* End PBXBuildFile section */
@@ -47,13 +47,13 @@
 /* Begin PBXFileReference section */
 		3C63AE71BB3E1D3BC86EC84B /* Pods-Descartae.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.debug.xcconfig"; sourceTree = "<group>"; };
 		6B447C51D3764D57B321E8EF /* Pods-DescartaeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeUITests/Pods-DescartaeUITests.release.xcconfig"; sourceTree = "<group>"; };
-		990A1DCB1FC384EE00DD5D81 /* CentersViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CentersViewController.graphql; sourceTree = "<group>"; };
+		990A1DCB1FC384EE00DD5D81 /* FacilitiesViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FacilitiesViewController.graphql; sourceTree = "<group>"; };
 		990A1DCD1FC3870300DD5D81 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
-		990A1DD31FC38DD400DD5D81 /* CenterFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CenterFragment.graphql; sourceTree = "<group>"; };
+		990A1DD31FC38DD400DD5D81 /* FacilityFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FacilityFragment.graphql; sourceTree = "<group>"; };
 		990A1DD51FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TypeOfWasteFragment.graphql; sourceTree = "<group>"; };
-		990A1DD71FC3A8B400DD5D81 /* CenterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterData.swift; sourceTree = "<group>"; };
-		997EBEA51FC0BCEE00BECF17 /* CentersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentersViewController.swift; sourceTree = "<group>"; };
+		990A1DD71FC3A8B400DD5D81 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
+		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		99A650F71FC0B2B70076167D /* Descartae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Descartae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A650FA1FC0B2B70076167D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99A650FF1FC0B2B70076167D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,8 +66,8 @@
 		99A651161FC0B2B70076167D /* DescartaeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DescartaeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartaeUITests.swift; sourceTree = "<group>"; };
 		99A6511C1FC0B2B70076167D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CenterTableViewCell.xib; sourceTree = "<group>"; };
-		99ED00A21FC5DFEB00AA4613 /* CenterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterTableViewCell.swift; sourceTree = "<group>"; };
+		99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableViewCell.xib; sourceTree = "<group>"; };
+		99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableViewCell.swift; sourceTree = "<group>"; };
 		A344FA797E01962EC45EE6DD /* Pods-Descartae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.release.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.release.xcconfig"; sourceTree = "<group>"; };
 		AB6237E7D0CAE9C768BDD3D2 /* Pods-DescartaeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B294C55808F20DCA2A754145 /* Pods-DescartaeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,8 +123,8 @@
 			children = (
 				990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */,
 				990A1DCD1FC3870300DD5D81 /* API.swift */,
-				990A1DCB1FC384EE00DD5D81 /* CentersViewController.graphql */,
-				990A1DD31FC38DD400DD5D81 /* CenterFragment.graphql */,
+				990A1DCB1FC384EE00DD5D81 /* FacilitiesViewController.graphql */,
+				990A1DD31FC38DD400DD5D81 /* FacilityFragment.graphql */,
 				990A1DD51FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql */,
 			);
 			path = GraphQL;
@@ -142,7 +142,7 @@
 		997EBEA41FC0BCB400BECF17 /* Centers */ = {
 			isa = PBXGroup;
 			children = (
-				997EBEA51FC0BCEE00BECF17 /* CentersViewController.swift */,
+				997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */,
 			);
 			path = Centers;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 		99A651281FC0B3AA0076167D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				990A1DD71FC3A8B400DD5D81 /* CenterData.swift */,
+				990A1DD71FC3A8B400DD5D81 /* Facility.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,8 +237,8 @@
 		99ED009F1FC5DCCD00AA4613 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */,
-				99ED00A21FC5DFEB00AA4613 /* CenterTableViewCell.swift */,
+				99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */,
+				99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -371,13 +371,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				990A1DD41FC38DD400DD5D81 /* CenterFragment.graphql in Resources */,
-				990A1DCC1FC384EE00DD5D81 /* CentersViewController.graphql in Resources */,
+				990A1DD41FC38DD400DD5D81 /* FacilityFragment.graphql in Resources */,
+				990A1DCC1FC384EE00DD5D81 /* FacilitiesViewController.graphql in Resources */,
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
 				990A1DD61FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
 				99A651001FC0B2B70076167D /* Main.storyboard in Resources */,
-				99ED00A11FC5DCDD00AA4613 /* CenterTableViewCell.xib in Resources */,
+				99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,11 +582,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				990A1DD81FC3A8B400DD5D81 /* CenterData.swift in Sources */,
+				990A1DD81FC3A8B400DD5D81 /* Facility.swift in Sources */,
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
-				99ED00A31FC5DFEB00AA4613 /* CenterTableViewCell.swift in Sources */,
+				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
-				997EBEA61FC0BCEE00BECF17 /* CentersViewController.swift in Sources */,
+				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,
 				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  CentersViewController.swift
+//  FacilitiesViewController.swift
 //  Descartae
 //
 //  Created by Filipe Alvarenga on 18/11/17.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class CentersViewController: UIViewController {
+final class FacilitiesViewController: UIViewController {
 
-    var centers: [CenterData] = []
+    var facilities: [Facility] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +26,16 @@ final class CentersViewController: UIViewController {
                 return
             }
 
-            self.centers = centersQueryFragment.map({ $0.fragments.centerData })
+            self.facilities = centersQueryFragment.map({ $0.fragments.facility })
         }
     }
 
 }
 
-extension CentersViewController: UITableViewDataSource {
+extension FacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return centers.count
+        return facilities.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

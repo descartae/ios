@@ -1,5 +1,5 @@
 //
-//  CenterTableViewCell.swift
+//  FacilityTableViewCell.swift
 //  Descartae
 //
 //  Created by Filipe Alvarenga on 22/11/17.
@@ -8,27 +8,27 @@
 
 import UIKit
 
-class CenterTableViewCell: UITableViewCell {
+class FacilityTableViewCell: UITableViewCell {
 
     // MARK: Properties
 
-    static let identifier = String(describing: CenterTableViewCell.self)
+    static let identifier = String(describing: FacilityTableViewCell.self)
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var distanceTo: UILabel!
 
-    var centerData: CenterData! {
+    var facility: Facility! {
         didSet {
-            setupCenter()
+            setupFacility()
         }
     }
 
     // MARK: Setup
 
-    func setupCenter() {
-        name.text = centerData.name
-        address.text = centerData.location.address
+    func setupFacility() {
+        name.text = facility.name
+        address.text = facility.location.address
         distanceTo.text = "2KM"
     }
 

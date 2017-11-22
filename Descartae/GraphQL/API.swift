@@ -4,9 +4,9 @@ import Apollo
 
 public final class AllCentersQuery: GraphQLQuery {
   public static let operationString =
-    "query allCenters {\n  centers {\n    __typename\n    ...CenterData\n  }\n}"
+    "query allCenters {\n  centers {\n    __typename\n    ...Facility\n  }\n}"
 
-  public static var requestString: String { return operationString.appending(CenterData.fragmentString).appending(TypeOfWaste.fragmentString) }
+  public static var requestString: String { return operationString.appending(Facility.fragmentString).appending(TypeOfWaste.fragmentString) }
 
   public init() {
   }
@@ -142,9 +142,9 @@ public final class AllCentersQuery: GraphQLQuery {
       public struct Fragments {
         public var snapshot: Snapshot
 
-        public var centerData: CenterData {
+        public var facility: Facility {
           get {
-            return CenterData(snapshot: snapshot)
+            return Facility(snapshot: snapshot)
           }
           set {
             snapshot += newValue.snapshot
@@ -344,9 +344,9 @@ public final class AllCentersQuery: GraphQLQuery {
   }
 }
 
-public struct CenterData: GraphQLFragment {
+public struct Facility: GraphQLFragment {
   public static let fragmentString =
-    "fragment CenterData on Center {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    ...TypeOfWaste\n  }\n  website\n  telephone\n}"
+    "fragment Facility on Center {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    ...TypeOfWaste\n  }\n  website\n  telephone\n}"
 
   public static let possibleTypes = ["Center"]
 
