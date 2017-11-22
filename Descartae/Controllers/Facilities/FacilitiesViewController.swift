@@ -76,6 +76,25 @@ final class FacilitiesViewController: UIViewController {
         }
     }
 
+    @objc func refreshFacilities() {
+        let allFacilities = AllFacilitiesQuery()
+        GraphQL.client.fetch(query: allFacilities) { (result, error) in
+            self.refreshControl.endRefreshing()
+
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+
+            guard let facilitiesQueryFragment = result?.data?.centers as? [AllFacilitiesQuery.Data.Center] else {
+                return
+            }
+
+            self.facilities = facilitiesQueryFragment.map({ $0.fragments.facility })
+            self.tableView.reloadData()
+        }
+    }
+
 }
 
 // MARK: UITableViewDataSource
