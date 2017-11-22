@@ -2,9 +2,9 @@
 
 import Apollo
 
-public final class AllCentersQuery: GraphQLQuery {
+public final class AllFacilitiesQuery: GraphQLQuery {
   public static let operationString =
-    "query allCenters {\n  centers {\n    __typename\n    ...Facility\n  }\n}"
+    "query allFacilities {\n  centers {\n    __typename\n    ...Facility\n  }\n}"
 
   public static var requestString: String { return operationString.appending(Facility.fragmentString).appending(TypeOfWaste.fragmentString) }
 

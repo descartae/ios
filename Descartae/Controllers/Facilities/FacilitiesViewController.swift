@@ -50,15 +50,16 @@ final class FacilitiesViewController: UIViewController {
 
         tableView.register(FacilityTableViewCell.nib, forCellReuseIdentifier: FacilityTableViewCell.identifier)
 
-        refreshControl.addTarget(self, action: #selector(loadFacilities), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshFacilities), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     // MARK: Data handling
 
-    @objc func loadFacilities() {
+    func loadFacilities() {
         isLoading = true
-        let allCentersQuery = AllCentersQuery()
-        GraphQL.client.fetch(query: allCentersQuery) { (result, error) in
+        let allFacilities = AllFacilitiesQuery()
+        GraphQL.client.fetch(query: allFacilities) { (result, error) in
             self.isLoading = false
 
             guard error == nil else {
@@ -66,7 +67,7 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
-            guard let centersQueryFragment = result?.data?.centers as? [AllCentersQuery.Data.Center] else {
+            guard let centersQueryFragment = result?.data?.centers as? [AllFacilitiesQuery.Data.Center] else {
                 return
             }
 
