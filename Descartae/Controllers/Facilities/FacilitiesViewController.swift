@@ -92,7 +92,7 @@ extension FacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let facilityCell = tableView.dequeueReusableCell(withIdentifier: FacilityTableViewCell.identifier, for: indexPath) as? FacilityTableViewCell {
-            facilityCell.facility = facilitie[indexPath.row]
+            facilityCell.facility = facilities[indexPath.row]
 
             return facilityCell
         }
