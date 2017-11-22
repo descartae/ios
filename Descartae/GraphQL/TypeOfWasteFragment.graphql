@@ -1,0 +1,5 @@
+fragment TypeOfWaste on TypeOfWaste {
+    _id
+    name
+    icon
+}

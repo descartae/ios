@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		92C666CA557B3658A306718A /* Pods_Descartae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D1CC5D04C543BF4E6ABEA0 /* Pods_Descartae.framework */; };
+		990A1DCC1FC384EE00DD5D81 /* CentersViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DCB1FC384EE00DD5D81 /* CentersViewController.graphql */; };
+		990A1DCE1FC3870300DD5D81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCD1FC3870300DD5D81 /* API.swift */; };
+		990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */; };
+		990A1DD41FC38DD400DD5D81 /* CenterFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DD31FC38DD400DD5D81 /* CenterFragment.graphql */; };
+		990A1DD61FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DD51FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql */; };
+		990A1DD81FC3A8B400DD5D81 /* CenterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DD71FC3A8B400DD5D81 /* CenterData.swift */; };
+		997EBEA61FC0BCEE00BECF17 /* CentersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* CentersViewController.swift */; };
 		99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A650FA1FC0B2B70076167D /* AppDelegate.swift */; };
 		99A651001FC0B2B70076167D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A650FE1FC0B2B70076167D /* Main.storyboard */; };
 		99A651021FC0B2B70076167D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A651011FC0B2B70076167D /* Assets.xcassets */; };
@@ -38,6 +45,13 @@
 /* Begin PBXFileReference section */
 		3C63AE71BB3E1D3BC86EC84B /* Pods-Descartae.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.debug.xcconfig"; sourceTree = "<group>"; };
 		6B447C51D3764D57B321E8EF /* Pods-DescartaeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeUITests/Pods-DescartaeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		990A1DCB1FC384EE00DD5D81 /* CentersViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CentersViewController.graphql; sourceTree = "<group>"; };
+		990A1DCD1FC3870300DD5D81 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
+		990A1DD31FC38DD400DD5D81 /* CenterFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CenterFragment.graphql; sourceTree = "<group>"; };
+		990A1DD51FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TypeOfWasteFragment.graphql; sourceTree = "<group>"; };
+		990A1DD71FC3A8B400DD5D81 /* CenterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterData.swift; sourceTree = "<group>"; };
+		997EBEA51FC0BCEE00BECF17 /* CentersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentersViewController.swift; sourceTree = "<group>"; };
 		99A650F71FC0B2B70076167D /* Descartae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Descartae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A650FA1FC0B2B70076167D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99A650FF1FC0B2B70076167D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +114,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		990A1DC71FC37B9C00DD5D81 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */,
+				990A1DCD1FC3870300DD5D81 /* API.swift */,
+				990A1DCB1FC384EE00DD5D81 /* CentersViewController.graphql */,
+				990A1DD31FC38DD400DD5D81 /* CenterFragment.graphql */,
+				990A1DD51FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		997EBEA31FC0B71100BECF17 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +133,14 @@
 				99A650FE1FC0B2B70076167D /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		997EBEA41FC0BCB400BECF17 /* Centers */ = {
+			isa = PBXGroup;
+			children = (
+				997EBEA51FC0BCEE00BECF17 /* CentersViewController.swift */,
+			);
+			path = Centers;
 			sourceTree = "<group>";
 		};
 		99A650EE1FC0B2B70076167D = {
@@ -134,6 +168,7 @@
 		99A650F91FC0B2B70076167D /* Descartae */ = {
 			isa = PBXGroup;
 			children = (
+				990A1DC71FC37B9C00DD5D81 /* GraphQL */,
 				99A651281FC0B3AA0076167D /* Models */,
 				99A651291FC0B3B00076167D /* Views */,
 				997EBEA31FC0B71100BECF17 /* Storyboards */,
@@ -166,6 +201,7 @@
 		99A651281FC0B3AA0076167D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				990A1DD71FC3A8B400DD5D81 /* CenterData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,6 +216,7 @@
 		99A6512A1FC0B3B50076167D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				997EBEA41FC0BCB400BECF17 /* Centers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +239,7 @@
 			buildConfigurationList = 99A6511F1FC0B2B70076167D /* Build configuration list for PBXNativeTarget "Descartae" */;
 			buildPhases = (
 				C0EC8A25AA08B482C5F007C0 /* [CP] Check Pods Manifest.lock */,
+				990A1DCA1FC3840B00DD5D81 /* Generate Apollo GraphQL API */,
 				99A650F31FC0B2B70076167D /* Sources */,
 				99A650F41FC0B2B70076167D /* Frameworks */,
 				99A650F51FC0B2B70076167D /* Resources */,
@@ -311,7 +349,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				990A1DD41FC38DD400DD5D81 /* CenterFragment.graphql in Resources */,
+				990A1DCC1FC384EE00DD5D81 /* CentersViewController.graphql in Resources */,
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
+				990A1DD61FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
 				99A651001FC0B2B70076167D /* Main.storyboard in Resources */,
 			);
@@ -370,9 +411,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Descartae/Pods-Descartae-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -411,6 +455,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		990A1DCA1FC3840B00DD5D81 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output GraphQL/API.swift";
 		};
 		997EBEA21FC0B5AC00BECF17 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -499,7 +557,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				990A1DD81FC3A8B400DD5D81 /* CenterData.swift in Sources */,
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
+				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
+				997EBEA61FC0BCEE00BECF17 /* CentersViewController.swift in Sources */,
+				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +731,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4U5RD45Q4;
 				INFOPLIST_FILE = Descartae/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.descartae.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -685,6 +748,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4U5RD45Q4;
 				INFOPLIST_FILE = Descartae/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.descartae.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";

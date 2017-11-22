@@ -1,0 +1,17 @@
+fragment CenterData on Center {
+    _id
+    name
+    location {
+        address
+        municipality
+        coordinates {
+            latitude
+            longitude
+        }
+    }
+    typesOfWaste {
+        ...TypeOfWaste
+    }
+    website
+    telephone
+}
