@@ -21,6 +21,7 @@
 		99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A651031FC0B2B70076167D /* LaunchScreen.storyboard */; };
 		99A651101FC0B2B70076167D /* DescartaeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6510F1FC0B2B70076167D /* DescartaeTests.swift */; };
 		99A6511B1FC0B2B70076167D /* DescartaeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */; };
+		99ED00A11FC5DCDD00AA4613 /* CenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */; };
 		AFC22FA37952E50B287C965C /* Pods_DescartaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF555B44255A5C72FA8D771E /* Pods_DescartaeUITests.framework */; };
 		C963FC606615C16DCBF176E5 /* Pods_DescartaeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB8EF0FE1C03111DA979687 /* Pods_DescartaeTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		99A651161FC0B2B70076167D /* DescartaeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DescartaeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartaeUITests.swift; sourceTree = "<group>"; };
 		99A6511C1FC0B2B70076167D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CenterTableViewCell.xib; sourceTree = "<group>"; };
 		A344FA797E01962EC45EE6DD /* Pods-Descartae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.release.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.release.xcconfig"; sourceTree = "<group>"; };
 		AB6237E7D0CAE9C768BDD3D2 /* Pods-DescartaeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B294C55808F20DCA2A754145 /* Pods-DescartaeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		99A651291FC0B3B00076167D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				99ED009E1FC5DCC200AA4613 /* Centers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +222,22 @@
 				997EBEA41FC0BCB400BECF17 /* Centers */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		99ED009E1FC5DCC200AA4613 /* Centers */ = {
+			isa = PBXGroup;
+			children = (
+				99ED009F1FC5DCCD00AA4613 /* Cells */,
+			);
+			path = Centers;
+			sourceTree = "<group>";
+		};
+		99ED009F1FC5DCCD00AA4613 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				99ED00A01FC5DCDD00AA4613 /* CenterTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F7736F58A0382ED097EC055D /* Frameworks */ = {
@@ -355,6 +374,7 @@
 				990A1DD61FC38FEF00DD5D81 /* TypeOfWasteFragment.graphql in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
 				99A651001FC0B2B70076167D /* Main.storyboard in Resources */,
+				99ED00A11FC5DCDD00AA4613 /* CenterTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,9 +482,11 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/GraphQL/.",
 			);
 			name = "Generate Apollo GraphQL API";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/API.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
