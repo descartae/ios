@@ -23,6 +23,8 @@
 		99A6511B1FC0B2B70076167D /* DescartaeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */; };
 		99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */; };
 		99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */; };
+		99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */; };
+		99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */; };
 		AFC22FA37952E50B287C965C /* Pods_DescartaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF555B44255A5C72FA8D771E /* Pods_DescartaeUITests.framework */; };
 		C963FC606615C16DCBF176E5 /* Pods_DescartaeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB8EF0FE1C03111DA979687 /* Pods_DescartaeTests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		99A6511C1FC0B2B70076167D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableViewCell.xib; sourceTree = "<group>"; };
 		99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableViewCell.swift; sourceTree = "<group>"; };
+		99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibExtension.swift; sourceTree = "<group>"; };
+		99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		A344FA797E01962EC45EE6DD /* Pods-Descartae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.release.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.release.xcconfig"; sourceTree = "<group>"; };
 		AB6237E7D0CAE9C768BDD3D2 /* Pods-DescartaeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B294C55808F20DCA2A754145 /* Pods-DescartaeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,12 +143,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		997EBEA41FC0BCB400BECF17 /* Centers */ = {
+		997EBEA41FC0BCB400BECF17 /* Facilities */ = {
 			isa = PBXGroup;
 			children = (
 				997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */,
 			);
-			path = Centers;
+			path = Facilities;
 			sourceTree = "<group>";
 		};
 		99A650EE1FC0B2B70076167D = {
@@ -172,8 +176,9 @@
 		99A650F91FC0B2B70076167D /* Descartae */ = {
 			isa = PBXGroup;
 			children = (
-				990A1DC71FC37B9C00DD5D81 /* GraphQL */,
 				99A651281FC0B3AA0076167D /* Models */,
+				990A1DC71FC37B9C00DD5D81 /* GraphQL */,
+				99ED00A71FC5FAB200AA4613 /* Extensions */,
 				99A651291FC0B3B00076167D /* Views */,
 				997EBEA31FC0B71100BECF17 /* Storyboards */,
 				99A6512A1FC0B3B50076167D /* Controllers */,
@@ -213,7 +218,7 @@
 		99A651291FC0B3B00076167D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				99ED009E1FC5DCC200AA4613 /* Centers */,
+				99ED009E1FC5DCC200AA4613 /* Facilities */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,17 +226,17 @@
 		99A6512A1FC0B3B50076167D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				997EBEA41FC0BCB400BECF17 /* Centers */,
+				997EBEA41FC0BCB400BECF17 /* Facilities */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		99ED009E1FC5DCC200AA4613 /* Centers */ = {
+		99ED009E1FC5DCC200AA4613 /* Facilities */ = {
 			isa = PBXGroup;
 			children = (
 				99ED009F1FC5DCCD00AA4613 /* Cells */,
 			);
-			path = Centers;
+			path = Facilities;
 			sourceTree = "<group>";
 		};
 		99ED009F1FC5DCCD00AA4613 /* Cells */ = {
@@ -241,6 +246,15 @@
 				99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		99ED00A71FC5FAB200AA4613 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */,
+				99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F7736F58A0382ED097EC055D /* Frameworks */ = {
@@ -582,11 +596,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */,
 				990A1DD81FC3A8B400DD5D81 /* Facility.swift in Sources */,
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,
+				99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */,
 				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

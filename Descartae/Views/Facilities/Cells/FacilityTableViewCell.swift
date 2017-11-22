@@ -13,6 +13,7 @@ class FacilityTableViewCell: UITableViewCell {
     // MARK: Properties
 
     static let identifier = String(describing: FacilityTableViewCell.self)
+    static let estimatedRowHeight: CGFloat = 114
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var address: UILabel!
