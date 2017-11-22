@@ -82,7 +82,7 @@ final class FacilitiesViewController: UIViewController {
 extension FacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard isLoading, tableView.backgroundView != nil else {
+        if isLoading {
             tableView.backgroundView = activityIndicator
             return 0
         }
