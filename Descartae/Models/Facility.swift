@@ -9,9 +9,9 @@
 import Foundation
 import Apollo
 
-extension CenterData: Equatable {
+extension Facility: Equatable {
 
-    public static func == (lhs: CenterData, rhs: CenterData) -> Bool {
+    public static func == (lhs: Facility, rhs: Facility) -> Bool {
         return lhs.id == rhs.id
     }
 

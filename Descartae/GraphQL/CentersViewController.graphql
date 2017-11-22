@@ -1,5 +1,0 @@
-query allCenters {
-    centers {
-        ...CenterData
-    }
-}

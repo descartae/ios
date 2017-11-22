@@ -1,0 +1,5 @@
+query allFacilities {
+    centers {
+        ...Facility
+    }
+}
