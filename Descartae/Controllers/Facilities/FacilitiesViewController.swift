@@ -46,8 +46,22 @@ final class FacilitiesViewController: UIViewController {
         }
 
         setupTableView()
+        setupLocationState()
+    }
 
-        locationManager.askForAuthorization()
+    // MARK: Initial setups
+
+    func setupTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = FacilityTableViewCell.estimatedRowHeight
+
+        tableView.register(FacilityTableViewCell.nib, forCellReuseIdentifier: FacilityTableViewCell.identifier)
+
+        refreshControl.addTarget(self, action: #selector(refreshFacilities), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+
+    func setupLocationState() {
         if locationManager.shouldAskForAuthorization {
             // TODO: Setup ask permission state
             locationManager.askForAuthorization()
@@ -62,22 +76,11 @@ final class FacilitiesViewController: UIViewController {
         }
     }
 
-    // MARK: Setup subviews
-
-    func setupTableView() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = FacilityTableViewCell.estimatedRowHeight
-
-        tableView.register(FacilityTableViewCell.nib, forCellReuseIdentifier: FacilityTableViewCell.identifier)
-
-        refreshControl.addTarget(self, action: #selector(refreshFacilities), for: .valueChanged)
-        tableView.refreshControl = refreshControl
-    }
-
     // MARK: Data handling
 
     func loadFacilities() {
         isLoading = true
+        tableView.reloadData()
         let allFacilities = AllFacilitiesQuery()
         GraphQL.client.fetch(query: allFacilities) { (result, error) in
             self.isLoading = false
