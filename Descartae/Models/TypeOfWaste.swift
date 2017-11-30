@@ -15,4 +15,3 @@ extension Facility.TypesOfWaste: Equatable {
     }
 
 }
-
