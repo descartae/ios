@@ -17,9 +17,11 @@ class LocationManager: NSObject {
     var location: CLLocation? {
         return manager.location
     }
+
     var shouldAskForAuthorization: Bool {
         return CLLocationManager.authorizationStatus() == .notDetermined
     }
+
     var isLocationDenied: Bool {
         return CLLocationManager.authorizationStatus() == .denied
     }
