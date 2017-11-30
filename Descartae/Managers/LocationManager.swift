@@ -11,6 +11,8 @@ import CoreLocation
 
 class LocationManager: NSObject {
 
+    // MARK: Properties
+
     static let shared: LocationManager = LocationManager()
 
     private let manager: CLLocationManager = CLLocationManager()
@@ -28,11 +30,15 @@ class LocationManager: NSObject {
 
     private var locationUpdateSubscriptions: [() -> Void] = []
 
+    // MARK: Init
+
     override init() {
         super.init()
         manager.distanceFilter = 5000
         manager.delegate = self
     }
+
+    // MARK: Updating location
 
     func askForAuthorization() {
         manager.requestWhenInUseAuthorization()
@@ -46,6 +52,8 @@ class LocationManager: NSObject {
         manager.startUpdatingLocation()
     }
 
+    // MARK: Utils
+
     func distanceInKm(fromLocation location: CLLocation?) -> Double {
         guard let userLocation = self.location, let facilityLocation = location else {
             return 0
@@ -55,6 +63,8 @@ class LocationManager: NSObject {
     }
 
 }
+
+// MARK: CLLocationManagerDelegate
 
 extension LocationManager: CLLocationManagerDelegate {
 
