@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class FacilitiesViewController: UIViewController {
 
@@ -26,6 +27,7 @@ final class FacilitiesViewController: UIViewController {
         return activityIndicator
     }()
 
+    let locationManager = LocationManager.shared
     var facilities: [Facility] = []
     var isLoading: Bool = true {
         didSet {
@@ -44,10 +46,10 @@ final class FacilitiesViewController: UIViewController {
         }
 
         setupTableView()
-        loadFacilities()
+        setupLocationState()
     }
 
-    // MARK: Setup subviews
+    // MARK: Initial setups
 
     func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -59,10 +61,26 @@ final class FacilitiesViewController: UIViewController {
         tableView.refreshControl = refreshControl
     }
 
+    func setupLocationState() {
+        if locationManager.shouldAskForAuthorization {
+            // TODO: Setup ask permission state
+            locationManager.askForAuthorization()
+        }
+
+        if locationManager.isLocationDenied {
+            // TODO: Setup location denied state
+        }
+
+        locationManager.onLocationUpdate { [weak self] in
+            self?.loadFacilities()
+        }
+    }
+
     // MARK: Data handling
 
     func loadFacilities() {
         isLoading = true
+        tableView.reloadData()
         let allFacilities = AllFacilitiesQuery()
         GraphQL.client.fetch(query: allFacilities) { (result, error) in
             self.isLoading = false

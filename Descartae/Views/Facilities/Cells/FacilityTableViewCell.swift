@@ -30,7 +30,7 @@ class FacilityTableViewCell: UITableViewCell {
     func setupFacility() {
         name.text = facility.name
         address.text = facility.location.address
-        distanceTo.text = "2KM"
+        distanceTo.text = String(format: "%.2fKM", LocationManager.shared.distanceInKm(fromLocation: facility.location.location))
     }
 
 }
