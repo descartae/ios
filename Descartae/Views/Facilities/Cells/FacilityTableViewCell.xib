@@ -37,13 +37,13 @@
                         <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icWastePaper" translatesAutoresizingMaskIntoConstraints="NO" id="fZd-aa-tuP">
-                        <rect key="frame" x="16" y="42" width="26" height="26"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="s3k-UM-EO8">
+                        <rect key="frame" x="16" y="42" width="122" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="26" id="Lhp-jh-wBP"/>
-                            <constraint firstAttribute="width" constant="26" id="YC4-SV-aWp"/>
+                            <constraint firstAttribute="width" constant="122" id="Dn6-D5-kyn"/>
+                            <constraint firstAttribute="height" constant="26" id="sOx-jt-aeo"/>
                         </constraints>
-                    </imageView>
+                    </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13Km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fji-2e-DGv">
                         <rect key="frame" x="261.5" y="79" width="79.5" height="21"/>
                         <constraints>
@@ -57,16 +57,16 @@
                 <constraints>
                     <constraint firstItem="tTy-96-7Iq" firstAttribute="leading" secondItem="WSo-7E-VMG" secondAttribute="leading" constant="16" id="0fL-ma-SOM"/>
                     <constraint firstItem="pJN-J6-SDG" firstAttribute="leading" secondItem="WSo-7E-VMG" secondAttribute="leading" constant="16" id="5dr-Fe-nST"/>
-                    <constraint firstItem="fZd-aa-tuP" firstAttribute="top" secondItem="tTy-96-7Iq" secondAttribute="bottom" constant="5" id="EnV-rR-d9z"/>
+                    <constraint firstItem="s3k-UM-EO8" firstAttribute="top" secondItem="tTy-96-7Iq" secondAttribute="bottom" constant="5" id="ILt-Cu-58I"/>
+                    <constraint firstItem="s3k-UM-EO8" firstAttribute="leading" secondItem="WSo-7E-VMG" secondAttribute="leading" constant="16" id="SUF-a4-gjA"/>
                     <constraint firstItem="pJN-J6-SDG" firstAttribute="width" secondItem="Fji-2e-DGv" secondAttribute="width" multiplier="3" id="VZp-yC-f0S"/>
                     <constraint firstAttribute="trailing" secondItem="Fji-2e-DGv" secondAttribute="trailing" id="WUw-Ix-NKt"/>
+                    <constraint firstItem="pJN-J6-SDG" firstAttribute="top" secondItem="s3k-UM-EO8" secondAttribute="bottom" constant="11" id="WYc-jf-M9N"/>
                     <constraint firstAttribute="trailing" secondItem="tTy-96-7Iq" secondAttribute="trailing" id="Y6o-K8-QA3"/>
                     <constraint firstAttribute="bottom" secondItem="pJN-J6-SDG" secondAttribute="bottom" constant="13.5" id="YIP-Bx-PHE"/>
                     <constraint firstItem="Fji-2e-DGv" firstAttribute="leading" secondItem="pJN-J6-SDG" secondAttribute="trailing" constant="6" id="YoW-9Q-zNF"/>
                     <constraint firstItem="tTy-96-7Iq" firstAttribute="top" secondItem="WSo-7E-VMG" secondAttribute="top" constant="16" id="bAX-YV-JiD"/>
-                    <constraint firstItem="fZd-aa-tuP" firstAttribute="leading" secondItem="WSo-7E-VMG" secondAttribute="leading" constant="16" id="bF3-j6-C5h"/>
                     <constraint firstItem="Fji-2e-DGv" firstAttribute="top" secondItem="tTy-96-7Iq" secondAttribute="bottom" constant="42" id="cGn-UB-yO0"/>
-                    <constraint firstItem="pJN-J6-SDG" firstAttribute="top" secondItem="fZd-aa-tuP" secondAttribute="bottom" constant="11" id="uGN-xo-ROw"/>
                     <constraint firstAttribute="bottom" secondItem="Fji-2e-DGv" secondAttribute="bottom" constant="13.5" id="wED-YV-Xyb"/>
                 </constraints>
             </tableViewCellContentView>
@@ -74,11 +74,10 @@
                 <outlet property="address" destination="pJN-J6-SDG" id="OiC-C7-Lc2"/>
                 <outlet property="distanceTo" destination="Fji-2e-DGv" id="13l-A5-uQj"/>
                 <outlet property="name" destination="tTy-96-7Iq" id="oLC-wb-T74"/>
+                <outlet property="typeOfWasteIconHeight" destination="sOx-jt-aeo" id="dPg-bB-aoT"/>
+                <outlet property="typesOfWasteStackView" destination="s3k-UM-EO8" id="yhb-hF-weJ"/>
             </connections>
             <point key="canvasLocation" x="97.5" y="19"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="icWastePaper" width="26" height="26"/>
-    </resources>
 </document>

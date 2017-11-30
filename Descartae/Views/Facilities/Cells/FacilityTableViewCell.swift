@@ -19,10 +19,28 @@ class FacilityTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var distanceTo: UILabel!
+    @IBOutlet weak var typesOfWasteStackView: UIStackView!
+    @IBOutlet weak var typeOfWasteIconHeight: NSLayoutConstraint!
+
+    let previewLimit = 3
 
     var facility: Facility! {
         didSet {
             setupFacility()
+        }
+    }
+
+    // MARK: Life cycle
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        name.text = ""
+        address.text = ""
+        distanceTo.text = ""
+
+        for subview in typesOfWasteStackView.arrangedSubviews {
+            typesOfWasteStackView.removeArrangedSubview(subview)
         }
     }
 
@@ -32,6 +50,26 @@ class FacilityTableViewCell: UITableViewCell {
         name.text = facility.name
         address.text = facility.location.address
         distanceTo.text = String(format: "%.2fKM", LocationManager.shared.distanceInKm(fromLocation: facility.location.location))
+        
+        let typesOfWaste = facility.typesOfWaste!.flatMap({$0})
+        let endOfPreviewIndex = typesOfWaste.count >= 3 ? 2 : typesOfWaste.count - 1
+        let typesOfWasteToPreview = typesOfWaste[0...endOfPreviewIndex]
+
+        for typeOfWaste in typesOfWasteToPreview {
+            let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconHeight.constant, height: typeOfWasteIconHeight.constant)
+            let typeOfWasteIconView = UIImageView(frame: iconFrame)
+            // TODO: Set placeholder
+            if let iconURL = URL(string: typeOfWaste.icon) {
+                typeOfWasteIconView.sd_setImage(with: iconURL, completed: nil)
+            }
+        }
+
+        if typesOfWaste.count > previewLimit {
+            let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconHeight.constant, height: typeOfWasteIconHeight.constant)
+            let moreTypesOfWasteIconView = UIImageView(frame: iconFrame)
+            // TODO: Set more asset
+            typesOfWasteStackView.addArrangedSubview(moreTypesOfWasteIconView)
+        }
     }
 
 }
