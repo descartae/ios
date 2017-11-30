@@ -10,7 +10,7 @@ import Foundation
 import Apollo
 
 extension Facility: Equatable {
-
+    
     public static func == (lhs: Facility, rhs: Facility) -> Bool {
         return lhs.id == rhs.id
     }

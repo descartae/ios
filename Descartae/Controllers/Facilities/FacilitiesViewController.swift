@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class FacilitiesViewController: UIViewController {
 
@@ -26,6 +27,7 @@ final class FacilitiesViewController: UIViewController {
         return activityIndicator
     }()
 
+    let locationManager = LocationManager.shared
     var facilities: [Facility] = []
     var isLoading: Bool = true {
         didSet {
@@ -44,7 +46,20 @@ final class FacilitiesViewController: UIViewController {
         }
 
         setupTableView()
-        loadFacilities()
+
+        locationManager.askForAuthorization()
+        if locationManager.shouldAskForAuthorization {
+            // TODO: Setup ask permission state
+            locationManager.askForAuthorization()
+        }
+
+        if locationManager.isLocationDenied {
+            // TODO: Setup location denied state
+        }
+
+        locationManager.onLocationUpdate { [weak self] in
+            self?.loadFacilities()
+        }
     }
 
     // MARK: Setup subviews

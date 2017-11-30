@@ -48,5 +48,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localização para mostrar os pontos de coleta mais próximos.</string>
 </dict>
 </plist>
