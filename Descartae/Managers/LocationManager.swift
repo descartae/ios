@@ -46,6 +46,14 @@ class LocationManager: NSObject {
         manager.startUpdatingLocation()
     }
 
+    func distanceInKm(fromLocation location: CLLocation?) -> Double {
+        guard let userLocation = self.location, let facilityLocation = location else {
+            return 0
+        }
+
+        return userLocation.distance(from: facilityLocation) / 1000
+    }
+
 }
 
 extension LocationManager: CLLocationManagerDelegate {
