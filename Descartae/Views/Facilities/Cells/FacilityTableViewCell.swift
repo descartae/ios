@@ -60,7 +60,8 @@ class FacilityTableViewCell: UITableViewCell {
         for typeOfWaste in typesOfWasteToPreview {
             let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconSize.constant, height: typeOfWasteIconSize.constant)
             let typeOfWasteIconView = UIImageView(frame: iconFrame)
-            // TODO: Set placeholder
+            typeOfWasteIconView.image = UIImage(named: "icWasteEmpty")
+
             if let iconURL = URL(string: typeOfWaste.icon) {
                 typeOfWasteIconView.sd_setImage(with: iconURL, completed: nil)
             }
@@ -72,8 +73,7 @@ class FacilityTableViewCell: UITableViewCell {
         if typesOfWaste.count > previewLimit {
             let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconSize.constant, height: typeOfWasteIconSize.constant)
             let moreTypesOfWasteIconView = UIImageView(frame: iconFrame)
-            moreTypesOfWasteIconView.backgroundColor = .red
-            // TODO: Set more asset
+            moreTypesOfWasteIconView.image = UIImage(named: "icWasteMore")
             typesOfWasteStackView.addArrangedSubview(moreTypesOfWasteIconView)
             addConstraintsTo(typeOfWasteIconView: moreTypesOfWasteIconView)
         }
