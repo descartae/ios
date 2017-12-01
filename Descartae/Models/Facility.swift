@@ -24,7 +24,7 @@ extension Facility.Location {
         guard let latitude = coordinates?.latitude, let longitude = coordinates?.longitude else {
             return nil
         }
-        
+
         return CLLocation(latitude: latitude, longitude: longitude)
     }
 
