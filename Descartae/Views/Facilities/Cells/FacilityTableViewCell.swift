@@ -20,7 +20,8 @@ class FacilityTableViewCell: UITableViewCell {
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var distanceTo: UILabel!
     @IBOutlet weak var typesOfWasteStackView: UIStackView!
-    @IBOutlet weak var typeOfWasteIconHeight: NSLayoutConstraint!
+    @IBOutlet weak var typeOfWasteIconSize: NSLayoutConstraint!
+    @IBOutlet weak var typesOfWasteStackViewWidth: NSLayoutConstraint!
 
     let previewLimit = 3
 
@@ -41,6 +42,7 @@ class FacilityTableViewCell: UITableViewCell {
 
         for subview in typesOfWasteStackView.arrangedSubviews {
             typesOfWasteStackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
         }
     }
 
@@ -50,26 +52,42 @@ class FacilityTableViewCell: UITableViewCell {
         name.text = facility.name
         address.text = facility.location.address
         distanceTo.text = String(format: "%.2fKM", LocationManager.shared.distanceInKm(fromLocation: facility.location.location))
-        
+
         let typesOfWaste = facility.typesOfWaste!.flatMap({$0})
         let endOfPreviewIndex = typesOfWaste.count >= 3 ? 2 : typesOfWaste.count - 1
         let typesOfWasteToPreview = typesOfWaste[0...endOfPreviewIndex]
 
         for typeOfWaste in typesOfWasteToPreview {
-            let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconHeight.constant, height: typeOfWasteIconHeight.constant)
+            let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconSize.constant, height: typeOfWasteIconSize.constant)
             let typeOfWasteIconView = UIImageView(frame: iconFrame)
             // TODO: Set placeholder
             if let iconURL = URL(string: typeOfWaste.icon) {
                 typeOfWasteIconView.sd_setImage(with: iconURL, completed: nil)
             }
+
+            typesOfWasteStackView.addArrangedSubview(typeOfWasteIconView)
+            addConstraintsTo(typeOfWasteIconView: typeOfWasteIconView)
         }
 
         if typesOfWaste.count > previewLimit {
-            let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconHeight.constant, height: typeOfWasteIconHeight.constant)
+            let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconSize.constant, height: typeOfWasteIconSize.constant)
             let moreTypesOfWasteIconView = UIImageView(frame: iconFrame)
+            moreTypesOfWasteIconView.backgroundColor = .red
             // TODO: Set more asset
             typesOfWasteStackView.addArrangedSubview(moreTypesOfWasteIconView)
+            addConstraintsTo(typeOfWasteIconView: moreTypesOfWasteIconView)
         }
+
+        let iconsWidth = CGFloat(typesOfWasteToPreview.count) * typeOfWasteIconSize.constant
+        let spacing = CGFloat(endOfPreviewIndex) * typesOfWasteStackView.spacing
+        typesOfWasteStackViewWidth.constant = iconsWidth + spacing
+        typesOfWasteStackView.layoutIfNeeded()
+    }
+
+    func addConstraintsTo(typeOfWasteIconView: UIImageView) {
+        typeOfWasteIconView.translatesAutoresizingMaskIntoConstraints = false
+        typeOfWasteIconView.heightAnchor.constraint(equalToConstant: typeOfWasteIconSize.constant).isActive = true
+        typeOfWasteIconView.widthAnchor.constraint(equalToConstant: typeOfWasteIconSize.constant).isActive = true
     }
 
 }

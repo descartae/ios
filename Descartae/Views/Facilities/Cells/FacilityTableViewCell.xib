@@ -37,10 +37,10 @@
                         <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="s3k-UM-EO8">
-                        <rect key="frame" x="16" y="42" width="122" height="26"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="firstBaseline" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="s3k-UM-EO8">
+                        <rect key="frame" x="16" y="42" width="100" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="122" id="Dn6-D5-kyn"/>
+                            <constraint firstAttribute="width" constant="100" id="Dn6-D5-kyn"/>
                             <constraint firstAttribute="height" constant="26" id="sOx-jt-aeo"/>
                         </constraints>
                     </stackView>
@@ -74,8 +74,9 @@
                 <outlet property="address" destination="pJN-J6-SDG" id="OiC-C7-Lc2"/>
                 <outlet property="distanceTo" destination="Fji-2e-DGv" id="13l-A5-uQj"/>
                 <outlet property="name" destination="tTy-96-7Iq" id="oLC-wb-T74"/>
-                <outlet property="typeOfWasteIconHeight" destination="sOx-jt-aeo" id="dPg-bB-aoT"/>
+                <outlet property="typeOfWasteIconSize" destination="sOx-jt-aeo" id="CMY-dt-iSU"/>
                 <outlet property="typesOfWasteStackView" destination="s3k-UM-EO8" id="yhb-hF-weJ"/>
+                <outlet property="typesOfWasteStackViewWidth" destination="Dn6-D5-kyn" id="zbU-jz-IQW"/>
             </connections>
             <point key="canvasLocation" x="97.5" y="19"/>
         </tableViewCell>
