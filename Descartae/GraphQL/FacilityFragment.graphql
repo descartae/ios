@@ -10,7 +10,9 @@ fragment Facility on Center {
         }
     }
     typesOfWaste {
-        ...TypeOfWaste
+        _id
+        name
+        icon
     }
     website
     telephone

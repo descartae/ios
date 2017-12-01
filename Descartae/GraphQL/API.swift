@@ -6,7 +6,7 @@ public final class AllFacilitiesQuery: GraphQLQuery {
   public static let operationString =
     "query allFacilities {\n  centers {\n    __typename\n    ...Facility\n  }\n}"
 
-  public static var requestString: String { return operationString.appending(Facility.fragmentString).appending(TypeOfWaste.fragmentString) }
+  public static var requestString: String { return operationString.appending(Facility.fragmentString) }
 
   public init() {
   }
@@ -264,7 +264,6 @@ public final class AllFacilitiesQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("icon", type: .nonNull(.scalar(String.self))),
@@ -317,28 +316,6 @@ public final class AllFacilitiesQuery: GraphQLQuery {
             snapshot.updateValue(newValue, forKey: "icon")
           }
         }
-
-        public var fragments: Fragments {
-          get {
-            return Fragments(snapshot: snapshot)
-          }
-          set {
-            snapshot += newValue.snapshot
-          }
-        }
-
-        public struct Fragments {
-          public var snapshot: Snapshot
-
-          public var typeOfWaste: TypeOfWaste {
-            get {
-              return TypeOfWaste(snapshot: snapshot)
-            }
-            set {
-              snapshot += newValue.snapshot
-            }
-          }
-        }
       }
     }
   }
@@ -346,7 +323,7 @@ public final class AllFacilitiesQuery: GraphQLQuery {
 
 public struct Facility: GraphQLFragment {
   public static let fragmentString =
-    "fragment Facility on Center {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    ...TypeOfWaste\n  }\n  website\n  telephone\n}"
+    "fragment Facility on Center {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    _id\n    name\n    icon\n  }\n  website\n  telephone\n}"
 
   public static let possibleTypes = ["Center"]
 
@@ -550,7 +527,6 @@ public struct Facility: GraphQLFragment {
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
       GraphQLField("icon", type: .nonNull(.scalar(String.self))),
@@ -602,90 +578,6 @@ public struct Facility: GraphQLFragment {
       set {
         snapshot.updateValue(newValue, forKey: "icon")
       }
-    }
-
-    public var fragments: Fragments {
-      get {
-        return Fragments(snapshot: snapshot)
-      }
-      set {
-        snapshot += newValue.snapshot
-      }
-    }
-
-    public struct Fragments {
-      public var snapshot: Snapshot
-
-      public var typeOfWaste: TypeOfWaste {
-        get {
-          return TypeOfWaste(snapshot: snapshot)
-        }
-        set {
-          snapshot += newValue.snapshot
-        }
-      }
-    }
-  }
-}
-
-public struct TypeOfWaste: GraphQLFragment {
-  public static let fragmentString =
-    "fragment TypeOfWaste on TypeOfWaste {\n  __typename\n  _id\n  name\n  icon\n}"
-
-  public static let possibleTypes = ["TypeOfWaste"]
-
-  public static let selections: [GraphQLSelection] = [
-    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-    GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
-    GraphQLField("name", type: .nonNull(.scalar(String.self))),
-    GraphQLField("icon", type: .nonNull(.scalar(String.self))),
-  ]
-
-  public var snapshot: Snapshot
-
-  public init(snapshot: Snapshot) {
-    self.snapshot = snapshot
-  }
-
-  public init(id: GraphQLID, name: String, icon: String) {
-    self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "icon": icon])
-  }
-
-  public var __typename: String {
-    get {
-      return snapshot["__typename"]! as! String
-    }
-    set {
-      snapshot.updateValue(newValue, forKey: "__typename")
-    }
-  }
-
-  public var id: GraphQLID {
-    get {
-      return snapshot["_id"]! as! GraphQLID
-    }
-    set {
-      snapshot.updateValue(newValue, forKey: "_id")
-    }
-  }
-
-  /// The user-readable type name
-  public var name: String {
-    get {
-      return snapshot["name"]! as! String
-    }
-    set {
-      snapshot.updateValue(newValue, forKey: "name")
-    }
-  }
-
-  /// The icon URL
-  public var icon: String {
-    get {
-      return snapshot["icon"]! as! String
-    }
-    set {
-      snapshot.updateValue(newValue, forKey: "icon")
     }
   }
 }

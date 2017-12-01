@@ -3,6 +3,8 @@ platform :ios, '10.0'
 target 'Descartae' do
   use_frameworks!
 
+  # Network
+  pod 'SDWebImage', '~> 4'
   pod 'Apollo', '~> 0.7.0'
 
   target 'DescartaeTests' do
