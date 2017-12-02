@@ -2,6 +2,59 @@
 
 import Apollo
 
+public enum DayOfWeek: RawRepresentable, Equatable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case sunday
+  case monday
+  case tuesday
+  case wednesday
+  case thursday
+  case friday
+  case saturday
+  /// Auto generated constant for unknown enum values
+  case unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "SUNDAY": self = .sunday
+      case "MONDAY": self = .monday
+      case "TUESDAY": self = .tuesday
+      case "WEDNESDAY": self = .wednesday
+      case "THURSDAY": self = .thursday
+      case "FRIDAY": self = .friday
+      case "SATURDAY": self = .saturday
+      default: self = .unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .sunday: return "SUNDAY"
+      case .monday: return "MONDAY"
+      case .tuesday: return "TUESDAY"
+      case .wednesday: return "WEDNESDAY"
+      case .thursday: return "THURSDAY"
+      case .friday: return "FRIDAY"
+      case .saturday: return "SATURDAY"
+      case .unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: DayOfWeek, rhs: DayOfWeek) -> Bool {
+    switch (lhs, rhs) {
+      case (.sunday, .sunday): return true
+      case (.monday, .monday): return true
+      case (.tuesday, .tuesday): return true
+      case (.wednesday, .wednesday): return true
+      case (.thursday, .thursday): return true
+      case (.friday, .friday): return true
+      case (.saturday, .saturday): return true
+      case (.unknown(let lhsValue), .unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+}
+
 public final class AllFacilitiesQuery: GraphQLQuery {
   public static let operationString =
     "query allFacilities {\n  centers {\n    __typename\n    ...Facility\n  }\n}"
@@ -48,6 +101,7 @@ public final class AllFacilitiesQuery: GraphQLQuery {
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
         GraphQLField("location", type: .nonNull(.object(Location.selections))),
         GraphQLField("typesOfWaste", type: .list(.object(TypesOfWaste.selections))),
+        GraphQLField("openHours", type: .list(.object(OpenHour.selections))),
         GraphQLField("website", type: .scalar(String.self)),
         GraphQLField("telephone", type: .scalar(String.self)),
       ]
@@ -58,8 +112,8 @@ public final class AllFacilitiesQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, location: Location, typesOfWaste: [TypesOfWaste?]? = nil, website: String? = nil, telephone: String? = nil) {
-        self.init(snapshot: ["__typename": "Center", "_id": id, "name": name, "location": location.snapshot, "typesOfWaste": typesOfWaste.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "website": website, "telephone": telephone])
+      public init(id: GraphQLID, name: String, location: Location, typesOfWaste: [TypesOfWaste?]? = nil, openHours: [OpenHour?]? = nil, website: String? = nil, telephone: String? = nil) {
+        self.init(snapshot: ["__typename": "Center", "_id": id, "name": name, "location": location.snapshot, "typesOfWaste": typesOfWaste.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "openHours": openHours.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "website": website, "telephone": telephone])
       }
 
       public var __typename: String {
@@ -107,6 +161,16 @@ public final class AllFacilitiesQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "typesOfWaste")
+        }
+      }
+
+      /// The center's operating hours
+      public var openHours: [OpenHour?]? {
+        get {
+          return (snapshot["openHours"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { OpenHour(snapshot: $0) } } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "openHours")
         }
       }
 
@@ -317,13 +381,72 @@ public final class AllFacilitiesQuery: GraphQLQuery {
           }
         }
       }
+
+      public struct OpenHour: GraphQLSelectionSet {
+        public static let possibleTypes = ["OpenTime"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("dayOfWeek", type: .nonNull(.scalar(DayOfWeek.self))),
+          GraphQLField("startTime", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("endTime", type: .nonNull(.scalar(Int.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(dayOfWeek: DayOfWeek, startTime: Int, endTime: Int) {
+          self.init(snapshot: ["__typename": "OpenTime", "dayOfWeek": dayOfWeek, "startTime": startTime, "endTime": endTime])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var dayOfWeek: DayOfWeek {
+          get {
+            return snapshot["dayOfWeek"]! as! DayOfWeek
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "dayOfWeek")
+          }
+        }
+
+        /// The hour representing the start of the timespan
+        public var startTime: Int {
+          get {
+            return snapshot["startTime"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "startTime")
+          }
+        }
+
+        /// The hour representing the end of the timespan
+        public var endTime: Int {
+          get {
+            return snapshot["endTime"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "endTime")
+          }
+        }
+      }
     }
   }
 }
 
 public struct Facility: GraphQLFragment {
   public static let fragmentString =
-    "fragment Facility on Center {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    _id\n    name\n    icon\n  }\n  website\n  telephone\n}"
+    "fragment Facility on Center {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    _id\n    name\n    icon\n  }\n  openHours {\n    __typename\n    dayOfWeek\n    startTime\n    endTime\n  }\n  website\n  telephone\n}"
 
   public static let possibleTypes = ["Center"]
 
@@ -333,6 +456,7 @@ public struct Facility: GraphQLFragment {
     GraphQLField("name", type: .nonNull(.scalar(String.self))),
     GraphQLField("location", type: .nonNull(.object(Location.selections))),
     GraphQLField("typesOfWaste", type: .list(.object(TypesOfWaste.selections))),
+    GraphQLField("openHours", type: .list(.object(OpenHour.selections))),
     GraphQLField("website", type: .scalar(String.self)),
     GraphQLField("telephone", type: .scalar(String.self)),
   ]
@@ -343,8 +467,8 @@ public struct Facility: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  public init(id: GraphQLID, name: String, location: Location, typesOfWaste: [TypesOfWaste?]? = nil, website: String? = nil, telephone: String? = nil) {
-    self.init(snapshot: ["__typename": "Center", "_id": id, "name": name, "location": location.snapshot, "typesOfWaste": typesOfWaste.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "website": website, "telephone": telephone])
+  public init(id: GraphQLID, name: String, location: Location, typesOfWaste: [TypesOfWaste?]? = nil, openHours: [OpenHour?]? = nil, website: String? = nil, telephone: String? = nil) {
+    self.init(snapshot: ["__typename": "Center", "_id": id, "name": name, "location": location.snapshot, "typesOfWaste": typesOfWaste.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "openHours": openHours.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "website": website, "telephone": telephone])
   }
 
   public var __typename: String {
@@ -392,6 +516,16 @@ public struct Facility: GraphQLFragment {
     }
     set {
       snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "typesOfWaste")
+    }
+  }
+
+  /// The center's operating hours
+  public var openHours: [OpenHour?]? {
+    get {
+      return (snapshot["openHours"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { OpenHour(snapshot: $0) } } }
+    }
+    set {
+      snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "openHours")
     }
   }
 
@@ -577,6 +711,65 @@ public struct Facility: GraphQLFragment {
       }
       set {
         snapshot.updateValue(newValue, forKey: "icon")
+      }
+    }
+  }
+
+  public struct OpenHour: GraphQLSelectionSet {
+    public static let possibleTypes = ["OpenTime"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("dayOfWeek", type: .nonNull(.scalar(DayOfWeek.self))),
+      GraphQLField("startTime", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("endTime", type: .nonNull(.scalar(Int.self))),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(dayOfWeek: DayOfWeek, startTime: Int, endTime: Int) {
+      self.init(snapshot: ["__typename": "OpenTime", "dayOfWeek": dayOfWeek, "startTime": startTime, "endTime": endTime])
+    }
+
+    public var __typename: String {
+      get {
+        return snapshot["__typename"]! as! String
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var dayOfWeek: DayOfWeek {
+      get {
+        return snapshot["dayOfWeek"]! as! DayOfWeek
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "dayOfWeek")
+      }
+    }
+
+    /// The hour representing the start of the timespan
+    public var startTime: Int {
+      get {
+        return snapshot["startTime"]! as! Int
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "startTime")
+      }
+    }
+
+    /// The hour representing the end of the timespan
+    public var endTime: Int {
+      get {
+        return snapshot["endTime"]! as! Int
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "endTime")
       }
     }
   }

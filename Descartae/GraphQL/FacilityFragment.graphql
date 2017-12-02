@@ -14,6 +14,11 @@ fragment Facility on Center {
         name
         icon
     }
+    openHours {
+        dayOfWeek
+        startTime
+        endTime
+    }
     website
     telephone
 }
