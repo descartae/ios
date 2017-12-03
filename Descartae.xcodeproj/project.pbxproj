@@ -15,9 +15,10 @@
 		990A1DD41FC38DD400DD5D81 /* FacilityFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DD31FC38DD400DD5D81 /* FacilityFragment.graphql */; };
 		990A1DD81FC3A8B400DD5D81 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DD71FC3A8B400DD5D81 /* Facility.swift */; };
 		994242101FCE19E10095623C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942420F1FCE19E10095623C /* LocationManager.swift */; };
+		996A4CD61FD4ABD5002088AA /* OpenHoursTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A4CD51FD4ABD5002088AA /* OpenHoursTopTableViewCell.swift */; };
 		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
 		99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */; };
-		99826E6F1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib */; };
+		99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */; };
 		99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A650FA1FC0B2B70076167D /* AppDelegate.swift */; };
 		99A651001FC0B2B70076167D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A650FE1FC0B2B70076167D /* Main.storyboard */; };
 		99A651021FC0B2B70076167D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A651011FC0B2B70076167D /* Assets.xcassets */; };
@@ -59,9 +60,10 @@
 		990A1DD31FC38DD400DD5D81 /* FacilityFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FacilityFragment.graphql; sourceTree = "<group>"; };
 		990A1DD71FC3A8B400DD5D81 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		9942420F1FCE19E10095623C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		996A4CD51FD4ABD5002088AA /* OpenHoursTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTopTableViewCell.swift; sourceTree = "<group>"; };
 		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsTableViewController.swift; sourceTree = "<group>"; };
-		99826E6E1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTopTableViewCell.xib; sourceTree = "<group>"; };
+		99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTodayTableViewCell.xib; sourceTree = "<group>"; };
 		99A650F71FC0B2B70076167D /* Descartae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Descartae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A650FA1FC0B2B70076167D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99A650FF1FC0B2B70076167D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -260,7 +262,8 @@
 			children = (
 				99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */,
 				99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */,
-				99826E6E1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib */,
+				99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */,
+				996A4CD51FD4ABD5002088AA /* OpenHoursTopTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -405,7 +408,7 @@
 				990A1DD41FC38DD400DD5D81 /* FacilityFragment.graphql in Resources */,
 				990A1DCC1FC384EE00DD5D81 /* FacilitiesViewController.graphql in Resources */,
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
-				99826E6F1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib in Resources */,
+				99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
 				99A651001FC0B2B70076167D /* Main.storyboard in Resources */,
 				99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */,
@@ -622,6 +625,7 @@
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
 				99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
+				996A4CD61FD4ABD5002088AA /* OpenHoursTopTableViewCell.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,
 				99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */,
 				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,
