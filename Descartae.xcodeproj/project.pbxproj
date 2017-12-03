@@ -17,6 +17,7 @@
 		994242101FCE19E10095623C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942420F1FCE19E10095623C /* LocationManager.swift */; };
 		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
 		99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */; };
+		99826E6F1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib */; };
 		99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A650FA1FC0B2B70076167D /* AppDelegate.swift */; };
 		99A651001FC0B2B70076167D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A650FE1FC0B2B70076167D /* Main.storyboard */; };
 		99A651021FC0B2B70076167D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A651011FC0B2B70076167D /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		9942420F1FCE19E10095623C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsTableViewController.swift; sourceTree = "<group>"; };
+		99826E6E1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTopTableViewCell.xib; sourceTree = "<group>"; };
 		99A650F71FC0B2B70076167D /* Descartae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Descartae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A650FA1FC0B2B70076167D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99A650FF1FC0B2B70076167D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */,
 				99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */,
+				99826E6E1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				990A1DD41FC38DD400DD5D81 /* FacilityFragment.graphql in Resources */,
 				990A1DCC1FC384EE00DD5D81 /* FacilitiesViewController.graphql in Resources */,
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
+				99826E6F1FD35D9C0090DF4D /* OpenHoursTopTableViewCell.xib in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
 				99A651001FC0B2B70076167D /* Main.storyboard in Resources */,
 				99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */,
