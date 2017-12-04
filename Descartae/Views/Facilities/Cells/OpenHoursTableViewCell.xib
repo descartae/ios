@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="E49-yY-Ixz" customClass="OpenHoursTableViewCell" customModule="Descartae" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E49-yY-Ixz" id="AoZ-2g-5d9">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Segunda-feira" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j49-vm-Drj">
+                        <rect key="frame" x="16" y="6" width="343" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="ygc-87-oCk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59564810739999996" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:00 - 18:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="162-Kh-57D">
+                        <rect key="frame" x="16" y="26" width="343" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="A2V-zi-yJ9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59564810739999996" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="j49-vm-Drj" firstAttribute="top" secondItem="AoZ-2g-5d9" secondAttribute="top" constant="6" id="D4d-k9-pME"/>
+                    <constraint firstItem="162-Kh-57D" firstAttribute="top" secondItem="j49-vm-Drj" secondAttribute="bottom" constant="2" id="Lzr-fE-c4L"/>
+                    <constraint firstAttribute="trailing" secondItem="j49-vm-Drj" secondAttribute="trailing" constant="16" id="Q7O-L8-zcL"/>
+                    <constraint firstAttribute="bottom" secondItem="162-Kh-57D" secondAttribute="bottom" constant="5.5" id="erO-dU-f1A"/>
+                    <constraint firstItem="162-Kh-57D" firstAttribute="leading" secondItem="AoZ-2g-5d9" secondAttribute="leading" constant="16" id="fgw-4Q-WOd"/>
+                    <constraint firstItem="j49-vm-Drj" firstAttribute="leading" secondItem="AoZ-2g-5d9" secondAttribute="leading" constant="16" id="hju-BO-2Eq"/>
+                    <constraint firstAttribute="trailing" secondItem="162-Kh-57D" secondAttribute="trailing" constant="16" id="mxz-ae-69M"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dayOfWeek" destination="j49-vm-Drj" id="JwY-YS-TQU"/>
+                <outlet property="dayOfWeekTopConstraint" destination="D4d-k9-pME" id="TTw-BW-8z0"/>
+                <outlet property="openHours" destination="162-Kh-57D" id="zkF-6U-3r3"/>
+                <outlet property="openHoursBottomConstraint" destination="erO-dU-f1A" id="fHW-Cj-rhM"/>
+            </connections>
+            <point key="canvasLocation" x="38.5" y="79"/>
+        </tableViewCell>
+    </objects>
+</document>

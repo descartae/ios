@@ -48,6 +48,9 @@
                         <state key="normal" title="Menos">
                             <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="didTouchCollapseButton:" destination="2m8-UD-YLe" eventType="touchUpInside" id="fhf-m6-HGh"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -60,6 +63,9 @@
                     <constraint firstItem="O2p-Ik-f0T" firstAttribute="centerY" secondItem="sEP-Az-UlH" secondAttribute="centerY" id="s2Q-vA-7uQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="todayOpenHours" destination="pMk-4H-8tz" id="C1j-ja-Lls"/>
+            </connections>
             <point key="canvasLocation" x="92.5" y="245"/>
         </tableViewCell>
     </objects>

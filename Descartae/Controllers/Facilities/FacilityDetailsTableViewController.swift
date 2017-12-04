@@ -18,6 +18,12 @@ class FacilityDetailsTableViewController: UITableViewController {
 
     // MARK: Properties
 
+    lazy var openHoursTodayCell: OpenHoursTodayTableViewCell = {
+        let cell = OpenHoursTodayTableViewCell()
+        cell.delegate = self
+        return cell
+    }()
+
     var facility: Facility!
     var sections: [Section] = []
     var isOpenHoursCollapsed = false
@@ -36,23 +42,31 @@ class FacilityDetailsTableViewController: UITableViewController {
 
     // MARK: Setup
 
+    func setupTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+
+        tableView.register(OpenHoursTableViewCell.nib, forCellReuseIdentifier: OpenHoursTableViewCell.identifier)
+    }
+
     func setupSections() {
         if let openHours = facility.openHours as? [Facility.OpenHour], openHours.count > 0 {
             sections.append(.openHours(openHours: openHours))
         }
 
-        if let telephone = facility.telephone {
-            sections.append(.telephone(telephone: telephone))
-        }
-
-        if let website = facility.website {
-            sections.append(.website(website: website))
-        }
+//        if let telephone = facility.telephone {
+//            sections.append(.telephone(telephone: telephone))
+//        }
+//
+//        if let website = facility.website {
+//            sections.append(.website(website: website))
+//        }
 
         sections.append(.report)
     }
 
 }
+
+// MARK: UITableViewDataSource
 
 extension FacilityDetailsTableViewController {
 
@@ -69,6 +83,63 @@ extension FacilityDetailsTableViewController {
         case .telephone, .website, .report:
             return 1
         }
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = sections[indexPath.section]
+
+        switch section {
+        case .openHours where indexPath.row == 0:
+            return openHoursTodayCell
+        case .openHours(let openHours):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: OpenHoursTableViewCell.identifier, for: indexPath) as? OpenHoursTableViewCell {
+                if indexPath.row == 0 {
+                    cell.dayOfWeekTopConstraint.constant = 20
+                }
+
+                if openHours.count == indexPath.row - 1 {
+                    cell.openHoursBottomConstraint.constant = 20
+                }
+
+                return cell
+            }
+
+            return UITableViewCell()
+        default:
+            break
+        }
+
+        return UITableViewCell()
+    }
+
+}
+
+// MARK: UITableViewDelegate
+
+extension FacilityDetailsTableViewController {
+
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = sections[indexPath.section]
+
+        switch section {
+        case .openHours where indexPath.row == 0:
+            return OpenHoursTodayTableViewCell.estimatedRowHeight
+        case .openHours(let openHours):
+            return indexPath.row == 0 || openHours.count == indexPath.row - 1 ?
+                    OpenHoursTableViewCell.bottomOrTopEstimatedRowHeight : OpenHoursTableViewCell.estimatedRowHeight
+        default:
+            return 50
+        }
+    }
+
+}
+
+// MARK: OpenHoursTodayTableViewCellDelegate
+
+extension FacilityDetailsTableViewController: OpenHoursTodayTableViewCellDelegate {
+
+    func didTouchCollapseButton(_ button: UIButton) {
+
     }
 
 }
