@@ -80,9 +80,10 @@ class FacilityDetailsTableViewController: UITableViewController {
     // MARK: Setup
 
     func setupTableView() {
-//        tableView.rowHeight = UITableViewAutomaticDimension
-
-        tableView.register(OpenHoursTableViewCell.nib, forCellReuseIdentifier: OpenHoursTableViewCell.identifier)
+        tableView.register(
+            OpenHoursTableViewCell.nib,
+            forCellReuseIdentifier: OpenHoursTableViewCell.identifier
+        )
     }
 
     func setupSections() {
