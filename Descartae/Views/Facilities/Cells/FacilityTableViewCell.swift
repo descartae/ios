@@ -25,7 +25,7 @@ class FacilityTableViewCell: UITableViewCell {
 
     let previewLimit = 3
 
-    var facility: Facility! {
+    var facility: DisposalFacility! {
         didSet {
             setupFacility()
         }
@@ -53,7 +53,7 @@ class FacilityTableViewCell: UITableViewCell {
         address.text = facility.location.address
         distanceTo.text = String(format: "%.2fKM", LocationManager.shared.distanceInKm(fromLocation: facility.location.location))
 
-        let typesOfWaste = facility.typesOfWaste!.flatMap({$0})
+        let typesOfWaste = facility.typesOfWaste.flatMap({$0})
         let endOfPreviewIndex = typesOfWaste.count >= 3 ? 2 : typesOfWaste.count - 1
         let typesOfWasteToPreview = typesOfWaste[0...endOfPreviewIndex]
 

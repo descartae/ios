@@ -1,5 +1,5 @@
 //
-//  Center.swift
+//  DisposalFacility.swift
 //  Descartae
 //
 //  Created by Filipe Alvarenga on 20/11/17.
@@ -10,15 +10,15 @@ import Foundation
 import Apollo
 import CoreLocation
 
-extension Facility: Equatable {
+extension DisposalFacility: Equatable {
 
-    public static func == (lhs: Facility, rhs: Facility) -> Bool {
+    public static func == (lhs: DisposalFacility, rhs: DisposalFacility) -> Bool {
         return lhs.id == rhs.id
     }
 
 }
 
-extension Facility.Location {
+extension DisposalFacility.Location {
 
     var location: CLLocation? {
         guard let latitude = coordinates?.latitude, let longitude = coordinates?.longitude else {

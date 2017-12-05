@@ -1,5 +1,5 @@
 query allFacilities {
-    centers {
-        ...Facility
+    facilities {
+        ...DisposalFacility
     }
 }

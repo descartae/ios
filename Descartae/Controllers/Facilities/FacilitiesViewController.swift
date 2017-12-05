@@ -28,7 +28,7 @@ final class FacilitiesViewController: UIViewController {
     }()
 
     let locationManager = LocationManager.shared
-    var facilities: [Facility] = []
+    var facilities: [DisposalFacility] = []
     var isLoading: Bool = true {
         didSet {
             if !isLoading { tableView.backgroundView = nil }
@@ -90,11 +90,11 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
-            guard let centersQueryFragment = result?.data?.centers as? [AllFacilitiesQuery.Data.Center] else {
+            guard let centersQueryFragment = result?.data?.facilities as? [AllFacilitiesQuery.Data.Facility] else {
                 return
             }
 
-            self.facilities = centersQueryFragment.map({ $0.fragments.facility })
+            self.facilities = centersQueryFragment.map({ $0.fragments.disposalFacility })
             self.tableView.reloadData()
         }
     }
@@ -109,12 +109,20 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
-            guard let facilitiesQueryFragment = result?.data?.centers as? [AllFacilitiesQuery.Data.Center] else {
+            guard let facilitiesQueryFragment = result?.data?.facilities as? [AllFacilitiesQuery.Data.Facility] else {
                 return
             }
 
-            self.facilities = facilitiesQueryFragment.map({ $0.fragments.facility })
+            self.facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
             self.tableView.reloadData()
+        }
+    }
+
+    // MARK: Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let details = segue.destination as? FacilityDetailsTableViewController, let indexOfFacility = sender as? Int {
+            details.facility = facilities[indexOfFacility]
         }
     }
 
@@ -141,6 +149,14 @@ extension FacilitiesViewController: UITableViewDataSource {
         }
 
         return UITableViewCell()
+    }
+
+}
+
+extension FacilitiesViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showFacilityDetails", sender: indexPath.row)
     }
 
 }

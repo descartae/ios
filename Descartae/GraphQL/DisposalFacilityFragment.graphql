@@ -1,4 +1,4 @@
-fragment Facility on Center {
+fragment DisposalFacility on Facility {
     _id
     name
     location {

@@ -27,15 +27,15 @@
               "deprecationReason": null
             },
             {
-              "name": "centers",
-              "description": "The list of available centers",
+              "name": "facilities",
+              "description": "The list of available facilities",
               "args": [],
               "type": {
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Center",
+                  "name": "Facility",
                   "ofType": null
                 }
               },
@@ -43,8 +43,8 @@
               "deprecationReason": null
             },
             {
-              "name": "center",
-              "description": "The center with the given ID",
+              "name": "facility",
+              "description": "The facility with the given ID",
               "args": [
                 {
                   "name": "_id",
@@ -63,7 +63,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "Center",
+                "name": "Facility",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -71,7 +71,7 @@
             },
             {
               "name": "typesOfWaste",
-              "description": "All the types of waste that a center can receive",
+              "description": "All the types of waste that a facility can receive",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -81,6 +81,49 @@
                   "name": "TypeOfWaste",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "feedbacks",
+              "description": "Every feedback received",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Feedback",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "feedback",
+              "description": "The feedback with the given ID",
+              "args": [
+                {
+                  "name": "_id",
+                  "description": "",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Feedback",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -103,8 +146,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Center",
-          "description": "Represents a registered recycling center",
+          "name": "Facility",
+          "description": "Represents a registered recycling facility",
           "fields": [
             {
               "name": "_id",
@@ -124,7 +167,7 @@
             },
             {
               "name": "name",
-              "description": "The name of the center",
+              "description": "The name of the facility",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -140,7 +183,7 @@
             },
             {
               "name": "location",
-              "description": "The location data for a given center",
+              "description": "The location data for a given facility",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -180,15 +223,19 @@
             },
             {
               "name": "typesOfWaste",
-              "description": "The types of waste the recycling center handles",
+              "description": "The types of waste the recycling facility handles",
               "args": [],
               "type": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "TypeOfWaste",
-                  "ofType": null
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "TypeOfWaste",
+                    "ofType": null
+                  }
                 }
               },
               "isDeprecated": false,
@@ -196,15 +243,19 @@
             },
             {
               "name": "openHours",
-              "description": "The center's operating hours",
+              "description": "The facility's operating hours",
               "args": [],
               "type": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "OpenTime",
-                  "ofType": null
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "OpenTime",
+                    "ofType": null
+                  }
                 }
               },
               "isDeprecated": false,
@@ -357,7 +408,7 @@
         {
           "kind": "OBJECT",
           "name": "TypeOfWaste",
-          "description": "Represents some type of waste accepted by centers",
+          "description": "Represents some type of waste accepted by facilities",
           "fields": [
             {
               "name": "_id",
@@ -378,6 +429,22 @@
             {
               "name": "name",
               "description": "The user-readable type name",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": "The user-readable type description",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -537,6 +604,87 @@
         },
         {
           "kind": "OBJECT",
+          "name": "Feedback",
+          "description": "Represents an user's feedback",
+          "fields": [
+            {
+              "name": "_id",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "facility",
+              "description": "The related facility, if any",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Facility",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "resolved",
+              "description": "Indicates if the feedback was answered and/or resolved",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "contents",
+              "description": "The feedback's content",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "Boolean",
+          "description": "The `Boolean` scalar type represents `true` or `false`.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
           "name": "Mutation",
           "description": "",
           "fields": [
@@ -568,8 +716,8 @@
               "deprecationReason": null
             },
             {
-              "name": "addCenter",
-              "description": "Creates a new center",
+              "name": "addFacility",
+              "description": "Creates a new facility",
               "args": [
                 {
                   "name": "input",
@@ -579,7 +727,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "AddCenterInput",
+                      "name": "AddFacilityInput",
                       "ofType": null
                     }
                   },
@@ -591,7 +739,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "AddCenterPayload",
+                  "name": "AddFacilityPayload",
                   "ofType": null
                 }
               },
@@ -599,8 +747,8 @@
               "deprecationReason": null
             },
             {
-              "name": "updateCenter",
-              "description": "Updates information related to an existing center",
+              "name": "updateFacility",
+              "description": "Updates information related to an existing facility",
               "args": [
                 {
                   "name": "input",
@@ -610,7 +758,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "UpdateCenterInput",
+                      "name": "UpdateFacilityInput",
                       "ofType": null
                     }
                   },
@@ -622,7 +770,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "UpdateCenterPayload",
+                  "name": "UpdateFacilityPayload",
                   "ofType": null
                 }
               },
@@ -630,8 +778,8 @@
               "deprecationReason": null
             },
             {
-              "name": "disableCenter",
-              "description": "Disables a center, removing it from search results",
+              "name": "disableFacility",
+              "description": "Disables a facility, removing it from search results",
               "args": [
                 {
                   "name": "input",
@@ -641,7 +789,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "DisableCenterInput",
+                      "name": "DisableFacilityInput",
                       "ofType": null
                     }
                   },
@@ -653,7 +801,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "DisableCenterPayload",
+                  "name": "DisableFacilityPayload",
                   "ofType": null
                 }
               },
@@ -662,7 +810,7 @@
             },
             {
               "name": "addTypeOfWaste",
-              "description": "Creates a new type of waste for centers",
+              "description": "Creates a new type of waste for facilities",
               "args": [
                 {
                   "name": "input",
@@ -724,7 +872,7 @@
             },
             {
               "name": "disableTypeOfWaste",
-              "description": "Disables a type of waste, making it impossible to add it to new centers",
+              "description": "Disables a type of waste, making it impossible to add it to new facilities",
               "args": [
                 {
                   "name": "input",
@@ -747,6 +895,60 @@
                 "ofType": {
                   "kind": "OBJECT",
                   "name": "DisableTypeOfWastePayload",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "addFeedback",
+              "description": "Creates a new feedback entry",
+              "args": [
+                {
+                  "name": "input",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "AddFeedbackInput",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "AddFeedbackPayload",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "resolveFeedback",
+              "description": "Marks a given feedback as resolved",
+              "args": [
+                {
+                  "name": "input",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ResolveFeedbackInput",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ResolveFeedbackPayload",
                   "ofType": null
                 }
               },
@@ -838,24 +1040,14 @@
           "possibleTypes": null
         },
         {
-          "kind": "SCALAR",
-          "name": "Boolean",
-          "description": "The `Boolean` scalar type represents `true` or `false`.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "INPUT_OBJECT",
-          "name": "AddCenterInput",
-          "description": "Data for the creation of a center",
+          "name": "AddFacilityInput",
+          "description": "Data for the creation of a facility",
           "fields": null,
           "inputFields": [
             {
               "name": "name",
-              "description": "The name of the center",
+              "description": "The name of the facility",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -869,7 +1061,7 @@
             },
             {
               "name": "location",
-              "description": "The location data of the new center",
+              "description": "The location data of the new facility",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -903,7 +1095,7 @@
             },
             {
               "name": "typesOfWaste",
-              "description": "IDs of the types of waste the recycling center handles",
+              "description": "IDs of the types of waste the recycling facility handles",
               "type": {
                 "kind": "LIST",
                 "name": null,
@@ -917,7 +1109,7 @@
             },
             {
               "name": "openHours",
-              "description": "The center's operating hours",
+              "description": "The facility's operating hours",
               "type": {
                 "kind": "LIST",
                 "name": null,
@@ -937,7 +1129,7 @@
         {
           "kind": "INPUT_OBJECT",
           "name": "LocationInput",
-          "description": "A location for the related center",
+          "description": "A location for the related facility",
           "fields": null,
           "inputFields": [
             {
@@ -1093,8 +1285,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "AddCenterPayload",
-          "description": "The add center operation result",
+          "name": "AddFacilityPayload",
+          "description": "The add facility operation result",
           "fields": [
             {
               "name": "success",
@@ -1113,12 +1305,12 @@
               "deprecationReason": null
             },
             {
-              "name": "center",
+              "name": "facility",
               "description": "The created entry, if any",
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "Center",
+                "name": "Facility",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1132,13 +1324,13 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "UpdateCenterInput",
-          "description": "Required data for updating a center",
+          "name": "UpdateFacilityInput",
+          "description": "Required data for updating a facility",
           "fields": null,
           "inputFields": [
             {
               "name": "_id",
-              "description": "The center identifier",
+              "description": "The facility identifier",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -1158,7 +1350,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "CenterPatch",
+                  "name": "FacilityPatch",
                   "ofType": null
                 }
               },
@@ -1171,13 +1363,13 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "CenterPatch",
-          "description": "Represents what can be updated on a center",
+          "name": "FacilityPatch",
+          "description": "Represents what can be updated on a facility",
           "fields": null,
           "inputFields": [
             {
               "name": "name",
-              "description": "The name of the center",
+              "description": "The name of the facility",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -1187,7 +1379,7 @@
             },
             {
               "name": "location",
-              "description": "The location data of the center",
+              "description": "The location data of the facility",
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "LocationInput",
@@ -1217,7 +1409,7 @@
             },
             {
               "name": "typesOfWaste",
-              "description": "IDs of the types of waste the recycling center handles\nChanges to this field replace the entire list",
+              "description": "IDs of the types of waste the recycling facility handles\nChanges to this field replace the entire list",
               "type": {
                 "kind": "LIST",
                 "name": null,
@@ -1231,7 +1423,7 @@
             },
             {
               "name": "openHours",
-              "description": "The center's operating hours\nChanges to this field replace the entire list",
+              "description": "The facility's operating hours\nChanges to this field replace the entire list",
               "type": {
                 "kind": "LIST",
                 "name": null,
@@ -1250,8 +1442,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "UpdateCenterPayload",
-          "description": "The result of a center update operation",
+          "name": "UpdateFacilityPayload",
+          "description": "The result of a facility update operation",
           "fields": [
             {
               "name": "success",
@@ -1270,12 +1462,12 @@
               "deprecationReason": null
             },
             {
-              "name": "center",
+              "name": "facility",
               "description": "The updated entry, if applicable",
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "Center",
+                "name": "Facility",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1289,8 +1481,8 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "DisableCenterInput",
-          "description": "The required data to disable a center",
+          "name": "DisableFacilityInput",
+          "description": "The required data to disable a facility",
           "fields": null,
           "inputFields": [
             {
@@ -1314,7 +1506,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "DisableCenterPayload",
+          "name": "DisableFacilityPayload",
           "description": "The disable operation result",
           "fields": [
             {
@@ -1348,6 +1540,20 @@
             {
               "name": "name",
               "description": "The user-readable type name",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "description",
+              "description": "The user-readable type description",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -1473,6 +1679,16 @@
               "defaultValue": null
             },
             {
+              "name": "description",
+              "description": "The user-readable type description",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "icon",
               "description": "The icon URL",
               "type": {
@@ -1568,6 +1784,144 @@
                   "name": "Boolean",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "AddFeedbackInput",
+          "description": "Required data to create a new feedback entry",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "facility",
+              "description": "The related facility, if any",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "contents",
+              "description": "The feedback's content",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "AddFeedbackPayload",
+          "description": "",
+          "fields": [
+            {
+              "name": "success",
+              "description": "Indicates whether the operation was successful",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "feedback",
+              "description": "The created entry, if any",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Feedback",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "ResolveFeedbackInput",
+          "description": "The required data to mark a feedback as resolved",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "_id",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "ResolveFeedbackPayload",
+          "description": "The resolve operation result",
+          "fields": [
+            {
+              "name": "success",
+              "description": "Indicates whether the operation was successful",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "feedback",
+              "description": "The resolved entry, if any",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Feedback",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null

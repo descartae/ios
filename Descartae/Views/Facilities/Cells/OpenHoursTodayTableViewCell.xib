@@ -45,7 +45,7 @@
                             <constraint firstAttribute="height" constant="44" id="XWc-HB-CQB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                        <state key="normal" title="Menos">
+                        <state key="normal" title="Mais">
                             <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
