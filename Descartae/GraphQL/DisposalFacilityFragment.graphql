@@ -12,7 +12,11 @@ fragment DisposalFacility on Facility {
     typesOfWaste {
         _id
         name
-        icon
+        icons {
+            iosSmallURL
+            iosMediumURL
+            iosLargeURL
+        }
     }
     openHours {
         dayOfWeek

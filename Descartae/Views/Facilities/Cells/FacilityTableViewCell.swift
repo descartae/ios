@@ -62,7 +62,7 @@ class FacilityTableViewCell: UITableViewCell {
             let typeOfWasteIconView = UIImageView(frame: iconFrame)
             typeOfWasteIconView.image = UIImage(named: "icWasteEmpty")
 
-            if let iconURL = URL(string: typeOfWaste.icon) {
+            if let iconURL = URL(string: typeOfWaste.icons.iosSmallUrl) {
                 typeOfWasteIconView.sd_setImage(with: iconURL, completed: nil)
             }
 

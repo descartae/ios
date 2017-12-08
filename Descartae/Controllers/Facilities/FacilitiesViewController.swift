@@ -81,7 +81,7 @@ final class FacilitiesViewController: UIViewController {
     func loadFacilities() {
         isLoading = true
         tableView.reloadData()
-        let allFacilities = AllFacilitiesQuery()
+        let allFacilities = AllFacilitiesQuery(quantity: 10)
         GraphQL.client.fetch(query: allFacilities) { (result, error) in
             self.isLoading = false
 
@@ -90,7 +90,7 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
-            guard let centersQueryFragment = result?.data?.facilities as? [AllFacilitiesQuery.Data.Facility] else {
+            guard let centersQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
                 return
             }
 
@@ -100,7 +100,7 @@ final class FacilitiesViewController: UIViewController {
     }
 
     @objc func refreshFacilities() {
-        let allFacilities = AllFacilitiesQuery()
+        let allFacilities = AllFacilitiesQuery(quantity: 10)
         GraphQL.client.fetch(query: allFacilities) { (result, error) in
             self.refreshControl.endRefreshing()
 
@@ -109,7 +109,7 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
-            guard let facilitiesQueryFragment = result?.data?.facilities as? [AllFacilitiesQuery.Data.Facility] else {
+            guard let facilitiesQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
                 return
             }
 

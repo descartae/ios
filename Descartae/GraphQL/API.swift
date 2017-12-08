@@ -57,18 +57,29 @@ public enum DayOfWeek: RawRepresentable, Equatable, Apollo.JSONDecodable, Apollo
 
 public final class AllFacilitiesQuery: GraphQLQuery {
   public static let operationString =
-    "query allFacilities {\n  facilities {\n    __typename\n    ...DisposalFacility\n  }\n}"
+    "query allFacilities($quantity: Int!, $next: Cursor, $prev: Cursor) {\n  facilities(filters: {cursor: {after: $next, before: $prev, quantity: $quantity}}) {\n    __typename\n    cursors {\n      __typename\n      after\n      before\n    }\n    items {\n      __typename\n      ...DisposalFacility\n    }\n  }\n}"
 
   public static var requestString: String { return operationString.appending(DisposalFacility.fragmentString) }
 
-  public init() {
+  public var quantity: Int
+  public var next: String?
+  public var prev: String?
+
+  public init(quantity: Int, next: String? = nil, prev: String? = nil) {
+    self.quantity = quantity
+    self.next = next
+    self.prev = prev
+  }
+
+  public var variables: GraphQLMap? {
+    return ["quantity": quantity, "next": next, "prev": prev]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("facilities", type: .list(.object(Facility.selections))),
+      GraphQLField("facilities", arguments: ["filters": ["cursor": ["after": GraphQLVariable("next"), "before": GraphQLVariable("prev"), "quantity": GraphQLVariable("quantity")]]], type: .object(Facility.selections)),
     ]
 
     public var snapshot: Snapshot
@@ -77,33 +88,27 @@ public final class AllFacilitiesQuery: GraphQLQuery {
       self.snapshot = snapshot
     }
 
-    public init(facilities: [Facility?]? = nil) {
-      self.init(snapshot: ["__typename": "Query", "facilities": facilities.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+    public init(facilities: Facility? = nil) {
+      self.init(snapshot: ["__typename": "Query", "facilities": facilities.flatMap { $0.snapshot }])
     }
 
     /// The list of available facilities
-    public var facilities: [Facility?]? {
+    public var facilities: Facility? {
       get {
-        return (snapshot["facilities"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Facility(snapshot: $0) } } }
+        return (snapshot["facilities"] as? Snapshot).flatMap { Facility(snapshot: $0) }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "facilities")
+        snapshot.updateValue(newValue?.snapshot, forKey: "facilities")
       }
     }
 
     public struct Facility: GraphQLSelectionSet {
-      public static let possibleTypes = ["Facility"]
+      public static let possibleTypes = ["FacilitiesPage"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("name", type: .nonNull(.scalar(String.self))),
-        GraphQLField("location", type: .nonNull(.object(Location.selections))),
-        GraphQLField("typesOfWaste", type: .nonNull(.list(.object(TypesOfWaste.selections)))),
-        GraphQLField("openHours", type: .nonNull(.list(.object(OpenHour.selections)))),
-        GraphQLField("website", type: .scalar(String.self)),
-        GraphQLField("telephone", type: .scalar(String.self)),
+        GraphQLField("cursors", type: .nonNull(.object(Cursor.selections))),
+        GraphQLField("items", type: .list(.object(Item.selections))),
       ]
 
       public var snapshot: Snapshot
@@ -112,8 +117,8 @@ public final class AllFacilitiesQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, location: Location, typesOfWaste: [TypesOfWaste?], openHours: [OpenHour?], website: String? = nil, telephone: String? = nil) {
-        self.init(snapshot: ["__typename": "Facility", "_id": id, "name": name, "location": location.snapshot, "typesOfWaste": typesOfWaste.map { $0.flatMap { $0.snapshot } }, "openHours": openHours.map { $0.flatMap { $0.snapshot } }, "website": website, "telephone": telephone])
+      public init(cursors: Cursor, items: [Item?]? = nil) {
+        self.init(snapshot: ["__typename": "FacilitiesPage", "cursors": cursors.snapshot, "items": items.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
       }
 
       public var __typename: String {
@@ -125,105 +130,33 @@ public final class AllFacilitiesQuery: GraphQLQuery {
         }
       }
 
-      public var id: GraphQLID {
+      /// Cursor information for the next possible requests
+      public var cursors: Cursor {
         get {
-          return snapshot["_id"]! as! GraphQLID
+          return Cursor(snapshot: snapshot["cursors"]! as! Snapshot)
         }
         set {
-          snapshot.updateValue(newValue, forKey: "_id")
+          snapshot.updateValue(newValue.snapshot, forKey: "cursors")
         }
       }
 
-      /// The name of the facility
-      public var name: String {
+      /// The items found according to the query
+      public var items: [Item?]? {
         get {
-          return snapshot["name"]! as! String
+          return (snapshot["items"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Item(snapshot: $0) } } }
         }
         set {
-          snapshot.updateValue(newValue, forKey: "name")
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "items")
         }
       }
 
-      /// The location data for a given facility
-      public var location: Location {
-        get {
-          return Location(snapshot: snapshot["location"]! as! Snapshot)
-        }
-        set {
-          snapshot.updateValue(newValue.snapshot, forKey: "location")
-        }
-      }
-
-      /// The types of waste the recycling facility handles
-      public var typesOfWaste: [TypesOfWaste?] {
-        get {
-          return (snapshot["typesOfWaste"] as! [Snapshot?]).map { $0.flatMap { TypesOfWaste(snapshot: $0) } }
-        }
-        set {
-          snapshot.updateValue(newValue.map { $0.flatMap { $0.snapshot } }, forKey: "typesOfWaste")
-        }
-      }
-
-      /// The facility's operating hours
-      public var openHours: [OpenHour?] {
-        get {
-          return (snapshot["openHours"] as! [Snapshot?]).map { $0.flatMap { OpenHour(snapshot: $0) } }
-        }
-        set {
-          snapshot.updateValue(newValue.map { $0.flatMap { $0.snapshot } }, forKey: "openHours")
-        }
-      }
-
-      /// The responsible's website, if available
-      public var website: String? {
-        get {
-          return snapshot["website"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "website")
-        }
-      }
-
-      /// The responsible's contact phone number, if available
-      public var telephone: String? {
-        get {
-          return snapshot["telephone"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "telephone")
-        }
-      }
-
-      public var fragments: Fragments {
-        get {
-          return Fragments(snapshot: snapshot)
-        }
-        set {
-          snapshot += newValue.snapshot
-        }
-      }
-
-      public struct Fragments {
-        public var snapshot: Snapshot
-
-        public var disposalFacility: DisposalFacility {
-          get {
-            return DisposalFacility(snapshot: snapshot)
-          }
-          set {
-            snapshot += newValue.snapshot
-          }
-        }
-      }
-
-      public struct Location: GraphQLSelectionSet {
-        public static let possibleTypes = ["Location"]
+      public struct Cursor: GraphQLSelectionSet {
+        public static let possibleTypes = ["PageCursors"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("address", type: .nonNull(.scalar(String.self))),
-          GraphQLField("municipality", type: .scalar(String.self)),
-          GraphQLField("coordinates", type: .object(Coordinate.selections)),
+          GraphQLField("after", type: .scalar(String.self)),
+          GraphQLField("before", type: .scalar(String.self)),
         ]
 
         public var snapshot: Snapshot
@@ -232,8 +165,8 @@ public final class AllFacilitiesQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(address: String, municipality: String? = nil, coordinates: Coordinate? = nil) {
-          self.init(snapshot: ["__typename": "Location", "address": address, "municipality": municipality, "coordinates": coordinates.flatMap { $0.snapshot }])
+        public init(after: String? = nil, before: String? = nil) {
+          self.init(snapshot: ["__typename": "PageCursors", "after": after, "before": before])
         }
 
         public var __typename: String {
@@ -245,92 +178,40 @@ public final class AllFacilitiesQuery: GraphQLQuery {
           }
         }
 
-        /// The readable address
-        public var address: String {
+        /// The cursor used to get items from before this page
+        public var after: String? {
           get {
-            return snapshot["address"]! as! String
+            return snapshot["after"] as? String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "address")
+            snapshot.updateValue(newValue, forKey: "after")
           }
         }
 
-        /// The adress' municipality
-        public var municipality: String? {
+        /// The cursor used to get items from after this page
+        public var before: String? {
           get {
-            return snapshot["municipality"] as? String
+            return snapshot["before"] as? String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "municipality")
-          }
-        }
-
-        /// Exact coordinates to the location
-        public var coordinates: Coordinate? {
-          get {
-            return (snapshot["coordinates"] as? Snapshot).flatMap { Coordinate(snapshot: $0) }
-          }
-          set {
-            snapshot.updateValue(newValue?.snapshot, forKey: "coordinates")
-          }
-        }
-
-        public struct Coordinate: GraphQLSelectionSet {
-          public static let possibleTypes = ["Coordinates"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("latitude", type: .nonNull(.scalar(Double.self))),
-            GraphQLField("longitude", type: .nonNull(.scalar(Double.self))),
-          ]
-
-          public var snapshot: Snapshot
-
-          public init(snapshot: Snapshot) {
-            self.snapshot = snapshot
-          }
-
-          public init(latitude: Double, longitude: Double) {
-            self.init(snapshot: ["__typename": "Coordinates", "latitude": latitude, "longitude": longitude])
-          }
-
-          public var __typename: String {
-            get {
-              return snapshot["__typename"]! as! String
-            }
-            set {
-              snapshot.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var latitude: Double {
-            get {
-              return snapshot["latitude"]! as! Double
-            }
-            set {
-              snapshot.updateValue(newValue, forKey: "latitude")
-            }
-          }
-
-          public var longitude: Double {
-            get {
-              return snapshot["longitude"]! as! Double
-            }
-            set {
-              snapshot.updateValue(newValue, forKey: "longitude")
-            }
+            snapshot.updateValue(newValue, forKey: "before")
           }
         }
       }
 
-      public struct TypesOfWaste: GraphQLSelectionSet {
-        public static let possibleTypes = ["TypeOfWaste"]
+      public struct Item: GraphQLSelectionSet {
+        public static let possibleTypes = ["Facility"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
-          GraphQLField("icon", type: .nonNull(.scalar(String.self))),
+          GraphQLField("location", type: .nonNull(.object(Location.selections))),
+          GraphQLField("typesOfWaste", type: .nonNull(.list(.object(TypesOfWaste.selections)))),
+          GraphQLField("openHours", type: .nonNull(.list(.object(OpenHour.selections)))),
+          GraphQLField("website", type: .scalar(String.self)),
+          GraphQLField("telephone", type: .scalar(String.self)),
         ]
 
         public var snapshot: Snapshot
@@ -339,8 +220,8 @@ public final class AllFacilitiesQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, icon: String) {
-          self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "icon": icon])
+        public init(id: GraphQLID, name: String, location: Location, typesOfWaste: [TypesOfWaste?], openHours: [OpenHour?], website: String? = nil, telephone: String? = nil) {
+          self.init(snapshot: ["__typename": "Facility", "_id": id, "name": name, "location": location.snapshot, "typesOfWaste": typesOfWaste.map { $0.flatMap { $0.snapshot } }, "openHours": openHours.map { $0.flatMap { $0.snapshot } }, "website": website, "telephone": telephone])
         }
 
         public var __typename: String {
@@ -361,7 +242,7 @@ public final class AllFacilitiesQuery: GraphQLQuery {
           }
         }
 
-        /// The user-readable type name
+        /// The name of the facility
         public var name: String {
           get {
             return snapshot["name"]! as! String
@@ -371,72 +252,357 @@ public final class AllFacilitiesQuery: GraphQLQuery {
           }
         }
 
-        /// The icon URL
-        public var icon: String {
+        /// The location data for a given facility
+        public var location: Location {
           get {
-            return snapshot["icon"]! as! String
+            return Location(snapshot: snapshot["location"]! as! Snapshot)
           }
           set {
-            snapshot.updateValue(newValue, forKey: "icon")
+            snapshot.updateValue(newValue.snapshot, forKey: "location")
           }
         }
-      }
 
-      public struct OpenHour: GraphQLSelectionSet {
-        public static let possibleTypes = ["OpenTime"]
-
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("dayOfWeek", type: .nonNull(.scalar(DayOfWeek.self))),
-          GraphQLField("startTime", type: .nonNull(.scalar(Int.self))),
-          GraphQLField("endTime", type: .nonNull(.scalar(Int.self))),
-        ]
-
-        public var snapshot: Snapshot
-
-        public init(snapshot: Snapshot) {
-          self.snapshot = snapshot
-        }
-
-        public init(dayOfWeek: DayOfWeek, startTime: Int, endTime: Int) {
-          self.init(snapshot: ["__typename": "OpenTime", "dayOfWeek": dayOfWeek, "startTime": startTime, "endTime": endTime])
-        }
-
-        public var __typename: String {
+        /// The types of waste the recycling facility handles
+        public var typesOfWaste: [TypesOfWaste?] {
           get {
-            return snapshot["__typename"]! as! String
+            return (snapshot["typesOfWaste"] as! [Snapshot?]).map { $0.flatMap { TypesOfWaste(snapshot: $0) } }
           }
           set {
-            snapshot.updateValue(newValue, forKey: "__typename")
+            snapshot.updateValue(newValue.map { $0.flatMap { $0.snapshot } }, forKey: "typesOfWaste")
           }
         }
 
-        public var dayOfWeek: DayOfWeek {
+        /// The facility's operating hours
+        public var openHours: [OpenHour?] {
           get {
-            return snapshot["dayOfWeek"]! as! DayOfWeek
+            return (snapshot["openHours"] as! [Snapshot?]).map { $0.flatMap { OpenHour(snapshot: $0) } }
           }
           set {
-            snapshot.updateValue(newValue, forKey: "dayOfWeek")
+            snapshot.updateValue(newValue.map { $0.flatMap { $0.snapshot } }, forKey: "openHours")
           }
         }
 
-        /// The hour representing the start of the timespan
-        public var startTime: Int {
+        /// The responsible's website, if available
+        public var website: String? {
           get {
-            return snapshot["startTime"]! as! Int
+            return snapshot["website"] as? String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "startTime")
+            snapshot.updateValue(newValue, forKey: "website")
           }
         }
 
-        /// The hour representing the end of the timespan
-        public var endTime: Int {
+        /// The responsible's contact phone number, if available
+        public var telephone: String? {
           get {
-            return snapshot["endTime"]! as! Int
+            return snapshot["telephone"] as? String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "endTime")
+            snapshot.updateValue(newValue, forKey: "telephone")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(snapshot: snapshot)
+          }
+          set {
+            snapshot += newValue.snapshot
+          }
+        }
+
+        public struct Fragments {
+          public var snapshot: Snapshot
+
+          public var disposalFacility: DisposalFacility {
+            get {
+              return DisposalFacility(snapshot: snapshot)
+            }
+            set {
+              snapshot += newValue.snapshot
+            }
+          }
+        }
+
+        public struct Location: GraphQLSelectionSet {
+          public static let possibleTypes = ["Location"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("address", type: .nonNull(.scalar(String.self))),
+            GraphQLField("municipality", type: .scalar(String.self)),
+            GraphQLField("coordinates", type: .object(Coordinate.selections)),
+          ]
+
+          public var snapshot: Snapshot
+
+          public init(snapshot: Snapshot) {
+            self.snapshot = snapshot
+          }
+
+          public init(address: String, municipality: String? = nil, coordinates: Coordinate? = nil) {
+            self.init(snapshot: ["__typename": "Location", "address": address, "municipality": municipality, "coordinates": coordinates.flatMap { $0.snapshot }])
+          }
+
+          public var __typename: String {
+            get {
+              return snapshot["__typename"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// The readable address
+          public var address: String {
+            get {
+              return snapshot["address"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "address")
+            }
+          }
+
+          /// The adress' municipality
+          public var municipality: String? {
+            get {
+              return snapshot["municipality"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "municipality")
+            }
+          }
+
+          /// Exact coordinates to the location
+          public var coordinates: Coordinate? {
+            get {
+              return (snapshot["coordinates"] as? Snapshot).flatMap { Coordinate(snapshot: $0) }
+            }
+            set {
+              snapshot.updateValue(newValue?.snapshot, forKey: "coordinates")
+            }
+          }
+
+          public struct Coordinate: GraphQLSelectionSet {
+            public static let possibleTypes = ["Coordinates"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("latitude", type: .nonNull(.scalar(Double.self))),
+              GraphQLField("longitude", type: .nonNull(.scalar(Double.self))),
+            ]
+
+            public var snapshot: Snapshot
+
+            public init(snapshot: Snapshot) {
+              self.snapshot = snapshot
+            }
+
+            public init(latitude: Double, longitude: Double) {
+              self.init(snapshot: ["__typename": "Coordinates", "latitude": latitude, "longitude": longitude])
+            }
+
+            public var __typename: String {
+              get {
+                return snapshot["__typename"]! as! String
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var latitude: Double {
+              get {
+                return snapshot["latitude"]! as! Double
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "latitude")
+              }
+            }
+
+            public var longitude: Double {
+              get {
+                return snapshot["longitude"]! as! Double
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "longitude")
+              }
+            }
+          }
+        }
+
+        public struct TypesOfWaste: GraphQLSelectionSet {
+          public static let possibleTypes = ["TypeOfWaste"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
+          ]
+
+          public var snapshot: Snapshot
+
+          public init(snapshot: Snapshot) {
+            self.snapshot = snapshot
+          }
+
+          public init(id: GraphQLID, name: String, icons: Icon) {
+            self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "icons": icons.snapshot])
+          }
+
+          public var __typename: String {
+            get {
+              return snapshot["__typename"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID {
+            get {
+              return snapshot["_id"]! as! GraphQLID
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "_id")
+            }
+          }
+
+          /// The user-readable type name
+          public var name: String {
+            get {
+              return snapshot["name"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          /// The icons for this type
+          public var icons: Icon {
+            get {
+              return Icon(snapshot: snapshot["icons"]! as! Snapshot)
+            }
+            set {
+              snapshot.updateValue(newValue.snapshot, forKey: "icons")
+            }
+          }
+
+          public struct Icon: GraphQLSelectionSet {
+            public static let possibleTypes = ["IconSet"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("iosSmallURL", type: .nonNull(.scalar(String.self))),
+              GraphQLField("iosMediumURL", type: .nonNull(.scalar(String.self))),
+              GraphQLField("iosLargeURL", type: .nonNull(.scalar(String.self))),
+            ]
+
+            public var snapshot: Snapshot
+
+            public init(snapshot: Snapshot) {
+              self.snapshot = snapshot
+            }
+
+            public init(iosSmallUrl: String, iosMediumUrl: String, iosLargeUrl: String) {
+              self.init(snapshot: ["__typename": "IconSet", "iosSmallURL": iosSmallUrl, "iosMediumURL": iosMediumUrl, "iosLargeURL": iosLargeUrl])
+            }
+
+            public var __typename: String {
+              get {
+                return snapshot["__typename"]! as! String
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var iosSmallUrl: String {
+              get {
+                return snapshot["iosSmallURL"]! as! String
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "iosSmallURL")
+              }
+            }
+
+            public var iosMediumUrl: String {
+              get {
+                return snapshot["iosMediumURL"]! as! String
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "iosMediumURL")
+              }
+            }
+
+            public var iosLargeUrl: String {
+              get {
+                return snapshot["iosLargeURL"]! as! String
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "iosLargeURL")
+              }
+            }
+          }
+        }
+
+        public struct OpenHour: GraphQLSelectionSet {
+          public static let possibleTypes = ["OpenTime"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("dayOfWeek", type: .nonNull(.scalar(DayOfWeek.self))),
+            GraphQLField("startTime", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("endTime", type: .nonNull(.scalar(Int.self))),
+          ]
+
+          public var snapshot: Snapshot
+
+          public init(snapshot: Snapshot) {
+            self.snapshot = snapshot
+          }
+
+          public init(dayOfWeek: DayOfWeek, startTime: Int, endTime: Int) {
+            self.init(snapshot: ["__typename": "OpenTime", "dayOfWeek": dayOfWeek, "startTime": startTime, "endTime": endTime])
+          }
+
+          public var __typename: String {
+            get {
+              return snapshot["__typename"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var dayOfWeek: DayOfWeek {
+            get {
+              return snapshot["dayOfWeek"]! as! DayOfWeek
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "dayOfWeek")
+            }
+          }
+
+          /// The hour representing the start of the timespan
+          public var startTime: Int {
+            get {
+              return snapshot["startTime"]! as! Int
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "startTime")
+            }
+          }
+
+          /// The hour representing the end of the timespan
+          public var endTime: Int {
+            get {
+              return snapshot["endTime"]! as! Int
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "endTime")
+            }
           }
         }
       }
@@ -446,7 +612,7 @@ public final class AllFacilitiesQuery: GraphQLQuery {
 
 public struct DisposalFacility: GraphQLFragment {
   public static let fragmentString =
-    "fragment DisposalFacility on Facility {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    _id\n    name\n    icon\n  }\n  openHours {\n    __typename\n    dayOfWeek\n    startTime\n    endTime\n  }\n  website\n  telephone\n}"
+    "fragment DisposalFacility on Facility {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    _id\n    name\n    icons {\n      __typename\n      iosSmallURL\n      iosMediumURL\n      iosLargeURL\n    }\n  }\n  openHours {\n    __typename\n    dayOfWeek\n    startTime\n    endTime\n  }\n  website\n  telephone\n}"
 
   public static let possibleTypes = ["Facility"]
 
@@ -663,7 +829,7 @@ public struct DisposalFacility: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
-      GraphQLField("icon", type: .nonNull(.scalar(String.self))),
+      GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -672,8 +838,8 @@ public struct DisposalFacility: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    public init(id: GraphQLID, name: String, icon: String) {
-      self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "icon": icon])
+    public init(id: GraphQLID, name: String, icons: Icon) {
+      self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "icons": icons.snapshot])
     }
 
     public var __typename: String {
@@ -704,13 +870,70 @@ public struct DisposalFacility: GraphQLFragment {
       }
     }
 
-    /// The icon URL
-    public var icon: String {
+    /// The icons for this type
+    public var icons: Icon {
       get {
-        return snapshot["icon"]! as! String
+        return Icon(snapshot: snapshot["icons"]! as! Snapshot)
       }
       set {
-        snapshot.updateValue(newValue, forKey: "icon")
+        snapshot.updateValue(newValue.snapshot, forKey: "icons")
+      }
+    }
+
+    public struct Icon: GraphQLSelectionSet {
+      public static let possibleTypes = ["IconSet"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("iosSmallURL", type: .nonNull(.scalar(String.self))),
+        GraphQLField("iosMediumURL", type: .nonNull(.scalar(String.self))),
+        GraphQLField("iosLargeURL", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(iosSmallUrl: String, iosMediumUrl: String, iosLargeUrl: String) {
+        self.init(snapshot: ["__typename": "IconSet", "iosSmallURL": iosSmallUrl, "iosMediumURL": iosMediumUrl, "iosLargeURL": iosLargeUrl])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var iosSmallUrl: String {
+        get {
+          return snapshot["iosSmallURL"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "iosSmallURL")
+        }
+      }
+
+      public var iosMediumUrl: String {
+        get {
+          return snapshot["iosMediumURL"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "iosMediumURL")
+        }
+      }
+
+      public var iosLargeUrl: String {
+        get {
+          return snapshot["iosLargeURL"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "iosLargeURL")
+        }
       }
     }
   }
