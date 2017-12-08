@@ -12,7 +12,7 @@ protocol OpenHoursTodayTableViewCellDelegate: class {
     func didTouchCollapseButton(_ button: UIButton)
 }
 
-class OpenHoursTodayTableViewCell: UITableViewCell {
+class OpenHoursTodayTableViewCell: FacilityDetailsBaseTableViewCell {
 
     // MARK: Properties
 

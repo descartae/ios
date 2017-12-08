@@ -192,8 +192,16 @@ extension FacilityDetailsTableViewController: OpenHoursTodayTableViewCellDelegat
         isOpenHoursCollapsed = !isOpenHoursCollapsed
 
         if isOpenHoursCollapsed {
+            if let indexPath = openHoursIndexPaths.last,
+                    let cell = tableView.cellForRow(at: indexPath) as? OpenHoursTableViewCell {
+                if cell.shouldShowSeparator {
+                    cell.shouldShowSeparator = false
+                }
+            }
+            openHoursTodayCell.shouldShowSeparator = true
             tableView.deleteRows(at: openHoursIndexPaths, with: .automatic)
         } else {
+            openHoursTodayCell.shouldShowSeparator = false
             tableView.insertRows(at: openHoursIndexPaths, with: .automatic)
         }
     }

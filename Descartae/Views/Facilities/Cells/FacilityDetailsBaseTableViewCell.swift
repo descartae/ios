@@ -29,6 +29,7 @@ class FacilityDetailsBaseTableViewCell: UITableViewCell {
         return separator
     }()
 
+    private let separatorViewAnimationDuration = 0.25
     var shouldShowSeparator = false {
         didSet {
             if shouldShowSeparator {
@@ -72,11 +73,15 @@ class FacilityDetailsBaseTableViewCell: UITableViewCell {
     }
 
     private func showSeparator() {
-        separatorView.alpha = 1
+        UIView.animate(withDuration: separatorViewAnimationDuration) {
+            self.separatorView.alpha = 1
+        }
     }
 
     private func hideSeparator() {
-        separatorView.alpha = 0
+        UIView.animate(withDuration: separatorViewAnimationDuration) {
+            self.separatorView.alpha = 0
+        }
     }
 
 }
