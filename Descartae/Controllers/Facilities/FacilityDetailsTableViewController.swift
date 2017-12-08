@@ -132,11 +132,14 @@ extension FacilityDetailsTableViewController {
             return openHoursTodayCell
         case .openHours(let openHours):
             if let cell = tableView.dequeueReusableCell(withIdentifier: OpenHoursTableViewCell.identifier, for: indexPath) as? OpenHoursTableViewCell {
+                cell.shouldShowSeparator = false
+
                 if indexPath.row == 1 {
                     cell.dayOfWeekTopConstraint.constant = cell.dayOfWeekFirstRowTopConstraint
                 }
 
                 if openHours.count == indexPath.row {
+                    cell.shouldShowSeparator = true
                     cell.openHoursBottomConstraint.constant = cell.openHoursLastRowBottomConstraint
                 }
 

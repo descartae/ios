@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OpenHoursTableViewCell: UITableViewCell {
+class OpenHoursTableViewCell: FacilityDetailsBaseTableViewCell {
 
     // MARK: Properties
 

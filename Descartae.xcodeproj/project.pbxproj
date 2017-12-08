@@ -13,6 +13,7 @@
 		990A1DCE1FC3870300DD5D81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCD1FC3870300DD5D81 /* API.swift */; };
 		990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */; };
 		990A1DD81FC3A8B400DD5D81 /* DisposalFacility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */; };
+		9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */; };
 		994242101FCE19E10095623C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942420F1FCE19E10095623C /* LocationManager.swift */; };
 		994415911FD6F3FF0036F84E /* DisposalFacilityFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */; };
 		996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */; };
@@ -60,6 +61,7 @@
 		990A1DCD1FC3870300DD5D81 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
 		990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalFacility.swift; sourceTree = "<group>"; };
+		9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsBaseTableViewCell.swift; sourceTree = "<group>"; };
 		9942420F1FCE19E10095623C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DisposalFacilityFragment.graphql; sourceTree = "<group>"; };
 		996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTodayTableViewCell.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */,
 				996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */,
 				99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */,
+				9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */,
 				99C390EF1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift in Sources */,
 				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,
+				9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */,
 				994242101FCE19E10095623C /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
