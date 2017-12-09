@@ -21,6 +21,9 @@
 		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
 		99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */; };
 		99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */; };
+		999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */; };
+		999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A11FDC68720018CF18 /* OpenHour.swift */; };
+		999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A31FDC6DE70018CF18 /* Location.swift */; };
 		99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A650FA1FC0B2B70076167D /* AppDelegate.swift */; };
 		99A651001FC0B2B70076167D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A650FE1FC0B2B70076167D /* Main.storyboard */; };
 		99A651021FC0B2B70076167D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A651011FC0B2B70076167D /* Assets.xcassets */; };
@@ -69,6 +72,9 @@
 		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsTableViewController.swift; sourceTree = "<group>"; };
 		99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTodayTableViewCell.xib; sourceTree = "<group>"; };
+		999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		999CD4A11FDC68720018CF18 /* OpenHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHour.swift; sourceTree = "<group>"; };
+		999CD4A31FDC6DE70018CF18 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		99A650F71FC0B2B70076167D /* Descartae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Descartae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A650FA1FC0B2B70076167D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99A650FF1FC0B2B70076167D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -235,6 +241,9 @@
 			children = (
 				990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */,
 				9909ABCF1FD049F00072B0E4 /* TypeOfWaste.swift */,
+				999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */,
+				999CD4A11FDC68720018CF18 /* OpenHour.swift */,
+				999CD4A31FDC6DE70018CF18 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -633,9 +642,12 @@
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
 				9909ABD01FD049F00072B0E4 /* TypeOfWaste.swift in Sources */,
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
+				999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */,
 				99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */,
+				999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */,
+				999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,
 				99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */,
 				99C390EF1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift in Sources */,

@@ -27,6 +27,12 @@ class OpenHoursTableViewCell: FacilityDetailsBaseTableViewCell {
     let dayOfWeekInitialTopConstraint: CGFloat = 6
     let openHoursInitialBottomConstraint: CGFloat = 6
 
+    var openHour: DisposalFacility.OpenHour! {
+        didSet {
+            bindOpenHourData()
+        }
+    }
+
     // MARK: Life cycle
 
     override func prepareForReuse() {
@@ -34,5 +40,12 @@ class OpenHoursTableViewCell: FacilityDetailsBaseTableViewCell {
 
         dayOfWeekTopConstraint.constant = dayOfWeekInitialTopConstraint
         openHoursBottomConstraint.constant = openHoursInitialBottomConstraint
+    }
+
+    // MARK: Data binding
+
+    func bindOpenHourData() {
+        dayOfWeek.text = openHour.dayOfWeek.toString
+        openHours.text = openHour.openHours
     }
 }

@@ -34,6 +34,7 @@ class FacilityDetailsTableViewController: UITableViewController {
             return OpenHoursTodayTableViewCell()
         }
 
+        cell.todayOpenHours.text = facility.openHoursForToday
         cell.delegate = self
         return cell
     }()
@@ -132,6 +133,7 @@ extension FacilityDetailsTableViewController {
             return openHoursTodayCell
         case .openHours(let openHours):
             if let cell = tableView.dequeueReusableCell(withIdentifier: OpenHoursTableViewCell.identifier, for: indexPath) as? OpenHoursTableViewCell {
+                cell.openHour = openHours[indexPath.row - 1]
                 cell.shouldShowSeparator = false
 
                 if indexPath.row == 1 {

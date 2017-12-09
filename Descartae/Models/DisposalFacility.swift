@@ -12,20 +12,18 @@ import CoreLocation
 
 extension DisposalFacility: Equatable {
 
-    public static func == (lhs: DisposalFacility, rhs: DisposalFacility) -> Bool {
-        return lhs.id == rhs.id
-    }
-
-}
-
-extension DisposalFacility.Location {
-
-    var location: CLLocation? {
-        guard let latitude = coordinates?.latitude, let longitude = coordinates?.longitude else {
-            return nil
+    var openHoursForToday: String {
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let weekday = calendar.component(.weekday, from: Date())
+        guard let todayOpenHour = openHours.filter({ $0?.dayOfWeek.toInt == weekday }).first as? DisposalFacility.OpenHour else {
+            return "Horários de hoje indisponíveis"
         }
 
-        return CLLocation(latitude: latitude, longitude: longitude)
+        return "Hoje - \(todayOpenHour.openHours)"
+    }
+
+    public static func == (lhs: DisposalFacility, rhs: DisposalFacility) -> Bool {
+        return lhs.id == rhs.id
     }
 
 }
