@@ -39,6 +39,15 @@ class FacilityDetailsTableViewController: UITableViewController {
         return cell
     }()
 
+    lazy var telephoneCell: TelephoneTableViewCell = {
+        guard let cell = TelephoneTableViewCell.instantiateFromNib() else {
+            return TelephoneTableViewCell()
+        }
+
+        cell.delegate = self
+        return cell
+    }()
+
     var facility: DisposalFacility!
     var sections: [Section] = []
     var isOpenHoursCollapsed = true
@@ -85,6 +94,11 @@ class FacilityDetailsTableViewController: UITableViewController {
             OpenHoursTableViewCell.nib,
             forCellReuseIdentifier: OpenHoursTableViewCell.identifier
         )
+
+        tableView.register(
+            TelephoneTableViewCell.nib,
+            forCellReuseIdentifier: TelephoneTableViewCell.identifier
+        )
     }
 
     func setupSections() {
@@ -92,9 +106,9 @@ class FacilityDetailsTableViewController: UITableViewController {
             sections.append(.openHours(openHours: openHours))
         }
 
-//        if let telephone = facility.telephone {
-//            sections.append(.telephone(telephone: telephone))
-//        }
+        if let telephone = facility.telephone {
+            sections.append(.telephone(telephone: telephone))
+        }
 //
 //        if let website = facility.website {
 //            sections.append(.website(website: website))
@@ -149,6 +163,9 @@ extension FacilityDetailsTableViewController {
             }
 
             return UITableViewCell()
+        case .telephone(let telephone):
+            telephoneCell.telephone.text = telephone
+            return telephoneCell
         default:
             break
         }
@@ -178,6 +195,8 @@ extension FacilityDetailsTableViewController {
             }
 
             return OpenHoursTableViewCell.estimatedRowHeight
+        case .telephone:
+            return TelephoneTableViewCell.estimatedRowHeight
         default:
             return 50
         }
@@ -206,6 +225,16 @@ extension FacilityDetailsTableViewController: OpenHoursTodayTableViewCellDelegat
             openHoursTodayCell.shouldShowSeparator = false
             tableView.insertRows(at: openHoursIndexPaths, with: .automatic)
         }
+    }
+
+}
+
+// MARK: TelephoneTableViewCellDelegate
+
+extension FacilityDetailsTableViewController: TelephoneTableViewCellDelegate {
+
+    func didTouchCallButton(_ button: UIButton) {
+        // TODO: Call it
     }
 
 }
