@@ -49,6 +49,14 @@ final class FacilitiesViewController: UIViewController {
         setupLocationState()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let indexPathOfSelectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPathOfSelectedRow, animated: true)
+        }
+    }
+
     // MARK: Initial setups
 
     func setupTableView() {
