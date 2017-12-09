@@ -186,12 +186,16 @@ extension FacilityDetailsTableViewController {
         case .openHours where indexPath.row == 0:
             return OpenHoursTodayTableViewCell.estimatedRowHeight
         case .openHours(let openHours):
+            if indexPath.row == 1 && openHours.count == 1 {
+                return OpenHoursTableViewCell.topShrinkedBottomExtendedRowHeight
+            }
+
             if indexPath.row == 1 {
-                return OpenHoursTableViewCell.topShrinkedEstimatedRowHeight
+                return OpenHoursTableViewCell.shrinkedEstimatedRowHeight
             }
 
             if openHours.count == indexPath.row {
-                return OpenHoursTableViewCell.bottomExtendedEstimatedRowHeight
+                return OpenHoursTableViewCell.extendedEstimatedRowHeight
             }
 
             return OpenHoursTableViewCell.estimatedRowHeight
