@@ -165,6 +165,8 @@ extension FacilityDetailsTableViewController {
             return UITableViewCell()
         case .telephone(let telephone):
             telephoneCell.telephone.text = telephone
+            telephoneCell.indexPath = indexPath
+
             return telephoneCell
         default:
             break
@@ -184,23 +186,23 @@ extension FacilityDetailsTableViewController {
 
         switch section {
         case .openHours where indexPath.row == 0:
-            return OpenHoursTodayTableViewCell.estimatedRowHeight
+            return OpenHoursTodayTableViewCell.rowHeight
         case .openHours(let openHours):
             if indexPath.row == 1 && openHours.count == 1 {
                 return OpenHoursTableViewCell.topShrinkedBottomExtendedRowHeight
             }
 
             if indexPath.row == 1 {
-                return OpenHoursTableViewCell.shrinkedEstimatedRowHeight
+                return OpenHoursTableViewCell.topShrinkedRowHeight
             }
 
             if openHours.count == indexPath.row {
-                return OpenHoursTableViewCell.extendedEstimatedRowHeight
+                return OpenHoursTableViewCell.bottomExtendedRowHeight
             }
 
             return OpenHoursTableViewCell.estimatedRowHeight
         case .telephone:
-            return TelephoneTableViewCell.estimatedRowHeight
+            return TelephoneTableViewCell.rowHeight
         default:
             return 50
         }
@@ -238,7 +240,17 @@ extension FacilityDetailsTableViewController: OpenHoursTodayTableViewCellDelegat
 extension FacilityDetailsTableViewController: TelephoneTableViewCellDelegate {
 
     func didTouchCallButton(_ button: UIButton) {
-        // TODO: Call it
+        guard let telephone = sections[telephoneCell.indexPath.section].associatedValue() as? String else {
+            return
+        }
+
+        let telephoneWithoutWhiteSpaces = telephone.replacingOccurrences(of: " ", with: "")
+
+        guard let url = URL(string: "tel://\(telephoneWithoutWhiteSpaces)"), UIApplication.shared.canOpenURL(url) else {
+            return
+        }
+
+        UIApplication.shared.open(url)
     }
 
 }

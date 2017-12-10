@@ -14,8 +14,8 @@ class OpenHoursTableViewCell: FacilityDetailsBaseTableViewCell {
 
     static let identifier = String(describing: OpenHoursTableViewCell.self)
     static let estimatedRowHeight: CGFloat = 50
-    static let shrinkedEstimatedRowHeight: CGFloat = 44
-    static let extendedEstimatedRowHeight: CGFloat = 68
+    static let topShrinkedRowHeight: CGFloat = 44
+    static let bottomExtendedRowHeight: CGFloat = 68
     static let topShrinkedBottomExtendedRowHeight: CGFloat = 62
 
     @IBOutlet weak var dayOfWeek: UILabel!

@@ -17,7 +17,7 @@ class OpenHoursTodayTableViewCell: FacilityDetailsBaseTableViewCell {
     // MARK: Properties
 
     static let identifier = String(describing: OpenHoursTableViewCell.self)
-    static let estimatedRowHeight: CGFloat = 91.5
+    static let rowHeight: CGFloat = 91.5
 
     @IBOutlet weak var todayOpenHours: UILabel!
 

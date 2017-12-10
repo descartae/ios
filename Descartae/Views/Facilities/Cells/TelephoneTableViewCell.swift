@@ -17,11 +17,12 @@ class TelephoneTableViewCell: FacilityDetailsBaseTableViewCell {
     // MARK: Properties
 
     static let identifier = String(describing: TelephoneTableViewCell.self)
-    static let estimatedRowHeight: CGFloat = 84
+    static let rowHeight: CGFloat = 84
 
     @IBOutlet weak var telephone: UILabel!
 
     weak var delegate: TelephoneTableViewCellDelegate?
+    var indexPath: IndexPath!
 
     // MARK: Actions
 
