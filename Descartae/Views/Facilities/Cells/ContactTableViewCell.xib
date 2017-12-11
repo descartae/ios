@@ -6,12 +6,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="84" id="gM3-uP-j98" customClass="TelephoneTableViewCell" customModule="Descartae" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="84" id="gM3-uP-j98" customClass="ContactTableViewCell" customModule="Descartae" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gM3-uP-j98" id="xXi-WH-3FY">
@@ -29,9 +30,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(##) #### - ####" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyL-JI-aG5">
-                        <rect key="frame" x="16" y="42" width="212" height="18"/>
+                        <rect key="frame" x="16" y="42" width="244" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="212" id="I24-zO-ifQ"/>
                             <constraint firstAttribute="height" constant="18" id="W8P-9a-pe6"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -49,7 +49,7 @@
                             <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
-                            <action selector="didTouchCallButton:" destination="gM3-uP-j98" eventType="touchUpInside" id="Yhk-8O-jTH"/>
+                            <action selector="didTouchContactButton:" destination="gM3-uP-j98" eventType="touchUpInside" id="82v-7f-fS5"/>
                         </connections>
                     </button>
                 </subviews>
@@ -60,11 +60,14 @@
                     <constraint firstItem="hyL-JI-aG5" firstAttribute="leading" secondItem="xXi-WH-3FY" secondAttribute="leading" constant="16" id="JOW-iv-xsQ"/>
                     <constraint firstAttribute="bottom" secondItem="hyL-JI-aG5" secondAttribute="bottom" constant="24" id="bUK-Y1-B8D"/>
                     <constraint firstItem="hyL-JI-aG5" firstAttribute="top" secondItem="pRs-KH-LRk" secondAttribute="bottom" constant="6" id="cMI-fn-iqG"/>
+                    <constraint firstItem="hyL-JI-aG5" firstAttribute="width" secondItem="xXi-WH-3FY" secondAttribute="width" multiplier="0.65" id="rHM-z2-ZH2"/>
                     <constraint firstItem="pRs-KH-LRk" firstAttribute="top" secondItem="xXi-WH-3FY" secondAttribute="top" constant="16" id="uMd-Lk-YcS"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="telephone" destination="hyL-JI-aG5" id="eQC-WS-QJr"/>
+                <outlet property="contact" destination="hyL-JI-aG5" id="7Ah-KH-7kf"/>
+                <outlet property="contactActionButton" destination="SJi-pU-7NI" id="9B3-qi-YG2"/>
+                <outlet property="contactType" destination="pRs-KH-LRk" id="7US-m3-rMp"/>
             </connections>
             <point key="canvasLocation" x="92.5" y="241"/>
         </tableViewCell>

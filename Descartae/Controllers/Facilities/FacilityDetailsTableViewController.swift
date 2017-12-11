@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class FacilityDetailsTableViewController: UITableViewController {
 
@@ -39,11 +40,24 @@ class FacilityDetailsTableViewController: UITableViewController {
         return cell
     }()
 
-    lazy var telephoneCell: TelephoneTableViewCell = {
-        guard let cell = TelephoneTableViewCell.instantiateFromNib() else {
-            return TelephoneTableViewCell()
+    lazy var telephoneCell: ContactTableViewCell = {
+        guard let cell = ContactTableViewCell.instantiateFromNib() else {
+            return ContactTableViewCell()
         }
 
+        cell.contactType.text = "Contato"
+        cell.contactActionButton.setTitle("Ligar", for: .normal)
+        cell.delegate = self
+        return cell
+    }()
+
+    lazy var websiteCell: ContactTableViewCell = {
+        guard let cell = ContactTableViewCell.instantiateFromNib() else {
+            return ContactTableViewCell()
+        }
+
+        cell.contactType.text = "Site"
+        cell.contactActionButton.setTitle("Acessar", for: .normal)
         cell.delegate = self
         return cell
     }()
@@ -96,8 +110,8 @@ class FacilityDetailsTableViewController: UITableViewController {
         )
 
         tableView.register(
-            TelephoneTableViewCell.nib,
-            forCellReuseIdentifier: TelephoneTableViewCell.identifier
+            ContactTableViewCell.nib,
+            forCellReuseIdentifier: ContactTableViewCell.identifier
         )
     }
 
@@ -109,12 +123,44 @@ class FacilityDetailsTableViewController: UITableViewController {
         if let telephone = facility.telephone {
             sections.append(.telephone(telephone: telephone))
         }
-//
-//        if let website = facility.website {
-//            sections.append(.website(website: website))
-//        }
+
+        if let website = facility.website {
+            sections.append(.website(website: website))
+        }
 
 //        sections.append(.report)
+    }
+
+    // MARK: Actions
+
+    func call(telephone: String) {
+        let telephoneWithoutWhiteSpaces = telephone.replacingOccurrences(of: " ", with: "")
+
+        guard let url = URL(string: "tel://\(telephoneWithoutWhiteSpaces)"), UIApplication.shared.canOpenURL(url) else {
+            return
+        }
+
+        UIApplication.shared.open(url)
+    }
+
+    func goTo(website: String) {
+        guard let url = URL(string: website) else {
+            return
+        }
+
+        let alertController = UIAlertController(title: website, message: "Deseja acessar este site?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let accessAction = UIAlertAction(title: "Acessar", style: .default) {  _ in
+            let safari = SFSafariViewController(url: url)
+            safari.modalPresentationStyle = .popover
+
+            self.present(safari, animated: true, completion: nil)
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(accessAction)
+
+        present(alertController, animated: true, completion: nil)
     }
 
 }
@@ -164,10 +210,15 @@ extension FacilityDetailsTableViewController {
 
             return UITableViewCell()
         case .telephone(let telephone):
-            telephoneCell.telephone.text = telephone
+            telephoneCell.contact.text = telephone
             telephoneCell.indexPath = indexPath
 
             return telephoneCell
+        case .website(let website):
+            websiteCell.contact.text = website
+            websiteCell.indexPath = indexPath
+
+            return websiteCell
         default:
             break
         }
@@ -201,8 +252,8 @@ extension FacilityDetailsTableViewController {
             }
 
             return OpenHoursTableViewCell.estimatedRowHeight
-        case .telephone:
-            return TelephoneTableViewCell.rowHeight
+        case .telephone, .website:
+            return ContactTableViewCell.rowHeight
         default:
             return 50
         }
@@ -237,20 +288,17 @@ extension FacilityDetailsTableViewController: OpenHoursTodayTableViewCellDelegat
 
 // MARK: TelephoneTableViewCellDelegate
 
-extension FacilityDetailsTableViewController: TelephoneTableViewCellDelegate {
+extension FacilityDetailsTableViewController: ContactTableViewCellDelegate {
 
-    func didTouchCallButton(_ button: UIButton) {
-        guard let telephone = sections[telephoneCell.indexPath.section].associatedValue() as? String else {
-            return
+    func didTouchContactButton(atIndexPath indexPath: IndexPath) {
+        switch sections[indexPath.section] {
+        case .telephone(let telephone):
+            call(telephone: telephone)
+        case .website(let website):
+            goTo(website: website)
+        default:
+            break
         }
-
-        let telephoneWithoutWhiteSpaces = telephone.replacingOccurrences(of: " ", with: "")
-
-        guard let url = URL(string: "tel://\(telephoneWithoutWhiteSpaces)"), UIApplication.shared.canOpenURL(url) else {
-            return
-        }
-
-        UIApplication.shared.open(url)
     }
 
 }

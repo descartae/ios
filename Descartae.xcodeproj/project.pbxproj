@@ -24,8 +24,8 @@
 		999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */; };
 		999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A11FDC68720018CF18 /* OpenHour.swift */; };
 		999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A31FDC6DE70018CF18 /* Location.swift */; };
-		999CD4A61FDC742E0018CF18 /* TelephoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999CD4A51FDC742E0018CF18 /* TelephoneTableViewCell.xib */; };
-		999CD4A81FDC76400018CF18 /* TelephoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A71FDC76400018CF18 /* TelephoneTableViewCell.swift */; };
+		999CD4A61FDC742E0018CF18 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999CD4A51FDC742E0018CF18 /* ContactTableViewCell.xib */; };
+		999CD4A81FDC76400018CF18 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A71FDC76400018CF18 /* ContactTableViewCell.swift */; };
 		99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A650FA1FC0B2B70076167D /* AppDelegate.swift */; };
 		99A651001FC0B2B70076167D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A650FE1FC0B2B70076167D /* Main.storyboard */; };
 		99A651021FC0B2B70076167D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A651011FC0B2B70076167D /* Assets.xcassets */; };
@@ -77,8 +77,8 @@
 		999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		999CD4A11FDC68720018CF18 /* OpenHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHour.swift; sourceTree = "<group>"; };
 		999CD4A31FDC6DE70018CF18 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		999CD4A51FDC742E0018CF18 /* TelephoneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TelephoneTableViewCell.xib; sourceTree = "<group>"; };
-		999CD4A71FDC76400018CF18 /* TelephoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneTableViewCell.swift; sourceTree = "<group>"; };
+		999CD4A51FDC742E0018CF18 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		999CD4A71FDC76400018CF18 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		99A650F71FC0B2B70076167D /* Descartae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Descartae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A650FA1FC0B2B70076167D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99A650FF1FC0B2B70076167D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -286,8 +286,8 @@
 				996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */,
 				996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */,
 				99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */,
-				999CD4A51FDC742E0018CF18 /* TelephoneTableViewCell.xib */,
-				999CD4A71FDC76400018CF18 /* TelephoneTableViewCell.swift */,
+				999CD4A51FDC742E0018CF18 /* ContactTableViewCell.xib */,
+				999CD4A71FDC76400018CF18 /* ContactTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -431,7 +431,7 @@
 			files = (
 				996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */,
 				990A1DCC1FC384EE00DD5D81 /* FacilitiesViewController.graphql in Resources */,
-				999CD4A61FDC742E0018CF18 /* TelephoneTableViewCell.xib in Resources */,
+				999CD4A61FDC742E0018CF18 /* ContactTableViewCell.xib in Resources */,
 				994415911FD6F3FF0036F84E /* DisposalFacilityFragment.graphql in Resources */,
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
 				99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */,
@@ -646,7 +646,7 @@
 			files = (
 				99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */,
 				990A1DD81FC3A8B400DD5D81 /* DisposalFacility.swift in Sources */,
-				999CD4A81FDC76400018CF18 /* TelephoneTableViewCell.swift in Sources */,
+				999CD4A81FDC76400018CF18 /* ContactTableViewCell.swift in Sources */,
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
 				9909ABD01FD049F00072B0E4 /* TypeOfWaste.swift in Sources */,
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
