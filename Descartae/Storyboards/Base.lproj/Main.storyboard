@@ -71,6 +71,77 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="2yq-8H-FVk">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="516"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-Uy-V5B">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="200" id="UvO-lN-Z57"/>
+                                    </constraints>
+                                </mapView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ponto de coleta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qez-wA-qvM">
+                                    <rect key="frame" x="16" y="232" width="343" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="8I2-F5-a7K"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Av. Ipiranga, 30190" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3b-i7-6Sd">
+                                    <rect key="frame" x="16" y="265" width="343" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="Sg3-Uy-Bux"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4f-DZ-nyC">
+                                    <rect key="frame" x="16" y="307" width="343" height="59"/>
+                                    <color key="backgroundColor" red="0.28627450980392155" green="0.78823529411764703" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="59" id="7dv-cO-JZS"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <state key="normal" title="Rotas">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-d6-zbL">
+                                    <rect key="frame" x="16" y="390" width="343" height="1"/>
+                                    <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="W4L-md-gF6"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Ah5-Uy-V5B" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" id="07Q-bC-CbP"/>
+                                <constraint firstItem="FYs-d6-zbL" firstAttribute="top" secondItem="U4f-DZ-nyC" secondAttribute="bottom" constant="24" id="CWy-O4-qM1"/>
+                                <constraint firstAttribute="trailing" secondItem="T3b-i7-6Sd" secondAttribute="trailing" constant="16" id="E7S-fp-3fg"/>
+                                <constraint firstAttribute="trailing" secondItem="FYs-d6-zbL" secondAttribute="trailing" constant="16" id="HqA-pQ-R60"/>
+                                <constraint firstAttribute="trailing" secondItem="U4f-DZ-nyC" secondAttribute="trailing" constant="16" id="Ljd-j8-eQe"/>
+                                <constraint firstItem="T3b-i7-6Sd" firstAttribute="top" secondItem="Qez-wA-qvM" secondAttribute="bottom" constant="8" id="U2A-rM-nhQ"/>
+                                <constraint firstItem="Qez-wA-qvM" firstAttribute="top" secondItem="Ah5-Uy-V5B" secondAttribute="bottom" constant="32" id="eGP-0I-Dca"/>
+                                <constraint firstItem="T3b-i7-6Sd" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="fch-cU-dLc"/>
+                                <constraint firstItem="Qez-wA-qvM" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="kiU-X3-691"/>
+                                <constraint firstAttribute="trailing" secondItem="Ah5-Uy-V5B" secondAttribute="trailing" id="m6P-56-VoK"/>
+                                <constraint firstItem="Ah5-Uy-V5B" firstAttribute="top" secondItem="2yq-8H-FVk" secondAttribute="top" id="pmJ-AC-9qD"/>
+                                <constraint firstItem="FYs-d6-zbL" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="rng-O9-gGo"/>
+                                <constraint firstItem="U4f-DZ-nyC" firstAttribute="top" secondItem="T3b-i7-6Sd" secondAttribute="bottom" constant="24" id="siN-6t-dek"/>
+                                <constraint firstAttribute="trailing" secondItem="Qez-wA-qvM" secondAttribute="trailing" constant="16" id="ujX-nj-6dj"/>
+                                <constraint firstItem="U4f-DZ-nyC" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="z6i-zs-Q9R"/>
+                            </constraints>
+                        </view>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="zcR-Th-Wt6" id="KTq-bW-5WW"/>
@@ -80,7 +151,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sq-AR-vG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="143"/>
+            <point key="canvasLocation" x="1549.5999999999999" y="142.57871064467767"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Aic-c9-p2k">
