@@ -157,9 +157,52 @@ class FacilityDetailsTableViewController: UITableViewController {
     func bindTableViewHeaderData() {
         facilityName.text = facility.name
         facilityAddress.text = facility.location.address
+
+        guard let routeCurrentTitle = routeButton.title(for: .normal) else {
+            return
+        }
+
+        routeButton.titleLabel?.numberOfLines = 0
+
+        let routeTitleAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17, weight: .bold)]
+        let distanceFromUserAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15, weight: .regular)]
+
+        let routeTitle = NSMutableAttributedString(string: routeCurrentTitle, attributes: routeTitleAttributes)
+        let distanceFromUser = NSMutableAttributedString(string: "\n\(facility.distanceFromUser.lowercased())", attributes: distanceFromUserAttributes)
+
+        let combination = NSMutableAttributedString()
+        combination.append(routeTitle)
+        combination.append(distanceFromUser)
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 1
+        paragraphStyle.alignment = .center
+
+        let combinationRange = NSRange(location: 0, length: combination.length)
+        combination.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle], range: combinationRange)
+
+        routeButton.setAttributedTitle(combination, for: .normal)
     }
 
     // MARK: Actions
+
+    @IBAction func showRouteOptions(_ sender: UIButton) {
+        let alertController = UIAlertController(title: nil, message: "Not available yet", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+        alertController.addAction(okAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+
+    @IBAction func shareIt(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: nil, message: "Not available yet", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+        alertController.addAction(okAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
 
     func call(telephone: String) {
         let telephoneWithoutWhiteSpaces = telephone.replacingOccurrences(of: " ", with: "")
