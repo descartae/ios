@@ -37,6 +37,8 @@
 		99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */; };
 		99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */; };
 		99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */; };
+		99F7BE151FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BE141FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib */; };
+		99F7BE171FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BE161FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift */; };
 		AFC22FA37952E50B287C965C /* Pods_DescartaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF555B44255A5C72FA8D771E /* Pods_DescartaeUITests.framework */; };
 		C963FC606615C16DCBF176E5 /* Pods_DescartaeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB8EF0FE1C03111DA979687 /* Pods_DescartaeTests.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +98,8 @@
 		99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableViewCell.swift; sourceTree = "<group>"; };
 		99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibExtension.swift; sourceTree = "<group>"; };
 		99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		99F7BE141FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportIssueTableViewCell.xib; sourceTree = "<group>"; };
+		99F7BE161FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueTableViewCell.swift; sourceTree = "<group>"; };
 		A344FA797E01962EC45EE6DD /* Pods-Descartae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.release.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.release.xcconfig"; sourceTree = "<group>"; };
 		AB6237E7D0CAE9C768BDD3D2 /* Pods-DescartaeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B294C55808F20DCA2A754145 /* Pods-DescartaeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 				99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */,
 				999CD4A51FDC742E0018CF18 /* ContactTableViewCell.xib */,
 				999CD4A71FDC76400018CF18 /* ContactTableViewCell.swift */,
+				99F7BE141FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib */,
+				99F7BE161FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -436,6 +442,7 @@
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
 				99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
+				99F7BE151FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib in Resources */,
 				99A651001FC0B2B70076167D /* Main.storyboard in Resources */,
 				99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */,
 			);
@@ -655,6 +662,7 @@
 				999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */,
+				99F7BE171FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift in Sources */,
 				999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,
 				99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */,

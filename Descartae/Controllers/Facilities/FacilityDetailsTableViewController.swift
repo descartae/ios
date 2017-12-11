@@ -62,6 +62,15 @@ class FacilityDetailsTableViewController: UITableViewController {
         return cell
     }()
 
+    lazy var reportAnIssueCell: ReportIssueTableViewCell = {
+        guard let cell = ReportIssueTableViewCell.instantiateFromNib() else {
+            return ReportIssueTableViewCell()
+        }
+
+        cell.delegate = self
+        return cell
+    }()
+
     var facility: DisposalFacility!
     var sections: [Section] = []
     var isOpenHoursCollapsed = true
@@ -113,6 +122,11 @@ class FacilityDetailsTableViewController: UITableViewController {
             ContactTableViewCell.nib,
             forCellReuseIdentifier: ContactTableViewCell.identifier
         )
+
+        tableView.register(
+            ReportIssueTableViewCell.nib,
+            forCellReuseIdentifier: ReportIssueTableViewCell.identifier
+        )
     }
 
     func setupSections() {
@@ -128,7 +142,7 @@ class FacilityDetailsTableViewController: UITableViewController {
             sections.append(.website(website: website))
         }
 
-//        sections.append(.report)
+        sections.append(.report)
     }
 
     // MARK: Actions
@@ -219,11 +233,9 @@ extension FacilityDetailsTableViewController {
             websiteCell.indexPath = indexPath
 
             return websiteCell
-        default:
-            break
+        case .report:
+            return reportAnIssueCell
         }
-
-        return UITableViewCell()
     }
 
 }
@@ -254,8 +266,8 @@ extension FacilityDetailsTableViewController {
             return OpenHoursTableViewCell.estimatedRowHeight
         case .telephone, .website:
             return ContactTableViewCell.rowHeight
-        default:
-            return 50
+        case .report:
+            return ReportIssueTableViewCell.rowHeight
         }
     }
 
@@ -299,6 +311,21 @@ extension FacilityDetailsTableViewController: ContactTableViewCellDelegate {
         default:
             break
         }
+    }
+
+}
+
+// MARK: ReportIssueTableViewCellDelegate
+
+extension FacilityDetailsTableViewController: ReportIssueTableViewCellDelegate {
+
+    func didTouchReportIssueButton() {
+        let alertController = UIAlertController(title: nil, message: "Not available yet", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+        alertController.addAction(okAction)
+
+        present(alertController, animated: true, completion: nil)
     }
 
 }
