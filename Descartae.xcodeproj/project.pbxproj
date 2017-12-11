@@ -679,6 +679,7 @@
 				99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */,
 				99C390EF1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift in Sources */,
 				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,
+				99895A161FDF1C4500615D65 /* AppearanceManager.swift in Sources */,
 				9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */,
 				994242101FCE19E10095623C /* LocationManager.swift in Sources */,
 			);

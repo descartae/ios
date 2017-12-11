@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import UIKit
+
+struct AppearanceManager {
+
+    static func setupAppearance() {
+        UINavigationBar.appearance().tintColor = UIColor(red: 74/255, green: 205/255, blue: 4/255, alpha: 1)
+    }
+
+}
