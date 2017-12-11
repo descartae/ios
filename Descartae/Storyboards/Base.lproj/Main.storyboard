@@ -43,7 +43,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pontos de coleta" id="3Es-kd-Jh1">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="5bl-jk-uPN"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mLl-98-5WO">
+                        <segmentedControl key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mLl-98-5WO">
                             <rect key="frame" x="105.5" y="7" width="164" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -75,7 +75,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="516"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-Uy-V5B">
+                                <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-Uy-V5B">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="UvO-lN-Z57"/>
@@ -123,6 +123,9 @@
                                             <integer key="value" value="10"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="showRouteOptions:" destination="zcR-Th-Wt6" eventType="touchUpInside" id="A7s-L8-9Fq"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-d6-zbL">
                                     <rect key="frame" x="16" y="390" width="343" height="1"/>
@@ -144,7 +147,7 @@
                                         <constraint firstAttribute="height" constant="81" id="KjV-79-yk3"/>
                                     </constraints>
                                     <connections>
-                                        <segue destination="rRg-Mx-diy" kind="embed" id="0xw-C9-vGQ"/>
+                                        <segue destination="rRg-Mx-diy" kind="embed" identifier="showTypesOfWastePreview" id="0xw-C9-vGQ"/>
                                     </connections>
                                 </containerView>
                             </subviews>
@@ -183,9 +186,17 @@
                             <outlet property="delegate" destination="zcR-Th-Wt6" id="gb5-Xr-2E8"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Detalhes" id="bCl-i5-8pH">
+                        <barButtonItem key="rightBarButtonItem" image="icShare" id="YFD-5X-R1a">
+                            <connections>
+                                <action selector="shareIt:" destination="zcR-Th-Wt6" id="NhA-Xs-XIo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="facilityAddress" destination="T3b-i7-6Sd" id="Mjn-l3-Ntr"/>
                         <outlet property="facilityName" destination="Qez-wA-qvM" id="c8k-Kq-Kn4"/>
+                        <outlet property="routeButton" destination="U4f-DZ-nyC" id="8Nm-7Q-xHK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sq-AR-vG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,19 +221,71 @@
             </objects>
             <point key="canvasLocation" x="-30" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--Types Of Waste Preview View Controller-->
         <scene sceneID="8Sl-jG-iid">
             <objects>
-                <viewController id="rRg-Mx-diy" sceneMemberID="viewController">
+                <viewController id="rRg-Mx-diy" customClass="TypesOfWastePreviewViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0JJ-xY-tqV">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="81"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4d-9p-Sco">
+                                <rect key="frame" x="0.0" y="0.0" width="359" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tpi-KQ-6Y2">
+                                    <size key="itemSize" width="44" height="44"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="typeOfWasteCell" id="Ih8-Xq-E09" customClass="TypeOfWasteCollectionViewCell" customModule="Descartae" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="16" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icWasteEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="DxN-0n-ULQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="9D4-NR-hgE"/>
+                                                        <constraint firstAttribute="height" constant="44" id="SK1-Ro-k86"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="DxN-0n-ULQ" firstAttribute="top" secondItem="Ih8-Xq-E09" secondAttribute="top" id="0MY-gR-GYx"/>
+                                            <constraint firstAttribute="bottom" secondItem="DxN-0n-ULQ" secondAttribute="bottom" id="67O-D6-mY1"/>
+                                            <constraint firstItem="DxN-0n-ULQ" firstAttribute="leading" secondItem="Ih8-Xq-E09" secondAttribute="leading" id="aIF-VN-49x"/>
+                                            <constraint firstAttribute="trailing" secondItem="DxN-0n-ULQ" secondAttribute="trailing" id="oLZ-HW-hMV"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="icon" destination="DxN-0n-ULQ" id="EL5-GF-m9W"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="rRg-Mx-diy" id="n6A-sx-LF6"/>
+                                    <outlet property="delegate" destination="rRg-Mx-diy" id="QXN-sD-nUo"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="H4d-9p-Sco" id="IPw-M9-BLJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gi-2S-ckV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2342" y="280"/>
+            <point key="canvasLocation" x="2341.5999999999999" y="279.31034482758622"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icShare" width="22" height="22"/>
+        <image name="icWasteEmpty" width="26" height="26"/>
+    </resources>
 </document>

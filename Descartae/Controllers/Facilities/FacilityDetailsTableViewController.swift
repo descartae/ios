@@ -190,6 +190,14 @@ class FacilityDetailsTableViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
 
+    // MARK: Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let typesOfWastePreview = segue.destination as? TypesOfWastePreviewViewController {
+            typesOfWastePreview.typesOfWaste = facility.typesOfWaste.flatMap { $0 }
+        }
+    }
+
 }
 
 // MARK: UITableViewDataSource

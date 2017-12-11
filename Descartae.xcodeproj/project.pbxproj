@@ -21,6 +21,9 @@
 		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
 		99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */; };
 		99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */; };
+		99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */; };
+		99895A141FDF064200615D65 /* TypesOfWastePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */; };
+		99895A161FDF1C4500615D65 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A151FDF1C4500615D65 /* AppearanceManager.swift */; };
 		999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */; };
 		999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A11FDC68720018CF18 /* OpenHour.swift */; };
 		999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A31FDC6DE70018CF18 /* Location.swift */; };
@@ -76,6 +79,9 @@
 		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsTableViewController.swift; sourceTree = "<group>"; };
 		99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTodayTableViewCell.xib; sourceTree = "<group>"; };
+		99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteCollectionViewCell.swift; sourceTree = "<group>"; };
+		99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfWastePreviewViewController.swift; sourceTree = "<group>"; };
+		99895A151FDF1C4500615D65 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		999CD4A11FDC68720018CF18 /* OpenHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHour.swift; sourceTree = "<group>"; };
 		999CD4A31FDC6DE70018CF18 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -165,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				9942420F1FCE19E10095623C /* LocationManager.swift */,
+				99895A151FDF1C4500615D65 /* AppearanceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -183,6 +190,7 @@
 			children = (
 				997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */,
 				99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */,
+				99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */,
 			);
 			path = Facilities;
 			sourceTree = "<group>";
@@ -294,6 +302,7 @@
 				999CD4A71FDC76400018CF18 /* ContactTableViewCell.swift */,
 				99F7BE141FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib */,
 				99F7BE161FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift */,
+				99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -653,8 +662,10 @@
 			files = (
 				99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */,
 				990A1DD81FC3A8B400DD5D81 /* DisposalFacility.swift in Sources */,
+				99895A141FDF064200615D65 /* TypesOfWastePreviewViewController.swift in Sources */,
 				999CD4A81FDC76400018CF18 /* ContactTableViewCell.swift in Sources */,
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
+				99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */,
 				9909ABD01FD049F00072B0E4 /* TypeOfWaste.swift in Sources */,
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
 				999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */,
