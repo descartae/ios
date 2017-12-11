@@ -30,6 +30,9 @@ class FacilityDetailsTableViewController: UITableViewController {
 
     // MARK: Properties
 
+    @IBOutlet weak var facilityName: UILabel!
+    @IBOutlet weak var facilityAddress: UILabel!
+
     lazy var openHoursTodayCell: OpenHoursTodayTableViewCell = {
         guard let cell = OpenHoursTodayTableViewCell.instantiateFromNib() else {
             return OpenHoursTodayTableViewCell()
@@ -108,6 +111,7 @@ class FacilityDetailsTableViewController: UITableViewController {
 
         setupTableView()
         setupSections()
+        bindTableViewHeaderData()
     }
 
     // MARK: Setup
@@ -147,6 +151,11 @@ class FacilityDetailsTableViewController: UITableViewController {
         }
 
         sections.append(.report)
+    }
+
+    func bindTableViewHeaderData() {
+        facilityName.text = facility.name
+        facilityAddress.text = facility.location.address
     }
 
     // MARK: Actions
