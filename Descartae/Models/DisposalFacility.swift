@@ -12,6 +12,10 @@ import CoreLocation
 
 extension DisposalFacility: Equatable {
 
+    var distanceFromUser: String {
+        return String(format: "%.2fKM", LocationManager.shared.distanceInKm(fromLocation: location.location))
+    }
+
     var openHoursForToday: String {
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         let weekday = calendar.component(.weekday, from: Date())

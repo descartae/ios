@@ -32,6 +32,7 @@ class FacilityDetailsTableViewController: UITableViewController {
 
     @IBOutlet weak var facilityName: UILabel!
     @IBOutlet weak var facilityAddress: UILabel!
+    @IBOutlet weak var routeButton: UIButton!
 
     lazy var openHoursTodayCell: OpenHoursTodayTableViewCell = {
         guard let cell = OpenHoursTodayTableViewCell.instantiateFromNib() else {
