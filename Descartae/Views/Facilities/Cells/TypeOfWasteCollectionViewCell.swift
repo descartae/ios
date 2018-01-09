@@ -12,7 +12,7 @@ class TypeOfWasteCollectionViewCell: UICollectionViewCell {
 
     // MARK: Properties
 
-    static let itemSize: CGSize = CGSize(width: 44, height: 44)
+    static let itemSize: CGSize = CGSize(width: 60, height: 60)
     static let identifier: String = "typeOfWasteCell"
 
     @IBOutlet weak var icon: UIImageView!
@@ -27,7 +27,7 @@ class TypeOfWasteCollectionViewCell: UICollectionViewCell {
 
     func bindTypeOfWasteData() {
         if let iconURL = URL(string: typeOfWaste.icons.iosLargeUrl) {
-//            icon.sd_setImage(with: iconURL, completed: nil)
+            icon.sd_setImage(with: iconURL, completed: nil)
         }
     }
 }

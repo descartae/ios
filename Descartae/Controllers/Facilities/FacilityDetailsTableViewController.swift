@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import MapKit
 
 class FacilityDetailsTableViewController: UITableViewController {
 
@@ -30,6 +31,7 @@ class FacilityDetailsTableViewController: UITableViewController {
 
     // MARK: Properties
 
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var facilityName: UILabel!
     @IBOutlet weak var facilityAddress: UILabel!
     @IBOutlet weak var routeButton: UIButton!
@@ -154,7 +156,26 @@ class FacilityDetailsTableViewController: UITableViewController {
         sections.append(.report)
     }
 
+    func setupMapView() {
+        guard let facilityLocation = facility.location.location else {
+            return
+        }
+
+        mapView.delegate = self
+
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = facilityLocation.coordinate
+
+        mapView.addAnnotation(annotation)
+
+        let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 500, 500)
+        let adjusted = mapView.regionThatFits(region)
+        mapView.setRegion(adjusted, animated: true)
+    }
+
     func bindTableViewHeaderData() {
+        setupMapView()
+
         facilityName.text = facility.name
         facilityAddress.text = facility.location.address
 
@@ -391,6 +412,24 @@ extension FacilityDetailsTableViewController: ReportIssueTableViewCellDelegate {
         alertController.addAction(okAction)
 
         present(alertController, animated: true, completion: nil)
+    }
+
+}
+
+// MARK: MKMapViewDelegate
+
+extension FacilityDetailsTableViewController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        annotationView.canShowCallout = false
+        annotationView.image = UIImage(named: "icPin")
+
+        return annotationView
     }
 
 }
