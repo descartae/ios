@@ -27,8 +27,8 @@ class TypeOfWasteCollectionViewCell: UICollectionViewCell {
     // MARK: Data binding
 
     func bindTypeOfWasteData() {
-        if let iconURL = URL(string: typeOfWaste.icons.iosLargeUrl) {
-//            icon.sd_setImage(with: iconURL, completed: nil)
+        if let iconURL = URL(string: typeOfWaste.icons.iosMediumUrl) {
+            icon.sd_setImage(with: iconURL, for: .normal, completed: nil)
         }
     }
 

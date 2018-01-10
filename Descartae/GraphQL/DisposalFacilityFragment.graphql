@@ -12,6 +12,7 @@ fragment DisposalFacility on Facility {
     typesOfWaste {
         _id
         name
+        description
         icons {
             iosSmallURL
             iosMediumURL

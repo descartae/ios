@@ -7,6 +7,9 @@ target 'Descartae' do
   pod 'SDWebImage', '~> 4'
   pod 'Apollo', '~> 0.7.0'
 
+  # Geolocation
+  pod 'CMMapLauncher', '~> 1.1.0'
+
   target 'DescartaeTests' do
     inherit! :search_paths
   end

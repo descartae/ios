@@ -222,6 +222,76 @@
             </objects>
             <point key="canvasLocation" x="-30" y="134"/>
         </scene>
+        <!--Type Of Waste Details View Controller-->
+        <scene sceneID="r5V-7T-wPv">
+            <objects>
+                <viewController storyboardIdentifier="TypeOfWasteDetailsViewController" id="Yuu-rv-t7F" customClass="TypeOfWasteDetailsViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8i2-Sx-QzZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW0-AE-A4V">
+                                <rect key="frame" x="319" y="22.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8wt-jt-IBB"/>
+                                    <constraint firstAttribute="width" constant="50" id="tg7-EQ-M2e"/>
+                                </constraints>
+                                <state key="normal" image="icClose"/>
+                                <connections>
+                                    <action selector="close:" destination="Yuu-rv-t7F" eventType="touchUpInside" id="S31-m9-jFW"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icWasteEmptyLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ap8-CN-ioJ">
+                                <rect key="frame" x="97" y="203" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="SRT-Qo-ZW4"/>
+                                    <constraint firstAttribute="width" constant="180" id="cbs-LH-gH8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFo-Fi-KdQ">
+                                <rect key="frame" x="37" y="389" width="300" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="F9t-pH-Szs"/>
+                                    <constraint firstAttribute="height" constant="25" id="Rgc-WH-vJF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtítulo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iey-01-xMV">
+                                <rect key="frame" x="37" y="438" width="300" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="XRs-Ra-YZO"/>
+                                    <constraint firstAttribute="width" constant="300" id="c6L-H6-VVO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EFc-Ff-d8d" firstAttribute="trailing" secondItem="eW0-AE-A4V" secondAttribute="trailing" constant="6" id="4no-7q-5ng"/>
+                            <constraint firstItem="rFo-Fi-KdQ" firstAttribute="top" secondItem="Ap8-CN-ioJ" secondAttribute="bottom" constant="6" id="8U9-zk-9ji"/>
+                            <constraint firstItem="iey-01-xMV" firstAttribute="centerY" secondItem="8i2-Sx-QzZ" secondAttribute="centerY" constant="117" id="Hcr-fm-s9z"/>
+                            <constraint firstItem="Ap8-CN-ioJ" firstAttribute="centerX" secondItem="8i2-Sx-QzZ" secondAttribute="centerX" id="MAM-Eg-qVH"/>
+                            <constraint firstItem="eW0-AE-A4V" firstAttribute="top" secondItem="EFc-Ff-d8d" secondAttribute="top" constant="2" id="Yxw-XT-f1w"/>
+                            <constraint firstItem="rFo-Fi-KdQ" firstAttribute="centerX" secondItem="8i2-Sx-QzZ" secondAttribute="centerX" id="hKf-jB-AK5"/>
+                            <constraint firstItem="iey-01-xMV" firstAttribute="centerX" secondItem="8i2-Sx-QzZ" secondAttribute="centerX" id="kow-hg-kGw"/>
+                            <constraint firstItem="iey-01-xMV" firstAttribute="top" secondItem="rFo-Fi-KdQ" secondAttribute="bottom" constant="24" id="wJk-4n-1ip"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EFc-Ff-d8d"/>
+                    </view>
+                    <connections>
+                        <outlet property="icon" destination="Ap8-CN-ioJ" id="vSU-j0-Zzx"/>
+                        <outlet property="name" destination="rFo-Fi-KdQ" id="85B-Yo-8vZ"/>
+                        <outlet property="typeOfWasteDescription" destination="iey-01-xMV" id="JSm-JD-Gxg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="unq-7l-dOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2340" y="-61"/>
+        </scene>
         <!--Types Of Waste Preview View Controller-->
         <scene sceneID="8Sl-jG-iid">
             <objects>
@@ -284,11 +354,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gi-2S-ckV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2341.5999999999999" y="279.31034482758622"/>
+            <point key="canvasLocation" x="2340" y="340"/>
         </scene>
     </scenes>
     <resources>
+        <image name="icClose" width="28" height="28"/>
         <image name="icShare" width="22" height="22"/>
+        <image name="icWasteEmptyLarge" width="180" height="180"/>
         <image name="icWasteEmptyMedium" width="44" height="44"/>
     </resources>
 </document>

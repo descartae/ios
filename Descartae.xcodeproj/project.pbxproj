@@ -16,6 +16,7 @@
 		9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */; };
 		994242101FCE19E10095623C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942420F1FCE19E10095623C /* LocationManager.swift */; };
 		994415911FD6F3FF0036F84E /* DisposalFacilityFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */; };
+		9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */; };
 		996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */; };
 		996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */; };
 		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
@@ -74,6 +75,7 @@
 		9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsBaseTableViewCell.swift; sourceTree = "<group>"; };
 		9942420F1FCE19E10095623C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DisposalFacilityFragment.graphql; sourceTree = "<group>"; };
+		9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteDetailsViewController.swift; sourceTree = "<group>"; };
 		996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTodayTableViewCell.swift; sourceTree = "<group>"; };
 		996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTableViewCell.xib; sourceTree = "<group>"; };
 		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */,
 				99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */,
 				99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */,
+				9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */,
 			);
 			path = Facilities;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				99895A141FDF064200615D65 /* TypesOfWastePreviewViewController.swift in Sources */,
 				999CD4A81FDC76400018CF18 /* ContactTableViewCell.swift in Sources */,
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
+				9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */,
 				99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */,
 				9909ABD01FD049F00072B0E4 /* TypeOfWaste.swift in Sources */,
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,

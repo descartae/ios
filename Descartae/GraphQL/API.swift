@@ -438,6 +438,7 @@ public final class AllFacilitiesQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
+            GraphQLField("description", type: .nonNull(.scalar(String.self))),
             GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
           ]
 
@@ -447,8 +448,8 @@ public final class AllFacilitiesQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, icons: Icon) {
-            self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "icons": icons.snapshot])
+          public init(id: GraphQLID, name: String, description: String, icons: Icon) {
+            self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "icons": icons.snapshot])
           }
 
           public var __typename: String {
@@ -476,6 +477,16 @@ public final class AllFacilitiesQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          /// The user-readable type description
+          public var description: String {
+            get {
+              return snapshot["description"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "description")
             }
           }
 
@@ -612,7 +623,7 @@ public final class AllFacilitiesQuery: GraphQLQuery {
 
 public struct DisposalFacility: GraphQLFragment {
   public static let fragmentString =
-    "fragment DisposalFacility on Facility {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    _id\n    name\n    icons {\n      __typename\n      iosSmallURL\n      iosMediumURL\n      iosLargeURL\n    }\n  }\n  openHours {\n    __typename\n    dayOfWeek\n    startTime\n    endTime\n  }\n  website\n  telephone\n}"
+    "fragment DisposalFacility on Facility {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    _id\n    name\n    description\n    icons {\n      __typename\n      iosSmallURL\n      iosMediumURL\n      iosLargeURL\n    }\n  }\n  openHours {\n    __typename\n    dayOfWeek\n    startTime\n    endTime\n  }\n  website\n  telephone\n}"
 
   public static let possibleTypes = ["Facility"]
 
@@ -829,6 +840,7 @@ public struct DisposalFacility: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
+      GraphQLField("description", type: .nonNull(.scalar(String.self))),
       GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
     ]
 
@@ -838,8 +850,8 @@ public struct DisposalFacility: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    public init(id: GraphQLID, name: String, icons: Icon) {
-      self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "icons": icons.snapshot])
+    public init(id: GraphQLID, name: String, description: String, icons: Icon) {
+      self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "icons": icons.snapshot])
     }
 
     public var __typename: String {
@@ -867,6 +879,16 @@ public struct DisposalFacility: GraphQLFragment {
       }
       set {
         snapshot.updateValue(newValue, forKey: "name")
+      }
+    }
+
+    /// The user-readable type description
+    public var description: String {
+      get {
+        return snapshot["description"]! as! String
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "description")
       }
     }
 

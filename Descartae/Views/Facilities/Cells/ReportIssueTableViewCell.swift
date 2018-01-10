@@ -16,7 +16,7 @@ class ReportIssueTableViewCell: UITableViewCell {
 
     // MARK: Properties
 
-    static let identifier = String(describing: ContactTableViewCell.self)
+    static let identifier = String(describing: ReportIssueTableViewCell.self)
     static let rowHeight: CGFloat = 92
 
     weak var delegate: ReportIssueTableViewCellDelegate?
