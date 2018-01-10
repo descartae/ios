@@ -23,6 +23,7 @@
 		99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */; };
 		99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */; };
 		99890CD7200674D4000D9B44 /* FacilityDetailsTableViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 99890CD6200674D4000D9B44 /* FacilityDetailsTableViewController.graphql */; };
+		99890CD9200676A4000D9B44 /* ReportAnIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */; };
 		99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */; };
 		99895A141FDF064200615D65 /* TypesOfWastePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */; };
 		99895A161FDF1C4500615D65 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A151FDF1C4500615D65 /* AppearanceManager.swift */; };
@@ -83,6 +84,7 @@
 		99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsTableViewController.swift; sourceTree = "<group>"; };
 		99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTodayTableViewCell.xib; sourceTree = "<group>"; };
 		99890CD6200674D4000D9B44 /* FacilityDetailsTableViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FacilityDetailsTableViewController.graphql; sourceTree = "<group>"; };
+		99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueTableViewController.swift; sourceTree = "<group>"; };
 		99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteCollectionViewCell.swift; sourceTree = "<group>"; };
 		99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfWastePreviewViewController.swift; sourceTree = "<group>"; };
 		99895A151FDF1C4500615D65 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */,
 				99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */,
 				9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */,
+				99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */,
 			);
 			path = Facilities;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */,
 				99C390EF1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift in Sources */,
 				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,
+				99890CD9200676A4000D9B44 /* ReportAnIssueTableViewController.swift in Sources */,
 				99895A161FDF1C4500615D65 /* AppearanceManager.swift in Sources */,
 				9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */,
 				994242101FCE19E10095623C /* LocationManager.swift in Sources */,

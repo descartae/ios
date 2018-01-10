@@ -440,12 +440,18 @@ extension FacilityDetailsTableViewController: ContactTableViewCellDelegate {
 extension FacilityDetailsTableViewController: ReportIssueTableViewCellDelegate {
 
     func didTouchReportIssueButton() {
-        let alertController = UIAlertController(title: nil, message: "Not available yet", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        guard let storyboard = storyboard else {
+            return
+        }
 
-        alertController.addAction(okAction)
+        let reportAnIssueNav = storyboard.instantiateViewController(withIdentifier: ReportAnIssueNavigationController.identifier)
 
-        present(alertController, animated: true, completion: nil)
+        guard let reportAnIssueTableViewController = reportAnIssueNav.childViewControllers[0] as? ReportAnIssueTableViewController else {
+            return
+        }
+
+        reportAnIssueTableViewController.facility = facility
+        present(reportAnIssueNav, animated: true, completion: nil)
     }
 
 }
