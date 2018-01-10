@@ -251,18 +251,46 @@ class FacilityDetailsTableViewController: UITableViewController {
     }
 
     @IBAction func shareIt(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: nil, message: "Not available yet", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        guard let shareURL = URL(string: "https://descartae.com/\(facility.id)") else {
+            return
+        }
 
-        alertController.addAction(okAction)
+        let activityViewController = UIActivityViewController(activityItems: [shareURL], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { (content, completed, items, error) -> Void in
+            if completed {
+                if content == UIActivityType.copyToPasteboard {
+                    DispatchQueue.main.async {
+                        let successMessage = UIAlertController(title: "Feito!", message: "Copiado, agora é só sair colando por aí :P", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Obrigado!", style: .default, handler: nil)
 
-        present(alertController, animated: true, completion: nil)
+                        successMessage.addAction(okAction)
+
+                        self.present(successMessage, animated: true, completion: nil)
+                    }
+                } else {
+                    self.complimentForTheShare()
+                }
+            }
+        }
+
+        present(activityViewController, animated: true, completion: nil)
+    }
+
+    func complimentForTheShare() {
+        DispatchQueue.main.async {
+            let successMessage = UIAlertController(title: "<3", message: "Obrigado por compartilhar, juntos nós construimos uma cidade mais limpa e sustentável!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Vou continuar espalhando esta ideia", style: .default, handler: nil)
+
+            successMessage.addAction(okAction)
+
+            self.present(successMessage, animated: true, completion: nil)
+        }
     }
 
     func call(telephone: String) {
-        let telephoneWithoutWhiteSpaces = telephone.replacingOccurrences(of: " ", with: "")
+        let trimmedPhone = telephone.replacingOccurrences(of: " ", with: "")
 
-        guard let url = URL(string: "tel://\(telephoneWithoutWhiteSpaces)"), UIApplication.shared.canOpenURL(url) else {
+        guard let url = URL(string: "tel://\(trimmedPhone)"), UIApplication.shared.canOpenURL(url) else {
             return
         }
 
