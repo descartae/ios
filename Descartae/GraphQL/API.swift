@@ -621,6 +621,89 @@ public final class AllFacilitiesQuery: GraphQLQuery {
   }
 }
 
+public final class AddFeedbackMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation AddFeedback($facilityId: ID!, $feedback: String!) {\n  addFeedback(input: {facility: $facilityId, contents: $feedback}) {\n    __typename\n    success\n  }\n}"
+
+  public var facilityId: GraphQLID
+  public var feedback: String
+
+  public init(facilityId: GraphQLID, feedback: String) {
+    self.facilityId = facilityId
+    self.feedback = feedback
+  }
+
+  public var variables: GraphQLMap? {
+    return ["facilityId": facilityId, "feedback": feedback]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("addFeedback", arguments: ["input": ["facility": GraphQLVariable("facilityId"), "contents": GraphQLVariable("feedback")]], type: .nonNull(.object(AddFeedback.selections))),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(addFeedback: AddFeedback) {
+      self.init(snapshot: ["__typename": "Mutation", "addFeedback": addFeedback.snapshot])
+    }
+
+    /// Creates a new feedback entry
+    public var addFeedback: AddFeedback {
+      get {
+        return AddFeedback(snapshot: snapshot["addFeedback"]! as! Snapshot)
+      }
+      set {
+        snapshot.updateValue(newValue.snapshot, forKey: "addFeedback")
+      }
+    }
+
+    public struct AddFeedback: GraphQLSelectionSet {
+      public static let possibleTypes = ["AddFeedbackPayload"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("success", type: .nonNull(.scalar(Bool.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(success: Bool) {
+        self.init(snapshot: ["__typename": "AddFeedbackPayload", "success": success])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// Indicates whether the operation was successful
+      public var success: Bool {
+        get {
+          return snapshot["success"]! as! Bool
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "success")
+        }
+      }
+    }
+  }
+}
+
 public struct DisposalFacility: GraphQLFragment {
   public static let fragmentString =
     "fragment DisposalFacility on Facility {\n  __typename\n  _id\n  name\n  location {\n    __typename\n    address\n    municipality\n    coordinates {\n      __typename\n      latitude\n      longitude\n    }\n  }\n  typesOfWaste {\n    __typename\n    _id\n    name\n    description\n    icons {\n      __typename\n      iosSmallURL\n      iosMediumURL\n      iosLargeURL\n    }\n  }\n  openHours {\n    __typename\n    dayOfWeek\n    startTime\n    endTime\n  }\n  website\n  telephone\n}"
