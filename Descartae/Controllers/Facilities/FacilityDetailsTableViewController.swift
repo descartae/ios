@@ -111,7 +111,7 @@ class FacilityDetailsTableViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
         }
-
+        
         setupTableView()
         setupSections()
         bindTableViewHeaderData()

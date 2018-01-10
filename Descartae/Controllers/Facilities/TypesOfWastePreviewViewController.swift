@@ -33,6 +33,9 @@ extension TypesOfWastePreviewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeOfWasteCollectionViewCell.identifier, for: indexPath) as? TypeOfWasteCollectionViewCell {
             cell.typeOfWaste = typesOfWaste[indexPath.row]
+            cell.presentTypeOfWasteModal = { [weak self] in
+                self?.present(UIViewController(), animated: true, completion: nil)
+            }
             return cell
         }
 

@@ -12,11 +12,12 @@ class TypeOfWasteCollectionViewCell: UICollectionViewCell {
 
     // MARK: Properties
 
-    static let itemSize: CGSize = CGSize(width: 60, height: 60)
+    static let itemSize: CGSize = CGSize(width: 44, height: 44)
     static let identifier: String = "typeOfWasteCell"
 
-    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var icon: UIButton!
 
+    var presentTypeOfWasteModal: (() -> Void)?
     var typeOfWaste: DisposalFacility.TypesOfWaste! {
         didSet {
             bindTypeOfWasteData()
@@ -27,7 +28,14 @@ class TypeOfWasteCollectionViewCell: UICollectionViewCell {
 
     func bindTypeOfWasteData() {
         if let iconURL = URL(string: typeOfWaste.icons.iosLargeUrl) {
-            icon.sd_setImage(with: iconURL, completed: nil)
+//            icon.sd_setImage(with: iconURL, completed: nil)
         }
     }
+
+    // MARK: Actions
+
+    @IBAction func presentTypeOfWasteModal(_ sender: Any) {
+        presentTypeOfWasteModal?()
+    }
+
 }

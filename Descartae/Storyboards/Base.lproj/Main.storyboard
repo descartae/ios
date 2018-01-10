@@ -142,7 +142,7 @@
                                     </constraints>
                                 </view>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf9-Iv-2BM">
-                                    <rect key="frame" x="16" y="433" width="359" height="81"/>
+                                    <rect key="frame" x="0.0" y="433" width="375" height="81"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="81" id="KjV-79-yk3"/>
                                     </constraints>
@@ -159,7 +159,7 @@
                                 <constraint firstAttribute="trailing" secondItem="T3b-i7-6Sd" secondAttribute="trailing" constant="16" id="E7S-fp-3fg"/>
                                 <constraint firstAttribute="trailing" secondItem="FYs-d6-zbL" secondAttribute="trailing" constant="16" id="HqA-pQ-R60"/>
                                 <constraint firstItem="qf9-Iv-2BM" firstAttribute="top" secondItem="FYs-d6-zbL" secondAttribute="bottom" constant="42" id="KFz-lz-tzy"/>
-                                <constraint firstItem="qf9-Iv-2BM" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="KcB-Y4-Clp"/>
+                                <constraint firstItem="qf9-Iv-2BM" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" id="KcB-Y4-Clp"/>
                                 <constraint firstAttribute="trailing" secondItem="U4f-DZ-nyC" secondAttribute="trailing" constant="16" id="Ljd-j8-eQe"/>
                                 <constraint firstItem="T3b-i7-6Sd" firstAttribute="top" secondItem="Qez-wA-qvM" secondAttribute="bottom" constant="8" id="U2A-rM-nhQ"/>
                                 <constraint firstAttribute="bottom" secondItem="id2-pp-CUw" secondAttribute="bottom" id="X5K-NR-Uii"/>
@@ -227,45 +227,45 @@
             <objects>
                 <viewController id="rRg-Mx-diy" customClass="TypesOfWastePreviewViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0JJ-xY-tqV">
-                        <rect key="frame" x="0.0" y="0.0" width="359" height="81"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4d-9p-Sco">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4d-9p-Sco">
                                 <rect key="frame" x="0.0" y="0.0" width="359" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tpi-KQ-6Y2">
-                                    <size key="itemSize" width="60" height="60"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="12" minimumInteritemSpacing="12" id="tpi-KQ-6Y2">
+                                    <size key="itemSize" width="44" height="44"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                    <inset key="sectionInset" minX="16" minY="0.0" maxX="0.0" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="typeOfWasteCell" id="Ih8-Xq-E09" customClass="TypeOfWasteCollectionViewCell" customModule="Descartae" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="60" height="60"/>
+                                        <rect key="frame" x="16" y="16" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icWasteEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="DxN-0n-ULQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="9D4-NR-hgE"/>
-                                                        <constraint firstAttribute="height" constant="60" id="SK1-Ro-k86"/>
-                                                    </constraints>
-                                                </imageView>
+                                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ux-bb-WnG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                    <state key="normal" image="icWasteEmptyMedium"/>
+                                                    <connections>
+                                                        <action selector="presentTypeOfWasteModal:" destination="Ih8-Xq-E09" eventType="touchUpInside" id="CcE-en-GaM"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="DxN-0n-ULQ" firstAttribute="top" secondItem="Ih8-Xq-E09" secondAttribute="top" id="0MY-gR-GYx"/>
-                                            <constraint firstAttribute="bottom" secondItem="DxN-0n-ULQ" secondAttribute="bottom" id="67O-D6-mY1"/>
-                                            <constraint firstItem="DxN-0n-ULQ" firstAttribute="leading" secondItem="Ih8-Xq-E09" secondAttribute="leading" id="aIF-VN-49x"/>
-                                            <constraint firstAttribute="trailing" secondItem="DxN-0n-ULQ" secondAttribute="trailing" id="oLZ-HW-hMV"/>
+                                            <constraint firstItem="2Ux-bb-WnG" firstAttribute="leading" secondItem="Ih8-Xq-E09" secondAttribute="leading" id="N7S-V4-fIC"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Ux-bb-WnG" secondAttribute="trailing" id="aAr-Xo-3xg"/>
+                                            <constraint firstItem="2Ux-bb-WnG" firstAttribute="top" secondItem="Ih8-Xq-E09" secondAttribute="top" id="iPE-gF-K2g"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Ux-bb-WnG" secondAttribute="bottom" id="ksC-Ee-AK0"/>
                                         </constraints>
-                                        <size key="customSize" width="60" height="60"/>
+                                        <size key="customSize" width="44" height="44"/>
                                         <connections>
-                                            <outlet property="icon" destination="DxN-0n-ULQ" id="EL5-GF-m9W"/>
+                                            <outlet property="icon" destination="2Ux-bb-WnG" id="G91-2t-Yvn"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -289,6 +289,6 @@
     </scenes>
     <resources>
         <image name="icShare" width="22" height="22"/>
-        <image name="icWasteEmpty" width="26" height="26"/>
+        <image name="icWasteEmptyMedium" width="44" height="44"/>
     </resources>
 </document>
