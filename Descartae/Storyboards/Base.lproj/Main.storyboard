@@ -251,7 +251,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFo-Fi-KdQ">
                                 <rect key="frame" x="37" y="389" width="300" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="F9t-pH-Szs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="F9t-pH-Szs"/>
                                     <constraint firstAttribute="height" constant="25" id="Rgc-WH-vJF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>

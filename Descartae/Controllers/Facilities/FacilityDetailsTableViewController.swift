@@ -9,6 +9,7 @@
 import UIKit
 import SafariServices
 import MapKit
+import CMMapLauncher
 
 class FacilityDetailsTableViewController: UITableViewController {
 
@@ -111,7 +112,7 @@ class FacilityDetailsTableViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
         }
-        
+
         setupTableView()
         setupSections()
         bindTableViewHeaderData()
@@ -208,12 +209,45 @@ class FacilityDetailsTableViewController: UITableViewController {
     // MARK: Actions
 
     @IBAction func showRouteOptions(_ sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: "Not available yet", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        guard let facilityCoordinates = facility.location.location?.coordinate else {
+            return
+        }
 
-        alertController.addAction(okAction)
+        let mapPoint = CMMapPoint(address: facility.location.address, coordinate: facilityCoordinates)
+        let chooseMapAlert = UIAlertController(title: "Qual aplicativo deseja utilizar para traçar rotas?", message: nil, preferredStyle: .actionSheet)
 
-        present(alertController, animated: true, completion: nil)
+        let isAppleMapsInstalled = CMMapLauncher.isMapAppInstalled(CMMapApp.appleMaps)
+        let isGoogleMapsInstalled = CMMapLauncher.isMapAppInstalled(CMMapApp.googleMaps)
+        let isWazeInstalled = CMMapLauncher.isMapAppInstalled(CMMapApp.waze)
+
+        if isAppleMapsInstalled {
+            let appleMapsAction = UIAlertAction(title: "Apple Maps", style: .default, handler: { _ in
+                CMMapLauncher.launch(CMMapApp.appleMaps, forDirectionsTo: mapPoint)
+            })
+
+            chooseMapAlert.addAction(appleMapsAction)
+        }
+
+        if isGoogleMapsInstalled {
+            let appleMapsAction = UIAlertAction(title: "Google Maps", style: .default, handler: { _ in
+                CMMapLauncher.launch(CMMapApp.googleMaps, forDirectionsTo: mapPoint)
+            })
+
+            chooseMapAlert.addAction(appleMapsAction)
+        }
+
+        if isWazeInstalled {
+            let appleMapsAction = UIAlertAction(title: "Waze", style: .default, handler: { _ in
+                CMMapLauncher.launch(CMMapApp.waze, forDirectionsTo: mapPoint)
+            })
+
+            chooseMapAlert.addAction(appleMapsAction)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        chooseMapAlert.addAction(cancelAction)
+
+        present(chooseMapAlert, animated: true, completion: nil)
     }
 
     @IBAction func shareIt(_ sender: UIBarButtonItem) {
