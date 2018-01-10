@@ -25,7 +25,7 @@ class FacilityTableViewCell: UITableViewCell {
 
     let previewLimit = 3
 
-    var facility: Facility! {
+    var facility: DisposalFacility! {
         didSet {
             setupFacility()
         }
@@ -51,9 +51,9 @@ class FacilityTableViewCell: UITableViewCell {
     func setupFacility() {
         name.text = facility.name
         address.text = facility.location.address
-        distanceTo.text = String(format: "%.2fKM", LocationManager.shared.distanceInKm(fromLocation: facility.location.location))
+        distanceTo.text = facility.distanceFromUser
 
-        let typesOfWaste = facility.typesOfWaste!.flatMap({$0})
+        let typesOfWaste = facility.typesOfWaste.flatMap({$0})
         let endOfPreviewIndex = typesOfWaste.count >= 3 ? 2 : typesOfWaste.count - 1
         let typesOfWasteToPreview = typesOfWaste[0...endOfPreviewIndex]
 
@@ -62,7 +62,7 @@ class FacilityTableViewCell: UITableViewCell {
             let typeOfWasteIconView = UIImageView(frame: iconFrame)
             typeOfWasteIconView.image = UIImage(named: "icWasteEmpty")
 
-            if let iconURL = URL(string: typeOfWaste.icon) {
+            if let iconURL = URL(string: typeOfWaste.icons.iosSmallUrl) {
                 typeOfWasteIconView.sd_setImage(with: iconURL, completed: nil)
             }
 

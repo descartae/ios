@@ -1,0 +1,29 @@
+fragment DisposalFacility on Facility {
+    _id
+    name
+    location {
+        address
+        municipality
+        coordinates {
+            latitude
+            longitude
+        }
+    }
+    typesOfWaste {
+        _id
+        name
+        description
+        icons {
+            iosSmallURL
+            iosMediumURL
+            iosLargeURL
+        }
+    }
+    openHours {
+        dayOfWeek
+        startTime
+        endTime
+    }
+    website
+    telephone
+}

@@ -1,5 +1,11 @@
-query allFacilities {
-    centers {
-        ...Facility
+query allFacilities($quantity: Int!, $next: Cursor, $prev: Cursor) {
+    facilities(filters: {cursor: {after: $next, before: $prev, quantity: $quantity}}) {
+        cursors {
+            after
+            before
+        }
+        items {
+            ...DisposalFacility
+        }
     }
 }

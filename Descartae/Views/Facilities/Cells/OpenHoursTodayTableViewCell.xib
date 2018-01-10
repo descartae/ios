@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="2m8-UD-YLe" customClass="OpenHoursTodayTableViewCell" customModule="Descartae" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2m8-UD-YLe" id="Qt2-Kx-bOF">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horários" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEP-Az-UlH">
+                        <rect key="frame" x="16" y="24" width="212" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="212" id="1D7-ia-LcE"/>
+                            <constraint firstAttribute="height" constant="20" id="6SA-lj-afy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoje - Aberto das 15h às 20h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMk-4H-8tz">
+                        <rect key="frame" x="16" y="50" width="212" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="212" id="8lR-fl-da6"/>
+                            <constraint firstAttribute="height" constant="18" id="Anf-JS-TBT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59564810739436624" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2p-Ik-f0T">
+                        <rect key="frame" x="294" y="4" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="Gxg-ko-ARF"/>
+                            <constraint firstAttribute="height" constant="60" id="XWc-HB-CQB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <state key="normal" title="Mais">
+                            <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="didTouchCollapseButton:" destination="2m8-UD-YLe" eventType="touchUpInside" id="fhf-m6-HGh"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="pMk-4H-8tz" secondAttribute="bottom" constant="23.5" id="80Y-8R-8yB"/>
+                    <constraint firstItem="pMk-4H-8tz" firstAttribute="leading" secondItem="Qt2-Kx-bOF" secondAttribute="leading" constant="16" id="HeJ-X7-x5d"/>
+                    <constraint firstItem="pMk-4H-8tz" firstAttribute="top" secondItem="sEP-Az-UlH" secondAttribute="bottom" constant="6" id="Xfg-H1-qnB"/>
+                    <constraint firstItem="sEP-Az-UlH" firstAttribute="top" secondItem="Qt2-Kx-bOF" secondAttribute="top" constant="24" id="g5A-Dj-n9r"/>
+                    <constraint firstAttribute="trailing" secondItem="O2p-Ik-f0T" secondAttribute="trailing" constant="21" id="glX-SJ-iDW"/>
+                    <constraint firstItem="sEP-Az-UlH" firstAttribute="leading" secondItem="Qt2-Kx-bOF" secondAttribute="leading" constant="16" id="qus-J4-UEg"/>
+                    <constraint firstItem="O2p-Ik-f0T" firstAttribute="centerY" secondItem="sEP-Az-UlH" secondAttribute="centerY" id="s2Q-vA-7uQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="todayOpenHours" destination="pMk-4H-8tz" id="C1j-ja-Lls"/>
+            </connections>
+            <point key="canvasLocation" x="92.5" y="245"/>
+        </tableViewCell>
+    </objects>
+</document>

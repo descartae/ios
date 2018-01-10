@@ -28,7 +28,7 @@ final class FacilitiesViewController: UIViewController {
     }()
 
     let locationManager = LocationManager.shared
-    var facilities: [Facility] = []
+    var facilities: [DisposalFacility] = []
     var isLoading: Bool = true {
         didSet {
             if !isLoading { tableView.backgroundView = nil }
@@ -47,6 +47,14 @@ final class FacilitiesViewController: UIViewController {
 
         setupTableView()
         setupLocationState()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let indexPathOfSelectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPathOfSelectedRow, animated: true)
+        }
     }
 
     // MARK: Initial setups
@@ -81,7 +89,7 @@ final class FacilitiesViewController: UIViewController {
     func loadFacilities() {
         isLoading = true
         tableView.reloadData()
-        let allFacilities = AllFacilitiesQuery()
+        let allFacilities = AllFacilitiesQuery(quantity: 10)
         GraphQL.client.fetch(query: allFacilities) { (result, error) in
             self.isLoading = false
 
@@ -90,17 +98,17 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
-            guard let centersQueryFragment = result?.data?.centers as? [AllFacilitiesQuery.Data.Center] else {
+            guard let centersQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
                 return
             }
 
-            self.facilities = centersQueryFragment.map({ $0.fragments.facility })
+            self.facilities = centersQueryFragment.map({ $0.fragments.disposalFacility })
             self.tableView.reloadData()
         }
     }
 
     @objc func refreshFacilities() {
-        let allFacilities = AllFacilitiesQuery()
+        let allFacilities = AllFacilitiesQuery(quantity: 10)
         GraphQL.client.fetch(query: allFacilities) { (result, error) in
             self.refreshControl.endRefreshing()
 
@@ -109,12 +117,20 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
-            guard let facilitiesQueryFragment = result?.data?.centers as? [AllFacilitiesQuery.Data.Center] else {
+            guard let facilitiesQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
                 return
             }
 
-            self.facilities = facilitiesQueryFragment.map({ $0.fragments.facility })
+            self.facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
             self.tableView.reloadData()
+        }
+    }
+
+    // MARK: Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let details = segue.destination as? FacilityDetailsTableViewController, let indexOfFacility = sender as? Int {
+            details.facility = facilities[indexOfFacility]
         }
     }
 
@@ -141,6 +157,14 @@ extension FacilitiesViewController: UITableViewDataSource {
         }
 
         return UITableViewCell()
+    }
+
+}
+
+extension FacilitiesViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showFacilityDetails", sender: indexPath.row)
     }
 
 }
