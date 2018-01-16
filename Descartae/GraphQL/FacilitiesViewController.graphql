@@ -1,9 +1,9 @@
-query allFacilities($quantity: Int!, $next: Cursor, $prev: Cursor) {
+query allFacilities($quantity: Int!, $next: Cursor, $prev: Cursor, $typesOfWasteToFilter: [ID]) {
     typesOfWaste {
         ...WasteType
     }
     
-    facilities(filters: {cursor: {after: $next, before: $prev, quantity: $quantity}}) {
+    facilities(filters: {cursor: {after: $next, before: $prev, quantity: $quantity} hasTypesOfWaste: $typesOfWasteToFilter}) {
         cursors {
             after
             before

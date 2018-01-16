@@ -37,6 +37,10 @@ final class FacilitiesViewController: UIViewController {
         }
     }
 
+    var allFacilitiesQuery: AllFacilitiesQuery = {
+        return AllFacilitiesQuery(quantity: 10)
+    }()
+
     // MARK: Life cycle
 
     override func viewDidLoad() {
@@ -91,8 +95,8 @@ final class FacilitiesViewController: UIViewController {
     func loadFacilities() {
         isLoading = true
         tableView.reloadData()
-        let allFacilities = AllFacilitiesQuery(quantity: 10)
-        GraphQL.client.fetch(query: allFacilities) { (result, error) in
+
+        GraphQL.client.fetch(query: allFacilitiesQuery) { (result, error) in
             self.isLoading = false
 
             guard error == nil else {
@@ -115,8 +119,7 @@ final class FacilitiesViewController: UIViewController {
     }
 
     @objc func refreshFacilities() {
-        let allFacilities = AllFacilitiesQuery(quantity: 10)
-        GraphQL.client.fetch(query: allFacilities) { (result, error) in
+        GraphQL.client.fetch(query: allFacilitiesQuery) { (result, error) in
             self.refreshControl.endRefreshing()
 
             guard error == nil else {
@@ -150,7 +153,8 @@ final class FacilitiesViewController: UIViewController {
             filterFacilities.wasteTypesToFilter = filteringByWasteTypes
             filterFacilities.applyFilter = { wasteTypesToFilter in
                 self.filteringByWasteTypes = wasteTypesToFilter
-                // TODO: Query applying the filter
+                self.allFacilitiesQuery.typesOfWasteToFilter = self.filteringByWasteTypes.map {$0.id}
+                self.loadFacilities()
             }
         }
     }
