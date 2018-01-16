@@ -30,6 +30,7 @@ final class FacilitiesViewController: UIViewController {
     let locationManager = LocationManager.shared
     var facilities: [DisposalFacility] = []
     var wasteTypes: [WasteType] = []
+    var filteringByWasteTypes: [WasteType] = []
     var isLoading: Bool = true {
         didSet {
             if !isLoading { tableView.backgroundView = nil }
@@ -142,6 +143,15 @@ final class FacilitiesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let details = segue.destination as? FacilityDetailsTableViewController, let indexOfFacility = sender as? Int {
             details.facility = facilities[indexOfFacility]
+        }
+
+        if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
+            filterFacilities.wasteTypes = wasteTypes
+            filterFacilities.wasteTypesToFilter = filteringByWasteTypes
+            filterFacilities.applyFilter = { wasteTypesToFilter in
+                self.filteringByWasteTypes = wasteTypesToFilter
+                // TODO: Query applying the filter
+            }
         }
     }
 
