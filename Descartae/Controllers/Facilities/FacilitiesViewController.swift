@@ -29,6 +29,7 @@ final class FacilitiesViewController: UIViewController {
 
     let locationManager = LocationManager.shared
     var facilities: [DisposalFacility] = []
+    var wasteTypes: [WasteType] = []
     var isLoading: Bool = true {
         didSet {
             if !isLoading { tableView.backgroundView = nil }
@@ -102,6 +103,11 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
+            guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
+                return
+            }
+
+            self.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
             self.facilities = centersQueryFragment.map({ $0.fragments.disposalFacility })
             self.tableView.reloadData()
         }

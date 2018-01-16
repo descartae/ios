@@ -12,6 +12,10 @@ import CoreLocation
 
 extension DisposalFacility: Equatable {
 
+    var wasteTypes: [WasteType] {
+        return self.typesOfWaste.flatMap({ $0?.fragments.wasteType })
+    }
+
     var distanceFromUser: String {
         return String(format: "%.2fKM", LocationManager.shared.distanceInKm(fromLocation: location.location))
     }

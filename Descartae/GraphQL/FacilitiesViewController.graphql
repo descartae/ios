@@ -1,4 +1,8 @@
 query allFacilities($quantity: Int!, $next: Cursor, $prev: Cursor) {
+    typesOfWaste {
+        ...WasteType
+    }
+    
     facilities(filters: {cursor: {after: $next, before: $prev, quantity: $quantity}}) {
         cursors {
             after
