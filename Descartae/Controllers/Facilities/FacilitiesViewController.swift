@@ -127,6 +127,11 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
+            guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
+                return
+            }
+
+            self.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
             self.facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
             self.tableView.reloadData()
         }
