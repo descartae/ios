@@ -27,6 +27,14 @@ class InfoTableViewController: UITableViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+        if let indexPathOfSelectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPathOfSelectedRow, animated: true)
+        }
+    }
+
     // MARK: Actions
 
     @IBAction func close(_ sender: Any) {
