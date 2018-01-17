@@ -69,7 +69,7 @@ final class FacilitiesViewController: UIViewController {
     // MARK: Initial setups
 
     func setupFilterButton() {
-        let customButton = UIButton()
+        let customButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         customButton.addTarget(self, action: #selector(presentFilterFacilities), for: .touchUpInside)
         customButton.setImage(UIImage(named: "icFilter"), for: .normal)
 
@@ -77,6 +77,8 @@ final class FacilitiesViewController: UIViewController {
         filterButton.badgeMinSize = 16
         filterButton.badgeFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
         filterButton.badgePadding = 2
+        filterButton.badgeOriginX = 22
+        filterButton.badgeOriginY = 6
         navigationItem.setRightBarButton(filterButton, animated: false)
     }
 
