@@ -31,6 +31,9 @@ class ReportAnIssueTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if isGeneralAppFeedback {
+            navigationItem.title = "Solta o verbo"
+        }
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 68.0
     }

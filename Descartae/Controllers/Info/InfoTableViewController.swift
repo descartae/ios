@@ -9,12 +9,15 @@
 import UIKit
 import StoreKit
 import SafariServices
+import FBSDKCoreKit
+import FBSDKShareKit
 
 class InfoTableViewController: UITableViewController {
 
     // MARK: Properties
 
     let aboutPage = "https://descartae.com/sobre"
+    let shareURL = "https://descartae.com/"
 
     // MARK: Life cycle
 
@@ -57,6 +60,17 @@ class InfoTableViewController: UITableViewController {
         SKStoreReviewController.requestReview()
     }
 
+    func shareToFacebook() {
+        guard let url = URL(string: shareURL) else {
+            return
+        }
+
+        let content = FBSDKShareLinkContent()
+        content.contentURL = url
+
+        FBSDKShareDialog.show(from: self, with: content, delegate: self)
+    }
+
     // MARK: Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,9 +92,28 @@ extension InfoTableViewController {
         case 3:
             tableView.deselectRow(at: indexPath, animated: true)
             showReviewController()
+        case 4:
+            tableView.deselectRow(at: indexPath, animated: true)
+            shareToFacebook()
         default:
             break
         }
+    }
+
+}
+
+extension InfoTableViewController: FBSDKSharingDelegate {
+
+    func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable: Any]!) {
+        // Nothing for now
+    }
+
+    func sharerDidCancel(_ sharer: FBSDKSharing!) {
+        // Nothing for now
+    }
+
+    func sharer(_ sharer: FBSDKSharing!, didFailWithError error: Error!) {
+        // Nothing for now
     }
 
 }
