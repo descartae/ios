@@ -581,6 +581,9 @@ este ponto de coleta? Nos conte!</string>
                                                 <constraint firstAttribute="bottom" secondItem="39C-cw-oG6" secondAttribute="bottom" constant="19.5" id="qMc-PF-ehb"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="cwc-ZN-MoJ" kind="show" id="EyC-7h-387"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="3iT-HR-9oa">
                                         <rect key="frame" x="0.0" y="93" width="375" height="58"/>
@@ -734,6 +737,7 @@ este ponto de coleta? Nos conte!</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Informações" id="1k2-jG-6m8">
+                        <barButtonItem key="backBarButtonItem" title="Voltar" id="pUL-Fw-yfs"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="woW-hQ-szh">
                             <connections>
                                 <action selector="close:" destination="CaD-hv-Ulf" id="Hqn-9S-dVq"/>
@@ -744,6 +748,40 @@ este ponto de coleta? Nos conte!</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSR-5w-oym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="758" y="932"/>
+        </scene>
+        <!--Legendas-->
+        <scene sceneID="hwR-3v-blk">
+            <objects>
+                <viewController title="Legendas" id="cwc-ZN-MoJ" customClass="WasteTypesViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nPm-ZJ-hmQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N49-cW-124">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cwc-ZN-MoJ" id="xSc-N3-W9R"/>
+                                    <outlet property="delegate" destination="cwc-ZN-MoJ" id="wTF-da-XVH"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="N49-cW-124" firstAttribute="trailing" secondItem="OAG-Rx-krh" secondAttribute="trailing" id="MTI-G4-eeO"/>
+                            <constraint firstItem="N49-cW-124" firstAttribute="top" secondItem="OAG-Rx-krh" secondAttribute="top" id="dJM-fy-f6b"/>
+                            <constraint firstItem="N49-cW-124" firstAttribute="leading" secondItem="OAG-Rx-krh" secondAttribute="leading" id="l8M-nL-NM4"/>
+                            <constraint firstItem="N49-cW-124" firstAttribute="bottom" secondItem="OAG-Rx-krh" secondAttribute="bottom" id="ypG-H0-7MS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OAG-Rx-krh"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="N49-cW-124" id="bNN-XS-MWo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ir5-WT-E6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549.5999999999999" y="931.48425787106453"/>
         </scene>
         <!--Report An Issue Navigation Controller-->
         <scene sceneID="5da-3l-aay">

@@ -21,6 +21,9 @@
 		99467094200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */; };
 		99467096200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99467095200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift */; };
 		99467099200EDF82000EDBB6 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99467098200EDF82000EDBB6 /* InfoTableViewController.swift */; };
+		9946709B200EFB97000EDBB6 /* WasteTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9946709A200EFB97000EDBB6 /* WasteTypeTableViewCell.xib */; };
+		9946709D200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9946709C200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift */; };
+		9946709F200EFD83000EDBB6 /* WasteTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9946709E200EFD83000EDBB6 /* WasteTypesViewController.swift */; };
 		9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */; };
 		996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */; };
 		996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */; };
@@ -88,6 +91,9 @@
 		99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterWasteTypesSectionFooter.xib; sourceTree = "<group>"; };
 		99467095200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWasteTypesSectionFooter.swift; sourceTree = "<group>"; };
 		99467098200EDF82000EDBB6 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		9946709A200EFB97000EDBB6 /* WasteTypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WasteTypeTableViewCell.xib; sourceTree = "<group>"; };
+		9946709C200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasteTypeTableViewCell.swift; sourceTree = "<group>"; };
+		9946709E200EFD83000EDBB6 /* WasteTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasteTypesViewController.swift; sourceTree = "<group>"; };
 		9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteDetailsViewController.swift; sourceTree = "<group>"; };
 		996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTodayTableViewCell.swift; sourceTree = "<group>"; };
 		996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTableViewCell.xib; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 				9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */,
 				99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */,
 				99E004AE200E85D500FA43F6 /* FilterFacilitiesViewController.swift */,
+				9946709E200EFD83000EDBB6 /* WasteTypesViewController.swift */,
 			);
 			path = Facilities;
 			sourceTree = "<group>";
@@ -346,6 +353,8 @@
 				99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */,
 				9946708A200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib */,
 				9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */,
+				9946709A200EFB97000EDBB6 /* WasteTypeTableViewCell.xib */,
+				9946709C200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -495,6 +504,7 @@
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
 				99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */,
 				9946708B200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib in Resources */,
+				9946709B200EFB97000EDBB6 /* WasteTypeTableViewCell.xib in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
 				99467094200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib in Resources */,
 				99F7BE151FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib in Resources */,
@@ -721,6 +731,7 @@
 				99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */,
 				990A1DD81FC3A8B400DD5D81 /* DisposalFacility.swift in Sources */,
 				99895A141FDF064200615D65 /* TypesOfWastePreviewViewController.swift in Sources */,
+				9946709D200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift in Sources */,
 				999CD4A81FDC76400018CF18 /* ContactTableViewCell.swift in Sources */,
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
 				9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */,
@@ -732,6 +743,7 @@
 				99E004AF200E85D500FA43F6 /* FilterFacilitiesViewController.swift in Sources */,
 				99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */,
 				999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */,
+				9946709F200EFD83000EDBB6 /* WasteTypesViewController.swift in Sources */,
 				99467096200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */,
