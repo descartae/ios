@@ -526,6 +526,9 @@ este ponto de coleta? Nos conte!</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sendFeedbackButton" destination="ubd-d2-QxQ" id="rvf-uB-i6q"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ei9-LO-qpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -539,6 +542,7 @@ este ponto de coleta? Nos conte!</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="56" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="ANx-Js-ttC">
@@ -647,6 +651,9 @@ este ponto de coleta? Nos conte!</string>
                                                 <constraint firstItem="9kB-G7-8WG" firstAttribute="top" secondItem="GlT-sy-JUr" secondAttribute="top" constant="15" id="yrw-yf-Ile"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2pE-Ii-0E0" kind="presentation" id="rBI-Bx-261"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="6eo-SW-JmH">
                                         <rect key="frame" x="0.0" y="209" width="375" height="58"/>
@@ -736,7 +743,7 @@ este ponto de coleta? Nos conte!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSR-5w-oym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757.60000000000002" y="932.38380809595208"/>
+            <point key="canvasLocation" x="758" y="932"/>
         </scene>
         <!--Report An Issue Navigation Controller-->
         <scene sceneID="5da-3l-aay">
