@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import BBBadgeBarButtonItem
 
 final class FacilitiesViewController: UIViewController {
 
@@ -27,6 +28,7 @@ final class FacilitiesViewController: UIViewController {
         return activityIndicator
     }()
 
+    var filterButton: BBBadgeBarButtonItem!
     let locationManager = LocationManager.shared
     var facilities: [DisposalFacility] = []
     var wasteTypes: [WasteType] = []
@@ -51,6 +53,7 @@ final class FacilitiesViewController: UIViewController {
             navigationItem.largeTitleDisplayMode = .always
         }
 
+        setupFilterButton()
         setupTableView()
         setupLocationState()
     }
@@ -64,6 +67,18 @@ final class FacilitiesViewController: UIViewController {
     }
 
     // MARK: Initial setups
+
+    func setupFilterButton() {
+        let customButton = UIButton()
+        customButton.addTarget(self, action: #selector(presentFilterFacilities), for: .touchUpInside)
+        customButton.setImage(UIImage(named: "icFilter"), for: .normal)
+
+        filterButton = BBBadgeBarButtonItem(customUIButton: customButton)
+        filterButton.badgeMinSize = 16
+        filterButton.badgeFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        filterButton.badgePadding = 2
+        navigationItem.setRightBarButton(filterButton, animated: false)
+    }
 
     func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -153,10 +168,15 @@ final class FacilitiesViewController: UIViewController {
             filterFacilities.wasteTypesToFilter = filteringByWasteTypes
             filterFacilities.applyFilter = { wasteTypesToFilter in
                 self.filteringByWasteTypes = wasteTypesToFilter
+                self.filterButton.badgeValue = "\(self.filteringByWasteTypes.count)"
                 self.allFacilitiesQuery.typesOfWasteToFilter = self.filteringByWasteTypes.map {$0.id}
                 self.loadFacilities()
             }
         }
+    }
+
+    @objc func presentFilterFacilities() {
+        performSegue(withIdentifier: "presentFilterFacilities", sender: self)
     }
 
 }

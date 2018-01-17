@@ -10,6 +10,9 @@ target 'Descartae' do
   # Geolocation
   pod 'CMMapLauncher', '~> 1.1.0'
 
+  # UI
+  pod 'BBBadgeBarButtonItem'
+
   target 'DescartaeTests' do
     inherit! :search_paths
   end

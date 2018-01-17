@@ -51,15 +51,11 @@
                                 <segment title="Mapa"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Filtrar" id="hYA-XS-K4y">
-                            <connections>
-                                <segue destination="niE-33-dLG" kind="presentation" id="sw7-6m-uk9"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="uEY-mN-f6q" id="Zgv-e9-xpq"/>
                         <segue destination="zcR-Th-Wt6" kind="show" identifier="showFacilityDetails" id="l4M-qR-c2c"/>
+                        <segue destination="niE-33-dLG" kind="presentation" identifier="presentFilterFacilities" id="FVS-3r-suB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -337,7 +333,6 @@
                                 <rect key="frame" x="16" y="147" width="285" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="aX0-YU-tsJ"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="285" id="pGT-L5-KpA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -346,6 +341,7 @@
                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPc-AG-FR1">
                                 <rect key="frame" x="309" y="132" width="50" height="50"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="M2n-wH-f0q"/>
                                     <constraint firstAttribute="height" constant="50" id="TGo-Dz-wSs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
