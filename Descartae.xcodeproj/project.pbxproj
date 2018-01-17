@@ -20,6 +20,7 @@
 		9946708D200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */; };
 		99467094200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */; };
 		99467096200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99467095200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift */; };
+		99467099200EDF82000EDBB6 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99467098200EDF82000EDBB6 /* InfoTableViewController.swift */; };
 		9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */; };
 		996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */; };
 		996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */; };
@@ -86,6 +87,7 @@
 		9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteFilterTableViewCell.swift; sourceTree = "<group>"; };
 		99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterWasteTypesSectionFooter.xib; sourceTree = "<group>"; };
 		99467095200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWasteTypesSectionFooter.swift; sourceTree = "<group>"; };
+		99467098200EDF82000EDBB6 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteDetailsViewController.swift; sourceTree = "<group>"; };
 		996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTodayTableViewCell.swift; sourceTree = "<group>"; };
 		996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTableViewCell.xib; sourceTree = "<group>"; };
@@ -202,6 +204,14 @@
 			path = "Section Headers and Footers";
 			sourceTree = "<group>";
 		};
+		99467097200EDF72000EDBB6 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				99467098200EDF82000EDBB6 /* InfoTableViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		997EBEA31FC0B71100BECF17 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +314,7 @@
 		99A6512A1FC0B3B50076167D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99467097200EDF72000EDBB6 /* Info */,
 				997EBEA41FC0BCB400BECF17 /* Facilities */,
 			);
 			path = Controllers;
@@ -706,6 +717,7 @@
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
 				9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */,
 				99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */,
+				99467099200EDF82000EDBB6 /* InfoTableViewController.swift in Sources */,
 				9909ABD01FD049F00072B0E4 /* WasteType.swift in Sources */,
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
 				999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */,
@@ -895,7 +907,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4U5RD45Q4;
 				INFOPLIST_FILE = Descartae/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.descartae.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -912,7 +924,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4U5RD45Q4;
 				INFOPLIST_FILE = Descartae/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.descartae.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
