@@ -55,6 +55,7 @@
                     <connections>
                         <outlet property="tableView" destination="uEY-mN-f6q" id="Zgv-e9-xpq"/>
                         <segue destination="zcR-Th-Wt6" kind="show" identifier="showFacilityDetails" id="l4M-qR-c2c"/>
+                        <segue destination="niE-33-dLG" kind="presentation" identifier="presentFilterFacilities" id="FVS-3r-suB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -290,7 +291,94 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unq-7l-dOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2340" y="-61"/>
+            <point key="canvasLocation" x="2340" y="-64"/>
+        </scene>
+        <!--Filter Facilities View Controller-->
+        <scene sceneID="uVM-a9-SNa">
+            <objects>
+                <viewController id="niE-33-dLG" customClass="FilterFacilitiesViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m0Z-vD-wVl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REv-eX-5tU">
+                                <rect key="frame" x="319" y="22.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="3ld-8q-hLL"/>
+                                    <constraint firstAttribute="height" constant="50" id="7Eb-o2-3BC"/>
+                                </constraints>
+                                <state key="normal" image="icClose"/>
+                                <connections>
+                                    <action selector="close:" destination="niE-33-dLG" eventType="touchUpInside" id="Rof-hX-Kpe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtrar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-NG-PXB">
+                                <rect key="frame" x="16" y="76" width="343" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="Yq8-ZT-LWc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xCl-T2-GaD">
+                                <rect key="frame" x="0.0" y="179" width="375" height="488"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="niE-33-dLG" id="bja-ah-ino"/>
+                                    <outlet property="delegate" destination="niE-33-dLG" id="P53-uV-kNJ"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtrar por tipos de resíduos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKO-0N-8yB">
+                                <rect key="frame" x="16" y="147" width="285" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="aX0-YU-tsJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPc-AG-FR1">
+                                <rect key="frame" x="309" y="132" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="M2n-wH-f0q"/>
+                                    <constraint firstAttribute="height" constant="50" id="TGo-Dz-wSs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Limpar">
+                                    <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearSelection:" destination="niE-33-dLG" eventType="touchUpInside" id="agZ-5v-tbm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xCl-T2-GaD" firstAttribute="trailing" secondItem="69u-UJ-Dq3" secondAttribute="trailing" id="2fy-yw-jT4"/>
+                            <constraint firstItem="REv-eX-5tU" firstAttribute="top" secondItem="69u-UJ-Dq3" secondAttribute="top" constant="2" id="In4-gG-kr6"/>
+                            <constraint firstItem="6U9-NG-PXB" firstAttribute="top" secondItem="REv-eX-5tU" secondAttribute="bottom" constant="3.5" id="Ot5-Nc-57c"/>
+                            <constraint firstItem="6U9-NG-PXB" firstAttribute="leading" secondItem="69u-UJ-Dq3" secondAttribute="leading" constant="16" id="PDL-TX-512"/>
+                            <constraint firstItem="xCl-T2-GaD" firstAttribute="bottom" secondItem="69u-UJ-Dq3" secondAttribute="bottom" id="PaP-60-ONf"/>
+                            <constraint firstItem="TPc-AG-FR1" firstAttribute="leading" secondItem="AKO-0N-8yB" secondAttribute="trailing" constant="8" id="Upl-Yr-O9K"/>
+                            <constraint firstItem="69u-UJ-Dq3" firstAttribute="trailing" secondItem="TPc-AG-FR1" secondAttribute="trailing" constant="16" id="Z7j-uZ-DeV"/>
+                            <constraint firstItem="AKO-0N-8yB" firstAttribute="leading" secondItem="69u-UJ-Dq3" secondAttribute="leading" constant="16" id="cS2-Ey-f0e"/>
+                            <constraint firstItem="TPc-AG-FR1" firstAttribute="top" secondItem="6U9-NG-PXB" secondAttribute="bottom" constant="18" id="f2p-qy-q2t"/>
+                            <constraint firstItem="xCl-T2-GaD" firstAttribute="leading" secondItem="69u-UJ-Dq3" secondAttribute="leading" id="fVs-BK-hjQ"/>
+                            <constraint firstItem="AKO-0N-8yB" firstAttribute="top" secondItem="6U9-NG-PXB" secondAttribute="bottom" constant="33" id="hVk-qy-ZQ2"/>
+                            <constraint firstItem="xCl-T2-GaD" firstAttribute="top" secondItem="AKO-0N-8yB" secondAttribute="bottom" constant="12" id="oO3-Uc-KNi"/>
+                            <constraint firstItem="69u-UJ-Dq3" firstAttribute="trailing" secondItem="6U9-NG-PXB" secondAttribute="trailing" constant="16" id="oqB-b1-SIe"/>
+                            <constraint firstItem="69u-UJ-Dq3" firstAttribute="trailing" secondItem="REv-eX-5tU" secondAttribute="trailing" constant="6" id="w1U-rA-oZo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="69u-UJ-Dq3"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="xCl-T2-GaD" id="8IU-nb-bA1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4dW-DR-IjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549.5999999999999" y="-528.48575712143929"/>
         </scene>
         <!--Types Of Waste Preview View Controller-->
         <scene sceneID="8Sl-jG-iid">

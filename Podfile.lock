@@ -2,6 +2,7 @@ PODS:
   - Apollo (0.7.0):
     - Apollo/Core (= 0.7.0)
   - Apollo/Core (0.7.0)
+  - BBBadgeBarButtonItem (1.2)
   - CMMapLauncher (1.1.0)
   - SDWebImage (4.2.1):
     - SDWebImage/Core (= 4.2.1)
@@ -9,14 +10,16 @@ PODS:
 
 DEPENDENCIES:
   - Apollo (~> 0.7.0)
+  - BBBadgeBarButtonItem
   - CMMapLauncher (~> 1.1.0)
   - SDWebImage (~> 4)
 
 SPEC CHECKSUMS:
   Apollo: d6649ac06168660e70c6226c4eadfc0770791ba5
+  BBBadgeBarButtonItem: c2fbca0bff18e21b70defc9438a8a5048008e7ca
   CMMapLauncher: 668b949522d1789506e3c8d9dbc1b0384ee20573
   SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
 
-PODFILE CHECKSUM: 4129904aed3f324c638fbbdf78deb04ac71e22a2
+PODFILE CHECKSUM: 19785bc37a849f0f59dda57dcf9432c0d27bc1e2
 
 COCOAPODS: 1.3.1

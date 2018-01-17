@@ -10,14 +10,7 @@ fragment DisposalFacility on Facility {
         }
     }
     typesOfWaste {
-        _id
-        name
-        description
-        icons {
-            iosSmallURL
-            iosMediumURL
-            iosLargeURL
-        }
+        ...WasteType
     }
     openHours {
         dayOfWeek
@@ -26,4 +19,15 @@ fragment DisposalFacility on Facility {
     }
     website
     telephone
+}
+
+fragment WasteType on TypeOfWaste {
+    _id
+    name
+    description
+    icons {
+        iosSmallURL
+        iosMediumURL
+        iosLargeURL
+    }
 }

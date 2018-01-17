@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import BBBadgeBarButtonItem
 
 final class FacilitiesViewController: UIViewController {
 
@@ -27,13 +28,20 @@ final class FacilitiesViewController: UIViewController {
         return activityIndicator
     }()
 
+    var filterButton: BBBadgeBarButtonItem!
     let locationManager = LocationManager.shared
     var facilities: [DisposalFacility] = []
+    var wasteTypes: [WasteType] = []
+    var filteringByWasteTypes: [WasteType] = []
     var isLoading: Bool = true {
         didSet {
             if !isLoading { tableView.backgroundView = nil }
         }
     }
+
+    var allFacilitiesQuery: AllFacilitiesQuery = {
+        return AllFacilitiesQuery(quantity: 10)
+    }()
 
     // MARK: Life cycle
 
@@ -45,6 +53,7 @@ final class FacilitiesViewController: UIViewController {
             navigationItem.largeTitleDisplayMode = .always
         }
 
+        setupFilterButton()
         setupTableView()
         setupLocationState()
     }
@@ -58,6 +67,20 @@ final class FacilitiesViewController: UIViewController {
     }
 
     // MARK: Initial setups
+
+    func setupFilterButton() {
+        let customButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        customButton.addTarget(self, action: #selector(presentFilterFacilities), for: .touchUpInside)
+        customButton.setImage(UIImage(named: "icFilter"), for: .normal)
+
+        filterButton = BBBadgeBarButtonItem(customUIButton: customButton)
+        filterButton.badgeMinSize = 16
+        filterButton.badgeFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        filterButton.badgePadding = 2
+        filterButton.badgeOriginX = 22
+        filterButton.badgeOriginY = 6
+        navigationItem.setRightBarButton(filterButton, animated: false)
+    }
 
     func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -89,8 +112,8 @@ final class FacilitiesViewController: UIViewController {
     func loadFacilities() {
         isLoading = true
         tableView.reloadData()
-        let allFacilities = AllFacilitiesQuery(quantity: 10)
-        GraphQL.client.fetch(query: allFacilities) { (result, error) in
+
+        GraphQL.client.fetch(query: allFacilitiesQuery) { (result, error) in
             self.isLoading = false
 
             guard error == nil else {
@@ -102,14 +125,18 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
+            guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
+                return
+            }
+
+            self.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
             self.facilities = centersQueryFragment.map({ $0.fragments.disposalFacility })
             self.tableView.reloadData()
         }
     }
 
     @objc func refreshFacilities() {
-        let allFacilities = AllFacilitiesQuery(quantity: 10)
-        GraphQL.client.fetch(query: allFacilities) { (result, error) in
+        GraphQL.client.fetch(query: allFacilitiesQuery) { (result, error) in
             self.refreshControl.endRefreshing()
 
             guard error == nil else {
@@ -121,6 +148,11 @@ final class FacilitiesViewController: UIViewController {
                 return
             }
 
+            guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
+                return
+            }
+
+            self.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
             self.facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
             self.tableView.reloadData()
         }
@@ -132,6 +164,21 @@ final class FacilitiesViewController: UIViewController {
         if let details = segue.destination as? FacilityDetailsTableViewController, let indexOfFacility = sender as? Int {
             details.facility = facilities[indexOfFacility]
         }
+
+        if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
+            filterFacilities.wasteTypes = wasteTypes
+            filterFacilities.wasteTypesToFilter = filteringByWasteTypes
+            filterFacilities.applyFilter = { wasteTypesToFilter in
+                self.filteringByWasteTypes = wasteTypesToFilter
+                self.filterButton.badgeValue = "\(self.filteringByWasteTypes.count)"
+                self.allFacilitiesQuery.typesOfWasteToFilter = self.filteringByWasteTypes.map {$0.id}
+                self.loadFacilities()
+            }
+        }
+    }
+
+    @objc func presentFilterFacilities() {
+        performSegue(withIdentifier: "presentFilterFacilities", sender: self)
     }
 
 }

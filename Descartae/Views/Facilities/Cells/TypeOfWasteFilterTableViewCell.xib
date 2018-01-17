@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" id="qSw-Bk-0qJ" customClass="TypeOfWasteFilterTableViewCell" customModule="Descartae" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qSw-Bk-0qJ" id="dgN-cS-8Ve">
+                <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icWasteEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="QF9-Eq-1qv">
+                        <rect key="frame" x="16" y="8" width="26" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="26" id="Cki-QK-hRG"/>
+                            <constraint firstAttribute="height" constant="26" id="IgH-lz-gFW"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mM2-ea-FoH">
+                        <rect key="frame" x="54" y="11" width="281" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="MHM-gm-z0D"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mM2-ea-FoH" firstAttribute="leading" secondItem="QF9-Eq-1qv" secondAttribute="trailing" constant="12" id="6lR-Cd-8qb"/>
+                    <constraint firstAttribute="trailing" secondItem="mM2-ea-FoH" secondAttribute="trailing" id="9ky-lZ-pil"/>
+                    <constraint firstAttribute="bottom" secondItem="QF9-Eq-1qv" secondAttribute="bottom" constant="10" id="Bnd-F5-Tnb"/>
+                    <constraint firstAttribute="bottom" secondItem="mM2-ea-FoH" secondAttribute="bottom" constant="12" id="Ims-c9-XOc"/>
+                    <constraint firstItem="mM2-ea-FoH" firstAttribute="top" secondItem="dgN-cS-8Ve" secondAttribute="top" constant="11" id="Rx7-Kx-PbP"/>
+                    <constraint firstItem="QF9-Eq-1qv" firstAttribute="top" secondItem="dgN-cS-8Ve" secondAttribute="top" constant="8" id="XyB-0L-P4C"/>
+                    <constraint firstItem="QF9-Eq-1qv" firstAttribute="leading" secondItem="dgN-cS-8Ve" secondAttribute="leading" constant="16" id="cJi-F4-tkA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="tintColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="icon" destination="QF9-Eq-1qv" id="4eN-S9-2Bq"/>
+                <outlet property="name" destination="mM2-ea-FoH" id="nxH-Ft-2aa"/>
+            </connections>
+            <point key="canvasLocation" x="52.5" y="97"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icWasteEmpty" width="25" height="24"/>
+    </resources>
+</document>

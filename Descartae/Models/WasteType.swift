@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension DisposalFacility.TypesOfWaste: Equatable {
+extension WasteType: Equatable {
 
-    public static func == (lhs: DisposalFacility.TypesOfWaste, rhs: DisposalFacility.TypesOfWaste) -> Bool {
+    public static func == (lhs: WasteType, rhs: WasteType) -> Bool {
         return lhs.id == rhs.id
     }
 

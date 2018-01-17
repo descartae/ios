@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		92C666CA557B3658A306718A /* Pods_Descartae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D1CC5D04C543BF4E6ABEA0 /* Pods_Descartae.framework */; };
-		9909ABD01FD049F00072B0E4 /* TypeOfWaste.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909ABCF1FD049F00072B0E4 /* TypeOfWaste.swift */; };
+		9909ABD01FD049F00072B0E4 /* WasteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909ABCF1FD049F00072B0E4 /* WasteType.swift */; };
 		990A1DCC1FC384EE00DD5D81 /* FacilitiesViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DCB1FC384EE00DD5D81 /* FacilitiesViewController.graphql */; };
 		990A1DCE1FC3870300DD5D81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCD1FC3870300DD5D81 /* API.swift */; };
 		990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */; };
@@ -16,6 +16,10 @@
 		9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */; };
 		994242101FCE19E10095623C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942420F1FCE19E10095623C /* LocationManager.swift */; };
 		994415911FD6F3FF0036F84E /* DisposalFacilityFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */; };
+		9946708B200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9946708A200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib */; };
+		9946708D200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */; };
+		99467094200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */; };
+		99467096200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99467095200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift */; };
 		9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */; };
 		996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */; };
 		996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */; };
@@ -39,6 +43,7 @@
 		99A651101FC0B2B70076167D /* DescartaeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6510F1FC0B2B70076167D /* DescartaeTests.swift */; };
 		99A6511B1FC0B2B70076167D /* DescartaeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */; };
 		99C390EF1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */; };
+		99E004AF200E85D500FA43F6 /* FilterFacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E004AE200E85D500FA43F6 /* FilterFacilitiesViewController.swift */; };
 		99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */; };
 		99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */; };
 		99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */; };
@@ -69,7 +74,7 @@
 /* Begin PBXFileReference section */
 		3C63AE71BB3E1D3BC86EC84B /* Pods-Descartae.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.debug.xcconfig"; sourceTree = "<group>"; };
 		6B447C51D3764D57B321E8EF /* Pods-DescartaeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeUITests/Pods-DescartaeUITests.release.xcconfig"; sourceTree = "<group>"; };
-		9909ABCF1FD049F00072B0E4 /* TypeOfWaste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWaste.swift; sourceTree = "<group>"; };
+		9909ABCF1FD049F00072B0E4 /* WasteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasteType.swift; sourceTree = "<group>"; };
 		990A1DCB1FC384EE00DD5D81 /* FacilitiesViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FacilitiesViewController.graphql; sourceTree = "<group>"; };
 		990A1DCD1FC3870300DD5D81 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
@@ -77,6 +82,10 @@
 		9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsBaseTableViewCell.swift; sourceTree = "<group>"; };
 		9942420F1FCE19E10095623C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DisposalFacilityFragment.graphql; sourceTree = "<group>"; };
+		9946708A200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeOfWasteFilterTableViewCell.xib; sourceTree = "<group>"; };
+		9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteFilterTableViewCell.swift; sourceTree = "<group>"; };
+		99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterWasteTypesSectionFooter.xib; sourceTree = "<group>"; };
+		99467095200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWasteTypesSectionFooter.swift; sourceTree = "<group>"; };
 		9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteDetailsViewController.swift; sourceTree = "<group>"; };
 		996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTodayTableViewCell.swift; sourceTree = "<group>"; };
 		996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTableViewCell.xib; sourceTree = "<group>"; };
@@ -106,6 +115,7 @@
 		99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartaeUITests.swift; sourceTree = "<group>"; };
 		99A6511C1FC0B2B70076167D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTableViewCell.swift; sourceTree = "<group>"; };
+		99E004AE200E85D500FA43F6 /* FilterFacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFacilitiesViewController.swift; sourceTree = "<group>"; };
 		99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableViewCell.xib; sourceTree = "<group>"; };
 		99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableViewCell.swift; sourceTree = "<group>"; };
 		99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibExtension.swift; sourceTree = "<group>"; };
@@ -183,6 +193,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		9946708E200EB6B7000EDBB6 /* Section Headers and Footers */ = {
+			isa = PBXGroup;
+			children = (
+				99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */,
+				99467095200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift */,
+			);
+			path = "Section Headers and Footers";
+			sourceTree = "<group>";
+		};
 		997EBEA31FC0B71100BECF17 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +219,7 @@
 				99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */,
 				9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */,
 				99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */,
+				99E004AE200E85D500FA43F6 /* FilterFacilitiesViewController.swift */,
 			);
 			path = Facilities;
 			sourceTree = "<group>";
@@ -265,7 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */,
-				9909ABCF1FD049F00072B0E4 /* TypeOfWaste.swift */,
+				9909ABCF1FD049F00072B0E4 /* WasteType.swift */,
 				999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */,
 				999CD4A11FDC68720018CF18 /* OpenHour.swift */,
 				999CD4A31FDC6DE70018CF18 /* Location.swift */,
@@ -292,6 +312,7 @@
 		99ED009E1FC5DCC200AA4613 /* Facilities */ = {
 			isa = PBXGroup;
 			children = (
+				9946708E200EB6B7000EDBB6 /* Section Headers and Footers */,
 				99ED009F1FC5DCCD00AA4613 /* Cells */,
 			);
 			path = Facilities;
@@ -312,6 +333,8 @@
 				99F7BE141FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib */,
 				99F7BE161FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift */,
 				99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */,
+				9946708A200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib */,
+				9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -460,7 +483,9 @@
 				994415911FD6F3FF0036F84E /* DisposalFacilityFragment.graphql in Resources */,
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
 				99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */,
+				9946708B200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
+				99467094200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib in Resources */,
 				99F7BE151FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib in Resources */,
 				99A651001FC0B2B70076167D /* Main.storyboard in Resources */,
 				99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */,
@@ -522,12 +547,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Descartae/Pods-Descartae-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/BBBadgeBarButtonItem/BBBadgeBarButtonItem.framework",
 				"${BUILT_PRODUCTS_DIR}/CMMapLauncher/CMMapLauncher.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BBBadgeBarButtonItem.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMMapLauncher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
@@ -679,13 +706,16 @@
 				99A650FB1FC0B2B70076167D /* AppDelegate.swift in Sources */,
 				9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */,
 				99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */,
-				9909ABD01FD049F00072B0E4 /* TypeOfWaste.swift in Sources */,
+				9909ABD01FD049F00072B0E4 /* WasteType.swift in Sources */,
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
 				999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */,
+				99E004AF200E85D500FA43F6 /* FilterFacilitiesViewController.swift in Sources */,
 				99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */,
 				999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */,
+				99467096200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */,
+				9946708D200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift in Sources */,
 				99F7BE171FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift in Sources */,
 				999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,
