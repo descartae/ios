@@ -20,14 +20,20 @@ class ReportAnIssueTableViewController: UITableViewController {
 
     // MARK: Properties
 
+    @IBOutlet weak var sendFeedbackButton: UIBarButtonItem!
+
     var textView: UITextView?
     var facility: DisposalFacility!
+    var isGeneralAppFeedback = false
 
     // MARK: Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if isGeneralAppFeedback {
+            navigationItem.title = "Solta o verbo"
+        }
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 68.0
     }
@@ -60,6 +66,42 @@ class ReportAnIssueTableViewController: UITableViewController {
         let barButtonLoading = UIBarButtonItem(customView: activityIndicator)
         navigationItem.rightBarButtonItem = barButtonLoading
 
+        if isGeneralAppFeedback {
+            sendGeneralFeedback(feedbackText)
+        } else {
+            sendFacilityFeedback(feedbackText)
+        }
+    }
+
+    func sendGeneralFeedback(_ feedbackText: String) {
+        let feedbackMutation = AddFeedbackMutation(feedback: feedbackText)
+        GraphQL.client.perform(mutation: feedbackMutation) { (result, error) in
+            guard let success = result?.data?.addFeedback.success, error == nil && success else {
+                let emptyFeedback = UIAlertController(title: "Oops!", message: "Não foi possível enviar seu feedback, tente novamente mais tarde.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Tudo bem", style: .default, handler: nil)
+
+                emptyFeedback.addAction(okAction)
+
+                self.present(emptyFeedback, animated: true, completion: nil)
+
+                return
+            }
+
+            self.textView?.text = ""
+            self.navigationItem.rightBarButtonItem = self.sendFeedbackButton
+
+            let successFeedback = UIAlertController(title: "Obrigado por nos contar!", message: "Ah, não esquece de nos avaliar na App Store <3", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            })
+
+            successFeedback.addAction(okAction)
+
+            self.present(successFeedback, animated: true, completion: nil)
+        }
+    }
+
+    func sendFacilityFeedback(_ feedbackText: String) {
         let feedbackMutation = AddFeedbackMutation(facilityId: facility.id, feedback: feedbackText)
         GraphQL.client.perform(mutation: feedbackMutation) { (result, error) in
             guard let success = result?.data?.addFeedback.success, error == nil && success else {
@@ -74,7 +116,7 @@ class ReportAnIssueTableViewController: UITableViewController {
             }
 
             self.textView?.text = ""
-            self.navigationItem.rightBarButtonItem = sender
+            self.navigationItem.rightBarButtonItem = self.sendFeedbackButton
 
             let successFeedback = UIAlertController(title: "Obrigado por nos ajudar a melhorar!", message: "Nossos voluntários irão analisar e endereçar sua reclamação.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
@@ -106,6 +148,11 @@ extension ReportAnIssueTableViewController {
         let identifier = "feedbackCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as UITableViewCell
         textView = cell.viewWithTag(100) as? UITextView
+
+        if isGeneralAppFeedback {
+            let disclaimer = cell.viewWithTag(200) as? UILabel
+            disclaimer?.text = "O que está achando do Descartaê?\nNos conta aí!"
+        }
 
         Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(ReportAnIssueTableViewController.animateFocus), userInfo: nil, repeats: false)
 

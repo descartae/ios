@@ -1,4 +1,5 @@
-platform :ios, '10.0'
+platform :ios, '10.3'
+inhibit_all_warnings!
 
 target 'Descartae' do
   use_frameworks!
@@ -13,6 +14,11 @@ target 'Descartae' do
   # UI
   pod 'BBBadgeBarButtonItem'
 
+  # Facebook
+  pod 'FBSDKCoreKit', '~> 4.29.0'
+  pod 'FBSDKLoginKit', '~> 4.29.0'
+  pod 'FBSDKShareKit', '~> 4.29.0'
+  
   target 'DescartaeTests' do
     inherit! :search_paths
   end

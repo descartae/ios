@@ -1,4 +1,4 @@
-mutation AddFeedback($facilityId: ID!, $feedback: String!) {
+mutation AddFeedback($facilityId: ID, $feedback: String!) {
     addFeedback(input:{
                 facility: $facilityId
                 contents: $feedback

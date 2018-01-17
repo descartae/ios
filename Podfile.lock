@@ -3,7 +3,19 @@ PODS:
     - Apollo/Core (= 0.7.0)
   - Apollo/Core (0.7.0)
   - BBBadgeBarButtonItem (1.2)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - CMMapLauncher (1.1.0)
+  - FBSDKCoreKit (4.29.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.29.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.29.0):
+    - FBSDKCoreKit
   - SDWebImage (4.2.1):
     - SDWebImage/Core (= 4.2.1)
   - SDWebImage/Core (4.2.1)
@@ -12,14 +24,21 @@ DEPENDENCIES:
   - Apollo (~> 0.7.0)
   - BBBadgeBarButtonItem
   - CMMapLauncher (~> 1.1.0)
+  - FBSDKCoreKit (~> 4.29.0)
+  - FBSDKLoginKit (~> 4.29.0)
+  - FBSDKShareKit (~> 4.29.0)
   - SDWebImage (~> 4)
 
 SPEC CHECKSUMS:
   Apollo: d6649ac06168660e70c6226c4eadfc0770791ba5
   BBBadgeBarButtonItem: c2fbca0bff18e21b70defc9438a8a5048008e7ca
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CMMapLauncher: 668b949522d1789506e3c8d9dbc1b0384ee20573
+  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
+  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
+  FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
   SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
 
-PODFILE CHECKSUM: 19785bc37a849f0f59dda57dcf9432c0d27bc1e2
+PODFILE CHECKSUM: a9aa3a71d0cac2016908e68b6650d951037e4e31
 
 COCOAPODS: 1.3.1

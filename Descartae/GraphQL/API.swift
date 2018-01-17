@@ -809,12 +809,12 @@ public final class AllFacilitiesQuery: GraphQLQuery {
 
 public final class AddFeedbackMutation: GraphQLMutation {
   public static let operationString =
-    "mutation AddFeedback($facilityId: ID!, $feedback: String!) {\n  addFeedback(input: {facility: $facilityId, contents: $feedback}) {\n    __typename\n    success\n  }\n}"
+    "mutation AddFeedback($facilityId: ID, $feedback: String!) {\n  addFeedback(input: {facility: $facilityId, contents: $feedback}) {\n    __typename\n    success\n  }\n}"
 
-  public var facilityId: GraphQLID
+  public var facilityId: GraphQLID?
   public var feedback: String
 
-  public init(facilityId: GraphQLID, feedback: String) {
+  public init(facilityId: GraphQLID? = nil, feedback: String) {
     self.facilityId = facilityId
     self.feedback = feedback
   }
