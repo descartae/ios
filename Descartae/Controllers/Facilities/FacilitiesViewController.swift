@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreLocation
-import BBBadgeBarButtonItem
 
 final class FacilitiesViewController: UIViewController {
 
     // MARK: Properties
+
+    static let identifier = String(describing: FacilitiesViewController.self)
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -28,20 +29,13 @@ final class FacilitiesViewController: UIViewController {
         return activityIndicator
     }()
 
-    var filterButton: BBBadgeBarButtonItem!
-    let locationManager = LocationManager.shared
-    var facilities: [DisposalFacility] = []
-    var wasteTypes: [WasteType] = []
-    var filteringByWasteTypes: [WasteType] = []
+    var dataManager = FacilitiesDataManager.shared
+
     var isLoading: Bool = true {
         didSet {
             if !isLoading { tableView.backgroundView = nil }
         }
     }
-
-    var allFacilitiesQuery: AllFacilitiesQuery = {
-        return AllFacilitiesQuery(quantity: 10)
-    }()
 
     // MARK: Life cycle
 
@@ -53,9 +47,8 @@ final class FacilitiesViewController: UIViewController {
             navigationItem.largeTitleDisplayMode = .always
         }
 
-        setupFilterButton()
+        addObservers()
         setupTableView()
-        setupLocationState()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,21 +59,11 @@ final class FacilitiesViewController: UIViewController {
         }
     }
 
-    // MARK: Initial setups
-
-    func setupFilterButton() {
-        let customButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        customButton.addTarget(self, action: #selector(presentFilterFacilities), for: .touchUpInside)
-        customButton.setImage(UIImage(named: "icFilter"), for: .normal)
-
-        filterButton = BBBadgeBarButtonItem(customUIButton: customButton)
-        filterButton.badgeMinSize = 16
-        filterButton.badgeFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
-        filterButton.badgePadding = 2
-        filterButton.badgeOriginX = 22
-        filterButton.badgeOriginY = 6
-        navigationItem.setRightBarButton(filterButton, animated: false)
+    deinit {
+        removeObservers()
     }
+
+    // MARK: Initial setups
 
     func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -92,98 +75,67 @@ final class FacilitiesViewController: UIViewController {
         tableView.refreshControl = refreshControl
     }
 
-    func setupLocationState() {
-        if locationManager.shouldAskForAuthorization {
-            // TODO: Setup ask permission state
-            locationManager.askForAuthorization()
-        }
+    func addObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(reloadFacilities), name: facilitiesDataUpdatedNotification, object: nil)
+    }
 
-        if locationManager.isLocationDenied {
-            // TODO: Setup location denied state
-        }
-
-        locationManager.onLocationUpdate { [weak self] in
-            self?.loadFacilities()
-        }
+    func removeObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: facilitiesDataUpdatedNotification, object: nil)
     }
 
     // MARK: Data handling
 
-    func loadFacilities() {
-        isLoading = true
+    @objc func reloadFacilities() {
         tableView.reloadData()
-
-        GraphQL.client.fetch(query: allFacilitiesQuery) { (result, error) in
-            self.isLoading = false
-
-            guard error == nil else {
-                print(error?.localizedDescription ?? "")
-                return
-            }
-
-            guard let centersQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
-                return
-            }
-
-            guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
-                return
-            }
-
-            self.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
-            self.facilities = centersQueryFragment.map({ $0.fragments.disposalFacility })
-            self.tableView.reloadData()
-        }
     }
 
     @objc func refreshFacilities() {
-        GraphQL.client.fetch(query: allFacilitiesQuery) { (result, error) in
-            self.refreshControl.endRefreshing()
-
-            guard error == nil else {
-                print(error?.localizedDescription ?? "")
-                return
-            }
-
-            guard let facilitiesQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
-                return
-            }
-
-            guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
-                return
-            }
-
-            self.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
-            self.facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
-            self.tableView.reloadData()
-        }
+//        GraphQL.client.fetch(query: allFacilitiesQuery) { (result, error) in
+//            self.refreshControl.endRefreshing()
+//
+//            guard error == nil else {
+//                print(error?.localizedDescription ?? "")
+//                return
+//            }
+//
+//            guard let facilitiesQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
+//                return
+//            }
+//
+//            guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
+//                return
+//            }
+//
+//            self.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
+//            self.facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
+//            self.tableView.reloadData()
+//        }
     }
 
     // MARK: Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let details = segue.destination as? FacilityDetailsTableViewController, let indexOfFacility = sender as? Int {
-            details.facility = facilities[indexOfFacility]
+            details.facility = dataManager.data.facilities[indexOfFacility]
         }
 
-        if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
-            filterFacilities.wasteTypes = wasteTypes
-            filterFacilities.wasteTypesToFilter = filteringByWasteTypes
-            filterFacilities.applyFilter = { wasteTypesToFilter in
-                self.filteringByWasteTypes = wasteTypesToFilter
-                self.filterButton.badgeValue = "\(self.filteringByWasteTypes.count)"
-                self.allFacilitiesQuery.typesOfWasteToFilter = self.filteringByWasteTypes.map {$0.id}
-                self.loadFacilities()
-            }
-        }
+//        if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
+//            filterFacilities.wasteTypes = wasteTypes
+//            filterFacilities.wasteTypesToFilter = filteringByWasteTypes
+//            filterFacilities.applyFilter = { wasteTypesToFilter in
+//                self.filteringByWasteTypes = wasteTypesToFilter
+//                self.filterButton.badgeValue = "\(self.filteringByWasteTypes.count)" // TODO: Update filter button
+//                self.allFacilitiesQuery.typesOfWasteToFilter = self.filteringByWasteTypes.map {$0.id}
+//                self.loadFacilities()
+//            }
+//        }
+//
+//        if let nav = segue.destination as? UINavigationController, let info = nav.childViewControllers[0] as? InfoTableViewController {
+//            info.wasteTypes = wasteTypes
+//        }
 
-        if let nav = segue.destination as? UINavigationController, let info = nav.childViewControllers[0] as? InfoTableViewController {
-            info.wasteTypes = wasteTypes
-        }
-
-    }
-
-    @objc func presentFilterFacilities() {
-        performSegue(withIdentifier: "presentFilterFacilities", sender: self)
     }
 
 }
@@ -193,17 +145,17 @@ final class FacilitiesViewController: UIViewController {
 extension FacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isLoading {
-            tableView.backgroundView = activityIndicator
-            return 0
-        }
+//        if isLoading {
+//            tableView.backgroundView = activityIndicator
+//            return 0
+//        }
 
-        return facilities.count
+        return dataManager.data.facilities.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let facilityCell = tableView.dequeueReusableCell(withIdentifier: FacilityTableViewCell.identifier, for: indexPath) as? FacilityTableViewCell {
-            facilityCell.facility = facilities[indexPath.row]
+            facilityCell.facility = dataManager.data.facilities[indexPath.row]
 
             return facilityCell
         }

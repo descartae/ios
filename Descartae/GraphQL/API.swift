@@ -57,24 +57,24 @@ public enum DayOfWeek: RawRepresentable, Equatable, Apollo.JSONDecodable, Apollo
 
 public final class AllFacilitiesQuery: GraphQLQuery {
   public static let operationString =
-    "query allFacilities($quantity: Int!, $next: Cursor, $prev: Cursor, $typesOfWasteToFilter: [ID]) {\n  typesOfWaste {\n    __typename\n    ...WasteType\n  }\n  facilities(filters: {cursor: {after: $next, before: $prev, quantity: $quantity}, hasTypesOfWaste: $typesOfWasteToFilter}) {\n    __typename\n    cursors {\n      __typename\n      after\n      before\n    }\n    items {\n      __typename\n      ...DisposalFacility\n    }\n  }\n}"
+    "query allFacilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWasteToFilter: [ID]) {\n  typesOfWaste {\n    __typename\n    ...WasteType\n  }\n  facilities(filters: {cursor: {after: $after, before: $before, quantity: $quantity}, hasTypesOfWaste: $typesOfWasteToFilter}) {\n    __typename\n    cursors {\n      __typename\n      after\n      before\n    }\n    items {\n      __typename\n      ...DisposalFacility\n    }\n  }\n}"
 
   public static var requestString: String { return operationString.appending(WasteType.fragmentString).appending(DisposalFacility.fragmentString) }
 
   public var quantity: Int
-  public var next: String?
-  public var prev: String?
+  public var after: String?
+  public var before: String?
   public var typesOfWasteToFilter: [GraphQLID?]?
 
-  public init(quantity: Int, next: String? = nil, prev: String? = nil, typesOfWasteToFilter: [GraphQLID?]? = nil) {
+  public init(quantity: Int, after: String? = nil, before: String? = nil, typesOfWasteToFilter: [GraphQLID?]? = nil) {
     self.quantity = quantity
-    self.next = next
-    self.prev = prev
+    self.after = after
+    self.before = before
     self.typesOfWasteToFilter = typesOfWasteToFilter
   }
 
   public var variables: GraphQLMap? {
-    return ["quantity": quantity, "next": next, "prev": prev, "typesOfWasteToFilter": typesOfWasteToFilter]
+    return ["quantity": quantity, "after": after, "before": before, "typesOfWasteToFilter": typesOfWasteToFilter]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -82,7 +82,7 @@ public final class AllFacilitiesQuery: GraphQLQuery {
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("typesOfWaste", type: .list(.object(TypesOfWaste.selections))),
-      GraphQLField("facilities", arguments: ["filters": ["cursor": ["after": GraphQLVariable("next"), "before": GraphQLVariable("prev"), "quantity": GraphQLVariable("quantity")], "hasTypesOfWaste": GraphQLVariable("typesOfWasteToFilter")]], type: .object(Facility.selections)),
+      GraphQLField("facilities", arguments: ["filters": ["cursor": ["after": GraphQLVariable("after"), "before": GraphQLVariable("before"), "quantity": GraphQLVariable("quantity")], "hasTypesOfWaste": GraphQLVariable("typesOfWasteToFilter")]], type: .object(Facility.selections)),
     ]
 
     public var snapshot: Snapshot
