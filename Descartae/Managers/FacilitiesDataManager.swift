@@ -65,13 +65,8 @@ class FacilitiesDataManager {
             return
         }
 
-        guard let facilitiesQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
-            return
-        }
-
-        guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
-            return
-        }
+        let facilitiesQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] ?? []
+        let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] ?? []
 
         self.data.after = result?.data?.facilities?.cursors.after
         self.data.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })

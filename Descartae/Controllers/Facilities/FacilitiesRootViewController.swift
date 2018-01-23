@@ -8,6 +8,7 @@
 
 import UIKit
 import BBBadgeBarButtonItem
+import SVProgressHUD
 
 class FacilitiesRootViewController: UIViewController {
 
@@ -39,6 +40,7 @@ class FacilitiesRootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupLoadingStyle()
         setupLocationState()
         setupFilterButton()
         configureContainer(withViewController: facilitiesViewController)
@@ -57,8 +59,20 @@ class FacilitiesRootViewController: UIViewController {
         }
 
         locationManager.onLocationUpdate { [weak self] in
-            self?.dataManager.loadData(completionHandler: nil)
+            SVProgressHUD.show()
+            self?.dataManager.loadData(completionHandler: { (_) in
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+            })
         }
+    }
+
+    func setupLoadingStyle() {
+        var navigationBarOffset: CGFloat = navigationController?.navigationBar.bounds.height ?? 0
+        navigationBarOffset = navigationBarOffset == 0 ? 0 : navigationBarOffset - 42
+        SVProgressHUD.setOffsetFromCenter(UIOffset(horizontal: 0, vertical: navigationBarOffset))
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
     }
 
     func setupFilterButton() {
@@ -97,7 +111,12 @@ class FacilitiesRootViewController: UIViewController {
             filterFacilities.applyFilter = { wasteTypesToFilter in
                 self.dataManager.data.filteringByWasteTypes = wasteTypesToFilter
                 self.filterButton.badgeValue = "\(self.dataManager.data.filteringByWasteTypes.count)"
-                self.dataManager.loadData(completionHandler: nil)
+                SVProgressHUD.show()
+                self.dataManager.loadData(completionHandler: { (_) in
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                    }
+                })
             }
         }
 
