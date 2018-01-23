@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class WasteTypesViewController: UIViewController {
 
@@ -14,7 +15,7 @@ class WasteTypesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var wasteTypes: [WasteType] = []
+    var wasteTypes: [WasteType] = DataManager.shared.data.wasteTypes
 
     // MARK: Life cycle
 
@@ -26,6 +27,18 @@ class WasteTypesViewController: UIViewController {
         }
 
         setupTableView()
+
+        if wasteTypes.count == 0 {
+            SVProgressHUD.show()
+            DataManager.shared.loadData(wasteTypesOnly: true, completionHandler: { (error) in
+                self.wasteTypes = DataManager.shared.data.wasteTypes
+
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    SVProgressHUD.dismiss()
+                }
+            })
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

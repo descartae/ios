@@ -111,10 +111,6 @@ class FacilitiesRootViewController: UIViewController {
             }
         }
 
-        if let nav = segue.destination as? UINavigationController, let info = nav.childViewControllers[0] as? InfoTableViewController {
-            info.wasteTypes = dataManager.data.wasteTypes
-        }
-
     }
 
     func configureContainer(withViewController viewController: UIViewController) {

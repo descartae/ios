@@ -145,11 +145,6 @@ final class FacilitiesViewController: UIViewController {
 extension FacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if isLoading {
-//            tableView.backgroundView = activityIndicator
-//            return 0
-//        }
-
         return dataManager.data.facilities.count
     }
 

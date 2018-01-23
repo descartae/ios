@@ -19,8 +19,6 @@ class InfoTableViewController: UITableViewController {
     let aboutPage = "https://descartae.com/sobre"
     let shareURL = "https://descartae.com/"
 
-    var wasteTypes: [WasteType]!
-
     // MARK: Life cycle
 
     override func viewDidLoad() {
@@ -79,10 +77,6 @@ class InfoTableViewController: UITableViewController {
         if let reportAnIssueNav = segue.destination as? ReportAnIssueNavigationController,
                 let reportAnIssue = reportAnIssueNav.childViewControllers[0] as? ReportAnIssueTableViewController {
             reportAnIssue.isGeneralAppFeedback = true
-        }
-
-        if let wasteTypeViewController = segue.destination as? WasteTypesViewController {
-            wasteTypeViewController.wasteTypes = wasteTypes
         }
     }
 

@@ -29,7 +29,6 @@ class DataManager {
     static let shared: DataManager = DataManager()
 
     private let quantity: Int = 10
-    var isLoading = false
     var data = DataStore()
 
     lazy private var firstPageQuery: FacilitiesQuery = {
@@ -40,18 +39,26 @@ class DataManager {
         return FacilitiesQuery(quantity: quantity)
     }()
 
+    lazy private var wasteTypesQuery = WasteTypesQuery()
+
     // MARK: Init
 
     private init() { }
 
     // MARK: Data fetching
 
-    func loadData(completionHandler: ((_ error: Error?) -> Void)?) {
+    func loadData(wasteTypesOnly: Bool = false, completionHandler: ((_ error: Error?) -> Void)? = nil) {
+        if wasteTypesOnly {
+            GraphQL.client.fetch(query: wasteTypesQuery, resultHandler: { (result, error) in
+                self.handleWasteTypesQueryFetch(result, error, completionHandler)
+            })
+
+            return
+        }
+
         firstPageQuery.typesOfWasteToFilter = self.data.filteringByWasteTypes.map {$0.id}
-        isLoading = true
         GraphQL.client.fetch(query: firstPageQuery) { (result, error) in
-            self.isLoading = false
-            self.handleFetchResponse(result, error, completionHandler, isLoadingMoreData: false)
+            self.handleFacilitiesQueryFetch(result, error, completionHandler, isLoadingMoreData: false)
         }
     }
 
@@ -64,11 +71,11 @@ class DataManager {
         nextPageQuery.typesOfWasteToFilter = firstPageQuery.typesOfWasteToFilter
         nextPageQuery.after = data.after
         GraphQL.client.fetch(query: nextPageQuery) { (result, error) in
-            self.handleFetchResponse(result, error, completionHandler, isLoadingMoreData: true)
+            self.handleFacilitiesQueryFetch(result, error, completionHandler, isLoadingMoreData: true)
         }
     }
 
-    private func handleFetchResponse(_ result: GraphQLResult<FacilitiesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?, isLoadingMoreData: Bool) {
+    private func handleFacilitiesQueryFetch(_ result: GraphQLResult<FacilitiesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?, isLoadingMoreData: Bool) {
         guard error == nil else {
             completionHandler?(error)
             return
@@ -86,6 +93,18 @@ class DataManager {
         } else {
             self.data.facilities = facilities
         }
+
+        completionHandler?(error)
+    }
+
+    private func handleWasteTypesQueryFetch(_ result: GraphQLResult<WasteTypesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?) {
+        guard error == nil else {
+            completionHandler?(error)
+            return
+        }
+
+        let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [WasteTypesQuery.Data.TypesOfWaste] ?? []
+        self.data.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
 
         completionHandler?(error)
     }
