@@ -44,7 +44,7 @@ class FacilitiesRootViewController: UIViewController {
             navigationController?.navigationItem.largeTitleDisplayMode = .always
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-        
+
         setupLoadingStyle()
         setupLocationState()
         setupFilterButton()
@@ -76,6 +76,7 @@ class FacilitiesRootViewController: UIViewController {
     func setupLoadingStyle() {
         var navigationBarOffset: CGFloat = navigationController?.navigationBar.bounds.height ?? 0
         navigationBarOffset = navigationBarOffset == 0 ? 0 : navigationBarOffset - 42
+        SVProgressHUD.setForegroundColor(AppearanceManager.tintColor)
         SVProgressHUD.setOffsetFromCenter(UIOffset(horizontal: 0, vertical: navigationBarOffset))
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
     }
