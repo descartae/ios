@@ -106,17 +106,8 @@ class FacilitiesRootViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
-            filterFacilities.wasteTypes = self.dataManager.data.wasteTypes
-            filterFacilities.wasteTypesToFilter = self.dataManager.data.filteringByWasteTypes
-            filterFacilities.applyFilter = { wasteTypesToFilter in
-                self.dataManager.data.filteringByWasteTypes = wasteTypesToFilter
+            filterFacilities.updateFilterIconBadge = {
                 self.filterButton.badgeValue = "\(self.dataManager.data.filteringByWasteTypes.count)"
-                SVProgressHUD.show()
-                self.dataManager.loadData(completionHandler: { (_) in
-                    DispatchQueue.main.async {
-                        SVProgressHUD.dismiss()
-                    }
-                })
             }
         }
 

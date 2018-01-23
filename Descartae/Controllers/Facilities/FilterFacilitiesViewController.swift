@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FilterFacilitiesViewController: UIViewController {
 
@@ -14,9 +15,9 @@ class FilterFacilitiesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var wasteTypes: [WasteType] = []
-    var wasteTypesToFilter: [WasteType] = []
-    var applyFilter: ((_ wasteTypesToFilter: [WasteType]) -> Void)?
+    var wasteTypes: [WasteType] = DataManager.shared.data.wasteTypes
+    var wasteTypesToFilter: [WasteType] = DataManager.shared.data.filteringByWasteTypes
+    var updateFilterIconBadge: (() -> Void)?
 
     // MARK: Life cycle
 
@@ -46,7 +47,16 @@ class FilterFacilitiesViewController: UIViewController {
     // MARK: Actions
 
     @objc func applySelection() {
-        applyFilter?(wasteTypesToFilter)
+        DataManager.shared.data.filteringByWasteTypes = wasteTypesToFilter
+        updateFilterIconBadge?()
+
+        SVProgressHUD.show()
+        DataManager.shared.loadData(completionHandler: { (_) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+        })
+
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 

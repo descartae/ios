@@ -13,9 +13,3 @@ query facilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWaste
         }
     }
 }
-
-query typesOfWaste {
-    typesOfWaste {
-        ...WasteType
-    }
-}
