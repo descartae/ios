@@ -31,12 +31,6 @@ final class FacilitiesViewController: UIViewController {
 
     var dataManager = DataManager.shared
 
-    var isLoading: Bool = true {
-        didSet {
-            if !isLoading { tableView.backgroundView = nil }
-        }
-    }
-
     // MARK: Life cycle
 
     override func viewDidLoad() {
