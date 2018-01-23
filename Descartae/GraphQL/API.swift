@@ -55,9 +55,92 @@ public enum DayOfWeek: RawRepresentable, Equatable, Apollo.JSONDecodable, Apollo
   }
 }
 
-public final class AllFacilitiesQuery: GraphQLQuery {
+public final class AddFeedbackMutation: GraphQLMutation {
   public static let operationString =
-    "query allFacilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWasteToFilter: [ID]) {\n  typesOfWaste {\n    __typename\n    ...WasteType\n  }\n  facilities(filters: {cursor: {after: $after, before: $before, quantity: $quantity}, hasTypesOfWaste: $typesOfWasteToFilter}) {\n    __typename\n    cursors {\n      __typename\n      after\n      before\n    }\n    items {\n      __typename\n      ...DisposalFacility\n    }\n  }\n}"
+    "mutation AddFeedback($facilityId: ID, $feedback: String!) {\n  addFeedback(input: {facility: $facilityId, contents: $feedback}) {\n    __typename\n    success\n  }\n}"
+
+  public var facilityId: GraphQLID?
+  public var feedback: String
+
+  public init(facilityId: GraphQLID? = nil, feedback: String) {
+    self.facilityId = facilityId
+    self.feedback = feedback
+  }
+
+  public var variables: GraphQLMap? {
+    return ["facilityId": facilityId, "feedback": feedback]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("addFeedback", arguments: ["input": ["facility": GraphQLVariable("facilityId"), "contents": GraphQLVariable("feedback")]], type: .nonNull(.object(AddFeedback.selections))),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(addFeedback: AddFeedback) {
+      self.init(snapshot: ["__typename": "Mutation", "addFeedback": addFeedback.snapshot])
+    }
+
+    /// Creates a new feedback entry
+    public var addFeedback: AddFeedback {
+      get {
+        return AddFeedback(snapshot: snapshot["addFeedback"]! as! Snapshot)
+      }
+      set {
+        snapshot.updateValue(newValue.snapshot, forKey: "addFeedback")
+      }
+    }
+
+    public struct AddFeedback: GraphQLSelectionSet {
+      public static let possibleTypes = ["AddFeedbackPayload"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("success", type: .nonNull(.scalar(Bool.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(success: Bool) {
+        self.init(snapshot: ["__typename": "AddFeedbackPayload", "success": success])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// Indicates whether the operation was successful
+      public var success: Bool {
+        get {
+          return snapshot["success"]! as! Bool
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "success")
+        }
+      }
+    }
+  }
+}
+
+public final class FacilitiesQuery: GraphQLQuery {
+  public static let operationString =
+    "query facilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWasteToFilter: [ID]) {\n  typesOfWaste {\n    __typename\n    ...WasteType\n  }\n  facilities(filters: {cursor: {after: $after, before: $before, quantity: $quantity}, hasTypesOfWaste: $typesOfWasteToFilter}) {\n    __typename\n    cursors {\n      __typename\n      after\n      before\n    }\n    items {\n      __typename\n      ...DisposalFacility\n    }\n  }\n}"
 
   public static var requestString: String { return operationString.appending(WasteType.fragmentString).appending(DisposalFacility.fragmentString) }
 
@@ -807,27 +890,20 @@ public final class AllFacilitiesQuery: GraphQLQuery {
   }
 }
 
-public final class AddFeedbackMutation: GraphQLMutation {
+public final class TypesOfWasteQuery: GraphQLQuery {
   public static let operationString =
-    "mutation AddFeedback($facilityId: ID, $feedback: String!) {\n  addFeedback(input: {facility: $facilityId, contents: $feedback}) {\n    __typename\n    success\n  }\n}"
+    "query typesOfWaste {\n  typesOfWaste {\n    __typename\n    ...WasteType\n  }\n}"
 
-  public var facilityId: GraphQLID?
-  public var feedback: String
+  public static var requestString: String { return operationString.appending(WasteType.fragmentString) }
 
-  public init(facilityId: GraphQLID? = nil, feedback: String) {
-    self.facilityId = facilityId
-    self.feedback = feedback
-  }
-
-  public var variables: GraphQLMap? {
-    return ["facilityId": facilityId, "feedback": feedback]
+  public init() {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Mutation"]
+    public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("addFeedback", arguments: ["input": ["facility": GraphQLVariable("facilityId"), "contents": GraphQLVariable("feedback")]], type: .nonNull(.object(AddFeedback.selections))),
+      GraphQLField("typesOfWaste", type: .list(.object(TypesOfWaste.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -836,26 +912,30 @@ public final class AddFeedbackMutation: GraphQLMutation {
       self.snapshot = snapshot
     }
 
-    public init(addFeedback: AddFeedback) {
-      self.init(snapshot: ["__typename": "Mutation", "addFeedback": addFeedback.snapshot])
+    public init(typesOfWaste: [TypesOfWaste?]? = nil) {
+      self.init(snapshot: ["__typename": "Query", "typesOfWaste": typesOfWaste.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
     }
 
-    /// Creates a new feedback entry
-    public var addFeedback: AddFeedback {
+    /// All the types of waste that a facility can receive
+    public var typesOfWaste: [TypesOfWaste?]? {
       get {
-        return AddFeedback(snapshot: snapshot["addFeedback"]! as! Snapshot)
+        return (snapshot["typesOfWaste"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { TypesOfWaste(snapshot: $0) } } }
       }
       set {
-        snapshot.updateValue(newValue.snapshot, forKey: "addFeedback")
+        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "typesOfWaste")
       }
     }
 
-    public struct AddFeedback: GraphQLSelectionSet {
-      public static let possibleTypes = ["AddFeedbackPayload"]
+    public struct TypesOfWaste: GraphQLSelectionSet {
+      public static let possibleTypes = ["TypeOfWaste"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("success", type: .nonNull(.scalar(Bool.self))),
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        GraphQLField("description", type: .nonNull(.scalar(String.self))),
+        GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
       ]
 
       public var snapshot: Snapshot
@@ -864,8 +944,8 @@ public final class AddFeedbackMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(success: Bool) {
-        self.init(snapshot: ["__typename": "AddFeedbackPayload", "success": success])
+      public init(id: GraphQLID, name: String, description: String, icons: Icon) {
+        self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "icons": icons.snapshot])
       }
 
       public var __typename: String {
@@ -877,13 +957,121 @@ public final class AddFeedbackMutation: GraphQLMutation {
         }
       }
 
-      /// Indicates whether the operation was successful
-      public var success: Bool {
+      public var id: GraphQLID {
         get {
-          return snapshot["success"]! as! Bool
+          return snapshot["_id"]! as! GraphQLID
         }
         set {
-          snapshot.updateValue(newValue, forKey: "success")
+          snapshot.updateValue(newValue, forKey: "_id")
+        }
+      }
+
+      /// The user-readable type name
+      public var name: String {
+        get {
+          return snapshot["name"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      /// The user-readable type description
+      public var description: String {
+        get {
+          return snapshot["description"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      /// The icons for this type
+      public var icons: Icon {
+        get {
+          return Icon(snapshot: snapshot["icons"]! as! Snapshot)
+        }
+        set {
+          snapshot.updateValue(newValue.snapshot, forKey: "icons")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(snapshot: snapshot)
+        }
+        set {
+          snapshot += newValue.snapshot
+        }
+      }
+
+      public struct Fragments {
+        public var snapshot: Snapshot
+
+        public var wasteType: WasteType {
+          get {
+            return WasteType(snapshot: snapshot)
+          }
+          set {
+            snapshot += newValue.snapshot
+          }
+        }
+      }
+
+      public struct Icon: GraphQLSelectionSet {
+        public static let possibleTypes = ["IconSet"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("iosSmallURL", type: .nonNull(.scalar(String.self))),
+          GraphQLField("iosMediumURL", type: .nonNull(.scalar(String.self))),
+          GraphQLField("iosLargeURL", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(iosSmallUrl: String, iosMediumUrl: String, iosLargeUrl: String) {
+          self.init(snapshot: ["__typename": "IconSet", "iosSmallURL": iosSmallUrl, "iosMediumURL": iosMediumUrl, "iosLargeURL": iosLargeUrl])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var iosSmallUrl: String {
+          get {
+            return snapshot["iosSmallURL"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "iosSmallURL")
+          }
+        }
+
+        public var iosMediumUrl: String {
+          get {
+            return snapshot["iosMediumURL"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "iosMediumURL")
+          }
+        }
+
+        public var iosLargeUrl: String {
+          get {
+            return snapshot["iosLargeURL"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "iosLargeURL")
+          }
         }
       }
     }

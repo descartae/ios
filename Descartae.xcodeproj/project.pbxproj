@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		92C666CA557B3658A306718A /* Pods_Descartae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D1CC5D04C543BF4E6ABEA0 /* Pods_Descartae.framework */; };
 		9909ABD01FD049F00072B0E4 /* WasteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9909ABCF1FD049F00072B0E4 /* WasteType.swift */; };
-		990A1DCC1FC384EE00DD5D81 /* FacilitiesViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DCB1FC384EE00DD5D81 /* FacilitiesViewController.graphql */; };
+		990A1DCC1FC384EE00DD5D81 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990A1DCB1FC384EE00DD5D81 /* Queries.graphql */; };
 		990A1DCE1FC3870300DD5D81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCD1FC3870300DD5D81 /* API.swift */; };
 		990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */; };
 		990A1DD81FC3A8B400DD5D81 /* DisposalFacility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */; };
@@ -18,7 +18,7 @@
 		993D7E612014056A005653A8 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D7E602014056A005653A8 /* UIStoryboardExtension.swift */; };
 		993D7E63201409EA005653A8 /* FacilitiesMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D7E62201409EA005653A8 /* FacilitiesMapViewController.swift */; };
 		994242101FCE19E10095623C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942420F1FCE19E10095623C /* LocationManager.swift */; };
-		994415911FD6F3FF0036F84E /* DisposalFacilityFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */; };
+		994415911FD6F3FF0036F84E /* Fragments.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 994415901FD6F3FF0036F84E /* Fragments.graphql */; };
 		9946708B200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9946708A200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib */; };
 		9946708D200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */; };
 		99467094200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */; };
@@ -33,12 +33,12 @@
 		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
 		99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */; };
 		99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */; };
-		99890CD7200674D4000D9B44 /* FacilityDetailsTableViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 99890CD6200674D4000D9B44 /* FacilityDetailsTableViewController.graphql */; };
+		99890CD7200674D4000D9B44 /* Mutations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 99890CD6200674D4000D9B44 /* Mutations.graphql */; };
 		99890CD9200676A4000D9B44 /* ReportAnIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */; };
 		99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */; };
 		99895A141FDF064200615D65 /* TypesOfWastePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */; };
 		99895A161FDF1C4500615D65 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A151FDF1C4500615D65 /* AppearanceManager.swift */; };
-		9999517720165D110039FCB6 /* FacilitiesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9999517620165D110039FCB6 /* FacilitiesDataManager.swift */; };
+		9999517720165D110039FCB6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9999517620165D110039FCB6 /* DataManager.swift */; };
 		999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */; };
 		999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A11FDC68720018CF18 /* OpenHour.swift */; };
 		999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A31FDC6DE70018CF18 /* Location.swift */; };
@@ -83,7 +83,7 @@
 		3C63AE71BB3E1D3BC86EC84B /* Pods-Descartae.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.debug.xcconfig"; sourceTree = "<group>"; };
 		6B447C51D3764D57B321E8EF /* Pods-DescartaeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DescartaeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DescartaeUITests/Pods-DescartaeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9909ABCF1FD049F00072B0E4 /* WasteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasteType.swift; sourceTree = "<group>"; };
-		990A1DCB1FC384EE00DD5D81 /* FacilitiesViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FacilitiesViewController.graphql; sourceTree = "<group>"; };
+		990A1DCB1FC384EE00DD5D81 /* Queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
 		990A1DCD1FC3870300DD5D81 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
 		990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalFacility.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		993D7E602014056A005653A8 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
 		993D7E62201409EA005653A8 /* FacilitiesMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesMapViewController.swift; sourceTree = "<group>"; };
 		9942420F1FCE19E10095623C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DisposalFacilityFragment.graphql; sourceTree = "<group>"; };
+		994415901FD6F3FF0036F84E /* Fragments.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Fragments.graphql; sourceTree = "<group>"; };
 		9946708A200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeOfWasteFilterTableViewCell.xib; sourceTree = "<group>"; };
 		9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteFilterTableViewCell.swift; sourceTree = "<group>"; };
 		99467093200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterWasteTypesSectionFooter.xib; sourceTree = "<group>"; };
@@ -107,12 +107,12 @@
 		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsTableViewController.swift; sourceTree = "<group>"; };
 		99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTodayTableViewCell.xib; sourceTree = "<group>"; };
-		99890CD6200674D4000D9B44 /* FacilityDetailsTableViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FacilityDetailsTableViewController.graphql; sourceTree = "<group>"; };
+		99890CD6200674D4000D9B44 /* Mutations.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mutations.graphql; sourceTree = "<group>"; };
 		99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueTableViewController.swift; sourceTree = "<group>"; };
 		99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteCollectionViewCell.swift; sourceTree = "<group>"; };
 		99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfWastePreviewViewController.swift; sourceTree = "<group>"; };
 		99895A151FDF1C4500615D65 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
-		9999517620165D110039FCB6 /* FacilitiesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesDataManager.swift; sourceTree = "<group>"; };
+		9999517620165D110039FCB6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		999CD4A11FDC68720018CF18 /* OpenHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHour.swift; sourceTree = "<group>"; };
 		999CD4A31FDC6DE70018CF18 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -193,9 +193,9 @@
 			children = (
 				990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */,
 				990A1DCD1FC3870300DD5D81 /* API.swift */,
-				990A1DCB1FC384EE00DD5D81 /* FacilitiesViewController.graphql */,
-				994415901FD6F3FF0036F84E /* DisposalFacilityFragment.graphql */,
-				99890CD6200674D4000D9B44 /* FacilityDetailsTableViewController.graphql */,
+				990A1DCB1FC384EE00DD5D81 /* Queries.graphql */,
+				994415901FD6F3FF0036F84E /* Fragments.graphql */,
+				99890CD6200674D4000D9B44 /* Mutations.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 			children = (
 				9942420F1FCE19E10095623C /* LocationManager.swift */,
 				99895A151FDF1C4500615D65 /* AppearanceManager.swift */,
-				9999517620165D110039FCB6 /* FacilitiesDataManager.swift */,
+				9999517620165D110039FCB6 /* DataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -509,10 +509,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */,
-				990A1DCC1FC384EE00DD5D81 /* FacilitiesViewController.graphql in Resources */,
+				990A1DCC1FC384EE00DD5D81 /* Queries.graphql in Resources */,
 				999CD4A61FDC742E0018CF18 /* ContactTableViewCell.xib in Resources */,
-				99890CD7200674D4000D9B44 /* FacilityDetailsTableViewController.graphql in Resources */,
-				994415911FD6F3FF0036F84E /* DisposalFacilityFragment.graphql in Resources */,
+				99890CD7200674D4000D9B44 /* Mutations.graphql in Resources */,
+				994415911FD6F3FF0036F84E /* Fragments.graphql in Resources */,
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
 				99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */,
 				9946708B200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib in Resources */,
@@ -764,7 +764,7 @@
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */,
 				9946708D200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift in Sources */,
-				9999517720165D110039FCB6 /* FacilitiesDataManager.swift in Sources */,
+				9999517720165D110039FCB6 /* DataManager.swift in Sources */,
 				99F7BE171FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift in Sources */,
 				999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,

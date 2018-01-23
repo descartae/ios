@@ -9,33 +9,42 @@
 import Foundation
 import Apollo
 
-let facilitiesDataUpdatedNotification = NSNotification.Name(rawValue: "facilitiesDataUpdatedNotification")
+let facilitiesDataUpdated = NSNotification.Name(rawValue: "facilitiesDataUpdatedNotification")
 
-struct FacilitiesData {
+struct DataStore {
     var wasteTypes: [WasteType] = []
     var filteringByWasteTypes: [WasteType] = []
     var facilities: [DisposalFacility] = [] {
         didSet {
-            NotificationCenter.default.post(name: facilitiesDataUpdatedNotification, object: nil)
+            NotificationCenter.default.post(name: facilitiesDataUpdated, object: nil)
         }
     }
     var after: String?
 }
 
-class FacilitiesDataManager {
+class DataManager {
 
-    static let shared: FacilitiesDataManager = FacilitiesDataManager()
+    // MARK: Properties
+
+    static let shared: DataManager = DataManager()
 
     private let quantity: Int = 10
     var isLoading = false
-    var data = FacilitiesData()
+    var data = DataStore()
 
-    lazy private var firstPageQuery: AllFacilitiesQuery = {
-        return AllFacilitiesQuery(quantity: quantity)
+    lazy private var firstPageQuery: FacilitiesQuery = {
+        return FacilitiesQuery(quantity: quantity)
     }()
-    lazy private var nextPageQuery: AllFacilitiesQuery = {
-        return AllFacilitiesQuery(quantity: quantity)
+
+    lazy private var nextPageQuery: FacilitiesQuery = {
+        return FacilitiesQuery(quantity: quantity)
     }()
+
+    // MARK: Init
+
+    private init() { }
+
+    // MARK: Data fetching
 
     func loadData(completionHandler: ((_ error: Error?) -> Void)?) {
         firstPageQuery.typesOfWasteToFilter = self.data.filteringByWasteTypes.map {$0.id}
@@ -59,14 +68,14 @@ class FacilitiesDataManager {
         }
     }
 
-    private func handleFetchResponse(_ result: GraphQLResult<AllFacilitiesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?, isLoadingMoreData: Bool) {
+    private func handleFetchResponse(_ result: GraphQLResult<FacilitiesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?, isLoadingMoreData: Bool) {
         guard error == nil else {
             completionHandler?(error)
             return
         }
 
-        let facilitiesQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] ?? []
-        let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] ?? []
+        let facilitiesQueryFragment = result?.data?.facilities?.items as? [FacilitiesQuery.Data.Facility.Item] ?? []
+        let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [FacilitiesQuery.Data.TypesOfWaste] ?? []
 
         self.data.after = result?.data?.facilities?.cursors.after
         self.data.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })

@@ -1,4 +1,4 @@
-query allFacilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWasteToFilter: [ID]) {
+query facilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWasteToFilter: [ID]) {
     typesOfWaste {
         ...WasteType
     }
@@ -11,5 +11,11 @@ query allFacilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWa
         items {
             ...DisposalFacility
         }
+    }
+}
+
+query typesOfWaste {
+    typesOfWaste {
+        ...WasteType
     }
 }

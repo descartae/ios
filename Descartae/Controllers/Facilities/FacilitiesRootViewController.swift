@@ -32,7 +32,7 @@ class FacilitiesRootViewController: UIViewController {
         return facilitiesMap
     }()
 
-    var dataManager = FacilitiesDataManager.shared
+    var dataManager = DataManager.shared
     let locationManager = LocationManager.shared
 
     // MARK: Life cycle

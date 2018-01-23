@@ -29,7 +29,7 @@ final class FacilitiesViewController: UIViewController {
         return activityIndicator
     }()
 
-    var dataManager = FacilitiesDataManager.shared
+    var dataManager = DataManager.shared
 
     var isLoading: Bool = true {
         didSet {
@@ -77,12 +77,12 @@ final class FacilitiesViewController: UIViewController {
 
     func addObservers() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(reloadFacilities), name: facilitiesDataUpdatedNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(reloadFacilities), name: facilitiesDataUpdated, object: nil)
     }
 
     func removeObservers() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.removeObserver(self, name: facilitiesDataUpdatedNotification, object: nil)
+        notificationCenter.removeObserver(self, name: facilitiesDataUpdated, object: nil)
     }
 
     // MARK: Data handling
