@@ -36,11 +36,6 @@ final class FacilitiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-            navigationItem.largeTitleDisplayMode = .always
-        }
-
         addObservers()
         setupTableView()
     }
@@ -86,7 +81,12 @@ final class FacilitiesViewController: UIViewController {
     }
 
     @objc func refreshFacilities() {
-        // TODO: Refresh
+        dataManager.loadData { _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
 
     // MARK: Navigation

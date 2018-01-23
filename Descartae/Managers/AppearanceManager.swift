@@ -13,6 +13,7 @@ struct AppearanceManager {
 
     static func setupAppearance() {
         UINavigationBar.appearance().tintColor = UIColor(red: 74/255, green: 205/255, blue: 4/255, alpha: 1)
+        UINavigationBar.appearance().barTintColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
     }
 
 }

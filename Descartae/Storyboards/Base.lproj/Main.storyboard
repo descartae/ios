@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yCu-fo-wmA">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="FacilitiesMapViewController" id="OyP-17-3b8" customClass="FacilitiesMapViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y9B-VG-nrp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-JY-c9V">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -32,71 +36,28 @@
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="-271.21439280359823"/>
         </scene>
-        <!--Pontos de coleta-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="FacilitiesViewController" id="BYZ-38-t0r" customClass="FacilitiesViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uEY-mN-f6q">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="kGU-Np-4UM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rWK-I9-WQF"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="wVq-Zu-qau"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="uEY-mN-f6q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ad2-aa-zP5"/>
-                            <constraint firstItem="uEY-mN-f6q" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dCf-zx-dNf"/>
-                            <constraint firstItem="uEY-mN-f6q" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="r4r-0m-I5W"/>
-                            <constraint firstItem="uEY-mN-f6q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sqF-dI-Tzg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Pontos de coleta" id="3Es-kd-Jh1">
-                        <barButtonItem key="backBarButtonItem" title="Voltar" id="5bl-jk-uPN"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="uEY-mN-f6q" id="Zgv-e9-xpq"/>
-                        <segue destination="zcR-Th-Wt6" kind="show" identifier="showFacilityDetails" id="l4M-qR-c2c"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="465.51724137931041"/>
-        </scene>
         <!--Detalhes-->
         <scene sceneID="kZx-YP-TZe">
             <objects>
                 <tableViewController title="Detalhes" id="zcR-Th-Wt6" customClass="FacilityDetailsTableViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QCS-XE-iDd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2yq-8H-FVk">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="516"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="516"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-Uy-V5B">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="UvO-lN-Z57"/>
                                     </constraints>
                                 </mapView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ponto de coleta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qez-wA-qvM">
-                                    <rect key="frame" x="16" y="232" width="568" height="25"/>
+                                    <rect key="frame" x="16" y="232" width="343" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="8I2-F5-a7K"/>
                                     </constraints>
@@ -105,7 +66,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Av. Ipiranga, 30190" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3b-i7-6Sd">
-                                    <rect key="frame" x="16" y="265" width="568" height="18"/>
+                                    <rect key="frame" x="16" y="265" width="343" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="Sg3-Uy-Bux"/>
                                     </constraints>
@@ -114,7 +75,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resíduos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyk-Wr-RFa">
-                                    <rect key="frame" x="16" y="415" width="568" height="20"/>
+                                    <rect key="frame" x="16" y="415" width="343" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="bUJ-aO-8lY"/>
                                     </constraints>
@@ -123,7 +84,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4f-DZ-nyC">
-                                    <rect key="frame" x="16" y="307" width="568" height="59"/>
+                                    <rect key="frame" x="16" y="307" width="343" height="59"/>
                                     <color key="backgroundColor" red="0.28627450980392155" green="0.78823529411764703" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="59" id="7dv-cO-JZS"/>
@@ -142,21 +103,21 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-d6-zbL">
-                                    <rect key="frame" x="16" y="390" width="568" height="1"/>
+                                    <rect key="frame" x="16" y="390" width="343" height="1"/>
                                     <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="W4L-md-gF6"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id2-pp-CUw">
-                                    <rect key="frame" x="16" y="515" width="568" height="1"/>
+                                    <rect key="frame" x="16" y="515" width="343" height="1"/>
                                     <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="F5x-C0-IHY"/>
                                     </constraints>
                                 </view>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf9-Iv-2BM">
-                                    <rect key="frame" x="0.0" y="433" width="600" height="81"/>
+                                    <rect key="frame" x="0.0" y="433" width="375" height="81"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="81" id="KjV-79-yk3"/>
                                     </constraints>
@@ -221,25 +182,36 @@
         <!--Pontos de coleta-->
         <scene sceneID="3YY-gc-mbk">
             <objects>
-                <viewController id="bWQ-wC-bdL" customClass="FacilitiesRootViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bWQ-wC-bdL" customClass="FacilitiesRootViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YmM-8V-flc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w35-ID-Lh0">
+                                <rect key="frame" x="0.0" y="-100" width="375" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="trX-Pq-SXA"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAN-2e-vbK">
-                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hAN-2e-vbK" firstAttribute="top" secondItem="yps-0R-WQI" secondAttribute="top" id="GhJ-3Y-tnJ"/>
                             <constraint firstItem="hAN-2e-vbK" firstAttribute="trailing" secondItem="yps-0R-WQI" secondAttribute="trailing" id="OB8-8J-DPt"/>
+                            <constraint firstItem="w35-ID-Lh0" firstAttribute="trailing" secondItem="yps-0R-WQI" secondAttribute="trailing" id="Ql2-v0-UaI"/>
                             <constraint firstItem="hAN-2e-vbK" firstAttribute="leading" secondItem="yps-0R-WQI" secondAttribute="leading" id="e8v-Hh-QEJ"/>
                             <constraint firstItem="hAN-2e-vbK" firstAttribute="bottom" secondItem="yps-0R-WQI" secondAttribute="bottom" id="fbX-gr-MCa"/>
+                            <constraint firstItem="w35-ID-Lh0" firstAttribute="leading" secondItem="yps-0R-WQI" secondAttribute="leading" id="rdR-U7-GTR"/>
+                            <constraint firstItem="w35-ID-Lh0" firstAttribute="top" secondItem="YmM-8V-flc" secondAttribute="top" constant="-100" id="vfh-2P-Fz6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yps-0R-WQI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Pontos de coleta" largeTitleDisplayMode="always" id="dC4-mN-UfP">
+                    <navigationItem key="navigationItem" title="Pontos de coleta" id="dC4-mN-UfP">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="Kxu-5d-DkY"/>
                         <barButtonItem key="leftBarButtonItem" image="icInfo" id="93Y-JY-N6Q">
                             <connections>
@@ -265,18 +237,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoB-WD-cat" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="150"/>
+            <point key="canvasLocation" x="-76" y="149.77511244377811"/>
+        </scene>
+        <!--Facilities View Controller-->
+        <scene sceneID="FfF-hQ-xx1">
+            <objects>
+                <viewController storyboardIdentifier="FacilitiesViewController" extendedLayoutIncludesOpaqueBars="YES" id="VYy-bn-BKx" customClass="FacilitiesViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3DE-J9-CMt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-bL-Bxs">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VYy-bn-BKx" id="nCs-Qe-PvB"/>
+                                    <outlet property="delegate" destination="VYy-bn-BKx" id="UsK-Zc-qtp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nbS-bL-Bxs" firstAttribute="bottom" secondItem="oTz-KL-kjj" secondAttribute="bottom" id="40R-7x-iVg"/>
+                            <constraint firstItem="nbS-bL-Bxs" firstAttribute="top" secondItem="oTz-KL-kjj" secondAttribute="top" id="8iV-RH-WDR"/>
+                            <constraint firstItem="nbS-bL-Bxs" firstAttribute="leading" secondItem="oTz-KL-kjj" secondAttribute="leading" id="j8K-tw-u83"/>
+                            <constraint firstItem="nbS-bL-Bxs" firstAttribute="trailing" secondItem="oTz-KL-kjj" secondAttribute="trailing" id="srV-mh-v6G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oTz-KL-kjj"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="nbS-bL-Bxs" id="FVi-CL-du0"/>
+                        <segue destination="zcR-Th-Wt6" kind="show" identifier="showFacilityDetails" id="ABR-e5-7nD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SS5-b6-xEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="992.79999999999995" y="393.55322338830587"/>
         </scene>
         <!--Type Of Waste Details View Controller-->
         <scene sceneID="r5V-7T-wPv">
             <objects>
                 <viewController storyboardIdentifier="TypeOfWasteDetailsViewController" id="Yuu-rv-t7F" customClass="TypeOfWasteDetailsViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8i2-Sx-QzZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW0-AE-A4V">
-                                <rect key="frame" x="544" y="22.5" width="50" height="50"/>
+                                <rect key="frame" x="319" y="22.5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8wt-jt-IBB"/>
                                     <constraint firstAttribute="width" constant="50" id="tg7-EQ-M2e"/>
@@ -287,14 +294,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icWasteEmptyLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ap8-CN-ioJ">
-                                <rect key="frame" x="210" y="169.5" width="180" height="180"/>
+                                <rect key="frame" x="97.5" y="203" width="180" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="SRT-Qo-ZW4"/>
                                     <constraint firstAttribute="width" constant="180" id="cbs-LH-gH8"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFo-Fi-KdQ">
-                                <rect key="frame" x="150" y="355.5" width="300" height="25"/>
+                                <rect key="frame" x="37.5" y="389" width="300" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="F9t-pH-Szs"/>
                                     <constraint firstAttribute="height" constant="25" id="Rgc-WH-vJF"/>
@@ -304,7 +311,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtítulo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iey-01-xMV">
-                                <rect key="frame" x="150" y="404.5" width="300" height="25"/>
+                                <rect key="frame" x="37.5" y="438" width="300" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="XRs-Ra-YZO"/>
                                     <constraint firstAttribute="width" constant="300" id="c6L-H6-VVO"/>
@@ -342,11 +349,11 @@
             <objects>
                 <viewController id="niE-33-dLG" customClass="FilterFacilitiesViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m0Z-vD-wVl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REv-eX-5tU">
-                                <rect key="frame" x="544" y="22.5" width="50" height="50"/>
+                                <rect key="frame" x="319" y="22.5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="3ld-8q-hLL"/>
                                     <constraint firstAttribute="height" constant="50" id="7Eb-o2-3BC"/>
@@ -357,7 +364,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtrar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-NG-PXB">
-                                <rect key="frame" x="16" y="76" width="568" height="38"/>
+                                <rect key="frame" x="16" y="76" width="343" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Yq8-ZT-LWc"/>
                                 </constraints>
@@ -366,7 +373,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xCl-T2-GaD">
-                                <rect key="frame" x="0.0" y="179" width="600" height="421"/>
+                                <rect key="frame" x="0.0" y="179" width="375" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="niE-33-dLG" id="bja-ah-ino"/>
@@ -374,7 +381,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtrar por tipos de resíduos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKO-0N-8yB">
-                                <rect key="frame" x="16" y="147" width="510" height="20"/>
+                                <rect key="frame" x="16" y="147" width="285" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="aX0-YU-tsJ"/>
                                 </constraints>
@@ -383,7 +390,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPc-AG-FR1">
-                                <rect key="frame" x="534" y="132" width="50" height="50"/>
+                                <rect key="frame" x="309" y="132" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="M2n-wH-f0q"/>
                                     <constraint firstAttribute="height" constant="50" id="TGo-Dz-wSs"/>
@@ -493,24 +500,24 @@
             <objects>
                 <tableViewController id="nCQ-QV-nIk" customClass="ReportAnIssueTableViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="161" sectionHeaderHeight="28" sectionFooterHeight="28" id="1bz-fX-IgW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="EgN-1W-Bv6">
-                            <rect key="frame" x="0.0" y="173" width="600" height="1"/>
+                            <rect key="frame" x="0.0" y="173" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="feedbackCell" rowHeight="145" id="Qwx-EK-mS7">
-                                <rect key="frame" x="0.0" y="28" width="600" height="145"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="145"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qwx-EK-mS7" id="YL3-qR-QFf">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="145"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0S-iE-4rp">
-                                            <rect key="frame" x="15" y="25" width="570" height="41"/>
+                                            <rect key="frame" x="15" y="25" width="345" height="41"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="b4a-L2-o2b"/>
                                             </constraints>
@@ -521,7 +528,7 @@ este ponto de coleta? Nos conte!</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSf-Dr-Cq2">
-                                            <rect key="frame" x="15" y="81" width="570" height="56"/>
+                                            <rect key="frame" x="15" y="81" width="345" height="56"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="3HU-LT-oFO"/>
@@ -578,7 +585,7 @@ este ponto de coleta? Nos conte!</string>
             <objects>
                 <tableViewController id="CaD-hv-Ulf" customClass="InfoTableViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="jgk-vf-acB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -587,10 +594,10 @@ este ponto de coleta? Nos conte!</string>
                             <tableViewSection id="ANx-Js-ttC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="58" id="VI6-37-Yvz">
-                                        <rect key="frame" x="0.0" y="35" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="35" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VI6-37-Yvz" id="WF5-lh-T5i">
-                                            <rect key="frame" x="0.0" y="0.0" width="562" height="57.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icDescription" translatesAutoresizingMaskIntoConstraints="NO" id="nwB-Tb-9eK">
@@ -601,7 +608,7 @@ este ponto de coleta? Nos conte!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legendas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39C-cw-oG6">
-                                                    <rect key="frame" x="56" y="18" width="498" height="20"/>
+                                                    <rect key="frame" x="56" y="18" width="277" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="LEf-9M-JoP"/>
                                                     </constraints>
@@ -625,10 +632,10 @@ este ponto de coleta? Nos conte!</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="3iT-HR-9oa">
-                                        <rect key="frame" x="0.0" y="93" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="93" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3iT-HR-9oa" id="9kY-Mr-aKa">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icAbout" translatesAutoresizingMaskIntoConstraints="NO" id="58N-yu-hRL">
@@ -639,7 +646,7 @@ este ponto de coleta? Nos conte!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sobre o projeto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUA-xl-zUl">
-                                                    <rect key="frame" x="56" y="18" width="528" height="20"/>
+                                                    <rect key="frame" x="56" y="18" width="303" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="arr-TE-CUO"/>
                                                     </constraints>
@@ -660,10 +667,10 @@ este ponto de coleta? Nos conte!</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="geI-Tu-iIl">
-                                        <rect key="frame" x="0.0" y="151" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="151" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="geI-Tu-iIl" id="GlT-sy-JUr">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icFeedback" translatesAutoresizingMaskIntoConstraints="NO" id="9kB-G7-8WG">
@@ -674,7 +681,7 @@ este ponto de coleta? Nos conte!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enviar feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ta4-g5-EkH">
-                                                    <rect key="frame" x="56" y="18" width="528" height="20"/>
+                                                    <rect key="frame" x="56" y="18" width="303" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Ef2-O2-R3p"/>
                                                     </constraints>
@@ -698,10 +705,10 @@ este ponto de coleta? Nos conte!</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="6eo-SW-JmH">
-                                        <rect key="frame" x="0.0" y="209" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="209" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6eo-SW-JmH" id="LjQ-Qr-0fC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icRating" translatesAutoresizingMaskIntoConstraints="NO" id="ZmN-JH-DXv">
@@ -712,7 +719,7 @@ este ponto de coleta? Nos conte!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avaliar o aplicativo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3M-8I-kTG">
-                                                    <rect key="frame" x="56" y="18" width="528" height="20"/>
+                                                    <rect key="frame" x="56" y="18" width="303" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="1ei-Rs-URR"/>
                                                     </constraints>
@@ -733,10 +740,10 @@ este ponto de coleta? Nos conte!</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="8aq-V2-8kd">
-                                        <rect key="frame" x="0.0" y="267" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="267" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8aq-V2-8kd" id="QVH-xJ-WyF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icFb" translatesAutoresizingMaskIntoConstraints="NO" id="6jl-NC-Rxu">
@@ -747,7 +754,7 @@ este ponto de coleta? Nos conte!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compartilhar o Descartaê" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgR-y8-knh">
-                                                    <rect key="frame" x="56" y="18" width="528" height="20"/>
+                                                    <rect key="frame" x="56" y="18" width="303" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="tqf-Ur-4Lr"/>
                                                     </constraints>
@@ -786,18 +793,18 @@ este ponto de coleta? Nos conte!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSR-5w-oym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="1240"/>
+            <point key="canvasLocation" x="1015" y="1227"/>
         </scene>
         <!--Legendas-->
         <scene sceneID="hwR-3v-blk">
             <objects>
-                <viewController title="Legendas" id="cwc-ZN-MoJ" customClass="WasteTypesViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Legendas" automaticallyAdjustsScrollViewInsets="NO" id="cwc-ZN-MoJ" customClass="WasteTypesViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nPm-ZJ-hmQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N49-cW-124">
-                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="cwc-ZN-MoJ" id="xSc-N3-W9R"/>
@@ -820,7 +827,7 @@ este ponto de coleta? Nos conte!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ir5-WT-E6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1318" y="1240"/>
+            <point key="canvasLocation" x="1694" y="1233"/>
         </scene>
         <!--Report An Issue Navigation Controller-->
         <scene sceneID="5da-3l-aay">
@@ -863,8 +870,8 @@ este ponto de coleta? Nos conte!</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yCu-fo-wmA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="lIl-PJ-JxB">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="lIl-PJ-JxB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

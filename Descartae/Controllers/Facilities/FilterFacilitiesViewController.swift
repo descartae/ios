@@ -15,7 +15,7 @@ class FilterFacilitiesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var wasteTypes: [WasteType] = DataManager.shared.data.wasteTypes
+    let dataManager = DataManager.shared
     var wasteTypesToFilter: [WasteType] = DataManager.shared.data.filteringByWasteTypes
     var updateFilterIconBadge: (() -> Void)?
 
@@ -47,7 +47,7 @@ class FilterFacilitiesViewController: UIViewController {
     // MARK: Actions
 
     @objc func applySelection() {
-        DataManager.shared.data.filteringByWasteTypes = wasteTypesToFilter
+        dataManager.data.filteringByWasteTypes = wasteTypesToFilter
         updateFilterIconBadge?()
 
         SVProgressHUD.show()
@@ -74,12 +74,12 @@ class FilterFacilitiesViewController: UIViewController {
 extension FilterFacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wasteTypes.count
+        return dataManager.data.wasteTypes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let wasteTypeCell = tableView.dequeueReusableCell(withIdentifier: TypeOfWasteFilterTableViewCell.identifier, for: indexPath) as? TypeOfWasteFilterTableViewCell {
-            let wasteType = wasteTypes[indexPath.row]
+            let wasteType = dataManager.data.wasteTypes[indexPath.row]
             wasteTypeCell.wasteType = wasteType
 
             if wasteTypesToFilter.contains(wasteType) {
@@ -103,7 +103,7 @@ extension FilterFacilitiesViewController: UITableViewDelegate {
             return
         }
 
-        let wasteType = wasteTypes[indexPath.row]
+        let wasteType = dataManager.data.wasteTypes[indexPath.row]
 
         if let wasteTypeIndex = wasteTypesToFilter.index(of: wasteType) {
             wasteTypesToFilter.remove(at: wasteTypeIndex)
