@@ -92,26 +92,7 @@ final class FacilitiesViewController: UIViewController {
     }
 
     @objc func refreshFacilities() {
-//        GraphQL.client.fetch(query: allFacilitiesQuery) { (result, error) in
-//            self.refreshControl.endRefreshing()
-//
-//            guard error == nil else {
-//                print(error?.localizedDescription ?? "")
-//                return
-//            }
-//
-//            guard let facilitiesQueryFragment = result?.data?.facilities?.items as? [AllFacilitiesQuery.Data.Facility.Item] else {
-//                return
-//            }
-//
-//            guard let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [AllFacilitiesQuery.Data.TypesOfWaste] else {
-//                return
-//            }
-//
-//            self.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
-//            self.facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
-//            self.tableView.reloadData()
-//        }
+        // TODO: Refresh
     }
 
     // MARK: Navigation
@@ -120,22 +101,6 @@ final class FacilitiesViewController: UIViewController {
         if let details = segue.destination as? FacilityDetailsTableViewController, let indexOfFacility = sender as? Int {
             details.facility = dataManager.data.facilities[indexOfFacility]
         }
-
-//        if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
-//            filterFacilities.wasteTypes = wasteTypes
-//            filterFacilities.wasteTypesToFilter = filteringByWasteTypes
-//            filterFacilities.applyFilter = { wasteTypesToFilter in
-//                self.filteringByWasteTypes = wasteTypesToFilter
-//                self.filterButton.badgeValue = "\(self.filteringByWasteTypes.count)" // TODO: Update filter button
-//                self.allFacilitiesQuery.typesOfWasteToFilter = self.filteringByWasteTypes.map {$0.id}
-//                self.loadFacilities()
-//            }
-//        }
-//
-//        if let nav = segue.destination as? UINavigationController, let info = nav.childViewControllers[0] as? InfoTableViewController {
-//            info.wasteTypes = wasteTypes
-//        }
-
     }
 
 }
