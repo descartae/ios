@@ -109,9 +109,9 @@ class FacilityDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        if #available(iOS 11.0, *) {
-//            navigationItem.largeTitleDisplayMode = .never
-//        }
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
 
         setupTableView()
         setupSections()
@@ -168,10 +168,20 @@ class FacilityDetailsTableViewController: UITableViewController {
         annotation.coordinate = facilityLocation.coordinate
 
         mapView.addAnnotation(annotation)
-
-        let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 500, 500)
+        let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1000, 1000)
         let adjusted = mapView.regionThatFits(region)
-        mapView.setRegion(adjusted, animated: true)
+        mapView.setRegion(adjusted, animated: false)
+
+        moveCenterByOffset(offset: CGPoint(x: 0, y: -400), from: facilityLocation.coordinate)
+    }
+
+    func moveCenterByOffset(offset: CGPoint, from coordinate: CLLocationCoordinate2D) {
+        var p = mapView.convert(coordinate, toPointTo: mapView)
+        p.x += offset.x
+        p.y += offset.y
+
+        let c = mapView.convert(p, toCoordinateFrom: mapView)
+        mapView.setCenter(c, animated: true)
     }
 
     func bindTableViewHeaderData() {
