@@ -41,7 +41,7 @@ class FacilitiesRootViewController: UIViewController {
         super.viewDidLoad()
 
         if #available(iOS 11.0, *) {
-            navigationController?.navigationItem.largeTitleDisplayMode = .always
+            navigationController?.navigationItem.largeTitleDisplayMode = .automatic
             navigationController?.navigationBar.prefersLargeTitles = true
         }
 
@@ -49,6 +49,12 @@ class FacilitiesRootViewController: UIViewController {
         setupLocationState()
         setupFilterButton()
         configureContainer(withViewController: facilitiesViewController)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        navigationController?.navigationBar.isTranslucent = false
     }
 
     // MARK: Initial setups

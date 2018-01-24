@@ -187,13 +187,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w35-ID-Lh0">
-                                <rect key="frame" x="0.0" y="-100" width="375" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="trX-Pq-SXA"/>
-                                </constraints>
-                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAN-2e-vbK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -203,11 +196,8 @@
                         <constraints>
                             <constraint firstItem="hAN-2e-vbK" firstAttribute="top" secondItem="yps-0R-WQI" secondAttribute="top" id="GhJ-3Y-tnJ"/>
                             <constraint firstItem="hAN-2e-vbK" firstAttribute="trailing" secondItem="yps-0R-WQI" secondAttribute="trailing" id="OB8-8J-DPt"/>
-                            <constraint firstItem="w35-ID-Lh0" firstAttribute="trailing" secondItem="yps-0R-WQI" secondAttribute="trailing" id="Ql2-v0-UaI"/>
                             <constraint firstItem="hAN-2e-vbK" firstAttribute="leading" secondItem="yps-0R-WQI" secondAttribute="leading" id="e8v-Hh-QEJ"/>
                             <constraint firstItem="hAN-2e-vbK" firstAttribute="bottom" secondItem="yps-0R-WQI" secondAttribute="bottom" id="fbX-gr-MCa"/>
-                            <constraint firstItem="w35-ID-Lh0" firstAttribute="leading" secondItem="yps-0R-WQI" secondAttribute="leading" id="rdR-U7-GTR"/>
-                            <constraint firstItem="w35-ID-Lh0" firstAttribute="top" secondItem="YmM-8V-flc" secondAttribute="top" constant="-100" id="vfh-2P-Fz6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yps-0R-WQI"/>
                     </view>

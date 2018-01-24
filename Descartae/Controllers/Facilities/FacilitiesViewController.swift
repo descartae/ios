@@ -122,6 +122,7 @@ extension FacilitiesViewController: UITableViewDataSource {
 extension FacilitiesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.navigationBar.isTranslucent = true
         performSegue(withIdentifier: "showFacilityDetails", sender: indexPath.row)
     }
 
