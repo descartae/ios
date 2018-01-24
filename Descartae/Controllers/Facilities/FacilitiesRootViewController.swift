@@ -41,7 +41,7 @@ class FacilitiesRootViewController: UIViewController {
         super.viewDidLoad()
 
         if #available(iOS 11.0, *) {
-            navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+            navigationController?.navigationItem.largeTitleDisplayMode = .always
             navigationController?.navigationBar.prefersLargeTitles = true
         }
 
