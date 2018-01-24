@@ -13,6 +13,6 @@ class LoadingMoreTableViewCell: UITableViewCell {
     // MARK: Properties
 
     static let identifier = String(describing: LoadingMoreTableViewCell.self)
-    static let rowHeight: CGFloat = 60
+    static let rowHeight: CGFloat = 44
 
 }

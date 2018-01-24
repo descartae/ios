@@ -109,9 +109,9 @@ class FacilityDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
+//        if #available(iOS 11.0, *) {
+//            navigationItem.largeTitleDisplayMode = .never
+//        }
 
         setupTableView()
         setupSections()

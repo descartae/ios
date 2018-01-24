@@ -18,8 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-JY-c9V">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-JY-c9V">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <connections>
+                                    <outlet property="delegate" destination="OyP-17-3b8" id="JC0-Yr-L12"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,6 +34,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EQV-vM-caP"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="Bd8-JY-c9V" id="Q7Y-Ow-GFP"/>
+                        <segue destination="zcR-Th-Wt6" kind="show" identifier="showFacilityDetails" id="ryb-hg-vp5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zG-lz-zIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -891,4 +898,7 @@ este ponto de coleta? Nos conte!</string>
         <image name="icWasteEmptyLarge" width="180" height="180"/>
         <image name="icWasteEmptyMedium" width="44" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ryb-hg-vp5"/>
+    </inferredMetricsTieBreakers>
 </document>
