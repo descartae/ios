@@ -59,9 +59,17 @@ final class FacilitiesViewController: UIViewController {
         tableView.estimatedRowHeight = FacilityTableViewCell.estimatedRowHeight
 
         tableView.register(FacilityTableViewCell.nib, forCellReuseIdentifier: FacilityTableViewCell.identifier)
+        tableView.register(LoadingMoreTableViewCell.nib, forCellReuseIdentifier: LoadingMoreTableViewCell.identifier)
 
         refreshControl.addTarget(self, action: #selector(refreshFacilities), for: .valueChanged)
         tableView.refreshControl = refreshControl
+
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .automatic
+
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     func addObservers() {
@@ -82,9 +90,22 @@ final class FacilitiesViewController: UIViewController {
 
     @objc func refreshFacilities() {
         dataManager.loadData { _ in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            let endRefreshingOp = BlockOperation(block: {
                 self.refreshControl.endRefreshing()
+            })
+
+            let reloadTableViewOp = BlockOperation(block: {
+                self.tableView.reloadData()
+            })
+
+            endRefreshingOp.addDependency(reloadTableViewOp)
+
+            OperationQueue.main.addOperation {
+                reloadTableViewOp.start()
+            }
+
+            OperationQueue.main.addOperation {
+                endRefreshingOp.start()
             }
         }
     }
@@ -108,6 +129,15 @@ extension FacilitiesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == dataManager.data.facilities.count - 1 && dataManager.data.after != nil {
+            dataManager.loadMoreData(completionHandler: { (_) in
+                self.tableView.reloadData()
+            })
+            let loadingMoreCell = tableView.dequeueReusableCell(withIdentifier: LoadingMoreTableViewCell.identifier, for: indexPath)
+
+            return loadingMoreCell
+        }
+
         if let facilityCell = tableView.dequeueReusableCell(withIdentifier: FacilityTableViewCell.identifier, for: indexPath) as? FacilityTableViewCell {
             facilityCell.facility = dataManager.data.facilities[indexPath.row]
 

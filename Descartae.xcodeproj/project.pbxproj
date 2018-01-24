@@ -56,6 +56,8 @@
 		99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */; };
 		99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */; };
 		99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */; };
+		99EDBAF02018BD160031E30B /* LoadingMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99EDBAEF2018BD160031E30B /* LoadingMoreTableViewCell.xib */; };
+		99EDBAF22018BD4C0031E30B /* LoadingMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EDBAF12018BD4C0031E30B /* LoadingMoreTableViewCell.swift */; };
 		99F7BE151FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BE141FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib */; };
 		99F7BE171FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BE161FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift */; };
 		AFC22FA37952E50B287C965C /* Pods_DescartaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF555B44255A5C72FA8D771E /* Pods_DescartaeUITests.framework */; };
@@ -136,6 +138,8 @@
 		99ED00A21FC5DFEB00AA4613 /* FacilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableViewCell.swift; sourceTree = "<group>"; };
 		99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibExtension.swift; sourceTree = "<group>"; };
 		99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		99EDBAEF2018BD160031E30B /* LoadingMoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingMoreTableViewCell.xib; sourceTree = "<group>"; };
+		99EDBAF12018BD4C0031E30B /* LoadingMoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingMoreTableViewCell.swift; sourceTree = "<group>"; };
 		99F7BE141FDE1DEB00D6B9AA /* ReportIssueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportIssueTableViewCell.xib; sourceTree = "<group>"; };
 		99F7BE161FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueTableViewCell.swift; sourceTree = "<group>"; };
 		A344FA797E01962EC45EE6DD /* Pods-Descartae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Descartae.release.xcconfig"; path = "Pods/Target Support Files/Pods-Descartae/Pods-Descartae.release.xcconfig"; sourceTree = "<group>"; };
@@ -366,6 +370,8 @@
 				9946708C200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift */,
 				9946709A200EFB97000EDBB6 /* WasteTypeTableViewCell.xib */,
 				9946709C200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift */,
+				99EDBAEF2018BD160031E30B /* LoadingMoreTableViewCell.xib */,
+				99EDBAF12018BD4C0031E30B /* LoadingMoreTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -508,6 +514,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99EDBAF02018BD160031E30B /* LoadingMoreTableViewCell.xib in Resources */,
 				996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */,
 				990A1DCC1FC384EE00DD5D81 /* Queries.graphql in Resources */,
 				999CD4A61FDC742E0018CF18 /* ContactTableViewCell.xib in Resources */,
@@ -773,6 +780,7 @@
 				993D7E612014056A005653A8 /* UIStoryboardExtension.swift in Sources */,
 				990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */,
 				99890CD9200676A4000D9B44 /* ReportAnIssueTableViewController.swift in Sources */,
+				99EDBAF22018BD4C0031E30B /* LoadingMoreTableViewCell.swift in Sources */,
 				99895A161FDF1C4500615D65 /* AppearanceManager.swift in Sources */,
 				9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */,
 				994242101FCE19E10095623C /* LocationManager.swift in Sources */,
