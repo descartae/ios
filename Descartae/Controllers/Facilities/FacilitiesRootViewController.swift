@@ -51,6 +51,12 @@ class FacilitiesRootViewController: UIViewController {
         configureContainer(withViewController: facilitiesViewController)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        navigationController?.navigationBar.isTranslucent = false
+    }
+
     // MARK: Initial setups
 
     func setupLocationState() {
