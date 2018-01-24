@@ -28,7 +28,7 @@ class DataManager {
 
     static let shared: DataManager = DataManager()
 
-    private let quantity: Int = 10
+    private let quantity: Int = 7
     var data = DataStore()
 
     lazy private var firstPageQuery: FacilitiesQuery = {
@@ -56,6 +56,7 @@ class DataManager {
             return
         }
 
+        data.after = nil
         firstPageQuery.typesOfWasteToFilter = self.data.filteringByWasteTypes.map {$0.id}
         GraphQL.client.fetch(query: firstPageQuery) { (result, error) in
             self.handleFacilitiesQueryFetch(result, error, completionHandler, isLoadingMoreData: false)
