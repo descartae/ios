@@ -1,0 +1,21 @@
+query facilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWasteToFilter: [ID]) {
+    typesOfWaste {
+        ...WasteType
+    }
+    
+    facilities(filters: {cursor: {after: $after, before: $before, quantity: $quantity} hasTypesOfWaste: $typesOfWasteToFilter}) {
+        cursors {
+            after
+            before
+        }
+        items {
+            ...DisposalFacility
+        }
+    }
+}
+
+query wasteTypes {
+    typesOfWaste {
+        ...WasteType
+    }
+}

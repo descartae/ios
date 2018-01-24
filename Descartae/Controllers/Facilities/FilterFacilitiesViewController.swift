@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FilterFacilitiesViewController: UIViewController {
 
@@ -14,9 +15,9 @@ class FilterFacilitiesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var wasteTypes: [WasteType] = []
-    var wasteTypesToFilter: [WasteType] = []
-    var applyFilter: ((_ wasteTypesToFilter: [WasteType]) -> Void)?
+    let dataManager = DataManager.shared
+    var wasteTypesToFilter: [WasteType] = DataManager.shared.data.filteringByWasteTypes
+    var updateFilterIconBadge: (() -> Void)?
 
     // MARK: Life cycle
 
@@ -46,7 +47,16 @@ class FilterFacilitiesViewController: UIViewController {
     // MARK: Actions
 
     @objc func applySelection() {
-        applyFilter?(wasteTypesToFilter)
+        dataManager.data.filteringByWasteTypes = wasteTypesToFilter
+        updateFilterIconBadge?()
+
+        SVProgressHUD.show()
+        DataManager.shared.loadData(completionHandler: { (_) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+        })
+
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
@@ -64,12 +74,12 @@ class FilterFacilitiesViewController: UIViewController {
 extension FilterFacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wasteTypes.count
+        return dataManager.data.wasteTypes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let wasteTypeCell = tableView.dequeueReusableCell(withIdentifier: TypeOfWasteFilterTableViewCell.identifier, for: indexPath) as? TypeOfWasteFilterTableViewCell {
-            let wasteType = wasteTypes[indexPath.row]
+            let wasteType = dataManager.data.wasteTypes[indexPath.row]
             wasteTypeCell.wasteType = wasteType
 
             if wasteTypesToFilter.contains(wasteType) {
@@ -93,7 +103,7 @@ extension FilterFacilitiesViewController: UITableViewDelegate {
             return
         }
 
-        let wasteType = wasteTypes[indexPath.row]
+        let wasteType = dataManager.data.wasteTypes[indexPath.row]
 
         if let wasteTypeIndex = wasteTypesToFilter.index(of: wasteType) {
             wasteTypesToFilter.remove(at: wasteTypeIndex)
