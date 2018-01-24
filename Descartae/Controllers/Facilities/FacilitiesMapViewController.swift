@@ -18,22 +18,83 @@ class FacilitiesMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
 
     let dataManager = DataManager.shared
+    let locationManager = LocationManager.shared
 
     // MARK: Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addObservers()
         addFacilityAnnotations()
+    }
+
+    deinit {
+        removeObservers()
+    }
+
+    // MARK: Setup
+
+    func addObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(reloadMapView), name: facilitiesDataUpdated, object: nil)
+    }
+
+    func removeObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: facilitiesDataUpdated, object: nil)
     }
 
     // MARK: MapView setup
 
-    func addFacilityAnnotations() {
+    @objc func reloadMapView() {
+        mapView.removeAnnotations(mapView.annotations)
+        addFacilityAnnotations(shouldAdjustZoom: false)
+    }
+
+    func addFacilityAnnotations(shouldAdjustZoom: Bool = true) {
         for facility in dataManager.data.facilities {
             let annotation = DisposalFacilityAnnotation(facility: facility)
             mapView.addAnnotation(annotation)
         }
+
+        if shouldAdjustZoom {
+            zoomToFitAllAnnotations()
+        }
+    }
+
+    func zoomToFitAllAnnotations() {
+        guard mapView.annotations.count > 0 else {
+            return
+        }
+
+        var topLeftCoord = CLLocationCoordinate2D(latitude: -90, longitude: 180)
+        var bottomRightCoord = CLLocationCoordinate2D(latitude: 90, longitude: -180)
+
+        // Fit the most distant annotation in the region
+        for annotation in mapView.annotations {
+            topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude)
+            topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude)
+            bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude)
+            bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude)
+        }
+
+        // Consider user location in the region, if it is available
+        if let userCoordinate = locationManager.location?.coordinate {
+            topLeftCoord.longitude = fmin(topLeftCoord.longitude, userCoordinate.longitude)
+            topLeftCoord.latitude = fmax(topLeftCoord.latitude, userCoordinate.latitude)
+            bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, userCoordinate.longitude)
+            bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, userCoordinate.latitude)
+        }
+
+        var region = MKCoordinateRegion()
+        region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5
+        region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5
+        region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.2
+        region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.2
+
+        region = mapView.regionThatFits(region)
+        mapView.setRegion(region, animated: true)
     }
 
     // MARK: Navigation
