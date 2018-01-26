@@ -13,6 +13,7 @@
 		990A1DCE1FC3870300DD5D81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCD1FC3870300DD5D81 /* API.swift */; };
 		990A1DD01FC3879A00DD5D81 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */; };
 		990A1DD81FC3A8B400DD5D81 /* DisposalFacility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */; };
+		990E3589201BD6FC002F1F54 /* FacilitiesMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990E3588201BD6FC002F1F54 /* FacilitiesMapButton.swift */; };
 		9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */; };
 		993D7E5F2013F8DE005653A8 /* FacilitiesRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D7E5E2013F8DE005653A8 /* FacilitiesRootViewController.swift */; };
 		993D7E612014056A005653A8 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D7E602014056A005653A8 /* UIStoryboardExtension.swift */; };
@@ -28,6 +29,7 @@
 		9946709D200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9946709C200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift */; };
 		9946709F200EFD83000EDBB6 /* WasteTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9946709E200EFD83000EDBB6 /* WasteTypesViewController.swift */; };
 		9958BD4320059D8D00AD266B /* TypeOfWasteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */; };
+		9965558F2018E06B00184792 /* DisposalFacilityAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965558E2018E06B00184792 /* DisposalFacilityAnnotation.swift */; };
 		996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */; };
 		996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */; };
 		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
@@ -89,6 +91,7 @@
 		990A1DCD1FC3870300DD5D81 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		990A1DCF1FC3879A00DD5D81 /* GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
 		990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalFacility.swift; sourceTree = "<group>"; };
+		990E3588201BD6FC002F1F54 /* FacilitiesMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesMapButton.swift; sourceTree = "<group>"; };
 		9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsBaseTableViewCell.swift; sourceTree = "<group>"; };
 		993D7E5E2013F8DE005653A8 /* FacilitiesRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesRootViewController.swift; sourceTree = "<group>"; };
 		993D7E602014056A005653A8 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		9946709C200EFBA6000EDBB6 /* WasteTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasteTypeTableViewCell.swift; sourceTree = "<group>"; };
 		9946709E200EFD83000EDBB6 /* WasteTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasteTypesViewController.swift; sourceTree = "<group>"; };
 		9958BD4220059D8D00AD266B /* TypeOfWasteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteDetailsViewController.swift; sourceTree = "<group>"; };
+		9965558E2018E06B00184792 /* DisposalFacilityAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalFacilityAnnotation.swift; sourceTree = "<group>"; };
 		996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTodayTableViewCell.swift; sourceTree = "<group>"; };
 		996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTableViewCell.xib; sourceTree = "<group>"; };
 		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +206,14 @@
 				99890CD6200674D4000D9B44 /* Mutations.graphql */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		990E3587201BD6DC002F1F54 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				990E3588201BD6FC002F1F54 /* FacilitiesMapButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		9942420E1FCE19BC0095623C /* Managers */ = {
@@ -321,6 +333,7 @@
 				999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */,
 				999CD4A11FDC68720018CF18 /* OpenHour.swift */,
 				999CD4A31FDC6DE70018CF18 /* Location.swift */,
+				9965558E2018E06B00184792 /* DisposalFacilityAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,6 +358,7 @@
 		99ED009E1FC5DCC200AA4613 /* Facilities */ = {
 			isa = PBXGroup;
 			children = (
+				990E3587201BD6DC002F1F54 /* Buttons */,
 				9946708E200EB6B7000EDBB6 /* Section Headers and Footers */,
 				99ED009F1FC5DCCD00AA4613 /* Cells */,
 			);
@@ -761,6 +775,7 @@
 				99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */,
 				99467099200EDF82000EDBB6 /* InfoTableViewController.swift in Sources */,
 				9909ABD01FD049F00072B0E4 /* WasteType.swift in Sources */,
+				9965558F2018E06B00184792 /* DisposalFacilityAnnotation.swift in Sources */,
 				99ED00A31FC5DFEB00AA4613 /* FacilityTableViewCell.swift in Sources */,
 				999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */,
 				99E004AF200E85D500FA43F6 /* FilterFacilitiesViewController.swift in Sources */,
@@ -770,6 +785,7 @@
 				99467096200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */,
+				990E3589201BD6FC002F1F54 /* FacilitiesMapButton.swift in Sources */,
 				9946708D200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift in Sources */,
 				9999517720165D110039FCB6 /* DataManager.swift in Sources */,
 				99F7BE171FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift in Sources */,

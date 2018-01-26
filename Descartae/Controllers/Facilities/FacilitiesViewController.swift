@@ -125,11 +125,12 @@ final class FacilitiesViewController: UIViewController {
 extension FacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataManager.data.facilities.count
+        let facilitiesCount = dataManager.data.facilities.count
+        return dataManager.data.after != nil ? facilitiesCount + 1 : facilitiesCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == dataManager.data.facilities.count - 1 && dataManager.data.after != nil {
+        if indexPath.row == dataManager.data.facilities.count && dataManager.data.after != nil {
             dataManager.loadMoreData(completionHandler: { (_) in
                 self.tableView.reloadData()
             })
