@@ -10,16 +10,28 @@ import Foundation
 import Apollo
 
 let facilitiesDataUpdated = NSNotification.Name(rawValue: "facilitiesDataUpdatedNotification")
+let nextPageAvailable = NSNotification.Name(rawValue: "nextPageAvailableNotification")
+let nextPageUnavailable = NSNotification.Name(rawValue: "nextPageUnavailableNotification")
 
 struct DataStore {
     var wasteTypes: [WasteType] = []
     var filteringByWasteTypes: [WasteType] = []
+
     var facilities: [DisposalFacility] = [] {
         didSet {
             NotificationCenter.default.post(name: facilitiesDataUpdated, object: nil)
         }
     }
-    var after: String?
+
+    var after: String? {
+        didSet {
+            if after != nil {
+                NotificationCenter.default.post(name: nextPageAvailable, object: nil)
+            } else {
+                NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
+            }
+        }
+    }
 }
 
 class DataManager {

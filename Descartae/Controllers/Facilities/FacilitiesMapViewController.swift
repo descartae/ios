@@ -97,6 +97,12 @@ class FacilitiesMapViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
 
+    // MARK: Actions
+
+    @IBAction func zoomToFitsUserAndFacilities(_ sender: Any) {
+        zoomToFitAllAnnotations()
+    }
+
     // MARK: Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
