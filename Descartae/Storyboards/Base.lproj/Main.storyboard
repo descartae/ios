@@ -46,6 +46,9 @@
                                 <state key="normal" title="Carregar mais">
                                     <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loadMoreFacilities:" destination="OyP-17-3b8" eventType="touchUpInside" id="AkP-d1-Mp8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,6 +65,7 @@
                         <viewLayoutGuide key="safeArea" id="EQV-vM-caP"/>
                     </view>
                     <connections>
+                        <outlet property="loadMoreButton" destination="NMd-1p-PoV" id="WeY-Yc-9gM"/>
                         <outlet property="mapView" destination="Bd8-JY-c9V" id="Q7Y-Ow-GFP"/>
                         <segue destination="zcR-Th-Wt6" kind="show" identifier="showFacilityDetails" id="ryb-hg-vp5"/>
                     </connections>

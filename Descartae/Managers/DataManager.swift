@@ -23,15 +23,7 @@ struct DataStore {
         }
     }
 
-    var after: String? {
-        didSet {
-            if after != nil {
-                NotificationCenter.default.post(name: nextPageAvailable, object: nil)
-            } else {
-                NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
-            }
-        }
-    }
+    var after: String?
 }
 
 class DataManager {
@@ -98,6 +90,13 @@ class DataManager {
         let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [FacilitiesQuery.Data.TypesOfWaste] ?? []
 
         self.data.after = result?.data?.facilities?.cursors.after
+
+        if self.data.after != nil {
+            NotificationCenter.default.post(name: nextPageAvailable, object: nil)
+        } else {
+            NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
+        }
+
         self.data.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
         let facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
 
