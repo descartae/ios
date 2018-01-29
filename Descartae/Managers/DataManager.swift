@@ -16,13 +16,7 @@ let nextPageUnavailable = NSNotification.Name(rawValue: "nextPageUnavailableNoti
 struct DataStore {
     var wasteTypes: [WasteType] = []
     var filteringByWasteTypes: [WasteType] = []
-
-    var facilities: [DisposalFacility] = [] {
-        didSet {
-            NotificationCenter.default.post(name: facilitiesDataUpdated, object: nil)
-        }
-    }
-
+    var facilities: [DisposalFacility] = []
     var after: String?
 }
 
@@ -89,7 +83,20 @@ class DataManager {
         let facilitiesQueryFragment = result?.data?.facilities?.items as? [FacilitiesQuery.Data.Facility.Item] ?? []
         let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [FacilitiesQuery.Data.TypesOfWaste] ?? []
 
-        self.data.after = result?.data?.facilities?.cursors.after
+        self.data.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
+        let facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
+
+        if let after = result?.data?.facilities?.cursors.after, facilities.count == self.quantity {
+            self.data.after = after
+        } else {
+            self.data.after = nil
+        }
+
+        if isLoadingMoreData {
+            self.data.facilities.append(contentsOf: facilities)
+        } else {
+            self.data.facilities = facilities
+        }
 
         if self.data.after != nil {
             NotificationCenter.default.post(name: nextPageAvailable, object: nil)
@@ -97,14 +104,7 @@ class DataManager {
             NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
         }
 
-        self.data.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
-        let facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
-
-        if isLoadingMoreData {
-            self.data.facilities.append(contentsOf: facilities)
-        } else {
-            self.data.facilities = facilities
-        }
+        NotificationCenter.default.post(name: facilitiesDataUpdated, object: nil)
 
         completionHandler?(error)
     }
