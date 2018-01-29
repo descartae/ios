@@ -20,6 +20,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-JY-c9V">
                                 <rect key="frame" x="0.0" y="-43" width="375" height="710"/>
+                                <color key="tintColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="OyP-17-3b8" id="JC0-Yr-L12"/>
                                 </connections>
