@@ -133,7 +133,7 @@ class FacilitiesMapViewController: UIViewController {
         }
 
         sender.startLoading()
-        DataManager.loadMoreData { _ in
+        APIManager.loadMoreData { _ in
             self.zoomToFitAllAnnotations()
             sender.stopLoading()
         }

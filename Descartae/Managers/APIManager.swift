@@ -20,7 +20,7 @@ struct DataStore {
     static var after: String?
 }
 
-struct DataManager {
+struct APIManager {
 
     // MARK: Properties
 

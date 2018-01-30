@@ -50,7 +50,7 @@ class FilterFacilitiesViewController: UIViewController {
         updateFilterIconBadge?()
 
         SVProgressHUD.show()
-        DataManager.loadData(completionHandler: { (_) in
+        APIManager.loadData(completionHandler: { (_) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }

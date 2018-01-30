@@ -40,7 +40,7 @@
 		99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */; };
 		99895A141FDF064200615D65 /* TypesOfWastePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */; };
 		99895A161FDF1C4500615D65 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A151FDF1C4500615D65 /* AppearanceManager.swift */; };
-		9999517720165D110039FCB6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9999517620165D110039FCB6 /* DataManager.swift */; };
+		9999517720165D110039FCB6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9999517620165D110039FCB6 /* APIManager.swift */; };
 		999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */; };
 		999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A11FDC68720018CF18 /* OpenHour.swift */; };
 		999CD4A41FDC6DE70018CF18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999CD4A31FDC6DE70018CF18 /* Location.swift */; };
@@ -118,7 +118,7 @@
 		99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteCollectionViewCell.swift; sourceTree = "<group>"; };
 		99895A131FDF064200615D65 /* TypesOfWastePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfWastePreviewViewController.swift; sourceTree = "<group>"; };
 		99895A151FDF1C4500615D65 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
-		9999517620165D110039FCB6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		9999517620165D110039FCB6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		999CD49F1FDC64EF0018CF18 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		999CD4A11FDC68720018CF18 /* OpenHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHour.swift; sourceTree = "<group>"; };
 		999CD4A31FDC6DE70018CF18 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -219,9 +219,9 @@
 		9942420E1FCE19BC0095623C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				9942420F1FCE19E10095623C /* LocationManager.swift */,
+				9999517620165D110039FCB6 /* APIManager.swift */,
 				99895A151FDF1C4500615D65 /* AppearanceManager.swift */,
-				9999517620165D110039FCB6 /* DataManager.swift */,
+				9942420F1FCE19E10095623C /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -787,7 +787,7 @@
 				996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */,
 				990E3589201BD6FC002F1F54 /* FacilitiesMapButton.swift in Sources */,
 				9946708D200EB211000EDBB6 /* TypeOfWasteFilterTableViewCell.swift in Sources */,
-				9999517720165D110039FCB6 /* DataManager.swift in Sources */,
+				9999517720165D110039FCB6 /* APIManager.swift in Sources */,
 				99F7BE171FDE1EA200D6B9AA /* ReportIssueTableViewCell.swift in Sources */,
 				999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,

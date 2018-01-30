@@ -28,7 +28,7 @@ class WasteTypesViewController: UIViewController {
 
         if DataStore.wasteTypes.count == 0 {
             SVProgressHUD.show()
-            DataManager.loadData(wasteTypesOnly: true, completionHandler: { (error) in
+            APIManager.loadData(wasteTypesOnly: true, completionHandler: { (error) in
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     SVProgressHUD.dismiss()

@@ -87,7 +87,7 @@ final class FacilitiesViewController: UIViewController {
     }
 
     @objc func refreshFacilities() {
-        DataManager.loadData { _ in
+        APIManager.loadData { _ in
             let endRefreshingOp = BlockOperation(block: {
                 self.refreshControl.endRefreshing()
             })
@@ -129,7 +129,7 @@ extension FacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == DataStore.facilities.count && DataStore.after != nil {
-            DataManager.loadMoreData(completionHandler: { (_) in
+            APIManager.loadMoreData(completionHandler: { (_) in
                 self.tableView.reloadData()
             })
             let loadingMoreCell = tableView.dequeueReusableCell(withIdentifier: LoadingMoreTableViewCell.identifier, for: indexPath)
