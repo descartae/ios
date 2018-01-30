@@ -20,10 +20,6 @@ class WasteTypesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        if #available(iOS 11.0, *) {
-//            navigationItem.largeTitleDisplayMode = .never
-//        }
-
         setupTableView()
 
         if DataStore.wasteTypes.count == 0 {
