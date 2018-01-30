@@ -48,6 +48,10 @@ class LocationManager: NSObject {
         locationUpdateSubscriptions.append(closure)
     }
 
+    func resetLocationUpdateSubscriptions() {
+        locationUpdateSubscriptions = []
+    }
+
     func updateLocation() {
         manager.startUpdatingLocation()
     }

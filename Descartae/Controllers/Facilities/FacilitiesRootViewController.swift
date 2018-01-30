@@ -33,6 +33,34 @@ class FacilitiesRootViewController: UIViewController {
         return facilitiesMap
     }()
 
+    lazy var locationPermissionViewController: LocationPermissionViewController! = {
+        let mainStoryboard = UIStoryboard.mainStoryboard
+        let locationPermission = mainStoryboard.instantiateViewController(withIdentifier: LocationPermissionViewController.identifier) as? LocationPermissionViewController
+
+        return locationPermission
+    }()
+
+    lazy var offlineStateViewController: OfflineStateViewController! = {
+        let mainStoryboard = UIStoryboard.mainStoryboard
+        let offlineState = mainStoryboard.instantiateViewController(withIdentifier: OfflineStateViewController.identifier) as? OfflineStateViewController
+
+        return offlineState
+    }()
+
+    lazy var emptyStateViewController: EmptyStateViewController! = {
+        let mainStoryboard = UIStoryboard.mainStoryboard
+        let emptyState = mainStoryboard.instantiateViewController(withIdentifier: EmptyStateViewController.identifier) as? EmptyStateViewController
+
+        return emptyState
+    }()
+
+    lazy var unavailableRegionViewController: UnavailableRegionViewController! = {
+        let mainStoryboard = UIStoryboard.mainStoryboard
+        let unavailableRegion = mainStoryboard.instantiateViewController(withIdentifier: UnavailableRegionViewController.identifier) as? UnavailableRegionViewController
+
+        return unavailableRegion
+    }()
+
     let locationManager = LocationManager.shared
 
     // MARK: Life cycle
@@ -46,7 +74,7 @@ class FacilitiesRootViewController: UIViewController {
         }
 
         setupLoadingStyle()
-        setupLocationState()
+        getLocationAndDefineState()
         setupFilterButton()
         configureContainer(withViewController: facilitiesViewController)
     }
@@ -59,23 +87,36 @@ class FacilitiesRootViewController: UIViewController {
 
     // MARK: Initial setups
 
-    func setupLocationState() {
-        if locationManager.shouldAskForAuthorization {
-            // TODO: Setup ask permission state
-            locationManager.askForAuthorization()
+    func getLocationAndDefineState() {
+        let handleState = {
+            if DataStore.facilities.count == 0 && DataStore.filteringByWasteTypes.isEmpty {
+                self.configureContainer(withViewController: self.unavailableRegionViewController)
+                return
+            }
+
+            if DataStore.facilities.count == 0 {
+                self.configureContainer(withViewController: self.offlineStateViewController)
+                return
+            }
+
+            self.configureContainer(withViewController: self.facilitiesViewController)
         }
 
-        if locationManager.isLocationDenied {
-            // TODO: Setup location denied state
-        }
+        guard locationManager.location != nil, !locationManager.shouldAskForAuthorization, !locationManager.isLocationDenied else {
+            locationManager.onLocationUpdate {
+                SVProgressHUD.show()
+                APIManager.loadData(completionHandler: { (_) in
+                    self.locationManager.resetLocationUpdateSubscriptions()
+                    handleState()
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                    }
+                })
+            }
 
-        locationManager.onLocationUpdate {
-            SVProgressHUD.show()
-            APIManager.loadData(completionHandler: { (_) in
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
-            })
+            configureContainer(withViewController: locationPermissionViewController)
+
+            return
         }
     }
 
