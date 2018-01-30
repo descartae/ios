@@ -76,7 +76,7 @@ class FacilitiesRootViewController: UIViewController {
         }
 
         setupLoadingStyle()
-        getLocationAndDefineState()
+        loadDataIfLocationIsAvailable()
         setupFilterButton()
     }
 
@@ -88,17 +88,10 @@ class FacilitiesRootViewController: UIViewController {
 
     // MARK: Initial setups
 
-    func getLocationAndDefineState() {
+    func loadDataIfLocationIsAvailable() {
         guard locationManager.location != nil, !locationManager.shouldAskForAuthorization, !locationManager.isLocationDenied else {
             locationManager.onLocationUpdate {
-                SVProgressHUD.show()
-                APIManager.loadData(completionHandler: { (_) in
-                    self.locationManager.resetLocationUpdateSubscriptions()
-                    self.handleState()
-                    DispatchQueue.main.async {
-                        SVProgressHUD.dismiss()
-                    }
-                })
+                self.loadData(shouldResetLocationSubscriptions: true)
             }
 
             configureContainer(withViewController: locationPermissionViewController)
@@ -106,9 +99,38 @@ class FacilitiesRootViewController: UIViewController {
             return
         }
 
+        loadData()
+    }
+
+    func setupLoadingStyle() {
+        var navigationBarOffset: CGFloat = navigationController?.navigationBar.bounds.height ?? 0
+        navigationBarOffset = navigationBarOffset == 0 ? 0 : navigationBarOffset - 42
+        SVProgressHUD.setForegroundColor(AppearanceManager.tintColor)
+        SVProgressHUD.setOffsetFromCenter(UIOffset(horizontal: 0, vertical: navigationBarOffset))
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+    }
+
+    func setupFilterButton() {
+        let customButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        customButton.addTarget(self, action: #selector(presentFilterFacilities), for: .touchUpInside)
+        customButton.setImage(UIImage(named: "icFilter"), for: .normal)
+
+        filterButton = BBBadgeBarButtonItem(customUIButton: customButton)
+        filterButton.badgeMinSize = 16
+        filterButton.badgeFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        filterButton.badgePadding = 2
+        filterButton.badgeOriginX = 22
+        filterButton.badgeOriginY = 6
+        navigationItem.setRightBarButton(filterButton, animated: false)
+    }
+
+    // MARK: Networking
+
+    func loadData(isFiltering: Bool = false, shouldResetLocationSubscriptions: Bool = false) {
         SVProgressHUD.show()
         APIManager.loadData(completionHandler: { (_) in
-            self.handleState()
+            if shouldResetLocationSubscriptions { self.locationManager.resetLocationUpdateSubscriptions() }
+            self.handleState(isFiltering: isFiltering)
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }
@@ -158,28 +180,6 @@ class FacilitiesRootViewController: UIViewController {
         }
     }
 
-    func setupLoadingStyle() {
-        var navigationBarOffset: CGFloat = navigationController?.navigationBar.bounds.height ?? 0
-        navigationBarOffset = navigationBarOffset == 0 ? 0 : navigationBarOffset - 42
-        SVProgressHUD.setForegroundColor(AppearanceManager.tintColor)
-        SVProgressHUD.setOffsetFromCenter(UIOffset(horizontal: 0, vertical: navigationBarOffset))
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-    }
-
-    func setupFilterButton() {
-        let customButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        customButton.addTarget(self, action: #selector(presentFilterFacilities), for: .touchUpInside)
-        customButton.setImage(UIImage(named: "icFilter"), for: .normal)
-
-        filterButton = BBBadgeBarButtonItem(customUIButton: customButton)
-        filterButton.badgeMinSize = 16
-        filterButton.badgeFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
-        filterButton.badgePadding = 2
-        filterButton.badgeOriginX = 22
-        filterButton.badgeOriginY = 6
-        navigationItem.setRightBarButton(filterButton, animated: false)
-    }
-
     // MARK: Actions
 
     @IBAction func updateListingMode(_ sender: UISegmentedControl) {
@@ -201,12 +201,7 @@ class FacilitiesRootViewController: UIViewController {
                 self.filterButton.badgeValue = "\(APIManager.filteringByWasteTypes.count)"
                 DataStore.resetFacilities()
                 SVProgressHUD.show()
-                APIManager.loadData(completionHandler: { (_) in
-                    self.handleState(isFiltering: true)
-                    DispatchQueue.main.async {
-                        SVProgressHUD.dismiss()
-                    }
-                })
+                self.loadData(isFiltering: true)
             }
         }
 
