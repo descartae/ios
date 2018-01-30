@@ -18,6 +18,7 @@ class FacilitiesRootViewController: UIViewController {
 
     var filterButton: BBBadgeBarButtonItem!
     var currentViewOnContainer: UIViewController!
+
     lazy var facilitiesViewController: FacilitiesViewController! = {
         let mainStoryboard = UIStoryboard.mainStoryboard
         let facilities = mainStoryboard.instantiateViewController(withIdentifier: FacilitiesViewController.identifier) as? FacilitiesViewController
@@ -59,10 +60,6 @@ class FacilitiesRootViewController: UIViewController {
     // MARK: Initial setups
 
     func setupLocationState() {
-        // 1 - Verificar se ja tem autorização ou negação de location
-        // 1.1 - Se não houver status determinado, pedir por autorização
-        // 1.2 - Se houver status porém não houver localização do usuário, pedir para verificar nas configurações
-        // 2 - Com localização, realizar primeira chamada,
         if locationManager.shouldAskForAuthorization {
             // TODO: Setup ask permission state
             locationManager.askForAuthorization()

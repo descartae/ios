@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zG-lz-zIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="-271.21439280359823"/>
+            <point key="canvasLocation" x="308" y="-260"/>
         </scene>
         <!--Detalhes-->
         <scene sceneID="kZx-YP-TZe">
@@ -216,7 +216,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sq-AR-vG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2327" y="124"/>
+            <point key="canvasLocation" x="1345" y="124"/>
         </scene>
         <!--Pontos de coleta-->
         <scene sceneID="3YY-gc-mbk">
@@ -266,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoB-WD-cat" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="149.77511244377811"/>
+            <point key="canvasLocation" x="-1260" y="124"/>
         </scene>
         <!--Facilities View Controller-->
         <scene sceneID="FfF-hQ-xx1">
@@ -306,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SS5-b6-xEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="421"/>
+            <point key="canvasLocation" x="308" y="431"/>
         </scene>
         <!--Type Of Waste Details View Controller-->
         <scene sceneID="r5V-7T-wPv">
@@ -376,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unq-7l-dOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2500" y="-766"/>
+            <point key="canvasLocation" x="2186" y="-336"/>
         </scene>
         <!--Filter Facilities View Controller-->
         <scene sceneID="uVM-a9-SNa">
@@ -527,7 +527,143 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gi-2S-ckV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3212" y="124"/>
+            <point key="canvasLocation" x="2186" y="124"/>
+        </scene>
+        <!--Location Permission View Controller-->
+        <scene sceneID="bzT-Yh-Rmk">
+            <objects>
+                <viewController storyboardIdentifier="LocationPermissionViewController" id="Mdu-Dj-bmp" customClass="LocationPermissionViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uQH-PL-tKv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRY-OS-ROD">
+                                <rect key="frame" x="73" y="311" width="228" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="eCu-Bf-eL3"/>
+                                    <constraint firstAttribute="width" constant="228" id="r3t-vH-icC"/>
+                                </constraints>
+                                <state key="normal" title="Dar permissão">
+                                    <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="grantLocationPermission:" destination="Mdu-Dj-bmp" eventType="touchUpInside" id="HWV-xi-quh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bRY-OS-ROD" firstAttribute="centerX" secondItem="uQH-PL-tKv" secondAttribute="centerX" id="3nU-Kz-qEd"/>
+                            <constraint firstItem="bRY-OS-ROD" firstAttribute="centerY" secondItem="uQH-PL-tKv" secondAttribute="centerY" id="u4v-Cw-5ji"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="icj-Co-Aqd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v9h-IR-4Dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2650" y="-767"/>
+        </scene>
+        <!--Unavailable Region View Controller-->
+        <scene sceneID="jMV-yb-eqC">
+            <objects>
+                <viewController storyboardIdentifier="UnavailableRegionViewController" id="Z75-Tm-Id9" customClass="UnavailableRegionViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AJf-np-xh3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvY-ie-sdA">
+                                <rect key="frame" x="73" y="311" width="228" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="228" id="8GB-wN-be5"/>
+                                    <constraint firstAttribute="height" constant="44" id="Xer-f6-Sil"/>
+                                </constraints>
+                                <state key="normal" title="Avise-me">
+                                    <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addEmailToWaitlist:" destination="Z75-Tm-Id9" eventType="touchUpInside" id="I7b-bs-y6q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vvY-ie-sdA" firstAttribute="centerY" secondItem="AJf-np-xh3" secondAttribute="centerY" id="Y3P-Uf-QYJ"/>
+                            <constraint firstItem="vvY-ie-sdA" firstAttribute="centerX" secondItem="AJf-np-xh3" secondAttribute="centerX" id="cUP-3e-R0E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FiN-B5-jhN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4gF-CK-wdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-548" y="-767"/>
+        </scene>
+        <!--Offline State View Controller-->
+        <scene sceneID="ZPa-Zd-A2x">
+            <objects>
+                <viewController storyboardIdentifier="OfflineStateViewController" id="81P-MS-Dt0" customClass="OfflineStateViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kfR-8M-yZe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNS-oJ-DaC">
+                                <rect key="frame" x="73" y="311" width="228" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="228" id="4Ca-0w-bTI"/>
+                                    <constraint firstAttribute="height" constant="44" id="b76-UZ-MGT"/>
+                                </constraints>
+                                <state key="normal" title="Tentar novamente">
+                                    <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryAgain:" destination="81P-MS-Dt0" eventType="touchUpInside" id="r95-Yg-4eM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bNS-oJ-DaC" firstAttribute="centerX" secondItem="kfR-8M-yZe" secondAttribute="centerX" id="Yx9-c3-Sov"/>
+                            <constraint firstItem="bNS-oJ-DaC" firstAttribute="centerY" secondItem="kfR-8M-yZe" secondAttribute="centerY" id="iR6-UD-Y4D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ija-p4-lko"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9mC-BS-tDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1940" y="-767"/>
+        </scene>
+        <!--Empty State View Controller-->
+        <scene sceneID="cQe-s7-Cdd">
+            <objects>
+                <viewController storyboardIdentifier="EmptyStateViewController" id="Mga-30-fg4" customClass="EmptyStateViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QSL-GV-SiK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9K6-Qs-7uw">
+                                <rect key="frame" x="73" y="311" width="228" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ci8-I8-GNK"/>
+                                    <constraint firstAttribute="width" constant="228" id="m40-jY-bvC"/>
+                                </constraints>
+                                <state key="normal" title="Remover filtros">
+                                    <color key="titleColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearFilters:" destination="Mga-30-fg4" eventType="touchUpInside" id="z71-yl-zNX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9K6-Qs-7uw" firstAttribute="centerX" secondItem="QSL-GV-SiK" secondAttribute="centerX" id="KZv-ES-qaf"/>
+                            <constraint firstItem="9K6-Qs-7uw" firstAttribute="centerY" secondItem="QSL-GV-SiK" secondAttribute="centerY" id="udc-9o-ip6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xn5-ei-yNO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G2p-1C-Tbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1260" y="-767"/>
         </scene>
         <!--Reportar problema-->
         <scene sceneID="mW0-kZ-opo">
@@ -827,7 +963,7 @@ este ponto de coleta? Nos conte!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSR-5w-oym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="1239"/>
+            <point key="canvasLocation" x="993" y="1206"/>
         </scene>
         <!--Legendas-->
         <scene sceneID="hwR-3v-blk">
@@ -861,7 +997,7 @@ este ponto de coleta? Nos conte!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ir5-WT-E6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="1238"/>
+            <point key="canvasLocation" x="1681" y="1206"/>
         </scene>
         <!--Report An Issue Navigation Controller-->
         <scene sceneID="5da-3l-aay">
@@ -897,7 +1033,7 @@ este ponto de coleta? Nos conte!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVK-zG-iSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="1238"/>
+            <point key="canvasLocation" x="308" y="1206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="olD-e6-Fkp">
@@ -915,7 +1051,7 @@ este ponto de coleta? Nos conte!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qB9-JK-VwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-753" y="150"/>
+            <point key="canvasLocation" x="-1940" y="124"/>
         </scene>
     </scenes>
     <resources>
@@ -932,6 +1068,6 @@ este ponto de coleta? Nos conte!</string>
         <image name="icWasteEmptyMedium" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ryb-hg-vp5"/>
+        <segue reference="ABR-e5-7nD"/>
     </inferredMetricsTieBreakers>
 </document>
