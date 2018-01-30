@@ -15,7 +15,7 @@ class FilterFacilitiesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var wasteTypesToFilter: [WasteType] = DataStore.filteringByWasteTypes
+    var wasteTypesToFilter: [WasteType] = APIManager.filteringByWasteTypes
     var updateFilterIconBadge: (() -> Void)?
 
     // MARK: Life cycle
@@ -46,16 +46,8 @@ class FilterFacilitiesViewController: UIViewController {
     // MARK: Actions
 
     @objc func applySelection() {
-        DataStore.filteringByWasteTypes = wasteTypesToFilter
+        APIManager.filteringByWasteTypes = wasteTypesToFilter
         updateFilterIconBadge?()
-
-        SVProgressHUD.show()
-        APIManager.loadData(completionHandler: { (_) in
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-            }
-        })
-
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 

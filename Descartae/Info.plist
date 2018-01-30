@@ -58,6 +58,7 @@
 		<string>fbshareextension</string>
 		<string>comgooglemaps</string>
 		<string>waze</string>
+		<string>prefs</string>
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>

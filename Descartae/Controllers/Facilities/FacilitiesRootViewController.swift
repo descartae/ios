@@ -18,6 +18,7 @@ class FacilitiesRootViewController: UIViewController {
 
     var filterButton: BBBadgeBarButtonItem!
     var currentViewOnContainer: UIViewController!
+    var firstSegmentViewController: UIViewController!
 
     lazy var facilitiesViewController: FacilitiesViewController! = {
         let mainStoryboard = UIStoryboard.mainStoryboard
@@ -76,7 +77,6 @@ class FacilitiesRootViewController: UIViewController {
         setupLoadingStyle()
         getLocationAndDefineState()
         setupFilterButton()
-        configureContainer(withViewController: facilitiesViewController)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -88,26 +88,12 @@ class FacilitiesRootViewController: UIViewController {
     // MARK: Initial setups
 
     func getLocationAndDefineState() {
-        let handleState = {
-            if DataStore.facilities.count == 0 && DataStore.filteringByWasteTypes.isEmpty {
-                self.configureContainer(withViewController: self.unavailableRegionViewController)
-                return
-            }
-
-            if DataStore.facilities.count == 0 {
-                self.configureContainer(withViewController: self.offlineStateViewController)
-                return
-            }
-
-            self.configureContainer(withViewController: self.facilitiesViewController)
-        }
-
         guard locationManager.location != nil, !locationManager.shouldAskForAuthorization, !locationManager.isLocationDenied else {
             locationManager.onLocationUpdate {
                 SVProgressHUD.show()
                 APIManager.loadData(completionHandler: { (_) in
                     self.locationManager.resetLocationUpdateSubscriptions()
-                    handleState()
+                    self.handleState()
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
                     }
@@ -118,6 +104,37 @@ class FacilitiesRootViewController: UIViewController {
 
             return
         }
+
+        SVProgressHUD.show()
+        APIManager.loadData(completionHandler: { (_) in
+            self.handleState()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+        })
+    }
+
+    func handleState(isFiltering: Bool = false) {
+        if DataStore.facilities.count == 0 && APIManager.filteringByWasteTypes.isEmpty {
+            firstSegmentViewController = unavailableRegionViewController
+            configureContainer(withViewController: unavailableRegionViewController)
+            return
+        }
+
+        if  DataStore.facilities.count == 0 && !APIManager.filteringByWasteTypes.isEmpty && isFiltering {
+            firstSegmentViewController = emptyStateViewController
+            configureContainer(withViewController: emptyStateViewController)
+            return
+        }
+
+        if DataStore.facilities.count == 0 {
+            firstSegmentViewController = offlineStateViewController
+            configureContainer(withViewController: offlineStateViewController)
+            return
+        }
+
+        firstSegmentViewController = facilitiesViewController
+        configureContainer(withViewController: facilitiesViewController)
     }
 
     func setupLoadingStyle() {
@@ -147,7 +164,7 @@ class FacilitiesRootViewController: UIViewController {
     @IBAction func updateListingMode(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            configureContainer(withViewController: facilitiesViewController)
+            configureContainer(withViewController: firstSegmentViewController)
         case 1:
             configureContainer(withViewController: facilitiesMapViewController)
         default:
@@ -160,7 +177,15 @@ class FacilitiesRootViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
             filterFacilities.updateFilterIconBadge = {
-                self.filterButton.badgeValue = "\(DataStore.filteringByWasteTypes.count)"
+                self.filterButton.badgeValue = "\(APIManager.filteringByWasteTypes.count)"
+                DataStore.resetFacilities()
+                SVProgressHUD.show()
+                APIManager.loadData(completionHandler: { (_) in
+                    self.handleState(isFiltering: true)
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                    }
+                })
             }
         }
 

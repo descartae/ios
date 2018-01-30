@@ -15,15 +15,22 @@ let nextPageUnavailable = NSNotification.Name(rawValue: "nextPageUnavailableNoti
 
 struct DataStore {
     static var wasteTypes: [WasteType] = []
-    static var filteringByWasteTypes: [WasteType] = []
     static var facilities: [DisposalFacility] = []
     static var after: String?
+
+    static func resetFacilities() {
+        facilities = []
+        after = nil
+        NotificationCenter.default.post(name: facilitiesDataUpdated, object: nil)
+        NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
+    }
 }
 
 struct APIManager {
 
     // MARK: Properties
 
+    static var filteringByWasteTypes: [WasteType] = []
     static private let quantity: Int = 7
     static private var firstPageQuery: FacilitiesQuery = {
         return FacilitiesQuery(quantity: quantity)
@@ -51,7 +58,7 @@ struct APIManager {
         }
 
         DataStore.after = nil
-        firstPageQuery.typesOfWasteToFilter = DataStore.filteringByWasteTypes.map {$0.id}
+        firstPageQuery.typesOfWasteToFilter = APIManager.filteringByWasteTypes.map {$0.id}
         GraphQL.client.fetch(query: firstPageQuery) { (result, error) in
             self.handleFacilitiesQueryFetch(result, error, completionHandler, isLoadingMoreData: false)
         }
