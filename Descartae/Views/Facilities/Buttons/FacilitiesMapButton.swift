@@ -61,5 +61,4 @@ class FacilitiesMapButton: UIButton {
         setTitle(titleBeforeLoading, for: UIControlState())
     }
 
-
 }

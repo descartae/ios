@@ -15,8 +15,6 @@ class WasteTypesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    let dataManager = DataManager.shared
-
     // MARK: Life cycle
 
     override func viewDidLoad() {
@@ -28,9 +26,9 @@ class WasteTypesViewController: UIViewController {
 
         setupTableView()
 
-        if dataManager.data.wasteTypes.count == 0 {
+        if DataStore.wasteTypes.count == 0 {
             SVProgressHUD.show()
-            dataManager.loadData(wasteTypesOnly: true, completionHandler: { (error) in
+            DataManager.loadData(wasteTypesOnly: true, completionHandler: { (error) in
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     SVProgressHUD.dismiss()
@@ -60,12 +58,12 @@ class WasteTypesViewController: UIViewController {
 extension WasteTypesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataManager.data.wasteTypes.count
+        return DataStore.wasteTypes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let wasteTypeCell = tableView.dequeueReusableCell(withIdentifier: WasteTypeTableViewCell.identifier, for: indexPath) as? WasteTypeTableViewCell {
-            let wasteType = dataManager.data.wasteTypes[indexPath.row]
+            let wasteType = DataStore.wasteTypes[indexPath.row]
             wasteTypeCell.wasteType = wasteType
 
             return wasteTypeCell

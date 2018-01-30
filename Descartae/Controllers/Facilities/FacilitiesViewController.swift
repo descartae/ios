@@ -29,8 +29,6 @@ final class FacilitiesViewController: UIViewController {
         return activityIndicator
     }()
 
-    var dataManager = DataManager.shared
-
     // MARK: Life cycle
 
     override func viewDidLoad() {
@@ -89,7 +87,7 @@ final class FacilitiesViewController: UIViewController {
     }
 
     @objc func refreshFacilities() {
-        dataManager.loadData { _ in
+        DataManager.loadData { _ in
             let endRefreshingOp = BlockOperation(block: {
                 self.refreshControl.endRefreshing()
             })
@@ -114,7 +112,7 @@ final class FacilitiesViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let details = segue.destination as? FacilityDetailsTableViewController, let indexOfFacility = sender as? Int {
-            details.facility = dataManager.data.facilities[indexOfFacility]
+            details.facility = DataStore.facilities[indexOfFacility]
         }
     }
 
@@ -125,13 +123,13 @@ final class FacilitiesViewController: UIViewController {
 extension FacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let facilitiesCount = dataManager.data.facilities.count
-        return dataManager.data.after != nil ? facilitiesCount + 1 : facilitiesCount
+        let facilitiesCount = DataStore.facilities.count
+        return DataStore.after != nil ? facilitiesCount + 1 : facilitiesCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == dataManager.data.facilities.count && dataManager.data.after != nil {
-            dataManager.loadMoreData(completionHandler: { (_) in
+        if indexPath.row == DataStore.facilities.count && DataStore.after != nil {
+            DataManager.loadMoreData(completionHandler: { (_) in
                 self.tableView.reloadData()
             })
             let loadingMoreCell = tableView.dequeueReusableCell(withIdentifier: LoadingMoreTableViewCell.identifier, for: indexPath)
@@ -140,7 +138,7 @@ extension FacilitiesViewController: UITableViewDataSource {
         }
 
         if let facilityCell = tableView.dequeueReusableCell(withIdentifier: FacilityTableViewCell.identifier, for: indexPath) as? FacilityTableViewCell {
-            facilityCell.facility = dataManager.data.facilities[indexPath.row]
+            facilityCell.facility = DataStore.facilities[indexPath.row]
 
             return facilityCell
         }

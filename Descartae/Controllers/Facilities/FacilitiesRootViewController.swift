@@ -32,7 +32,6 @@ class FacilitiesRootViewController: UIViewController {
         return facilitiesMap
     }()
 
-    var dataManager = DataManager.shared
     let locationManager = LocationManager.shared
 
     // MARK: Life cycle
@@ -69,9 +68,9 @@ class FacilitiesRootViewController: UIViewController {
             // TODO: Setup location denied state
         }
 
-        locationManager.onLocationUpdate { [weak self] in
+        locationManager.onLocationUpdate {
             SVProgressHUD.show()
-            self?.dataManager.loadData(completionHandler: { (_) in
+            DataManager.loadData(completionHandler: { (_) in
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                 }
@@ -119,7 +118,7 @@ class FacilitiesRootViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
             filterFacilities.updateFilterIconBadge = {
-                self.filterButton.badgeValue = "\(self.dataManager.data.filteringByWasteTypes.count)"
+                self.filterButton.badgeValue = "\(DataStore.filteringByWasteTypes.count)"
             }
         }
 
