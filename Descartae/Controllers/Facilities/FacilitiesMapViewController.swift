@@ -25,6 +25,10 @@ class FacilitiesMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if DataStore.after == nil {
+            hideLoadMoreButton()
+        }
+
         addObservers()
         addFacilityAnnotations()
     }

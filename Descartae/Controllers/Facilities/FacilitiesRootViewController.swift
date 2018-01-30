@@ -28,7 +28,7 @@ class FacilitiesRootViewController: UIViewController {
         return facilities
     }()
 
-    var facilitiesMapViewController: FacilitiesMapViewController! = {
+    lazy var facilitiesMapViewController: FacilitiesMapViewController! = {
         let mainStoryboard = UIStoryboard.mainStoryboard
         let facilitiesMap = mainStoryboard.instantiateViewController(withIdentifier: FacilitiesMapViewController.identifier) as? FacilitiesMapViewController
 
