@@ -14,30 +14,26 @@ let nextPageAvailable = NSNotification.Name(rawValue: "nextPageAvailableNotifica
 let nextPageUnavailable = NSNotification.Name(rawValue: "nextPageUnavailableNotification")
 
 struct DataStore {
-    var wasteTypes: [WasteType] = []
-    var filteringByWasteTypes: [WasteType] = []
-    var facilities: [DisposalFacility] = []
-    var after: String?
+    static var wasteTypes: [WasteType] = []
+    static var filteringByWasteTypes: [WasteType] = []
+    static var facilities: [DisposalFacility] = []
+    static var after: String?
 }
 
-class DataManager {
+struct DataManager {
 
     // MARK: Properties
 
-    static let shared: DataManager = DataManager()
-
-    private let quantity: Int = 7
-    var data = DataStore()
-
-    lazy private var firstPageQuery: FacilitiesQuery = {
+    static private let quantity: Int = 7
+    static private var firstPageQuery: FacilitiesQuery = {
         return FacilitiesQuery(quantity: quantity)
     }()
 
-    lazy private var nextPageQuery: FacilitiesQuery = {
+    static private var nextPageQuery: FacilitiesQuery = {
         return FacilitiesQuery(quantity: quantity)
     }()
 
-    lazy private var wasteTypesQuery = WasteTypesQuery()
+    static private var wasteTypesQuery = WasteTypesQuery()
 
     // MARK: Init
 
@@ -45,7 +41,7 @@ class DataManager {
 
     // MARK: Data fetching
 
-    func loadData(wasteTypesOnly: Bool = false, completionHandler: ((_ error: Error?) -> Void)? = nil) {
+    static func loadData(wasteTypesOnly: Bool = false, completionHandler: ((_ error: Error?) -> Void)? = nil) {
         if wasteTypesOnly {
             GraphQL.client.fetch(query: wasteTypesQuery, resultHandler: { (result, error) in
                 self.handleWasteTypesQueryFetch(result, error, completionHandler)
@@ -54,27 +50,27 @@ class DataManager {
             return
         }
 
-        data.after = nil
-        firstPageQuery.typesOfWasteToFilter = self.data.filteringByWasteTypes.map {$0.id}
+        DataStore.after = nil
+        firstPageQuery.typesOfWasteToFilter = DataStore.filteringByWasteTypes.map {$0.id}
         GraphQL.client.fetch(query: firstPageQuery) { (result, error) in
             self.handleFacilitiesQueryFetch(result, error, completionHandler, isLoadingMoreData: false)
         }
     }
 
-    func loadMoreData(completionHandler: ((_ error: Error?) -> Void)?) {
-        guard data.after != nil else {
+    static func loadMoreData(completionHandler: ((_ error: Error?) -> Void)?) {
+        guard DataStore.after != nil else {
             completionHandler?(nil)
             return
         }
 
         nextPageQuery.typesOfWasteToFilter = firstPageQuery.typesOfWasteToFilter
-        nextPageQuery.after = data.after
+        nextPageQuery.after = DataStore.after
         GraphQL.client.fetch(query: nextPageQuery) { (result, error) in
             self.handleFacilitiesQueryFetch(result, error, completionHandler, isLoadingMoreData: true)
         }
     }
 
-    private func handleFacilitiesQueryFetch(_ result: GraphQLResult<FacilitiesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?, isLoadingMoreData: Bool) {
+    static private func handleFacilitiesQueryFetch(_ result: GraphQLResult<FacilitiesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?, isLoadingMoreData: Bool) {
         guard error == nil else {
             completionHandler?(error)
             return
@@ -83,22 +79,22 @@ class DataManager {
         let facilitiesQueryFragment = result?.data?.facilities?.items as? [FacilitiesQuery.Data.Facility.Item] ?? []
         let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [FacilitiesQuery.Data.TypesOfWaste] ?? []
 
-        self.data.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
+        DataStore.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
         let facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })
 
         if let after = result?.data?.facilities?.cursors.after, facilities.count == self.quantity {
-            self.data.after = after
+            DataStore.after = after
         } else {
-            self.data.after = nil
+            DataStore.after = nil
         }
 
         if isLoadingMoreData {
-            self.data.facilities.append(contentsOf: facilities)
+            DataStore.facilities.append(contentsOf: facilities)
         } else {
-            self.data.facilities = facilities
+            DataStore.facilities = facilities
         }
 
-        if self.data.after != nil {
+        if DataStore.after != nil {
             NotificationCenter.default.post(name: nextPageAvailable, object: nil)
         } else {
             NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
@@ -109,14 +105,14 @@ class DataManager {
         completionHandler?(error)
     }
 
-    private func handleWasteTypesQueryFetch(_ result: GraphQLResult<WasteTypesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?) {
+    static private func handleWasteTypesQueryFetch(_ result: GraphQLResult<WasteTypesQuery.Data>?, _ error: Error?, _ completionHandler: ((_ error: Error?) -> Void)?) {
         guard error == nil else {
             completionHandler?(error)
             return
         }
 
         let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [WasteTypesQuery.Data.TypesOfWaste] ?? []
-        self.data.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
+        DataStore.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
 
         completionHandler?(error)
     }

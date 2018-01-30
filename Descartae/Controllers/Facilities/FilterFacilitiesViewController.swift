@@ -15,8 +15,7 @@ class FilterFacilitiesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    let dataManager = DataManager.shared
-    var wasteTypesToFilter: [WasteType] = DataManager.shared.data.filteringByWasteTypes
+    var wasteTypesToFilter: [WasteType] = DataStore.filteringByWasteTypes
     var updateFilterIconBadge: (() -> Void)?
 
     // MARK: Life cycle
@@ -47,11 +46,11 @@ class FilterFacilitiesViewController: UIViewController {
     // MARK: Actions
 
     @objc func applySelection() {
-        dataManager.data.filteringByWasteTypes = wasteTypesToFilter
+        DataStore.filteringByWasteTypes = wasteTypesToFilter
         updateFilterIconBadge?()
 
         SVProgressHUD.show()
-        DataManager.shared.loadData(completionHandler: { (_) in
+        DataManager.loadData(completionHandler: { (_) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }
@@ -74,12 +73,12 @@ class FilterFacilitiesViewController: UIViewController {
 extension FilterFacilitiesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataManager.data.wasteTypes.count
+        return DataStore.wasteTypes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let wasteTypeCell = tableView.dequeueReusableCell(withIdentifier: TypeOfWasteFilterTableViewCell.identifier, for: indexPath) as? TypeOfWasteFilterTableViewCell {
-            let wasteType = dataManager.data.wasteTypes[indexPath.row]
+            let wasteType = DataStore.wasteTypes[indexPath.row]
             wasteTypeCell.wasteType = wasteType
 
             if wasteTypesToFilter.contains(wasteType) {
@@ -103,7 +102,7 @@ extension FilterFacilitiesViewController: UITableViewDelegate {
             return
         }
 
-        let wasteType = dataManager.data.wasteTypes[indexPath.row]
+        let wasteType = DataStore.wasteTypes[indexPath.row]
 
         if let wasteTypeIndex = wasteTypesToFilter.index(of: wasteType) {
             wasteTypesToFilter.remove(at: wasteTypeIndex)

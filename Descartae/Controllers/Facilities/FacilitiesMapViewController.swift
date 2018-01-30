@@ -18,7 +18,6 @@ class FacilitiesMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var loadMoreButton: FacilitiesMapButton!
 
-    let dataManager = DataManager.shared
     let locationManager = LocationManager.shared
 
     // MARK: Life cycle
@@ -82,7 +81,7 @@ class FacilitiesMapViewController: UIViewController {
     }
 
     func addFacilityAnnotations(shouldAdjustZoom: Bool = true) {
-        for facility in dataManager.data.facilities {
+        for facility in DataStore.facilities {
             let annotation = DisposalFacilityAnnotation(facility: facility)
             mapView.addAnnotation(annotation)
         }
@@ -129,12 +128,12 @@ class FacilitiesMapViewController: UIViewController {
     // MARK: Actions
 
     @IBAction func loadMoreFacilities(_ sender: FacilitiesMapButton) {
-        guard dataManager.data.after != nil else {
+        guard DataStore.after != nil else {
             return
         }
 
         sender.startLoading()
-        dataManager.loadMoreData { _ in
+        DataManager.loadMoreData { _ in
             self.zoomToFitAllAnnotations()
             sender.stopLoading()
         }
