@@ -261,6 +261,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentContainer" destination="hAN-2e-vbK" id="p6a-fH-9i2"/>
+                        <outlet property="contentSegmentControl" destination="ghG-PP-MWp" id="fK4-6V-wQ7"/>
                         <segue destination="niE-33-dLG" kind="presentation" identifier="presentFilterFacilities" id="AVz-sq-3gr"/>
                     </connections>
                 </viewController>

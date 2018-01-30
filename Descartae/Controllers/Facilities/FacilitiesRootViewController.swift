@@ -15,6 +15,7 @@ class FacilitiesRootViewController: UIViewController {
     // MARK: Properties
 
     @IBOutlet weak var contentContainer: UIView!
+    @IBOutlet weak var contentSegmentControl: UISegmentedControl!
 
     var filterButton: BBBadgeBarButtonItem!
     var currentViewOnContainer: UIViewController!
@@ -27,7 +28,7 @@ class FacilitiesRootViewController: UIViewController {
         return facilities
     }()
 
-    lazy var facilitiesMapViewController: FacilitiesMapViewController! = {
+    var facilitiesMapViewController: FacilitiesMapViewController! = {
         let mainStoryboard = UIStoryboard.mainStoryboard
         let facilitiesMap = mainStoryboard.instantiateViewController(withIdentifier: FacilitiesMapViewController.identifier) as? FacilitiesMapViewController
 
@@ -117,24 +118,35 @@ class FacilitiesRootViewController: UIViewController {
     func handleState(isFiltering: Bool = false) {
         if DataStore.facilities.count == 0 && APIManager.filteringByWasteTypes.isEmpty {
             firstSegmentViewController = unavailableRegionViewController
-            configureContainer(withViewController: unavailableRegionViewController)
+            if contentSegmentControl.selectedSegmentIndex == 0 {
+                configureContainer(withViewController: unavailableRegionViewController)
+            }
+
             return
         }
 
         if  DataStore.facilities.count == 0 && !APIManager.filteringByWasteTypes.isEmpty && isFiltering {
             firstSegmentViewController = emptyStateViewController
-            configureContainer(withViewController: emptyStateViewController)
+            if contentSegmentControl.selectedSegmentIndex == 0 {
+                configureContainer(withViewController: emptyStateViewController)
+            }
+
             return
         }
 
         if DataStore.facilities.count == 0 {
             firstSegmentViewController = offlineStateViewController
-            configureContainer(withViewController: offlineStateViewController)
+            if contentSegmentControl.selectedSegmentIndex == 0 {
+                configureContainer(withViewController: offlineStateViewController)
+            }
+
             return
         }
 
         firstSegmentViewController = facilitiesViewController
-        configureContainer(withViewController: facilitiesViewController)
+        if contentSegmentControl.selectedSegmentIndex == 0 {
+            configureContainer(withViewController: facilitiesViewController)
+        }
     }
 
     func setupLoadingStyle() {
