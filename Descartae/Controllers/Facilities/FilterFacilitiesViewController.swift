@@ -16,7 +16,7 @@ class FilterFacilitiesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var wasteTypesToFilter: [WasteType] = APIManager.filteringByWasteTypes
-    var updateFilterIconBadge: (() -> Void)?
+    var applyFilters: (() -> Void)?
 
     // MARK: Life cycle
 
@@ -47,7 +47,7 @@ class FilterFacilitiesViewController: UIViewController {
 
     @objc func applySelection() {
         APIManager.filteringByWasteTypes = wasteTypesToFilter
-        updateFilterIconBadge?()
+        applyFilters?()
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 

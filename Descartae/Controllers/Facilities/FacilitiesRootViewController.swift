@@ -116,6 +116,18 @@ class FacilitiesRootViewController: UIViewController {
     }
 
     func handleState(isFiltering: Bool = false) {
+        let setupOfflineState = {
+            self.firstSegmentViewController = self.offlineStateViewController
+            if self.contentSegmentControl.selectedSegmentIndex == 0 {
+                self.configureContainer(withViewController: self.offlineStateViewController)
+            }
+        }
+
+        if !APIManager.isReachable {
+            setupOfflineState()
+            return
+        }
+
         if DataStore.facilities.count == 0 && APIManager.filteringByWasteTypes.isEmpty {
             firstSegmentViewController = unavailableRegionViewController
             if contentSegmentControl.selectedSegmentIndex == 0 {
@@ -134,12 +146,9 @@ class FacilitiesRootViewController: UIViewController {
             return
         }
 
+        // If there is no filter and no facility to show we fallback to offline state since it points to a unavailability of our servers
         if DataStore.facilities.count == 0 {
-            firstSegmentViewController = offlineStateViewController
-            if contentSegmentControl.selectedSegmentIndex == 0 {
-                configureContainer(withViewController: offlineStateViewController)
-            }
-
+            setupOfflineState()
             return
         }
 
@@ -188,7 +197,7 @@ class FacilitiesRootViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
-            filterFacilities.updateFilterIconBadge = {
+            filterFacilities.applyFilters = {
                 self.filterButton.badgeValue = "\(APIManager.filteringByWasteTypes.count)"
                 DataStore.resetFacilities()
                 SVProgressHUD.show()

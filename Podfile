@@ -7,6 +7,7 @@ target 'Descartae' do
   # Network
   pod 'SDWebImage', '~> 4'
   pod 'Apollo', '~> 0.7.0'
+  pod 'ReachabilitySwift'
 
   # Geolocation
   pod 'CMMapLauncher', '~> 1.1.0'

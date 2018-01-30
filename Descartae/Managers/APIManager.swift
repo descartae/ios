@@ -8,6 +8,7 @@
 
 import Foundation
 import Apollo
+import Reachability
 
 let facilitiesDataUpdated = NSNotification.Name(rawValue: "facilitiesDataUpdatedNotification")
 let nextPageAvailable = NSNotification.Name(rawValue: "nextPageAvailableNotification")
@@ -30,6 +31,13 @@ struct APIManager {
 
     // MARK: Properties
 
+    static var isReachable: Bool {
+        if let reachability = Reachability() {
+            return reachability.connection != .none
+        }
+
+        return false
+    }
     static var filteringByWasteTypes: [WasteType] = []
     static private let quantity: Int = 7
     static private var firstPageQuery: FacilitiesQuery = {
