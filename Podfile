@@ -15,6 +15,7 @@ target 'Descartae' do
   # UI
   pod 'BBBadgeBarButtonItem'
   pod 'SVProgressHUD'
+  pod 'RazzleDazzle'
 
   # Facebook
   pod 'FBSDKCoreKit', '~> 4.29.0'
