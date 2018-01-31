@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xgv-oI-mLB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yCu-fo-wmA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1209,7 +1209,7 @@ este ponto de coleta? Nos conte!</string>
         <!--Intro View Controller-->
         <scene sceneID="bdY-VE-BMw">
             <objects>
-                <viewController id="xgv-oI-mLB" customClass="IntroViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IntroViewController" id="xgv-oI-mLB" customClass="IntroViewController" customModule="Descartae" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VaO-VD-cgi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1219,7 +1219,7 @@ este ponto de coleta? Nos conte!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gt9-d1-tht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2650" y="124"/>
+            <point key="canvasLocation" x="-2718" y="124"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="olD-e6-Fkp">

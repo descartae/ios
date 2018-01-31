@@ -39,6 +39,7 @@
 		99875AD7202203F6003B34BF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99875AD6202203F6003B34BF /* IntroViewController.swift */; };
 		99875ADA20223333003B34BF /* IntroContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99875AD920223333003B34BF /* IntroContentView.xib */; };
 		99875ADC202235C3003B34BF /* IntroContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99875ADB202235C3003B34BF /* IntroContentView.swift */; };
+		99875ADE20224D61003B34BF /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99875ADD20224D61003B34BF /* StateManager.swift */; };
 		99890CD7200674D4000D9B44 /* Mutations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 99890CD6200674D4000D9B44 /* Mutations.graphql */; };
 		99890CD9200676A4000D9B44 /* ReportAnIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */; };
 		99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */; };
@@ -125,6 +126,7 @@
 		99875AD6202203F6003B34BF /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		99875AD920223333003B34BF /* IntroContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroContentView.xib; sourceTree = "<group>"; };
 		99875ADB202235C3003B34BF /* IntroContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroContentView.swift; sourceTree = "<group>"; };
+		99875ADD20224D61003B34BF /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		99890CD6200674D4000D9B44 /* Mutations.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mutations.graphql; sourceTree = "<group>"; };
 		99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueTableViewController.swift; sourceTree = "<group>"; };
 		99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				9999517620165D110039FCB6 /* APIManager.swift */,
 				99895A151FDF1C4500615D65 /* AppearanceManager.swift */,
 				9942420F1FCE19E10095623C /* LocationManager.swift */,
+				99875ADD20224D61003B34BF /* StateManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				999CD4A21FDC68720018CF18 /* OpenHour.swift in Sources */,
 				99FA6EBB20200461002B6DA2 /* OfflineStateViewController.swift in Sources */,
 				997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */,
+				99875ADE20224D61003B34BF /* StateManager.swift in Sources */,
 				99ED00AB1FC5FAD800AA4613 /* UIViewExtension.swift in Sources */,
 				99C390EF1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift in Sources */,
 				993D7E612014056A005653A8 /* UIStoryboardExtension.swift in Sources */,
