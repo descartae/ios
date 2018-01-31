@@ -14,6 +14,8 @@ class IntroViewController: AnimatedPagingScrollViewController {
 
     // MARK: Properties
 
+    static let identifier = String(describing: IntroViewController.self)
+
     lazy var firstPage: IntroContentView = {
         guard let page = IntroContentView.instantiateFromNib() else {
             return IntroContentView()
@@ -48,6 +50,21 @@ class IntroViewController: AnimatedPagingScrollViewController {
         page.startButton.isHidden = false
         page.title.text = "Junte-se a nós!"
         page.subtitle.text = "Clique no botão abaixo para começar\na deixar sua vida mais fácil e green"
+        page.start = {
+            guard let appDelegate  = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window else {
+                return
+            }
+
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: { () -> Void in
+                let oldState = UIView.areAnimationsEnabled
+                UIView.setAnimationsEnabled(false)
+                let tabBar = UIStoryboard.mainStoryboard.instantiateInitialViewController()
+                window.rootViewController = tabBar
+                UIView.setAnimationsEnabled(oldState)
+                StateManager.appIntroHasBeenPresented = true
+            }, completion: nil)
+        }
+
         return page
     }()
 
@@ -61,19 +78,6 @@ class IntroViewController: AnimatedPagingScrollViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let background = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-//        background.backgroundColor = .red
-////        view.backgroundColor = .flatGreen
-//        contentView.addSubview(background)
-//
-//        background.translatesAutoresizingMaskIntoConstraints = false
-//        background.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-//        background.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-//        background.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-//        background.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-//
-//        keepView(background, onPages: [1, 2])
 
         add(subview: firstPage, toPage: 1)
         add(subview: secondPage, toPage: 2)
@@ -124,9 +128,5 @@ class IntroViewController: AnimatedPagingScrollViewController {
         subview.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
         subview.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
     }
-//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        super.scrollViewDidScroll(scrollView)
-//        animator.animate(scrollView.contentOffset.x)
-//    }
 
 }
