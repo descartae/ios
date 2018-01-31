@@ -37,6 +37,8 @@
 		99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */; };
 		99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */; };
 		99875AD7202203F6003B34BF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99875AD6202203F6003B34BF /* IntroViewController.swift */; };
+		99875ADA20223333003B34BF /* IntroContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99875AD920223333003B34BF /* IntroContentView.xib */; };
+		99875ADC202235C3003B34BF /* IntroContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99875ADB202235C3003B34BF /* IntroContentView.swift */; };
 		99890CD7200674D4000D9B44 /* Mutations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 99890CD6200674D4000D9B44 /* Mutations.graphql */; };
 		99890CD9200676A4000D9B44 /* ReportAnIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */; };
 		99895A121FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */; };
@@ -121,6 +123,8 @@
 		99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsTableViewController.swift; sourceTree = "<group>"; };
 		99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTodayTableViewCell.xib; sourceTree = "<group>"; };
 		99875AD6202203F6003B34BF /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		99875AD920223333003B34BF /* IntroContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroContentView.xib; sourceTree = "<group>"; };
+		99875ADB202235C3003B34BF /* IntroContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroContentView.swift; sourceTree = "<group>"; };
 		99890CD6200674D4000D9B44 /* Mutations.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mutations.graphql; sourceTree = "<group>"; };
 		99890CD8200676A4000D9B44 /* ReportAnIssueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueTableViewController.swift; sourceTree = "<group>"; };
 		99895A111FDF062200615D65 /* TypeOfWasteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfWasteCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -288,6 +292,15 @@
 			path = Intro;
 			sourceTree = "<group>";
 		};
+		99875AD82022328F003B34BF /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				99875AD920223333003B34BF /* IntroContentView.xib */,
+				99875ADB202235C3003B34BF /* IntroContentView.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
 		99A650EE1FC0B2B70076167D = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +374,7 @@
 		99A651291FC0B3B00076167D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				99875AD82022328F003B34BF /* Intro */,
 				99ED009E1FC5DCC200AA4613 /* Facilities */,
 			);
 			path = Views;
@@ -569,6 +583,7 @@
 				99890CD7200674D4000D9B44 /* Mutations.graphql in Resources */,
 				994415911FD6F3FF0036F84E /* Fragments.graphql in Resources */,
 				99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */,
+				99875ADA20223333003B34BF /* IntroContentView.xib in Resources */,
 				99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */,
 				9946708B200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib in Resources */,
 				9946709B200EFB97000EDBB6 /* WasteTypeTableViewCell.xib in Resources */,
@@ -826,6 +841,7 @@
 				99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */,
 				999CD4A01FDC64EF0018CF18 /* DayOfWeek.swift in Sources */,
 				9946709F200EFD83000EDBB6 /* WasteTypesViewController.swift in Sources */,
+				99875ADC202235C3003B34BF /* IntroContentView.swift in Sources */,
 				99467096200EBBAE000EDBB6 /* FilterWasteTypesSectionFooter.swift in Sources */,
 				990A1DCE1FC3870300DD5D81 /* API.swift in Sources */,
 				996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */,
