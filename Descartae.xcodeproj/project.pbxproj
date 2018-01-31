@@ -15,6 +15,7 @@
 		990A1DD81FC3A8B400DD5D81 /* DisposalFacility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */; };
 		990E3589201BD6FC002F1F54 /* FacilitiesMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990E3588201BD6FC002F1F54 /* FacilitiesMapButton.swift */; };
 		9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */; };
+		993D47CF2021621A004DE085 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D47CE2021621A004DE085 /* UIColorExtension.swift */; };
 		993D7E5F2013F8DE005653A8 /* FacilitiesRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D7E5E2013F8DE005653A8 /* FacilitiesRootViewController.swift */; };
 		993D7E612014056A005653A8 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D7E602014056A005653A8 /* UIStoryboardExtension.swift */; };
 		993D7E63201409EA005653A8 /* FacilitiesMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D7E62201409EA005653A8 /* FacilitiesMapViewController.swift */; };
@@ -97,6 +98,7 @@
 		990A1DD71FC3A8B400DD5D81 /* DisposalFacility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalFacility.swift; sourceTree = "<group>"; };
 		990E3588201BD6FC002F1F54 /* FacilitiesMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesMapButton.swift; sourceTree = "<group>"; };
 		9931ACD51FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsBaseTableViewCell.swift; sourceTree = "<group>"; };
+		993D47CE2021621A004DE085 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		993D7E5E2013F8DE005653A8 /* FacilitiesRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesRootViewController.swift; sourceTree = "<group>"; };
 		993D7E602014056A005653A8 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
 		993D7E62201409EA005653A8 /* FacilitiesMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesMapViewController.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				99ED00A81FC5FAC700AA4613 /* UINibExtension.swift */,
 				99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */,
 				993D7E602014056A005653A8 /* UIStoryboardExtension.swift */,
+				993D47CE2021621A004DE085 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99ED00A91FC5FAC700AA4613 /* UINibExtension.swift in Sources */,
+				993D47CF2021621A004DE085 /* UIColorExtension.swift in Sources */,
 				99FA6EBF202004A1002B6DA2 /* UnavailableRegionViewController.swift in Sources */,
 				990A1DD81FC3A8B400DD5D81 /* DisposalFacility.swift in Sources */,
 				99895A141FDF064200615D65 /* TypesOfWastePreviewViewController.swift in Sources */,
