@@ -577,7 +577,7 @@ public final class FacilitiesQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("address", type: .nonNull(.scalar(String.self))),
             GraphQLField("municipality", type: .scalar(String.self)),
-            GraphQLField("coordinates", type: .object(Coordinate.selections)),
+            GraphQLField("coordinates", type: .nonNull(.object(Coordinate.selections))),
           ]
 
           public var snapshot: Snapshot
@@ -586,8 +586,8 @@ public final class FacilitiesQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(address: String, municipality: String? = nil, coordinates: Coordinate? = nil) {
-            self.init(snapshot: ["__typename": "Location", "address": address, "municipality": municipality, "coordinates": coordinates.flatMap { $0.snapshot }])
+          public init(address: String, municipality: String? = nil, coordinates: Coordinate) {
+            self.init(snapshot: ["__typename": "Location", "address": address, "municipality": municipality, "coordinates": coordinates.snapshot])
           }
 
           public var __typename: String {
@@ -620,12 +620,12 @@ public final class FacilitiesQuery: GraphQLQuery {
           }
 
           /// Exact coordinates to the location
-          public var coordinates: Coordinate? {
+          public var coordinates: Coordinate {
             get {
-              return (snapshot["coordinates"] as? Snapshot).flatMap { Coordinate(snapshot: $0) }
+              return Coordinate(snapshot: snapshot["coordinates"]! as! Snapshot)
             }
             set {
-              snapshot.updateValue(newValue?.snapshot, forKey: "coordinates")
+              snapshot.updateValue(newValue.snapshot, forKey: "coordinates")
             }
           }
 
@@ -833,8 +833,8 @@ public final class FacilitiesQuery: GraphQLQuery {
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("dayOfWeek", type: .nonNull(.scalar(DayOfWeek.self))),
-            GraphQLField("startTime", type: .nonNull(.scalar(Int.self))),
-            GraphQLField("endTime", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("startTime", type: .nonNull(.scalar(String.self))),
+            GraphQLField("endTime", type: .nonNull(.scalar(String.self))),
           ]
 
           public var snapshot: Snapshot
@@ -843,7 +843,7 @@ public final class FacilitiesQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(dayOfWeek: DayOfWeek, startTime: Int, endTime: Int) {
+          public init(dayOfWeek: DayOfWeek, startTime: String, endTime: String) {
             self.init(snapshot: ["__typename": "OpenTime", "dayOfWeek": dayOfWeek, "startTime": startTime, "endTime": endTime])
           }
 
@@ -866,9 +866,9 @@ public final class FacilitiesQuery: GraphQLQuery {
           }
 
           /// The hour representing the start of the timespan
-          public var startTime: Int {
+          public var startTime: String {
             get {
-              return snapshot["startTime"]! as! Int
+              return snapshot["startTime"]! as! String
             }
             set {
               snapshot.updateValue(newValue, forKey: "startTime")
@@ -876,9 +876,9 @@ public final class FacilitiesQuery: GraphQLQuery {
           }
 
           /// The hour representing the end of the timespan
-          public var endTime: Int {
+          public var endTime: String {
             get {
-              return snapshot["endTime"]! as! Int
+              return snapshot["endTime"]! as! String
             }
             set {
               snapshot.updateValue(newValue, forKey: "endTime")
@@ -1190,7 +1190,7 @@ public struct DisposalFacility: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("address", type: .nonNull(.scalar(String.self))),
       GraphQLField("municipality", type: .scalar(String.self)),
-      GraphQLField("coordinates", type: .object(Coordinate.selections)),
+      GraphQLField("coordinates", type: .nonNull(.object(Coordinate.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -1199,8 +1199,8 @@ public struct DisposalFacility: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    public init(address: String, municipality: String? = nil, coordinates: Coordinate? = nil) {
-      self.init(snapshot: ["__typename": "Location", "address": address, "municipality": municipality, "coordinates": coordinates.flatMap { $0.snapshot }])
+    public init(address: String, municipality: String? = nil, coordinates: Coordinate) {
+      self.init(snapshot: ["__typename": "Location", "address": address, "municipality": municipality, "coordinates": coordinates.snapshot])
     }
 
     public var __typename: String {
@@ -1233,12 +1233,12 @@ public struct DisposalFacility: GraphQLFragment {
     }
 
     /// Exact coordinates to the location
-    public var coordinates: Coordinate? {
+    public var coordinates: Coordinate {
       get {
-        return (snapshot["coordinates"] as? Snapshot).flatMap { Coordinate(snapshot: $0) }
+        return Coordinate(snapshot: snapshot["coordinates"]! as! Snapshot)
       }
       set {
-        snapshot.updateValue(newValue?.snapshot, forKey: "coordinates")
+        snapshot.updateValue(newValue.snapshot, forKey: "coordinates")
       }
     }
 
@@ -1446,8 +1446,8 @@ public struct DisposalFacility: GraphQLFragment {
     public static let selections: [GraphQLSelection] = [
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("dayOfWeek", type: .nonNull(.scalar(DayOfWeek.self))),
-      GraphQLField("startTime", type: .nonNull(.scalar(Int.self))),
-      GraphQLField("endTime", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("startTime", type: .nonNull(.scalar(String.self))),
+      GraphQLField("endTime", type: .nonNull(.scalar(String.self))),
     ]
 
     public var snapshot: Snapshot
@@ -1456,7 +1456,7 @@ public struct DisposalFacility: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    public init(dayOfWeek: DayOfWeek, startTime: Int, endTime: Int) {
+    public init(dayOfWeek: DayOfWeek, startTime: String, endTime: String) {
       self.init(snapshot: ["__typename": "OpenTime", "dayOfWeek": dayOfWeek, "startTime": startTime, "endTime": endTime])
     }
 
@@ -1479,9 +1479,9 @@ public struct DisposalFacility: GraphQLFragment {
     }
 
     /// The hour representing the start of the timespan
-    public var startTime: Int {
+    public var startTime: String {
       get {
-        return snapshot["startTime"]! as! Int
+        return snapshot["startTime"]! as! String
       }
       set {
         snapshot.updateValue(newValue, forKey: "startTime")
@@ -1489,9 +1489,9 @@ public struct DisposalFacility: GraphQLFragment {
     }
 
     /// The hour representing the end of the timespan
-    public var endTime: Int {
+    public var endTime: String {
       get {
-        return snapshot["endTime"]! as! Int
+        return snapshot["endTime"]! as! String
       }
       set {
         snapshot.updateValue(newValue, forKey: "endTime")

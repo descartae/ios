@@ -11,12 +11,8 @@ import CoreLocation
 
 extension DisposalFacility.Location {
 
-    var location: CLLocation? {
-        guard let latitude = coordinates?.latitude, let longitude = coordinates?.longitude else {
-            return nil
-        }
-
-        return CLLocation(latitude: latitude, longitude: longitude)
+    var location: CLLocation {
+        return CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
     }
 
 }
