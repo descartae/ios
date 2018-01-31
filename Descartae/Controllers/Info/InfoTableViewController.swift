@@ -76,7 +76,7 @@ class InfoTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let reportAnIssueNav = segue.destination as? ReportAnIssueNavigationController,
                 let reportAnIssue = reportAnIssueNav.childViewControllers[0] as? ReportAnIssueTableViewController {
-            reportAnIssue.isGeneralAppFeedback = true
+            reportAnIssue.inputType = .generaFeedback
         }
     }
 

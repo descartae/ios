@@ -158,10 +158,7 @@ class FacilityDetailsTableViewController: UITableViewController {
     }
 
     func setupMapView() {
-        guard let facilityLocation = facility.location.location else {
-            return
-        }
-
+        let facilityLocation = facility.location.location
         mapView.delegate = self
 
         let annotation = MKPointAnnotation()
@@ -219,10 +216,7 @@ class FacilityDetailsTableViewController: UITableViewController {
     // MARK: Actions
 
     @IBAction func showRouteOptions(_ sender: UIButton) {
-        guard let facilityCoordinates = facility.location.location?.coordinate else {
-            return
-        }
-
+        let facilityCoordinates = facility.location.location.coordinate
         let mapPoint = CMMapPoint(address: facility.location.address, coordinate: facilityCoordinates)
         let chooseMapAlert = UIAlertController(title: "Qual aplicativo deseja utilizar para traçar rotas?", message: nil, preferredStyle: .actionSheet)
 

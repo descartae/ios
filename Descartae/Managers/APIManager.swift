@@ -8,6 +8,7 @@
 
 import Foundation
 import Apollo
+import Reachability
 
 let facilitiesDataUpdated = NSNotification.Name(rawValue: "facilitiesDataUpdatedNotification")
 let nextPageAvailable = NSNotification.Name(rawValue: "nextPageAvailableNotification")
@@ -15,15 +16,29 @@ let nextPageUnavailable = NSNotification.Name(rawValue: "nextPageUnavailableNoti
 
 struct DataStore {
     static var wasteTypes: [WasteType] = []
-    static var filteringByWasteTypes: [WasteType] = []
     static var facilities: [DisposalFacility] = []
     static var after: String?
+
+    static func resetFacilities() {
+        facilities = []
+        after = nil
+        NotificationCenter.default.post(name: facilitiesDataUpdated, object: nil)
+        NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
+    }
 }
 
-struct DataManager {
+struct APIManager {
 
     // MARK: Properties
 
+    static var isReachable: Bool {
+        if let reachability = Reachability() {
+            return reachability.connection != .none
+        }
+
+        return false
+    }
+    static var filteringByWasteTypes: [WasteType] = []
     static private let quantity: Int = 7
     static private var firstPageQuery: FacilitiesQuery = {
         return FacilitiesQuery(quantity: quantity)
@@ -51,7 +66,7 @@ struct DataManager {
         }
 
         DataStore.after = nil
-        firstPageQuery.typesOfWasteToFilter = DataStore.filteringByWasteTypes.map {$0.id}
+        firstPageQuery.typesOfWasteToFilter = APIManager.filteringByWasteTypes.map {$0.id}
         GraphQL.client.fetch(query: firstPageQuery) { (result, error) in
             self.handleFacilitiesQueryFetch(result, error, completionHandler, isLoadingMoreData: false)
         }

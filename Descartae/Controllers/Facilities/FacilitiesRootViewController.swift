@@ -15,9 +15,12 @@ class FacilitiesRootViewController: UIViewController {
     // MARK: Properties
 
     @IBOutlet weak var contentContainer: UIView!
+    @IBOutlet weak var contentSegmentControl: UISegmentedControl!
 
     var filterButton: BBBadgeBarButtonItem!
     var currentViewOnContainer: UIViewController!
+    var firstSegmentViewController: UIViewController!
+
     lazy var facilitiesViewController: FacilitiesViewController! = {
         let mainStoryboard = UIStoryboard.mainStoryboard
         let facilities = mainStoryboard.instantiateViewController(withIdentifier: FacilitiesViewController.identifier) as? FacilitiesViewController
@@ -32,6 +35,42 @@ class FacilitiesRootViewController: UIViewController {
         return facilitiesMap
     }()
 
+    lazy var locationPermissionViewController: LocationPermissionViewController! = {
+        let mainStoryboard = UIStoryboard.mainStoryboard
+        let locationPermission = mainStoryboard.instantiateViewController(withIdentifier: LocationPermissionViewController.identifier) as? LocationPermissionViewController
+
+        return locationPermission
+    }()
+
+    lazy var offlineStateViewController: OfflineStateViewController! = {
+        let mainStoryboard = UIStoryboard.mainStoryboard
+        let offlineState = mainStoryboard.instantiateViewController(withIdentifier: OfflineStateViewController.identifier) as? OfflineStateViewController
+        offlineState?.tryAgain = {
+            self.loadData(isFiltering: !APIManager.filteringByWasteTypes.isEmpty)
+        }
+
+        return offlineState
+    }()
+
+    lazy var emptyStateViewController: EmptyStateViewController! = {
+        let mainStoryboard = UIStoryboard.mainStoryboard
+        let emptyState = mainStoryboard.instantiateViewController(withIdentifier: EmptyStateViewController.identifier) as? EmptyStateViewController
+        emptyState?.clearFilters = {
+            APIManager.filteringByWasteTypes = []
+            self.filterButton.badgeValue = "0"
+            self.loadData(isFiltering: false)
+        }
+
+        return emptyState
+    }()
+
+    lazy var unavailableRegionViewController: UnavailableRegionViewController! = {
+        let mainStoryboard = UIStoryboard.mainStoryboard
+        let unavailableRegion = mainStoryboard.instantiateViewController(withIdentifier: UnavailableRegionViewController.identifier) as? UnavailableRegionViewController
+
+        return unavailableRegion
+    }()
+
     let locationManager = LocationManager.shared
 
     // MARK: Life cycle
@@ -44,10 +83,10 @@ class FacilitiesRootViewController: UIViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
 
+        addObservers()
         setupLoadingStyle()
-        setupLocationState()
+        loadDataIfLocationIsAvailable()
         setupFilterButton()
-        configureContainer(withViewController: facilitiesViewController)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -56,26 +95,25 @@ class FacilitiesRootViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
     }
 
+    deinit {
+        removeObservers()
+    }
+
     // MARK: Initial setups
 
-    func setupLocationState() {
-        if locationManager.shouldAskForAuthorization {
-            // TODO: Setup ask permission state
-            locationManager.askForAuthorization()
+    func loadDataIfLocationIsAvailable() {
+        guard locationManager.location != nil, !locationManager.shouldAskForAuthorization, !locationManager.isLocationDenied else {
+            locationManager.onLocationUpdate {
+                self.loadData(shouldResetLocationSubscriptions: true)
+            }
+
+            firstSegmentViewController = locationPermissionViewController
+            configureContainer(withViewController: locationPermissionViewController)
+
+            return
         }
 
-        if locationManager.isLocationDenied {
-            // TODO: Setup location denied state
-        }
-
-        locationManager.onLocationUpdate {
-            SVProgressHUD.show()
-            DataManager.loadData(completionHandler: { (_) in
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
-            })
-        }
+        loadData()
     }
 
     func setupLoadingStyle() {
@@ -100,12 +138,84 @@ class FacilitiesRootViewController: UIViewController {
         navigationItem.setRightBarButton(filterButton, animated: false)
     }
 
+    func addObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(checkForRegionSupport), name: .UIApplicationWillEnterForeground, object: nil)
+    }
+
+    func removeObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+    }
+
+    // MARK: Networking
+
+    func loadData(isFiltering: Bool = false, shouldResetLocationSubscriptions: Bool = false) {
+        SVProgressHUD.show()
+        APIManager.loadData(completionHandler: { error in
+            if shouldResetLocationSubscriptions { self.locationManager.resetLocationUpdateSubscriptions() }
+            self.handleState(isFiltering: isFiltering, error: error)
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+        })
+    }
+
+    func handleState(isFiltering: Bool = false, error: Error?) {
+        let setupOfflineState = {
+            self.firstSegmentViewController = self.offlineStateViewController
+            if self.contentSegmentControl.selectedSegmentIndex == 0 {
+                self.configureContainer(withViewController: self.offlineStateViewController)
+            }
+        }
+
+        if !APIManager.isReachable {
+            setupOfflineState()
+            return
+        }
+
+        if DataStore.facilities.count == 0 && APIManager.filteringByWasteTypes.isEmpty && error == nil {
+            firstSegmentViewController = unavailableRegionViewController
+            if contentSegmentControl.selectedSegmentIndex == 0 {
+                configureContainer(withViewController: unavailableRegionViewController)
+            }
+
+            return
+        }
+
+        if  DataStore.facilities.count == 0 && !APIManager.filteringByWasteTypes.isEmpty && isFiltering {
+            firstSegmentViewController = emptyStateViewController
+            if contentSegmentControl.selectedSegmentIndex == 0 {
+                configureContainer(withViewController: emptyStateViewController)
+            }
+
+            return
+        }
+
+        // If there is no filter and no facility to show we fallback to offline state since it points to a unavailability of our servers
+        if DataStore.facilities.count == 0 {
+            setupOfflineState()
+            return
+        }
+
+        firstSegmentViewController = facilitiesViewController
+        if contentSegmentControl.selectedSegmentIndex == 0 {
+            configureContainer(withViewController: facilitiesViewController)
+        }
+    }
+
+    @objc func checkForRegionSupport() {
+        if firstSegmentViewController == unavailableRegionViewController {
+            loadData()
+        }
+    }
+
     // MARK: Actions
 
     @IBAction func updateListingMode(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            configureContainer(withViewController: facilitiesViewController)
+            configureContainer(withViewController: firstSegmentViewController)
         case 1:
             configureContainer(withViewController: facilitiesMapViewController)
         default:
@@ -117,8 +227,10 @@ class FacilitiesRootViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let filterFacilities = segue.destination as? FilterFacilitiesViewController {
-            filterFacilities.updateFilterIconBadge = {
-                self.filterButton.badgeValue = "\(DataStore.filteringByWasteTypes.count)"
+            filterFacilities.applyFilters = {
+                self.filterButton.badgeValue = "\(APIManager.filteringByWasteTypes.count)"
+                DataStore.resetFacilities()
+                self.loadData(isFiltering: true)
             }
         }
 

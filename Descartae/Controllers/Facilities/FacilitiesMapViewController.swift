@@ -25,6 +25,10 @@ class FacilitiesMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if DataStore.after == nil {
+            hideLoadMoreButton()
+        }
+
         addObservers()
         addFacilityAnnotations()
     }
@@ -133,7 +137,7 @@ class FacilitiesMapViewController: UIViewController {
         }
 
         sender.startLoading()
-        DataManager.loadMoreData { _ in
+        APIManager.loadMoreData { _ in
             self.zoomToFitAllAnnotations()
             sender.stopLoading()
         }

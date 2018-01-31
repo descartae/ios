@@ -24,7 +24,7 @@ class DisposalFacilityAnnotation: NSObject, MKAnnotation {
         self.facility = facility
         self.title = facility.name
         self.subtitle = facility.location.address
-        self.coordinate = facility.location.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        self.coordinate = facility.location.location.coordinate
 
         super.init()
     }

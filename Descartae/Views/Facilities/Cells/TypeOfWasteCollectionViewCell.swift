@@ -28,7 +28,7 @@ class TypeOfWasteCollectionViewCell: UICollectionViewCell {
 
     func bindTypeOfWasteData() {
         if let iconURL = URL(string: typeOfWaste.icons.iosMediumUrl) {
-            icon.sd_setImage(with: iconURL, for: .normal, completed: nil)
+            icon.sd_setImage(with: iconURL, for: .normal, placeholderImage: UIImage(named: "icWasteEmptyMedium"), completed: nil)
         }
     }
 

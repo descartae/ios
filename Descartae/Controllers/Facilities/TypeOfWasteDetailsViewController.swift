@@ -31,11 +31,14 @@ class TypeOfWasteDetailsViewController: UIViewController {
     // MARK: Setup
 
     func bindTypeOfWasteData() {
+        name.textColor = UIColor(hexString: typeOfWaste.color)
         name.text = typeOfWaste.name
         typeOfWasteDescription.text = typeOfWaste.description
 
         if let iconURL = URL(string: typeOfWaste.icons.iosLargeUrl) {
-            icon.sd_setImage(with: iconURL, completed: nil)
+            icon.sd_setShowActivityIndicatorView(true)
+            icon.sd_setIndicatorStyle(.gray)
+            icon.sd_setImage(with: iconURL, placeholderImage: UIImage(named: "icWasteEmptyLarge"), completed: nil)
         }
     }
 

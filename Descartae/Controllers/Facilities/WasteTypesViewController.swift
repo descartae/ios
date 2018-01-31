@@ -20,15 +20,11 @@ class WasteTypesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        if #available(iOS 11.0, *) {
-//            navigationItem.largeTitleDisplayMode = .never
-//        }
-
         setupTableView()
 
         if DataStore.wasteTypes.count == 0 {
             SVProgressHUD.show()
-            DataManager.loadData(wasteTypesOnly: true, completionHandler: { (error) in
+            APIManager.loadData(wasteTypesOnly: true, completionHandler: { _ in
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     SVProgressHUD.dismiss()

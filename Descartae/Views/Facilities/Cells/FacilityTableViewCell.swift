@@ -60,10 +60,9 @@ class FacilityTableViewCell: UITableViewCell {
         for typeOfWaste in typesOfWasteToPreview {
             let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconSize.constant, height: typeOfWasteIconSize.constant)
             let typeOfWasteIconView = UIImageView(frame: iconFrame)
-            typeOfWasteIconView.image = UIImage(named: "icWasteEmpty")
 
             if let iconURL = URL(string: typeOfWaste.icons.iosSmallUrl) {
-                typeOfWasteIconView.sd_setImage(with: iconURL, completed: nil)
+                typeOfWasteIconView.sd_setImage(with: iconURL, placeholderImage: UIImage(named: "icWasteEmpty"), completed: nil)
             }
 
             typesOfWasteStackView.addArrangedSubview(typeOfWasteIconView)
