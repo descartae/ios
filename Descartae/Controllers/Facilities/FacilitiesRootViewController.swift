@@ -94,6 +94,7 @@ class FacilitiesRootViewController: UIViewController {
                 self.loadData(shouldResetLocationSubscriptions: true)
             }
 
+            firstSegmentViewController = locationPermissionViewController
             configureContainer(withViewController: locationPermissionViewController)
 
             return

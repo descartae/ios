@@ -29,9 +29,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoje - Aberto das 15h às 20h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMk-4H-8tz">
-                        <rect key="frame" x="16" y="50" width="212" height="18"/>
+                        <rect key="frame" x="16" y="50" width="359" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="212" id="8lR-fl-da6"/>
                             <constraint firstAttribute="height" constant="18" id="Anf-JS-TBT"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -54,6 +53,7 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="pMk-4H-8tz" secondAttribute="trailing" id="57k-Sy-Nbz"/>
                     <constraint firstAttribute="bottom" secondItem="pMk-4H-8tz" secondAttribute="bottom" constant="23.5" id="80Y-8R-8yB"/>
                     <constraint firstItem="pMk-4H-8tz" firstAttribute="leading" secondItem="Qt2-Kx-bOF" secondAttribute="leading" constant="16" id="HeJ-X7-x5d"/>
                     <constraint firstItem="pMk-4H-8tz" firstAttribute="top" secondItem="sEP-Az-UlH" secondAttribute="bottom" constant="6" id="Xfg-H1-qnB"/>

@@ -11,7 +11,7 @@ import Foundation
 extension DisposalFacility.OpenHour {
 
     var openHours: String {
-        return "Aberto das \(startTime)h às \(endTime)h"
+        return "\(startTime) - \(endTime)"
     }
 
 }
