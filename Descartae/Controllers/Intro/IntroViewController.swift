@@ -76,9 +76,17 @@ class IntroViewController: AnimatedPagingScrollViewController {
         return .lightContent
     }
 
+    // MARK: Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupPageView()
+    }
+
+    // MARK: Initial setup
+
+    func setupPageView() {
         add(subview: firstPage, toPage: 1)
         add(subview: secondPage, toPage: 2)
         add(subview: thirdPage, toPage: 3)
@@ -89,8 +97,8 @@ class IntroViewController: AnimatedPagingScrollViewController {
         let secondPageBottom = UIColor(red: 20/255, green: 103/255, blue: 54/255, alpha: 1)
 
         let frame = UIScreen.main.bounds
-        let firstPageGradient = GradientColor(.topToBottom, frame: frame, colors: [firstPageTop, firstPageBottom])
-        let secondPageGradient = GradientColor(.topToBottom, frame: frame, colors: [secondPageTop, secondPageBottom])
+        let darkerGradient = GradientColor(.topToBottom, frame: frame, colors: [firstPageTop, firstPageBottom])
+        let lighterGradient = GradientColor(.topToBottom, frame: frame, colors: [secondPageTop, secondPageBottom])
         let alphaAnimation = AlphaAnimation(view: view)
         alphaAnimation[0] = 1
         alphaAnimation[0.5] = 0.8
@@ -98,10 +106,10 @@ class IntroViewController: AnimatedPagingScrollViewController {
         alphaAnimation[1.5] = 0.8
         alphaAnimation[2] = 1
         let backgroundAnimation = BackgroundColorAnimation(view: view)
-        backgroundAnimation[0] = firstPageGradient
-        backgroundAnimation[0.5] = secondPageGradient
-        backgroundAnimation[1] = secondPageGradient
-        backgroundAnimation[1.5] = firstPageGradient
+        backgroundAnimation[0] = darkerGradient
+        backgroundAnimation[0.5] = lighterGradient
+        backgroundAnimation[1] = lighterGradient
+        backgroundAnimation[1.5] = darkerGradient
 
         animator.addAnimation(backgroundAnimation)
         animator.addAnimation(alphaAnimation)
