@@ -619,7 +619,7 @@
                                     <constraint firstAttribute="width" constant="160" id="lQ6-AU-sIJ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Região não suportada" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-5d-Ha8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Região indisponível" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-5d-Ha8">
                                 <rect key="frame" x="10" y="313.5" width="355" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Ne5-w4-Ccm"/>
@@ -659,6 +659,7 @@ Quer ser avisado quando chegarmos?</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addEmailToWaitlist:" destination="Z75-Tm-Id9" eventType="touchUpInside" id="jo3-Cz-P1q"/>
+                                    <segue destination="2pE-Ii-0E0" kind="presentation" id="HDc-CV-DzL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1240,6 +1241,7 @@ este ponto de coleta? Nos conte!</string>
         <image name="icWasteEmptyMedium" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="HDc-CV-DzL"/>
         <segue reference="ryb-hg-vp5"/>
     </inferredMetricsTieBreakers>
 </document>

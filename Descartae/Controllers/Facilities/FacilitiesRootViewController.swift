@@ -83,6 +83,7 @@ class FacilitiesRootViewController: UIViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
 
+        addObservers()
         setupLoadingStyle()
         loadDataIfLocationIsAvailable()
         setupFilterButton()
@@ -92,6 +93,10 @@ class FacilitiesRootViewController: UIViewController {
         super.viewDidAppear(animated)
 
         navigationController?.navigationBar.isTranslucent = false
+    }
+
+    deinit {
+        removeObservers()
     }
 
     // MARK: Initial setups
@@ -131,6 +136,16 @@ class FacilitiesRootViewController: UIViewController {
         filterButton.badgeOriginX = 22
         filterButton.badgeOriginY = 6
         navigationItem.setRightBarButton(filterButton, animated: false)
+    }
+
+    func addObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(checkForRegionSupport), name: .UIApplicationWillEnterForeground, object: nil)
+    }
+
+    func removeObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
     }
 
     // MARK: Networking
@@ -186,6 +201,12 @@ class FacilitiesRootViewController: UIViewController {
         firstSegmentViewController = facilitiesViewController
         if contentSegmentControl.selectedSegmentIndex == 0 {
             configureContainer(withViewController: facilitiesViewController)
+        }
+    }
+
+    @objc func checkForRegionSupport() {
+        if firstSegmentViewController == unavailableRegionViewController {
+            loadData()
         }
     }
 

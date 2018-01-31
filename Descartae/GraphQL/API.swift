@@ -138,6 +138,89 @@ public final class AddFeedbackMutation: GraphQLMutation {
   }
 }
 
+public final class AddToWaitlistMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation AddToWaitlist($email: String!, $latitude: Float!, $longitude: Float!) {\n  addWaitingUser(user: {email: $email, coordinates: {latitude: $latitude, longitude: $longitude}}) {\n    __typename\n    success\n  }\n}"
+
+  public var email: String
+  public var latitude: Double
+  public var longitude: Double
+
+  public init(email: String, latitude: Double, longitude: Double) {
+    self.email = email
+    self.latitude = latitude
+    self.longitude = longitude
+  }
+
+  public var variables: GraphQLMap? {
+    return ["email": email, "latitude": latitude, "longitude": longitude]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("addWaitingUser", arguments: ["user": ["email": GraphQLVariable("email"), "coordinates": ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")]]], type: .object(AddWaitingUser.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(addWaitingUser: AddWaitingUser? = nil) {
+      self.init(snapshot: ["__typename": "Mutation", "addWaitingUser": addWaitingUser.flatMap { $0.snapshot }])
+    }
+
+    public var addWaitingUser: AddWaitingUser? {
+      get {
+        return (snapshot["addWaitingUser"] as? Snapshot).flatMap { AddWaitingUser(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "addWaitingUser")
+      }
+    }
+
+    public struct AddWaitingUser: GraphQLSelectionSet {
+      public static let possibleTypes = ["AddWaitingUserResult"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("success", type: .nonNull(.scalar(Bool.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(success: Bool) {
+        self.init(snapshot: ["__typename": "AddWaitingUserResult", "success": success])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var success: Bool {
+        get {
+          return snapshot["success"]! as! Bool
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "success")
+        }
+      }
+    }
+  }
+}
+
 public final class FacilitiesQuery: GraphQLQuery {
   public static let operationString =
     "query facilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWasteToFilter: [ID]) {\n  typesOfWaste {\n    __typename\n    ...WasteType\n  }\n  facilities(filters: {cursor: {after: $after, before: $before, quantity: $quantity}, hasTypesOfWaste: $typesOfWasteToFilter}) {\n    __typename\n    cursors {\n      __typename\n      after\n      before\n    }\n    items {\n      __typename\n      ...DisposalFacility\n    }\n  }\n}"

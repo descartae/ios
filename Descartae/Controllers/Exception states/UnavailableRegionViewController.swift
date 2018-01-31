@@ -20,4 +20,13 @@ class UnavailableRegionViewController: UIViewController {
         print("Avise-me")
     }
 
+    // MARK: Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let reportAnIssueNav = segue.destination as? ReportAnIssueNavigationController,
+            let reportAnIssue = reportAnIssueNav.childViewControllers[0] as? ReportAnIssueTableViewController {
+            reportAnIssue.inputType = .regionWaitlist
+        }
+    }
+
 }
