@@ -45,6 +45,9 @@ class FacilitiesRootViewController: UIViewController {
     lazy var offlineStateViewController: OfflineStateViewController! = {
         let mainStoryboard = UIStoryboard.mainStoryboard
         let offlineState = mainStoryboard.instantiateViewController(withIdentifier: OfflineStateViewController.identifier) as? OfflineStateViewController
+        offlineState?.tryAgain = {
+            self.loadData(isFiltering: !APIManager.filteringByWasteTypes.isEmpty)
+        }
 
         return offlineState
     }()
@@ -52,6 +55,11 @@ class FacilitiesRootViewController: UIViewController {
     lazy var emptyStateViewController: EmptyStateViewController! = {
         let mainStoryboard = UIStoryboard.mainStoryboard
         let emptyState = mainStoryboard.instantiateViewController(withIdentifier: EmptyStateViewController.identifier) as? EmptyStateViewController
+        emptyState?.clearFilters = {
+            APIManager.filteringByWasteTypes = []
+            self.filterButton.badgeValue = "0"
+            self.loadData(isFiltering: false)
+        }
 
         return emptyState
     }()
@@ -129,16 +137,16 @@ class FacilitiesRootViewController: UIViewController {
 
     func loadData(isFiltering: Bool = false, shouldResetLocationSubscriptions: Bool = false) {
         SVProgressHUD.show()
-        APIManager.loadData(completionHandler: { (_) in
+        APIManager.loadData(completionHandler: { error in
             if shouldResetLocationSubscriptions { self.locationManager.resetLocationUpdateSubscriptions() }
-            self.handleState(isFiltering: isFiltering)
+            self.handleState(isFiltering: isFiltering, error: error)
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }
         })
     }
 
-    func handleState(isFiltering: Bool = false) {
+    func handleState(isFiltering: Bool = false, error: Error?) {
         let setupOfflineState = {
             self.firstSegmentViewController = self.offlineStateViewController
             if self.contentSegmentControl.selectedSegmentIndex == 0 {
@@ -151,7 +159,7 @@ class FacilitiesRootViewController: UIViewController {
             return
         }
 
-        if DataStore.facilities.count == 0 && APIManager.filteringByWasteTypes.isEmpty {
+        if DataStore.facilities.count == 0 && APIManager.filteringByWasteTypes.isEmpty && error == nil {
             firstSegmentViewController = unavailableRegionViewController
             if contentSegmentControl.selectedSegmentIndex == 0 {
                 configureContainer(withViewController: unavailableRegionViewController)
@@ -201,7 +209,6 @@ class FacilitiesRootViewController: UIViewController {
             filterFacilities.applyFilters = {
                 self.filterButton.badgeValue = "\(APIManager.filteringByWasteTypes.count)"
                 DataStore.resetFacilities()
-                SVProgressHUD.show()
                 self.loadData(isFiltering: true)
             }
         }

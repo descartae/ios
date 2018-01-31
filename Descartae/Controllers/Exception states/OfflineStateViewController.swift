@@ -13,7 +13,11 @@ class OfflineStateViewController: UIViewController {
     // MARK: Properties
 
     static let identifier = String(describing: OfflineStateViewController.self)
+    var tryAgain: (() -> Void)?
+
+    // MARK: Actions
 
     @IBAction func tryAgain(_ sender: Any) {
+        tryAgain?()
     }
 }

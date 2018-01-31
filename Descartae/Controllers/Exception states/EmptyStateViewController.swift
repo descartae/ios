@@ -13,7 +13,11 @@ class EmptyStateViewController: UIViewController {
     // MARK: Properties
 
     static let identifier = String(describing: EmptyStateViewController.self)
+    var clearFilters: (() -> Void)?
+
+    // MARK: Actions
 
     @IBAction func clearFilters(_ sender: Any) {
+        clearFilters?()
     }
 }

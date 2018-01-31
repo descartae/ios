@@ -16,6 +16,8 @@ class LocationPermissionViewController: UIViewController {
 
     let locationManager = LocationManager.shared
 
+    // MARK: Actions
+
     @IBAction func grantLocationPermission(_ sender: Any) {
         if locationManager.shouldAskForAuthorization {
             locationManager.askForAuthorization()
