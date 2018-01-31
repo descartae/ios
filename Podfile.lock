@@ -9,6 +9,9 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - CMMapLauncher (1.1.0)
   - FBSDKCoreKit (4.29.0):
     - Bolts (~> 1.7)
@@ -26,6 +29,7 @@ PODS:
 DEPENDENCIES:
   - Apollo (~> 0.7.0)
   - BBBadgeBarButtonItem
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CMMapLauncher (~> 1.1.0)
   - FBSDKCoreKit (~> 4.29.0)
   - FBSDKLoginKit (~> 4.29.0)
@@ -35,10 +39,20 @@ DEPENDENCIES:
   - SDWebImage (~> 4)
   - SVProgressHUD
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
   Apollo: d6649ac06168660e70c6226c4eadfc0770791ba5
   BBBadgeBarButtonItem: c2fbca0bff18e21b70defc9438a8a5048008e7ca
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CMMapLauncher: 668b949522d1789506e3c8d9dbc1b0384ee20573
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
@@ -48,6 +62,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: 1addb3ddd709b96156aea702598a5f0837c9fb19
+PODFILE CHECKSUM: caae70cf508ab998edc30bae032d2f137a175e1b
 
 COCOAPODS: 1.3.1
