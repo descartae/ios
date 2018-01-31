@@ -25,6 +25,7 @@ fragment WasteType on TypeOfWaste {
     _id
     name
     description
+    color
     icons {
         iosSmallURL
         iosMediumURL

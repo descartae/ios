@@ -28,6 +28,7 @@ class WasteTypeTableViewCell: UITableViewCell {
     // MARK: Data bind
 
     func bindWasteTypeData() {
+        name.textColor = UIColor(hexString: wasteType.color)
         name.text = wasteType.name
         typeDescription.text = wasteType.description
         if let iconURL = URL(string: wasteType.icons.iosSmallUrl) {

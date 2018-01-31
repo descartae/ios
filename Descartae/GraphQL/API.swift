@@ -290,6 +290,7 @@ public final class FacilitiesQuery: GraphQLQuery {
         GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
         GraphQLField("description", type: .nonNull(.scalar(String.self))),
+        GraphQLField("color", type: .nonNull(.scalar(String.self))),
         GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
       ]
 
@@ -299,8 +300,8 @@ public final class FacilitiesQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String, icons: Icon) {
-        self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "icons": icons.snapshot])
+      public init(id: GraphQLID, name: String, description: String, color: String, icons: Icon) {
+        self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "color": color, "icons": icons.snapshot])
       }
 
       public var __typename: String {
@@ -338,6 +339,16 @@ public final class FacilitiesQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      /// The color for this type
+      public var color: String {
+        get {
+          return snapshot["color"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "color")
         }
       }
 
@@ -769,6 +780,7 @@ public final class FacilitiesQuery: GraphQLQuery {
             GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .nonNull(.scalar(String.self))),
+            GraphQLField("color", type: .nonNull(.scalar(String.self))),
             GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
           ]
 
@@ -778,8 +790,8 @@ public final class FacilitiesQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, description: String, icons: Icon) {
-            self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "icons": icons.snapshot])
+          public init(id: GraphQLID, name: String, description: String, color: String, icons: Icon) {
+            self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "color": color, "icons": icons.snapshot])
           }
 
           public var __typename: String {
@@ -817,6 +829,16 @@ public final class FacilitiesQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "description")
+            }
+          }
+
+          /// The color for this type
+          public var color: String {
+            get {
+              return snapshot["color"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "color")
             }
           }
 
@@ -1018,6 +1040,7 @@ public final class WasteTypesQuery: GraphQLQuery {
         GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
         GraphQLField("description", type: .nonNull(.scalar(String.self))),
+        GraphQLField("color", type: .nonNull(.scalar(String.self))),
         GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
       ]
 
@@ -1027,8 +1050,8 @@ public final class WasteTypesQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String, icons: Icon) {
-        self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "icons": icons.snapshot])
+      public init(id: GraphQLID, name: String, description: String, color: String, icons: Icon) {
+        self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "color": color, "icons": icons.snapshot])
       }
 
       public var __typename: String {
@@ -1066,6 +1089,16 @@ public final class WasteTypesQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      /// The color for this type
+      public var color: String {
+        get {
+          return snapshot["color"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "color")
         }
       }
 
@@ -1382,6 +1415,7 @@ public struct DisposalFacility: GraphQLFragment {
       GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
       GraphQLField("description", type: .nonNull(.scalar(String.self))),
+      GraphQLField("color", type: .nonNull(.scalar(String.self))),
       GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
     ]
 
@@ -1391,8 +1425,8 @@ public struct DisposalFacility: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    public init(id: GraphQLID, name: String, description: String, icons: Icon) {
-      self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "icons": icons.snapshot])
+    public init(id: GraphQLID, name: String, description: String, color: String, icons: Icon) {
+      self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "color": color, "icons": icons.snapshot])
     }
 
     public var __typename: String {
@@ -1430,6 +1464,16 @@ public struct DisposalFacility: GraphQLFragment {
       }
       set {
         snapshot.updateValue(newValue, forKey: "description")
+      }
+    }
+
+    /// The color for this type
+    public var color: String {
+      get {
+        return snapshot["color"]! as! String
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "color")
       }
     }
 
@@ -1585,7 +1629,7 @@ public struct DisposalFacility: GraphQLFragment {
 
 public struct WasteType: GraphQLFragment {
   public static let fragmentString =
-    "fragment WasteType on TypeOfWaste {\n  __typename\n  _id\n  name\n  description\n  icons {\n    __typename\n    iosSmallURL\n    iosMediumURL\n    iosLargeURL\n  }\n}"
+    "fragment WasteType on TypeOfWaste {\n  __typename\n  _id\n  name\n  description\n  color\n  icons {\n    __typename\n    iosSmallURL\n    iosMediumURL\n    iosLargeURL\n  }\n}"
 
   public static let possibleTypes = ["TypeOfWaste"]
 
@@ -1594,6 +1638,7 @@ public struct WasteType: GraphQLFragment {
     GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
     GraphQLField("name", type: .nonNull(.scalar(String.self))),
     GraphQLField("description", type: .nonNull(.scalar(String.self))),
+    GraphQLField("color", type: .nonNull(.scalar(String.self))),
     GraphQLField("icons", type: .nonNull(.object(Icon.selections))),
   ]
 
@@ -1603,8 +1648,8 @@ public struct WasteType: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  public init(id: GraphQLID, name: String, description: String, icons: Icon) {
-    self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "icons": icons.snapshot])
+  public init(id: GraphQLID, name: String, description: String, color: String, icons: Icon) {
+    self.init(snapshot: ["__typename": "TypeOfWaste", "_id": id, "name": name, "description": description, "color": color, "icons": icons.snapshot])
   }
 
   public var __typename: String {
@@ -1642,6 +1687,16 @@ public struct WasteType: GraphQLFragment {
     }
     set {
       snapshot.updateValue(newValue, forKey: "description")
+    }
+  }
+
+  /// The color for this type
+  public var color: String {
+    get {
+      return snapshot["color"]! as! String
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "color")
     }
   }
 

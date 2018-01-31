@@ -31,6 +31,7 @@ class TypeOfWasteDetailsViewController: UIViewController {
     // MARK: Setup
 
     func bindTypeOfWasteData() {
+        name.textColor = UIColor(hexString: typeOfWaste.color)
         name.text = typeOfWaste.name
         typeOfWasteDescription.text = typeOfWaste.description
 
