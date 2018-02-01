@@ -31,13 +31,13 @@ class IntroContentView: UIView {
         super.awakeFromNib()
 
         switch DeviceType.current {
-        case .iPhoneSE, .iPhone5, .simulator:
+        case .iPhoneSE, .iPhone5:
             onboardingImageHeight.constant = 200
             onboardingImageWidth.constant = 200
             onboardingImageTop.constant -= 24
             titleTop.constant -= 20
             startButtonTop.constant -= 8
-        case .iPhone6Plus, .iPhone7Plus, .iPhoneX:
+        case .iPhone6Plus, .iPhone7Plus, .iPhone8Plus, .iPhoneX:
             onboardingImageTop.constant += 24
             titleTop.constant += 8
             startButtonTop.constant += 24

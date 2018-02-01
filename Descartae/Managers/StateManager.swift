@@ -36,7 +36,7 @@ struct StateManager {
 
     // MARK: State update notifications
 
-    static func updateStateFor(_ statesToNotify: [ObservableState]) {
+    static func notifyObersverAboutStateUpdates(_ statesToNotify: [ObservableState]) {
         _ = statesToNotify.map { notificationCenter.post(name: $0.notification, object: nil) }
     }
 

@@ -17,6 +17,7 @@ class FilterFacilitiesViewController: UIViewController {
 
     var wasteTypesToFilter: [WasteType] = APIManager.filteringByWasteTypes
     var applyFilters: (() -> Void)?
+    let locationManager = LocationManager.shared
 
     // MARK: Life cycle
 
@@ -24,6 +25,16 @@ class FilterFacilitiesViewController: UIViewController {
         super.viewDidLoad()
 
         setupTableView()
+
+        if DataStore.wasteTypes.count == 0 {
+            SVProgressHUD.show()
+            APIManager.loadData(wasteTypesOnly: true, completionHandler: { _ in
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    SVProgressHUD.dismiss()
+                }
+            })
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +57,16 @@ class FilterFacilitiesViewController: UIViewController {
     // MARK: Actions
 
     @objc func applySelection() {
+        guard locationManager.location != nil, !locationManager.shouldAskForAuthorization, !locationManager.isLocationDenied else {
+            let activateLocation = UIAlertController(title: "Ops!", message: "Você precisa permitir acesso a sua localização para que nós possamos buscar ou filtrar os pontos de coleta mais próximos.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Tudo bem", style: .default, handler: nil)
+            activateLocation.addAction(okAction)
+
+            present(activateLocation, animated: true, completion: nil)
+
+            return
+        }
+
         APIManager.filteringByWasteTypes = wasteTypesToFilter
         applyFilters?()
         presentingViewController?.dismiss(animated: true, completion: nil)

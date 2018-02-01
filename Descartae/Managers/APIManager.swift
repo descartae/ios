@@ -18,7 +18,7 @@ struct DataStore {
     static func resetFacilities() {
         facilities = []
         after = nil
-        StateManager.updateStateFor([.facilities, .nextPageIsUnavailable])
+        StateManager.notifyObersverAboutStateUpdates([.facilities, .nextPageIsUnavailable])
     }
 }
 
@@ -104,13 +104,8 @@ struct APIManager {
             DataStore.facilities = facilities
         }
 
-//        if DataStore.after != nil {
-//            StateManager.updateStateFor([.nextPageIsAvailable])
-//        } else {
-//            StateManager.updateStateFor([.nextPageIsUnavailable])
-//        }
         let stateUpdates: [ObservableState] = DataStore.after != nil ? [.nextPageIsAvailable, .facilities] : [.nextPageIsUnavailable, .facilities]
-        StateManager.updateStateFor(stateUpdates)
+        StateManager.notifyObersverAboutStateUpdates(stateUpdates)
 
         completionHandler?(error)
     }
