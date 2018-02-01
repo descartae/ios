@@ -72,12 +72,12 @@ final class FacilitiesViewController: UIViewController {
 
     func addObservers() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(reloadFacilities), name: facilitiesDataUpdated, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(reloadFacilities), name: ObservableState.facilities.notification, object: nil)
     }
 
     func removeObservers() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.removeObserver(self, name: facilitiesDataUpdated, object: nil)
+        notificationCenter.removeObserver(self, name: ObservableState.facilities.notification, object: nil)
     }
 
     // MARK: Data handling

@@ -10,10 +10,6 @@ import Foundation
 import Apollo
 import Reachability
 
-let facilitiesDataUpdated = NSNotification.Name(rawValue: "facilitiesDataUpdatedNotification")
-let nextPageAvailable = NSNotification.Name(rawValue: "nextPageAvailableNotification")
-let nextPageUnavailable = NSNotification.Name(rawValue: "nextPageUnavailableNotification")
-
 struct DataStore {
     static var wasteTypes: [WasteType] = []
     static var facilities: [DisposalFacility] = []
@@ -22,8 +18,7 @@ struct DataStore {
     static func resetFacilities() {
         facilities = []
         after = nil
-        NotificationCenter.default.post(name: facilitiesDataUpdated, object: nil)
-        NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
+        StateManager.updateStateFor([.facilities, .nextPageIsUnavailable])
     }
 }
 
@@ -109,13 +104,13 @@ struct APIManager {
             DataStore.facilities = facilities
         }
 
-        if DataStore.after != nil {
-            NotificationCenter.default.post(name: nextPageAvailable, object: nil)
-        } else {
-            NotificationCenter.default.post(name: nextPageUnavailable, object: nil)
-        }
-
-        NotificationCenter.default.post(name: facilitiesDataUpdated, object: nil)
+//        if DataStore.after != nil {
+//            StateManager.updateStateFor([.nextPageIsAvailable])
+//        } else {
+//            StateManager.updateStateFor([.nextPageIsUnavailable])
+//        }
+        let stateUpdates: [ObservableState] = DataStore.after != nil ? [.nextPageIsAvailable, .facilities] : [.nextPageIsUnavailable, .facilities]
+        StateManager.updateStateFor(stateUpdates)
 
         completionHandler?(error)
     }

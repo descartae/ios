@@ -41,16 +41,16 @@ class FacilitiesMapViewController: UIViewController {
 
     func addObservers() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(reloadMapView), name: facilitiesDataUpdated, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(showLoadMoreButton), name: nextPageAvailable, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(hideLoadMoreButton), name: nextPageUnavailable, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(reloadMapView), name: ObservableState.facilities.notification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(showLoadMoreButton), name: ObservableState.nextPageIsAvailable.notification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(hideLoadMoreButton), name: ObservableState.nextPageIsUnavailable.notification, object: nil)
     }
 
     func removeObservers() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.removeObserver(self, name: facilitiesDataUpdated, object: nil)
-        notificationCenter.removeObserver(self, name: nextPageAvailable, object: nil)
-        notificationCenter.removeObserver(self, name: nextPageUnavailable, object: nil)
+        notificationCenter.removeObserver(self, name: ObservableState.facilities.notification, object: nil)
+        notificationCenter.removeObserver(self, name: ObservableState.nextPageIsAvailable.notification, object: nil)
+        notificationCenter.removeObserver(self, name: ObservableState.nextPageIsUnavailable.notification, object: nil)
     }
 
     @objc func showLoadMoreButton() {

@@ -18,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         AppearanceManager.setupAppearance()
 
+        if !StateManager.appIntroHasBeenPresented {
+            let mainStoryboard = UIStoryboard.mainStoryboard
+            let introViewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier)
+            window?.rootViewController = introViewController
+            window?.makeKeyAndVisible()
+        }
+
         return true
     }
 

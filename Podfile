@@ -15,6 +15,9 @@ target 'Descartae' do
   # UI
   pod 'BBBadgeBarButtonItem'
   pod 'SVProgressHUD'
+  pod 'RazzleDazzle'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'Device.swift'
 
   # Facebook
   pod 'FBSDKCoreKit', '~> 4.29.0'
