@@ -79,9 +79,14 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="onboardingImage" destination="Rly-Tu-iAZ" id="pHG-Gd-SWm"/>
+                <outlet property="onboardingImageHeight" destination="NXK-Lk-7fj" id="Ngx-08-clh"/>
+                <outlet property="onboardingImageTop" destination="1oH-dy-Kti" id="ca7-4w-MzG"/>
+                <outlet property="onboardingImageWidth" destination="dLF-uD-Vsv" id="w5T-dy-8H0"/>
                 <outlet property="startButton" destination="EaB-S0-K8I" id="WMv-0r-7c1"/>
+                <outlet property="startButtonTop" destination="89w-sf-wm3" id="yaI-GV-kqS"/>
                 <outlet property="subtitle" destination="eJg-hM-eq1" id="a5e-YQ-15n"/>
                 <outlet property="title" destination="Ydf-9Q-QF8" id="mJO-zj-onQ"/>
+                <outlet property="titleTop" destination="NBY-6P-fbY" id="JHt-QV-Vfm"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
