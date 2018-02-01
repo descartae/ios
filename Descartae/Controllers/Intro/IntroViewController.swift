@@ -103,9 +103,9 @@ class IntroViewController: AnimatedPagingScrollViewController {
         let lighterGradient = GradientColor(.topToBottom, frame: frame, colors: [secondPageTop, secondPageBottom])
         let alphaAnimation = AlphaAnimation(view: view)
         alphaAnimation[0] = 1
-        alphaAnimation[0.5] = 0.8
+        alphaAnimation[0.5] = 0.9
         alphaAnimation[1] = 1
-        alphaAnimation[1.5] = 0.8
+        alphaAnimation[1.5] = 0.9
         alphaAnimation[2] = 1
         let backgroundAnimation = BackgroundColorAnimation(view: view)
         backgroundAnimation[0] = darkerGradient

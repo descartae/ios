@@ -29,7 +29,7 @@ class TypeOfWasteFilterTableViewCell: UITableViewCell {
     func bindWasteTypeData() {
         name.text = wasteType.name
         if let iconURL = URL(string: wasteType.icons.iosSmallUrl) {
-            icon.sd_setImage(with: iconURL)
+            icon.sd_setImage(with: iconURL, placeholderImage: UIImage(named: "icWasteEmpty"), completed: nil)
         }
     }
 }
