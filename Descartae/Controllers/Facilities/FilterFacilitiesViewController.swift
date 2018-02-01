@@ -17,6 +17,7 @@ class FilterFacilitiesViewController: UIViewController {
 
     var wasteTypesToFilter: [WasteType] = APIManager.filteringByWasteTypes
     var applyFilters: (() -> Void)?
+    let locationManager = LocationManager.shared
 
     // MARK: Life cycle
 
@@ -24,6 +25,16 @@ class FilterFacilitiesViewController: UIViewController {
         super.viewDidLoad()
 
         setupTableView()
+
+        if DataStore.wasteTypes.count == 0 {
+            SVProgressHUD.show()
+            APIManager.loadData(wasteTypesOnly: true, completionHandler: { _ in
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    SVProgressHUD.dismiss()
+                }
+            })
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +52,13 @@ class FilterFacilitiesViewController: UIViewController {
         tableView.estimatedRowHeight = TypeOfWasteFilterTableViewCell.rowHeight
 
         tableView.register(TypeOfWasteFilterTableViewCell.nib, forCellReuseIdentifier: TypeOfWasteFilterTableViewCell.identifier)
+    }
+
+    func checkIfIsAbleToFilter() {
+        guard locationManager.location != nil, !locationManager.shouldAskForAuthorization, !locationManager.isLocationDenied else {
+            
+            return
+        }
     }
 
     // MARK: Actions
@@ -114,7 +132,9 @@ extension FilterFacilitiesViewController: UITableViewDelegate {
             return nil
         }
 
-        footerView.applySelection.addTarget(self, action: #selector(applySelection), for: .touchUpInside)
+        if locationManager.location != nil && !locationManager.shouldAskForAuthorization && !locationManager.isLocationDenied {
+            footerView.applySelection.addTarget(self, action: #selector(applySelection), for: .touchUpInside)
+        }
 
         return footerView
     }
