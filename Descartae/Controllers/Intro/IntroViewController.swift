@@ -16,6 +16,8 @@ class IntroViewController: AnimatedPagingScrollViewController {
 
     static let identifier = String(describing: IntroViewController.self)
 
+    @IBOutlet weak var pageControl: UIPageControl!
+
     lazy var firstPage: IntroContentView = {
         guard let page = IntroContentView.instantiateFromNib() else {
             return IntroContentView()
@@ -135,6 +137,13 @@ class IntroViewController: AnimatedPagingScrollViewController {
         subview.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: centerXConstant).isActive = true
         subview.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
         subview.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+    }
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        super.scrollViewDidScroll(scrollView)
+
+        let currentPage = Int(scrollView.contentOffset.x / pageWidth)
+        pageControl.currentPage = currentPage
     }
 
 }

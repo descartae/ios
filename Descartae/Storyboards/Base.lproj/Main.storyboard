@@ -1213,13 +1213,31 @@ este ponto de coleta? Nos conte!</string>
                     <view key="view" contentMode="scaleToFill" id="VaO-VD-cgi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="AEh-uw-kNO">
+                                <rect key="frame" x="153" y="595" width="69" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="1cp-fL-nco"/>
+                                    <constraint firstAttribute="height" constant="37" id="p8E-7d-OFd"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pageControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6YK-RY-d5B" firstAttribute="bottom" secondItem="AEh-uw-kNO" secondAttribute="bottom" constant="35" id="nTW-AT-1fH"/>
+                            <constraint firstItem="AEh-uw-kNO" firstAttribute="centerX" secondItem="VaO-VD-cgi" secondAttribute="centerX" id="ug4-Xu-fbt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6YK-RY-d5B"/>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="AEh-uw-kNO" id="MEE-ua-n1d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gt9-d1-tht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2718" y="124"/>
+            <point key="canvasLocation" x="-2719.1999999999998" y="123.68815592203899"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="olD-e6-Fkp">

@@ -34,7 +34,7 @@
                 </label>
                 <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaB-S0-K8I">
                     <rect key="frame" x="80" y="492" width="215" height="52"/>
-                    <color key="backgroundColor" red="0.28627450980000002" green="0.78823529410000004" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.15294117647058825" green="0.72549019607843135" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="4mR-x1-EKP"/>
                         <constraint firstAttribute="width" constant="215" id="Ngr-Te-YDp"/>
@@ -59,7 +59,7 @@
                         <constraint firstAttribute="width" constant="311" id="yFT-SN-dYE"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
