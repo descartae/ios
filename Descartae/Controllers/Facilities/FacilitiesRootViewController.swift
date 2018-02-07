@@ -15,7 +15,12 @@ class FacilitiesRootViewController: UIViewController {
     // MARK: Properties
 
     @IBOutlet weak var contentContainer: UIView!
-    @IBOutlet weak var contentSegmentControl: UISegmentedControl!
+    @IBOutlet weak var contentSegmentControl: UISegmentedControl! {
+        didSet {
+            contentSegmentControl.setTitle(localized("list_facilities_segment"), forSegmentAt: 0)
+            contentSegmentControl.setTitle(localized("map_facilities_segment"), forSegmentAt: 1)
+        }
+    }
 
     var filterButton: BBBadgeBarButtonItem!
     var currentViewOnContainer: UIViewController!
