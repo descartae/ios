@@ -6,9 +6,15 @@
   Copyright © 2018 Filipe Alvarenga. All rights reserved.
 */
 
+// General
+
+"thank_you" = "Thank you";
+"cancel" = "Cancel";
+"greeting_alert_title" = "Hooray!";
 
 // Facilities
 
+"waste_disposal_facilities_title" = "Disposal facilities";
 "list_facilities_segment" = "List";
 "map_facilities_segment" = "Map";
 "facilities_back_button_title" = "Back";
@@ -39,6 +45,17 @@
 "website_contact_title" = "Website";
 "website_action_title" = "Open";
 "report_an_issue_button_title" = "Report an issue";
+"routes_app_selection_title" = "Which app do you want to use for tracing a route?";
+"apple_maps_title" = "Apple Maps";
+"google_maps_title" = "Google Maps";
+"waze_title" = "Waze";
+"shared_to_clipboard_alert_message" = "Copied to clipboard! Now just paste it everywhere";
+"compliment_for_sharing_alert_message" = "Thank you for sharing, together we build a cleaner and better city!";
+"spread_the_word" = "I'll spread the word";
+"open_website_title" = "Do you want to go to this website?";
+"open_website_action" = "Go to website";
+
+
 
 // Filter facilities
 

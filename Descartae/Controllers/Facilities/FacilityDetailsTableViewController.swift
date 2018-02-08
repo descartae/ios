@@ -231,14 +231,14 @@ class FacilityDetailsTableViewController: UITableViewController {
     @IBAction func showRouteOptions(_ sender: UIButton) {
         let facilityCoordinates = facility.location.location.coordinate
         let mapPoint = CMMapPoint(address: facility.location.address, coordinate: facilityCoordinates)
-        let chooseMapAlert = UIAlertController(title: "Qual aplicativo deseja utilizar para traçar rotas?", message: nil, preferredStyle: .actionSheet)
+        let chooseMapAlert = UIAlertController(title: localized("routes_app_selection_title"), message: nil, preferredStyle: .actionSheet)
 
         let isAppleMapsInstalled = CMMapLauncher.isMapAppInstalled(CMMapApp.appleMaps)
         let isGoogleMapsInstalled = CMMapLauncher.isMapAppInstalled(CMMapApp.googleMaps)
         let isWazeInstalled = CMMapLauncher.isMapAppInstalled(CMMapApp.waze)
 
         if isAppleMapsInstalled {
-            let appleMapsAction = UIAlertAction(title: "Apple Maps", style: .default, handler: { _ in
+            let appleMapsAction = UIAlertAction(title: localized("apple_maps_title"), style: .default, handler: { _ in
                 CMMapLauncher.launch(CMMapApp.appleMaps, forDirectionsTo: mapPoint)
             })
 
@@ -246,7 +246,7 @@ class FacilityDetailsTableViewController: UITableViewController {
         }
 
         if isGoogleMapsInstalled {
-            let appleMapsAction = UIAlertAction(title: "Google Maps", style: .default, handler: { _ in
+            let appleMapsAction = UIAlertAction(title: localized("google_maps_title"), style: .default, handler: { _ in
                 CMMapLauncher.launch(CMMapApp.googleMaps, forDirectionsTo: mapPoint)
             })
 
@@ -254,14 +254,14 @@ class FacilityDetailsTableViewController: UITableViewController {
         }
 
         if isWazeInstalled {
-            let appleMapsAction = UIAlertAction(title: "Waze", style: .default, handler: { _ in
+            let appleMapsAction = UIAlertAction(title: localized("waze_title"), style: .default, handler: { _ in
                 CMMapLauncher.launch(CMMapApp.waze, forDirectionsTo: mapPoint)
             })
 
             chooseMapAlert.addAction(appleMapsAction)
         }
 
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil)
         chooseMapAlert.addAction(cancelAction)
 
         present(chooseMapAlert, animated: true, completion: nil)
@@ -277,8 +277,8 @@ class FacilityDetailsTableViewController: UITableViewController {
             if completed {
                 if content == UIActivityType.copyToPasteboard {
                     DispatchQueue.main.async {
-                        let successMessage = UIAlertController(title: "Feito!", message: "Copiado, agora é só sair colando por aí :P", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "Obrigado!", style: .default, handler: nil)
+                        let successMessage = UIAlertController(title: localized("greeting_alert_title"), message: localized("shared_to_clipboard_alert_message"), preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: localized("thank_you"), style: .default, handler: nil)
 
                         successMessage.addAction(okAction)
 
@@ -295,8 +295,8 @@ class FacilityDetailsTableViewController: UITableViewController {
 
     func complimentForTheShare() {
         DispatchQueue.main.async {
-            let successMessage = UIAlertController(title: "<3", message: "Obrigado por compartilhar, juntos nós construimos uma cidade mais limpa e sustentável!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Vou continuar espalhando esta ideia", style: .default, handler: nil)
+            let successMessage = UIAlertController(title: localized("greeting_alert_title"), message: localized("compliment_for_sharing_alert_message"), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: localized("spread_the_word"), style: .default, handler: nil)
 
             successMessage.addAction(okAction)
 
@@ -319,9 +319,9 @@ class FacilityDetailsTableViewController: UITableViewController {
             return
         }
 
-        let alertController = UIAlertController(title: website, message: "Deseja acessar este site?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        let accessAction = UIAlertAction(title: "Acessar", style: .default) {  _ in
+        let alertController = UIAlertController(title: website, message: localized("open_website_title"), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil)
+        let accessAction = UIAlertAction(title: localized("open_website_action"), style: .default) {  _ in
             let safari = SFSafariViewController(url: url)
             safari.modalPresentationStyle = .popover
 
