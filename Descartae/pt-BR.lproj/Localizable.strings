@@ -5,3 +5,12 @@
   Created by Filipe Alvarenga on 06/02/18.
   Copyright © 2018 Filipe Alvarenga. All rights reserved.
 */
+
+// Report an issue
+
+"facility_issue_title" = "Reportar problema";
+"general_feedback_title" = "Solta o verbo";
+"region_waitlist_title" = "E-mail";
+"facility_issue_subtitle" = "Encontrou algum problema com\neste ponto de coleta? Nos conte!";
+"general_feedback_subtitle" = "O que está achando do Descartaê?\nNos conta aí!";
+"region_waitlist_subtitle" = "Informe seu e-mail para avisarmos\nsobre o mapeamento da sua região!";

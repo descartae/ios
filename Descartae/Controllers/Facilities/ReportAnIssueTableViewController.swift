@@ -26,22 +26,22 @@ class ReportAnIssueTableViewController: UITableViewController {
         var title: String {
             switch self {
             case .facilityFeedback:
-                return "Reportar um problema"
+                return localized("facility_issue_title")
             case .generaFeedback:
-                return "Solta o verbo"
+                return localized("general_feedback_title")
             case .regionWaitlist:
-                return "E-mail"
+                return localized("region_waitlist_title")
             }
         }
 
         var subtitle: String {
             switch self {
             case .facilityFeedback:
-                return "Encontrou algum problema com\neste ponto de coleta? Nos conte!"
+                return localized("facility_issue_subtitle")
             case .generaFeedback:
-                return "O que está achando do Descartaê?\nNos conta aí!"
+                return localized("general_feedback_subtitle")
             case .regionWaitlist:
-                return "Informe seu e-mail para avisarmos\nsobre o mapeamento da sua região!"
+                return localized("region_waitlist_subtitle")
             }
         }
     }
@@ -77,8 +77,8 @@ class ReportAnIssueTableViewController: UITableViewController {
 
         guard let feedbackText = textView?.text, !feedbackText.isEmpty else {
             animateFocus()
-            let emptyFeedback = UIAlertController(title: "Oops!", message: "O campo de texto está vazio.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            let emptyFeedback = UIAlertController(title: localized("whoops"), message: localized("empty_feedback_alert_message"), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: localized("ok"), style: .default, handler: nil)
 
             emptyFeedback.addAction(okAction)
 
@@ -108,8 +108,8 @@ class ReportAnIssueTableViewController: UITableViewController {
             self.textView?.text = ""
             self.navigationItem.rightBarButtonItem = self.sendFeedbackButton
 
-            let successFeedback = UIAlertController(title: "Obrigado por nos contar!", message: "Ah, não esquece de nos avaliar na App Store <3", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            let successFeedback = UIAlertController(title: localized("feedback_compliment_title"), message: localized("feedback_compliment_message_alert"), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: localized("ok"), style: .default, handler: { _ in
                 self.navigationController?.dismiss(animated: true, completion: nil)
             })
 
@@ -125,8 +125,8 @@ class ReportAnIssueTableViewController: UITableViewController {
             self.textView?.text = ""
             self.navigationItem.rightBarButtonItem = self.sendFeedbackButton
 
-            let successFeedback = UIAlertController(title: "Obrigado por nos ajudar a melhorar!", message: "Nossos voluntários irão analisar e endereçar sua reclamação.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            let successFeedback = UIAlertController(title: localized("facility_feedback_compliment_title"), message: localized("facility_feedback_compliment_message_alert"), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: localized("ok"), style: .default, handler: { _ in
                 self.navigationController?.dismiss(animated: true, completion: nil)
             })
 
@@ -138,8 +138,8 @@ class ReportAnIssueTableViewController: UITableViewController {
 
     func addToWaitlist(_ email: String) {
         let genericError = {
-            let emptyFeedback = UIAlertController(title: "Oops!", message: "Não foi possível cadastrar seu e-mail, tente novamente mais tarde.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Tudo bem", style: .default, handler: nil)
+            let emptyFeedback = UIAlertController(title: localized("whoops"), message: localized("region_waitlist_error_message"), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: localized("ok"), style: .default, handler: nil)
 
             emptyFeedback.addAction(okAction)
 
@@ -157,8 +157,8 @@ class ReportAnIssueTableViewController: UITableViewController {
             self.textView?.text = ""
             self.navigationItem.rightBarButtonItem = self.sendFeedbackButton
 
-            let successFeedback = UIAlertController(title: "Agradecemos o seu interesse pela causa", message: "Nossos voluntários estão trabalhando muito para expandir, esperamos poder lhe atender muito em breve!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            let successFeedback = UIAlertController(title: localized("region_waitlist_success_title"), message: localized("region_waitlist_success_title"), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: localized("ok"), style: .default, handler: { _ in
                 self.navigationController?.dismiss(animated: true, completion: nil)
             })
 

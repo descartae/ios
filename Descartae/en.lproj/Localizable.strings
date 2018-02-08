@@ -8,6 +8,8 @@
 
 // General
 
+"ok" = "Ok";
+"whoops" = "Whoops!";
 "thank_you" = "Thank you";
 "cancel" = "Cancel";
 "greeting_alert_title" = "Hooray!";
@@ -63,3 +65,20 @@
 "filter_facilities_subtitle" = "Filter by waste types";
 "clear_filter_button_title" = "Clear";
 "apply_filters_button_title" = "Apply";
+
+// Report an issue
+
+"facility_issue_title" = "Facility issue";
+"general_feedback_title" = "Feedback";
+"region_waitlist_title" = "E-mail";
+"facility_issue_subtitle" = "Do you found an issue with\nthis waste disposal facility? Tell us!";
+"general_feedback_subtitle" = "Are you enjoying Descartaê?\nTell your opinion!";
+"region_waitlist_subtitle" = "Enter your e-mail so we can notify\nyou when support your region!";
+"empty_feedback_alert_message" = "The text field is empty!";
+"feedback_compliment_title" = "Thanks for sharing your thoughts";
+"feedback_compliment_message_alert" = "Don't forgot to rate us on the App Store <3";
+"facility_feedback_compliment_title" = "Thank you";
+"facility_feedback_compliment_message_alert" = "You're helping us to improve :)";
+"region_waitlist_error_message" = "Sorry, it was not possible to register your e-mail right now. Please, try again later.";
+"region_waitlist_success_title" = "We are glad you support the cause";
+"region_waitlist_success_message" = "Our volunteers are working hard to expand the supported cities";
