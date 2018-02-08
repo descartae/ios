@@ -35,7 +35,18 @@ class FacilityDetailsTableViewController: UITableViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var facilityName: UILabel!
     @IBOutlet weak var facilityAddress: UILabel!
-    @IBOutlet weak var routeButton: UIButton!
+
+    @IBOutlet weak var routeButton: UIButton! {
+        didSet {
+            routeButton.setTitle(localized("route_to_facility"), for: .normal)
+        }
+    }
+
+    @IBOutlet weak var wasteTypesTitle: UILabel! {
+        didSet {
+            wasteTypesTitle.text = localized("waste_types_title")
+        }
+    }
 
     lazy var openHoursTodayCell: OpenHoursTodayTableViewCell = {
         guard let cell = OpenHoursTodayTableViewCell.instantiateFromNib() else {
@@ -52,8 +63,8 @@ class FacilityDetailsTableViewController: UITableViewController {
             return ContactTableViewCell()
         }
 
-        cell.contactType.text = "Contato"
-        cell.contactActionButton.setTitle("Ligar", for: .normal)
+        cell.contactType.text = localized("telephone_contact_title")
+        cell.contactActionButton.setTitle(localized("telephone_action_title"), for: .normal)
         cell.delegate = self
         return cell
     }()
@@ -63,8 +74,8 @@ class FacilityDetailsTableViewController: UITableViewController {
             return ContactTableViewCell()
         }
 
-        cell.contactType.text = "Site"
-        cell.contactActionButton.setTitle("Acessar", for: .normal)
+        cell.contactType.text = localized("website_contact_title")
+        cell.contactActionButton.setTitle(localized("website_action_title"), for: .normal)
         cell.delegate = self
         return cell
     }()
@@ -101,7 +112,7 @@ class FacilityDetailsTableViewController: UITableViewController {
     }()
 
     var openHoursCollapseButtonTitle: String {
-        return isOpenHoursCollapsed ? "Menos" : "Mais"
+        return isOpenHoursCollapsed ? localized("open_hours_expanded_title") : localized("open_hours_collapsed_title")
     }
 
     // MARK: Life cycle
@@ -112,6 +123,8 @@ class FacilityDetailsTableViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
         }
+
+        navigationItem.title = localized("facility_details_title")
 
         setupTableView()
         setupSections()

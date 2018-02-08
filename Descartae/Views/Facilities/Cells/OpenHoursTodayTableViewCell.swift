@@ -20,6 +20,17 @@ class OpenHoursTodayTableViewCell: FacilityDetailsBaseTableViewCell {
     static let rowHeight: CGFloat = 91.5
 
     @IBOutlet weak var todayOpenHours: UILabel!
+    @IBOutlet weak var openHoursTitle: UILabel! {
+        didSet {
+            openHoursTitle.text = localized("open_hours_title")
+        }
+    }
+
+    @IBOutlet weak var collapseButton: UIButton! {
+        didSet {
+            collapseButton.setTitle(localized("open_hours_collapsed_title"), for: .normal)
+        }
+    }
 
     weak var delegate: OpenHoursTodayTableViewCellDelegate?
     var indexPath: IndexPath!

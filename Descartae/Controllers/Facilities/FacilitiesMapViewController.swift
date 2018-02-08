@@ -16,7 +16,11 @@ class FacilitiesMapViewController: UIViewController {
     static let identifier = String(describing: FacilitiesMapViewController.self)
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var loadMoreButton: FacilitiesMapButton!
+    @IBOutlet weak var loadMoreButton: FacilitiesMapButton! {
+        didSet {
+            loadMoreButton.setTitle(localized("load_more_on_map"), for: .normal)
+        }
+    }
 
     let locationManager = LocationManager.shared
 

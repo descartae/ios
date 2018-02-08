@@ -114,7 +114,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resíduos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyk-Wr-RFa">
-                                    <rect key="frame" x="16" y="415" width="343" height="20"/>
+                                    <rect key="frame" x="16" y="414" width="343" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="bUJ-aO-8lY"/>
                                     </constraints>
@@ -157,6 +157,7 @@
                                 </view>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf9-Iv-2BM">
                                     <rect key="frame" x="0.0" y="433" width="375" height="81"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="81" id="KjV-79-yk3"/>
                                     </constraints>
@@ -181,7 +182,7 @@
                                 <constraint firstItem="Qez-wA-qvM" firstAttribute="top" secondItem="Ah5-Uy-V5B" secondAttribute="bottom" constant="32" id="eGP-0I-Dca"/>
                                 <constraint firstItem="T3b-i7-6Sd" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="fch-cU-dLc"/>
                                 <constraint firstItem="id2-pp-CUw" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="hEr-as-gwY"/>
-                                <constraint firstItem="Oyk-Wr-RFa" firstAttribute="top" secondItem="FYs-d6-zbL" secondAttribute="bottom" constant="24" id="i7P-VG-ySS"/>
+                                <constraint firstItem="Oyk-Wr-RFa" firstAttribute="top" secondItem="FYs-d6-zbL" secondAttribute="bottom" constant="23" id="i7P-VG-ySS"/>
                                 <constraint firstAttribute="trailing" secondItem="id2-pp-CUw" secondAttribute="trailing" constant="16" id="j29-xJ-3Yd"/>
                                 <constraint firstItem="Qez-wA-qvM" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="kiU-X3-691"/>
                                 <constraint firstAttribute="trailing" secondItem="Ah5-Uy-V5B" secondAttribute="trailing" id="m6P-56-VoK"/>
@@ -212,6 +213,7 @@
                         <outlet property="facilityName" destination="Qez-wA-qvM" id="c8k-Kq-Kn4"/>
                         <outlet property="mapView" destination="Ah5-Uy-V5B" id="5Ke-m0-GJd"/>
                         <outlet property="routeButton" destination="U4f-DZ-nyC" id="8Nm-7Q-xHK"/>
+                        <outlet property="wasteTypesTitle" destination="Oyk-Wr-RFa" id="pVZ-RS-a5p"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sq-AR-vG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -477,7 +479,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4d-9p-Sco">
                                 <rect key="frame" x="0.0" y="0.0" width="359" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="12" minimumInteritemSpacing="12" id="tpi-KQ-6Y2">
                                     <size key="itemSize" width="44" height="44"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>

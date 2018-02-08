@@ -19,6 +19,12 @@ class ReportIssueTableViewCell: UITableViewCell {
     static let identifier = String(describing: ReportIssueTableViewCell.self)
     static let rowHeight: CGFloat = 92
 
+    @IBOutlet weak var reportAnIssueButton: UIButton! {
+        didSet {
+            reportAnIssueButton.setTitle(localized("report_an_issue_button_title"), for: .normal)
+        }
+    }
+
     weak var delegate: ReportIssueTableViewCellDelegate?
 
     // MARK: Actions

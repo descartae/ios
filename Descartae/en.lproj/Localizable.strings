@@ -7,7 +7,35 @@
 */
 
 
-// Facilities ui
+// Facilities
 
 "list_facilities_segment" = "List";
 "map_facilities_segment" = "Map";
+"facilities_back_button_title" = "Back";
+
+// // Map
+
+"load_more_on_map" = "Load more";
+
+// // Details
+
+"facility_details_title" = "Details";
+"route_to_facility" = "Routes";
+"waste_types_title" = "Waste types";
+"open_hours_title" = "Open hours";
+"open_hours_collapsed_title" = "More";
+"open_hours_expanded_title" = "Less";
+"today_open_hours_unavailable" = "Today open hours aren't available";
+"today_title" = "Today";
+"sunday" = "Sunday";
+"monday" = "Monday";
+"tuesday" = "Tuesday";
+"wednesday" = "Wednesday";
+"thursday" = "Thursday";
+"friday" = "Friday";
+"saturday" = "Saturday";
+"telephone_contact_title" = "Telephone";
+"telephone_action_title" = "Call";
+"website_contact_title" = "Website";
+"website_action_title" = "Open";
+"report_an_issue_button_title" = "Report an issue";

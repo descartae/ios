@@ -88,6 +88,8 @@ class FacilitiesRootViewController: UIViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
 
+        navigationItem.backBarButtonItem?.title = localized("facilities_back_button_title")
+
         addObservers()
         setupLoadingStyle()
         loadDataIfLocationIsAvailable()
