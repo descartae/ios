@@ -14,6 +14,10 @@ class FilterWasteTypesSectionFooter: UIView {
 
     static let height: CGFloat = 75
 
-    @IBOutlet weak var applySelection: UIButton!
+    @IBOutlet weak var applySelection: UIButton! {
+        didSet {
+            applySelection.setTitle(localized("apply_filters_button_title"), for: .normal)
+        }
+    }
 
 }

@@ -461,6 +461,9 @@
                         <viewLayoutGuide key="safeArea" id="69u-UJ-Dq3"/>
                     </view>
                     <connections>
+                        <outlet property="cleanButton" destination="TPc-AG-FR1" id="LrV-nY-wTd"/>
+                        <outlet property="filterSubtitle" destination="AKO-0N-8yB" id="apj-lR-orY"/>
+                        <outlet property="filterTitle" destination="6U9-NG-PXB" id="3hP-62-nhJ"/>
                         <outlet property="tableView" destination="xCl-T2-GaD" id="8IU-nb-bA1"/>
                     </connections>
                 </viewController>

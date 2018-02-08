@@ -39,3 +39,10 @@
 "website_contact_title" = "Website";
 "website_action_title" = "Open";
 "report_an_issue_button_title" = "Report an issue";
+
+// Filter facilities
+
+"filter_facilities_title" = "Filter";
+"filter_facilities_subtitle" = "Filter by waste types";
+"clear_filter_button_title" = "Clear";
+"apply_filters_button_title" = "Apply";
