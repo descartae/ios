@@ -8,9 +8,11 @@
 
 // General
 
+"back" = "Back";
 "ok" = "Ok";
 "whoops" = "Whoops!";
 "thank_you" = "Thank you";
+"send" = "Send";
 "cancel" = "Cancel";
 "greeting_alert_title" = "Hooray!";
 
@@ -44,7 +46,6 @@
 "waste_disposal_facilities_title" = "Disposal facilities";
 "list_facilities_segment" = "List";
 "map_facilities_segment" = "Map";
-"facilities_back_button_title" = "Back";
 
 // // Map
 

@@ -938,6 +938,7 @@ este ponto de coleta? Nos conte!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="BEv-Jk-cws" id="x2z-7P-d8r"/>
                         <outlet property="sendFeedbackButton" destination="ubd-d2-QxQ" id="rvf-uB-i6q"/>
                     </connections>
                 </tableViewController>

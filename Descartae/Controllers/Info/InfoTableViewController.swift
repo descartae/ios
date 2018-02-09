@@ -60,6 +60,7 @@ class InfoTableViewController: UITableViewController {
         }
 
         navigationItem.title = localized("info_title")
+        navigationItem.backBarButtonItem?.title = localized("back")
     }
 
     override func viewWillAppear(_ animated: Bool) {

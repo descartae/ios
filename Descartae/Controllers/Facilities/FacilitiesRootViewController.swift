@@ -88,7 +88,7 @@ class FacilitiesRootViewController: UIViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
 
-        navigationItem.backBarButtonItem?.title = localized("facilities_back_button_title")
+        navigationItem.backBarButtonItem?.title = localized("back")
         navigationItem.title = localized("waste_disposal_facilities_title");
 
         addObservers()

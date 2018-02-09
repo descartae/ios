@@ -48,7 +48,17 @@ class ReportAnIssueTableViewController: UITableViewController {
 
     // MARK: Properties
 
-    @IBOutlet weak var sendFeedbackButton: UIBarButtonItem!
+    @IBOutlet weak var sendFeedbackButton: UIBarButtonItem! {
+        didSet {
+            sendFeedbackButton.title = localized("send")
+        }
+    }
+
+    @IBOutlet weak var cancelButton: UIBarButtonItem! {
+        didSet {
+            cancelButton.title = localized("cancel")
+        }
+    }
 
     var textView: UITextView?
     var facility: DisposalFacility!
