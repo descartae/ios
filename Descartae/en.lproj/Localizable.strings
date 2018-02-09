@@ -82,3 +82,12 @@
 "region_waitlist_error_message" = "Sorry, it was not possible to register your e-mail right now. Please, try again later.";
 "region_waitlist_success_title" = "We are glad you support the cause";
 "region_waitlist_success_message" = "Our volunteers are working hard to expand the supported cities";
+
+// Info
+
+"info_title" = "Informations";
+"waste_types_label_title" = "Waste types";
+"about_label_title" = "About the project";
+"feedback_label_title" = "Send a feedback";
+"rate_label_title" = "Rate on App Store";
+"facebook_share_label_title" = "Share on Facebook";

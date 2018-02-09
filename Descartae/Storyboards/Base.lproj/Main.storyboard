@@ -663,7 +663,6 @@ Quer ser avisado quando chegarmos?</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addEmailToWaitlist:" destination="Z75-Tm-Id9" eventType="touchUpInside" id="jo3-Cz-P1q"/>
                                     <segue destination="2pE-Ii-0E0" kind="presentation" id="HDc-CV-DzL"/>
                                 </connections>
                             </button>
@@ -1136,6 +1135,13 @@ este ponto de coleta? Nos conte!</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="aboutLabel" destination="gUA-xl-zUl" id="6ug-Fs-EJ4"/>
+                        <outlet property="facebookShareLabel" destination="OgR-y8-knh" id="rRR-lx-foT"/>
+                        <outlet property="feedbackLabel" destination="Ta4-g5-EkH" id="7z5-mK-Wcd"/>
+                        <outlet property="rateOnAppStoreLabel" destination="q3M-8I-kTG" id="jBo-Ik-XSN"/>
+                        <outlet property="wasteTypesLabel" destination="39C-cw-oG6" id="Ixf-z2-WBJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSR-5w-oym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

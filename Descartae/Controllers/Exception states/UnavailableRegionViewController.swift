@@ -14,12 +14,6 @@ class UnavailableRegionViewController: UIViewController {
 
     static let identifier = String(describing: UnavailableRegionViewController.self)
 
-    // MARK: Actions
-
-    @IBAction func addEmailToWaitlist(_ sender: Any) {
-        print("Avise-me")
-    }
-
     // MARK: Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
