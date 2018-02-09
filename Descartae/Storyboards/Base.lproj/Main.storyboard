@@ -604,6 +604,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="icj-Co-Aqd"/>
                     </view>
+                    <connections>
+                        <outlet property="allowLocationButton" destination="BGr-iS-V38" id="b1v-77-dbJ"/>
+                        <outlet property="locationPermissionSubtitle" destination="WY6-73-mgA" id="XcE-OS-uyD"/>
+                        <outlet property="locationPermissionTitle" destination="3h0-Kv-Y3i" id="v1x-iN-fJs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9h-IR-4Dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -682,6 +687,11 @@ Quer ser avisado quando chegarmos?</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FiN-B5-jhN"/>
                     </view>
+                    <connections>
+                        <outlet property="unavailableRegionSubtitle" destination="PJ1-q8-nQQ" id="kqy-l1-TwD"/>
+                        <outlet property="unavailableRegionTitle" destination="5Bz-5d-Ha8" id="KFi-CB-Egh"/>
+                        <outlet property="waitlistButton" destination="Du8-o5-JP3" id="OfE-Zd-PmC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gF-CK-wdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -758,6 +768,11 @@ Clique no botão abaixo para atualizar.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ija-p4-lko"/>
                     </view>
+                    <connections>
+                        <outlet property="offlineSubtitle" destination="HcO-06-Wnn" id="EhK-cj-cQg"/>
+                        <outlet property="offlineTitle" destination="4e1-fa-K9R" id="W9j-nw-NEb"/>
+                        <outlet property="tryAgainButton" destination="qAt-wZ-2F7" id="EWH-ip-9sa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mC-BS-tDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -835,6 +850,11 @@ tipos de resíduo escolhidos.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xn5-ei-yNO"/>
                     </view>
+                    <connections>
+                        <outlet property="clearFiltersButton" destination="WFt-k8-4MC" id="dwM-rq-lLw"/>
+                        <outlet property="emptyStateSubtitle" destination="q7g-TE-cql" id="KJz-xl-hkm"/>
+                        <outlet property="emptyStateTitle" destination="T5h-jr-Mza" id="OPX-Xy-Wyp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2p-1C-Tbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

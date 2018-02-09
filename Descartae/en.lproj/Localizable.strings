@@ -14,6 +14,31 @@
 "cancel" = "Cancel";
 "greeting_alert_title" = "Hooray!";
 
+// Location permission
+
+"enable_location_title" = "Enable location";
+"enable_location_subtitle" = "It is needed that you allow the usage of your\nlocation so we can find the\nwaste diposal facilities around you";
+"allow_location_button_title" = "Allow";
+"already_have_location_message" = "You already gave us permission to grab your location, but it is unavailable now. As soon as we can get it we will show the nearby waste disposal facilities";
+
+// Offline state
+
+"offline_state_title" = "Offline";
+"offline_state_subtitle" = "It looks like you are offline.\nTap the button below to refresh.";
+"try_again_button_title" = "Try again";
+
+// Empty state
+
+"empty_state_title" = "Whoops, nothing found";
+"empty_state_subtitle" = "We don't found any facility\naround you that supports\nthe waste types you've selected";
+"clear_filters_button_title" = "Clear filters";
+
+// Unavailable region
+
+"unavailable_region_title" = "Region not supported";
+"unavailable_region_subtitle" = "Our volunteers are working hard to\nmap all cities, but unfortunately\nwe still not support your region.\nWant to be notified when we do?";
+"waitlist_button_title" = "Notitfy me";
+
 // Facilities
 
 "waste_disposal_facilities_title" = "Disposal facilities";
@@ -56,8 +81,6 @@
 "spread_the_word" = "I'll spread the word";
 "open_website_title" = "Do you want to go to this website?";
 "open_website_action" = "Go to website";
-
-
 
 // Filter facilities
 
