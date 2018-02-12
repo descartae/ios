@@ -6,6 +6,16 @@
   Copyright © 2018 Filipe Alvarenga. All rights reserved.
 */
 
+// General
+
+"back" = "Voltar";
+"ok" = "Ok";
+"whoops" = "Ops!";
+"thank_you" = "Obrigado";
+"send" = "Enviar";
+"cancel" = "Cancelar";
+"greeting_alert_title" = "Oba!";
+
 // Intro
 
 "first_page_title" = "Pontos de coleta";
@@ -16,6 +26,80 @@
 "third_page_subtitle" = "Clique no botão abaixo para começar\na deixar sua vida mais fácil e green";
 "start_button_title" = "Começar";
 
+// Location permission
+
+"enable_location_title" = "Habilitar localização";
+"enable_location_subtitle" = "Precisamos que você habilite sua\nlocalização para que possamos\nencontrar os pontos de coleta mais próximos";
+"allow_location_button_title" = "Allow";
+"already_have_location_message" = "You already gave us permission to grab your location, but it is unavailable now. As soon as we can get it we will show the nearby waste disposal facilities";
+
+// Offline state
+
+"offline_state_title" = "Offline";
+"offline_state_subtitle" = "Parece que você está offline.\nToque no botão para atualizar.";
+"try_again_button_title" = "Try again";
+
+// Empty state
+
+"empty_state_title" = "Ops, nada encontrado";
+"empty_state_subtitle" = "Não encontramos nenhum ponto de coleta\nperto de você que\nrecolha os tipos de lixo selecionados";
+"clear_filters_button_title" = "Limpar filtros";
+
+// Unavailable region
+
+"unavailable_region_title" = "Região indisponível";
+"unavailable_region_subtitle" = "Nossos voluntários trabalham muito para\nmapear todas as cidades mas\nainda não suportarmos sua região.\nQuer ser avisado sobre novidades?";
+"waitlist_button_title" = "Me avise";
+
+// Facilities
+
+"waste_disposal_facilities_title" = "Pontos de coleta";
+"list_facilities_segment" = "Lista";
+"map_facilities_segment" = "Mapa";
+
+// // Map
+
+"load_more_on_map" = "Carregar mais";
+
+// // Details
+
+"facility_details_title" = "Detalhes";
+"route_to_facility" = "Rotas";
+"waste_types_title" = "Resíduos";
+"open_hours_title" = "Horários";
+"open_hours_collapsed_title" = "Mais";
+"open_hours_expanded_title" = "Menos";
+"today_open_hours_unavailable" = "Horários de hoje indisponíveis";
+"today_title" = "Hoje";
+"sunday" = "Domingo";
+"monday" = "Segunda-feira";
+"tuesday" = "Terça-feira";
+"wednesday" = "Quarta-feira";
+"thursday" = "Quinta-feira";
+"friday" = "Sexta-feira";
+"saturday" = "Sábado";
+"telephone_contact_title" = "Telefone";
+"telephone_action_title" = "Ligar";
+"website_contact_title" = "Site";
+"website_action_title" = "Acessar";
+"report_an_issue_button_title" = "Informar um problema";
+"routes_app_selection_title" = "Qual app você quer usar para traçar uma rota?";
+"apple_maps_title" = "Apple Maps";
+"google_maps_title" = "Google Maps";
+"waze_title" = "Waze";
+"shared_to_clipboard_alert_message" = "Copiado! Agora é só colar por aí.";
+"compliment_for_sharing_alert_message" = "Obrigado por compartilhar, juntos construimos uma cidade melhor e mais limpa :)";
+"spread_the_word" = "Vou espalhar a ideia";
+"open_website_title" = "Quer acessar este site?";
+"open_website_action" = "Acessar";
+
+// Filter facilities
+
+"filter_facilities_title" = "Filtrar";
+"filter_facilities_subtitle" = "Filtrar por tipo de resíduo";
+"clear_filter_button_title" = "Limpar";
+"apply_filters_button_title" = "Aplicar";
+
 // Report an issue
 
 "facility_issue_title" = "Reportar problema";
@@ -24,3 +108,20 @@
 "facility_issue_subtitle" = "Encontrou algum problema com\neste ponto de coleta? Nos conte!";
 "general_feedback_subtitle" = "O que está achando do Descartaê?\nNos conta aí!";
 "region_waitlist_subtitle" = "Informe seu e-mail para avisarmos\nsobre o mapeamento da sua região!";
+"empty_feedback_alert_message" = "O campo de texto está vazio!";
+"feedback_compliment_title" = "Obrigado por compartilhar sua opinião";
+"feedback_compliment_message_alert" = "Não se esqueça de avaliar na App Store <3";
+"facility_feedback_compliment_title" = "Obrigado";
+"facility_feedback_compliment_message_alert" = "Por nos ajudar a melhorar :)";
+"region_waitlist_error_message" = "Desculpe, não foi possível registrar seu e-mail, tente novamente mais tarde.";
+"region_waitlist_success_title" = "Ficamos felizes com o seu apoio";
+"region_waitlist_success_message" = "Nossos voluntários estão trabalhando duro para suportarmos mais cidades";
+
+// Info
+
+"info_title" = "Informações";
+"waste_types_label_title" = "Tipos de lixo";
+"about_label_title" = "Sobre o projeto";
+"feedback_label_title" = "Enviar feedback";
+"rate_label_title" = "Avaliar na App Store";
+"facebook_share_label_title" = "Compartilhar";
