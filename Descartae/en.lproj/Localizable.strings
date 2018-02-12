@@ -16,6 +16,16 @@
 "cancel" = "Cancel";
 "greeting_alert_title" = "Hooray!";
 
+// Intro
+
+"first_page_title" = "Disposal facilities";
+"first_page_subtitle" = "Finally you can find where to\ndiscard waste such as electronics,\nbatteries and furniture at the nearest facilities around you";
+"second_page_title" = "Made at the Library";
+"second_page_subtitle" = "That's right! The databases of Descartaê are maintened by the librarians\n volunteers of each city";
+"third_page_title" = "Join us!";
+"third_page_subtitle" = "Tap on the button below and\nlet your life easier and more sustainable";
+"start_button_title" = "Start";
+
 // Location permission
 
 "enable_location_title" = "Enable location";

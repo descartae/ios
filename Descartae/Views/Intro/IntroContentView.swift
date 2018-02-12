@@ -16,7 +16,11 @@ class IntroContentView: UIView {
     @IBOutlet weak var onboardingImage: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var startButton: UIButton! {
+        didSet {
+            startButton.setTitle(localized("start_button_title"), for: .normal)
+        }
+    }
     @IBOutlet weak var onboardingImageHeight: NSLayoutConstraint!
     @IBOutlet weak var onboardingImageWidth: NSLayoutConstraint!
     @IBOutlet weak var onboardingImageTop: NSLayoutConstraint!

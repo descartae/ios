@@ -24,8 +24,8 @@ class IntroViewController: AnimatedPagingScrollViewController {
         }
 
         page.onboardingImage.image = UIImage(named: "onboarding1")
-        page.title.text = "Pontos de coleta"
-        page.subtitle.text = "Finalmente você contrará onde\ndescatar lixos como eletrônicos,\npilhas e móveis nos pontos mais\npróximos de onde você está"
+        page.title.text = localized("first_page_title")
+        page.subtitle.text = localized("first_page_subtitle")
         return page
     }()
 
@@ -33,13 +33,25 @@ class IntroViewController: AnimatedPagingScrollViewController {
         guard let page = IntroContentView.instantiateFromNib() else {
             return IntroContentView()
         }
+        
+        let attributedString = NSMutableAttributedString(string: localized("second_page_subtitle"))
+        var location: Int = 0
 
-        let attributedString = NSMutableAttributedString(string: "Isso mesmo! Os dados do Descartaê\nsão alimentados pelos bibliotecários\n voluntários de cada cidade  ")
-        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 17.0, weight: .bold), range: NSRange(location: 24, length: 9))
+        if StateManager.isPtBr {
+            location = 24
+        } else if StateManager.isEn {
+            location = 31
+        }
+
+        if StateManager.isEn || StateManager.isPtBr {
+            attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 17.0, weight: .bold), range: NSRange(location: location, length: 9))
+            page.subtitle.attributedText = attributedString
+        } else {
+            page.subtitle.text = localized("second_page_subtitle")
+        }
 
         page.onboardingImage.image = UIImage(named: "onboarding3")
-        page.title.text = "Feito na Biblioteca"
-        page.subtitle.attributedText = attributedString
+        page.title.text = localized("second_page_title")
         return page
     }()
 
@@ -50,8 +62,8 @@ class IntroViewController: AnimatedPagingScrollViewController {
 
         page.onboardingImage.image = UIImage(named: "onboarding4")
         page.startButton.isHidden = false
-        page.title.text = "Junte-se a nós!"
-        page.subtitle.text = "Clique no botão abaixo para começar\na deixar sua vida mais fácil e green"
+        page.title.text = localized("third_page_title")
+        page.subtitle.text = localized("third_page_subtitle")
         page.start = {
             guard let appDelegate  = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window else {
                 return
