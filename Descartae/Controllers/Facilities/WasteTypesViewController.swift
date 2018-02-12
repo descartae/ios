@@ -21,6 +21,7 @@ class WasteTypesViewController: UIViewController {
         super.viewDidLoad()
 
         setupTableView()
+        navigationItem.title = localized("waste_types_label_title")
 
         if DataStore.wasteTypes.count == 0 {
             SVProgressHUD.show()

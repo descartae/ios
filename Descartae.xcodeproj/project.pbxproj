@@ -33,6 +33,7 @@
 		9965558F2018E06B00184792 /* DisposalFacilityAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965558E2018E06B00184792 /* DisposalFacilityAnnotation.swift */; };
 		996A4CD61FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */; };
 		996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */; };
+		9973F6F8202A7AE400FAD2A9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9973F6FA202A7AE400FAD2A9 /* Localizable.strings */; };
 		997EBEA61FC0BCEE00BECF17 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */; };
 		99826E6D1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */; };
 		99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */; };
@@ -57,6 +58,7 @@
 		99A651051FC0B2B70076167D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A651031FC0B2B70076167D /* LaunchScreen.storyboard */; };
 		99A651101FC0B2B70076167D /* DescartaeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6510F1FC0B2B70076167D /* DescartaeTests.swift */; };
 		99A6511B1FC0B2B70076167D /* DescartaeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */; };
+		99A66645202B53DD0078989F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A66644202B53DD0078989F /* StringExtension.swift */; };
 		99C390EF1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */; };
 		99E004AF200E85D500FA43F6 /* FilterFacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E004AE200E85D500FA43F6 /* FilterFacilitiesViewController.swift */; };
 		99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */; };
@@ -120,6 +122,8 @@
 		9965558E2018E06B00184792 /* DisposalFacilityAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalFacilityAnnotation.swift; sourceTree = "<group>"; };
 		996A4CD51FD4ABD5002088AA /* OpenHoursTodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTodayTableViewCell.swift; sourceTree = "<group>"; };
 		996A4CD71FD4AC46002088AA /* OpenHoursTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTableViewCell.xib; sourceTree = "<group>"; };
+		9973F6F9202A7AE400FAD2A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9973F6FB202A7AF000FAD2A9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		997EBEA51FC0BCEE00BECF17 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		99826E6C1FD34EA00090DF4D /* FacilityDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailsTableViewController.swift; sourceTree = "<group>"; };
 		99826E6E1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenHoursTodayTableViewCell.xib; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 		99A651161FC0B2B70076167D /* DescartaeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DescartaeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartaeUITests.swift; sourceTree = "<group>"; };
 		99A6511C1FC0B2B70076167D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99A66644202B53DD0078989F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTableViewCell.swift; sourceTree = "<group>"; };
 		99E004AE200E85D500FA43F6 /* FilterFacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFacilitiesViewController.swift; sourceTree = "<group>"; };
 		99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableViewCell.xib; sourceTree = "<group>"; };
@@ -339,6 +344,7 @@
 				99A650FA1FC0B2B70076167D /* AppDelegate.swift */,
 				99A651011FC0B2B70076167D /* Assets.xcassets */,
 				99A651061FC0B2B70076167D /* Info.plist */,
+				9973F6FA202A7AE400FAD2A9 /* Localizable.strings */,
 			);
 			path = Descartae;
 			sourceTree = "<group>";
@@ -436,6 +442,7 @@
 				99ED00AA1FC5FAD800AA4613 /* UIViewExtension.swift */,
 				993D7E602014056A005653A8 /* UIStoryboardExtension.swift */,
 				993D47CE2021621A004DE085 /* UIColorExtension.swift */,
+				99A66644202B53DD0078989F /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -561,6 +568,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 99A650EE1FC0B2B70076167D;
 			productRefGroup = 99A650F81FC0B2B70076167D /* Products */;
@@ -579,6 +587,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9973F6F8202A7AE400FAD2A9 /* Localizable.strings in Resources */,
 				99EDBAF02018BD160031E30B /* LoadingMoreTableViewCell.xib in Resources */,
 				996A4CD81FD4AC46002088AA /* OpenHoursTableViewCell.xib in Resources */,
 				990A1DCC1FC384EE00DD5D81 /* Queries.graphql in Resources */,
@@ -867,6 +876,7 @@
 				99FA6EB920200442002B6DA2 /* LocationPermissionViewController.swift in Sources */,
 				99895A161FDF1C4500615D65 /* AppearanceManager.swift in Sources */,
 				9931ACD61FDB44D400A68DE7 /* FacilityDetailsBaseTableViewCell.swift in Sources */,
+				99A66645202B53DD0078989F /* StringExtension.swift in Sources */,
 				994242101FCE19E10095623C /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -903,6 +913,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9973F6FA202A7AE400FAD2A9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9973F6F9202A7AE400FAD2A9 /* en */,
+				9973F6FB202A7AF000FAD2A9 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		99A650FE1FC0B2B70076167D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -926,6 +945,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -985,6 +1005,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

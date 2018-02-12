@@ -16,6 +16,36 @@ class InfoTableViewController: UITableViewController {
 
     // MARK: Properties
 
+    @IBOutlet weak var wasteTypesLabel: UILabel! {
+        didSet {
+            wasteTypesLabel.text = localized("waste_types_label_title")
+        }
+    }
+
+    @IBOutlet weak var aboutLabel: UILabel! {
+        didSet {
+            aboutLabel.text = localized("about_label_title")
+        }
+    }
+
+    @IBOutlet weak var feedbackLabel: UILabel! {
+        didSet {
+            feedbackLabel.text = localized("feedback_label_title")
+        }
+    }
+
+    @IBOutlet weak var rateOnAppStoreLabel: UILabel! {
+        didSet {
+            rateOnAppStoreLabel.text = localized("rate_label_title")
+        }
+    }
+
+    @IBOutlet weak var facebookShareLabel: UILabel! {
+        didSet {
+            facebookShareLabel.text = localized("facebook_share_label_title")
+        }
+    }
+
     let aboutPage = "https://descartae.com/sobre"
     let shareURL = "https://descartae.com/"
 
@@ -28,6 +58,9 @@ class InfoTableViewController: UITableViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationItem.largeTitleDisplayMode = .always
         }
+
+        navigationItem.title = localized("info_title")
+        navigationItem.backBarButtonItem?.title = localized("back")
     }
 
     override func viewWillAppear(_ animated: Bool) {

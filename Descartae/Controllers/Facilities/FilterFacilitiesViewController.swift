@@ -15,6 +15,24 @@ class FilterFacilitiesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var filterTitle: UILabel! {
+        didSet {
+            filterTitle.text = localized("filter_facilities_title")
+        }
+    }
+
+    @IBOutlet weak var filterSubtitle: UILabel! {
+        didSet {
+            filterSubtitle.text = localized("filter_facilities_subtitle")
+        }
+    }
+
+    @IBOutlet weak var cleanButton: UIButton! {
+        didSet {
+            cleanButton.setTitle(localized("clear_filter_button_title"), for: .normal)
+        }
+    }
+
     var wasteTypesToFilter: [WasteType] = APIManager.filteringByWasteTypes
     var applyFilters: (() -> Void)?
     let locationManager = LocationManager.shared

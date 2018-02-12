@@ -14,10 +14,23 @@ class UnavailableRegionViewController: UIViewController {
 
     static let identifier = String(describing: UnavailableRegionViewController.self)
 
-    // MARK: Actions
 
-    @IBAction func addEmailToWaitlist(_ sender: Any) {
-        print("Avise-me")
+    @IBOutlet weak var unavailableRegionTitle: UILabel! {
+        didSet {
+            unavailableRegionTitle.text = localized("unavailable_region_title")
+        }
+    }
+
+    @IBOutlet weak var unavailableRegionSubtitle: UILabel! {
+        didSet {
+            unavailableRegionSubtitle.text = localized("unavailable_region_subtitle")
+        }
+    }
+
+    @IBOutlet weak var waitlistButton: UIButton! {
+        didSet {
+            waitlistButton.setTitle(localized("waitlist_button_title"), for: .normal)
+        }
     }
 
     // MARK: Navigation

@@ -14,6 +14,24 @@ class LocationPermissionViewController: UIViewController {
 
     static let identifier = String(describing: LocationPermissionViewController.self)
 
+    @IBOutlet weak var locationPermissionTitle: UILabel! {
+        didSet {
+            locationPermissionTitle.text = localized("enable_location_title")
+        }
+    }
+
+    @IBOutlet weak var locationPermissionSubtitle: UILabel! {
+        didSet {
+            locationPermissionSubtitle.text = localized("enable_location_subtitle")
+        }
+    }
+
+    @IBOutlet weak var allowLocationButton: UIButton! {
+        didSet {
+            allowLocationButton.setTitle(localized("allow_location_button_title"), for: .normal)
+        }
+    }
+
     let locationManager = LocationManager.shared
 
     // MARK: Actions
@@ -29,8 +47,8 @@ class LocationPermissionViewController: UIViewController {
             return
         }
 
-        let alreadyGrantedPermission = UIAlertController(title: "Opa!", message: "Você já permitiu o uso da sua localização;", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Tudo bem", style: .default, handler: { _ in
+        let alreadyGrantedPermission = UIAlertController(title: localized("whoops"), message: localized("already_have_location_message"), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: localized("ok"), style: .default, handler: { _ in
             self.locationManager.updateLocation()
         })
         alreadyGrantedPermission.addAction(okAction)

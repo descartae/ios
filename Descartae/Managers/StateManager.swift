@@ -24,6 +24,17 @@ struct StateManager {
     static private let userDefaults = UserDefaults.standard
     static private let notificationCenter = NotificationCenter.default
     static private let appIntroKey = "AppIntroKey"
+
+    static var isPtBr: Bool {
+        let preferredLanguage = Locale.preferredLanguages[0]
+        return preferredLanguage == "pt" || preferredLanguage == "pt_BR" || preferredLanguage == "pt_PT"
+    }
+
+    static var isEn: Bool {
+        let preferredLanguage = Locale.preferredLanguages[0]
+        return preferredLanguage == "en"
+    }
+
     static var appIntroHasBeenPresented: Bool {
         get {
             return userDefaults.bool(forKey: appIntroKey)

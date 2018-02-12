@@ -64,6 +64,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="collapseButton" destination="O2p-Ik-f0T" id="mqc-kc-acX"/>
+                <outlet property="openHoursTitle" destination="sEP-Az-UlH" id="kVj-oK-fTv"/>
                 <outlet property="todayOpenHours" destination="pMk-4H-8tz" id="C1j-ja-Lls"/>
             </connections>
             <point key="canvasLocation" x="92.5" y="245"/>

@@ -34,19 +34,19 @@ extension DayOfWeek {
     var toString: String {
         switch self {
         case .sunday:
-            return "Domingo"
+            return localized("sunday")
         case .monday:
-            return "Segunda-feira"
+            return localized("monday")
         case .tuesday:
-            return "Terça-feira"
+            return localized("tuesday")
         case .wednesday:
-            return "Quarta-feira"
+            return localized("wednesday")
         case .thursday:
-            return "Quinta-feira"
+            return localized("thursday")
         case .friday:
-            return "Sexta-feira"
+            return localized("friday")
         case .saturday:
-            return "Sábado"
+            return localized("saturday")
         default:
             return ""
         }

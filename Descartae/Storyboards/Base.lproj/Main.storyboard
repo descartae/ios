@@ -114,7 +114,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resíduos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyk-Wr-RFa">
-                                    <rect key="frame" x="16" y="415" width="343" height="20"/>
+                                    <rect key="frame" x="16" y="414" width="343" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="bUJ-aO-8lY"/>
                                     </constraints>
@@ -157,6 +157,7 @@
                                 </view>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf9-Iv-2BM">
                                     <rect key="frame" x="0.0" y="433" width="375" height="81"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="81" id="KjV-79-yk3"/>
                                     </constraints>
@@ -181,7 +182,7 @@
                                 <constraint firstItem="Qez-wA-qvM" firstAttribute="top" secondItem="Ah5-Uy-V5B" secondAttribute="bottom" constant="32" id="eGP-0I-Dca"/>
                                 <constraint firstItem="T3b-i7-6Sd" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="fch-cU-dLc"/>
                                 <constraint firstItem="id2-pp-CUw" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="hEr-as-gwY"/>
-                                <constraint firstItem="Oyk-Wr-RFa" firstAttribute="top" secondItem="FYs-d6-zbL" secondAttribute="bottom" constant="24" id="i7P-VG-ySS"/>
+                                <constraint firstItem="Oyk-Wr-RFa" firstAttribute="top" secondItem="FYs-d6-zbL" secondAttribute="bottom" constant="23" id="i7P-VG-ySS"/>
                                 <constraint firstAttribute="trailing" secondItem="id2-pp-CUw" secondAttribute="trailing" constant="16" id="j29-xJ-3Yd"/>
                                 <constraint firstItem="Qez-wA-qvM" firstAttribute="leading" secondItem="2yq-8H-FVk" secondAttribute="leading" constant="16" id="kiU-X3-691"/>
                                 <constraint firstAttribute="trailing" secondItem="Ah5-Uy-V5B" secondAttribute="trailing" id="m6P-56-VoK"/>
@@ -212,6 +213,7 @@
                         <outlet property="facilityName" destination="Qez-wA-qvM" id="c8k-Kq-Kn4"/>
                         <outlet property="mapView" destination="Ah5-Uy-V5B" id="5Ke-m0-GJd"/>
                         <outlet property="routeButton" destination="U4f-DZ-nyC" id="8Nm-7Q-xHK"/>
+                        <outlet property="wasteTypesTitle" destination="Oyk-Wr-RFa" id="pVZ-RS-a5p"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sq-AR-vG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,6 +461,9 @@
                         <viewLayoutGuide key="safeArea" id="69u-UJ-Dq3"/>
                     </view>
                     <connections>
+                        <outlet property="cleanButton" destination="TPc-AG-FR1" id="LrV-nY-wTd"/>
+                        <outlet property="filterSubtitle" destination="AKO-0N-8yB" id="apj-lR-orY"/>
+                        <outlet property="filterTitle" destination="6U9-NG-PXB" id="3hP-62-nhJ"/>
                         <outlet property="tableView" destination="xCl-T2-GaD" id="8IU-nb-bA1"/>
                     </connections>
                 </viewController>
@@ -477,7 +482,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4d-9p-Sco">
                                 <rect key="frame" x="0.0" y="0.0" width="359" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="12" minimumInteritemSpacing="12" id="tpi-KQ-6Y2">
                                     <size key="itemSize" width="44" height="44"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -599,6 +604,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="icj-Co-Aqd"/>
                     </view>
+                    <connections>
+                        <outlet property="allowLocationButton" destination="BGr-iS-V38" id="b1v-77-dbJ"/>
+                        <outlet property="locationPermissionSubtitle" destination="WY6-73-mgA" id="XcE-OS-uyD"/>
+                        <outlet property="locationPermissionTitle" destination="3h0-Kv-Y3i" id="v1x-iN-fJs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9h-IR-4Dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -658,7 +668,6 @@ Quer ser avisado quando chegarmos?</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addEmailToWaitlist:" destination="Z75-Tm-Id9" eventType="touchUpInside" id="jo3-Cz-P1q"/>
                                     <segue destination="2pE-Ii-0E0" kind="presentation" id="HDc-CV-DzL"/>
                                 </connections>
                             </button>
@@ -678,6 +687,11 @@ Quer ser avisado quando chegarmos?</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FiN-B5-jhN"/>
                     </view>
+                    <connections>
+                        <outlet property="unavailableRegionSubtitle" destination="PJ1-q8-nQQ" id="kqy-l1-TwD"/>
+                        <outlet property="unavailableRegionTitle" destination="5Bz-5d-Ha8" id="KFi-CB-Egh"/>
+                        <outlet property="waitlistButton" destination="Du8-o5-JP3" id="OfE-Zd-PmC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gF-CK-wdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -754,6 +768,11 @@ Clique no botão abaixo para atualizar.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ija-p4-lko"/>
                     </view>
+                    <connections>
+                        <outlet property="offlineSubtitle" destination="HcO-06-Wnn" id="EhK-cj-cQg"/>
+                        <outlet property="offlineTitle" destination="4e1-fa-K9R" id="W9j-nw-NEb"/>
+                        <outlet property="tryAgainButton" destination="qAt-wZ-2F7" id="EWH-ip-9sa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mC-BS-tDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -831,6 +850,11 @@ tipos de resíduo escolhidos.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xn5-ei-yNO"/>
                     </view>
+                    <connections>
+                        <outlet property="clearFiltersButton" destination="WFt-k8-4MC" id="dwM-rq-lLw"/>
+                        <outlet property="emptyStateSubtitle" destination="q7g-TE-cql" id="KJz-xl-hkm"/>
+                        <outlet property="emptyStateTitle" destination="T5h-jr-Mza" id="OPX-Xy-Wyp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2p-1C-Tbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -914,6 +938,7 @@ este ponto de coleta? Nos conte!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="BEv-Jk-cws" id="x2z-7P-d8r"/>
                         <outlet property="sendFeedbackButton" destination="ubd-d2-QxQ" id="rvf-uB-i6q"/>
                     </connections>
                 </tableViewController>
@@ -1131,6 +1156,13 @@ este ponto de coleta? Nos conte!</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="aboutLabel" destination="gUA-xl-zUl" id="6ug-Fs-EJ4"/>
+                        <outlet property="facebookShareLabel" destination="OgR-y8-knh" id="rRR-lx-foT"/>
+                        <outlet property="feedbackLabel" destination="Ta4-g5-EkH" id="7z5-mK-Wcd"/>
+                        <outlet property="rateOnAppStoreLabel" destination="q3M-8I-kTG" id="jBo-Ik-XSN"/>
+                        <outlet property="wasteTypesLabel" destination="39C-cw-oG6" id="Ixf-z2-WBJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSR-5w-oym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
