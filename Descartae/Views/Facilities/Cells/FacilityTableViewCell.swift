@@ -69,7 +69,9 @@ class FacilityTableViewCell: UITableViewCell {
             addConstraintsTo(typeOfWasteIconView: typeOfWasteIconView)
         }
 
-        if typesOfWaste.count > previewLimit {
+        let exceedsPreviewLimit = typesOfWaste.count > previewLimit
+
+        if exceedsPreviewLimit {
             let iconFrame = CGRect(x: 0, y: 0, width: typeOfWasteIconSize.constant, height: typeOfWasteIconSize.constant)
             let moreTypesOfWasteIconView = UIImageView(frame: iconFrame)
             moreTypesOfWasteIconView.image = UIImage(named: "icWasteMore")
@@ -77,8 +79,10 @@ class FacilityTableViewCell: UITableViewCell {
             addConstraintsTo(typeOfWasteIconView: moreTypesOfWasteIconView)
         }
 
-        let iconsWidth = CGFloat(typesOfWasteToPreview.count) * typeOfWasteIconSize.constant
-        let spacing = CGFloat(endOfPreviewIndex) * typesOfWasteStackView.spacing
+        let iconsWidthMultiplier = exceedsPreviewLimit ? CGFloat(typesOfWasteToPreview.count + 1) : CGFloat(typesOfWasteToPreview.count)
+        let spacingMultiplier = exceedsPreviewLimit ? CGFloat(endOfPreviewIndex + 1) : CGFloat(endOfPreviewIndex)
+        let iconsWidth = iconsWidthMultiplier * typeOfWasteIconSize.constant
+        let spacing = spacingMultiplier * typesOfWasteStackView.spacing
         typesOfWasteStackViewWidth.constant = iconsWidth + spacing
         typesOfWasteStackView.layoutIfNeeded()
     }
