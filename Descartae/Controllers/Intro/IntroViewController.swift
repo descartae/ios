@@ -33,7 +33,7 @@ class IntroViewController: AnimatedPagingScrollViewController {
         guard let page = IntroContentView.instantiateFromNib() else {
             return IntroContentView()
         }
-        
+
         let attributedString = NSMutableAttributedString(string: localized("second_page_subtitle"))
         var location: Int = 0
 

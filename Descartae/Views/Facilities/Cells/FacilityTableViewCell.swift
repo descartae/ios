@@ -53,7 +53,7 @@ class FacilityTableViewCell: UITableViewCell {
         address.text = facility.location.address
         distanceTo.text = facility.distanceFromUser
 
-        let typesOfWaste = facility.typesOfWaste.flatMap({$0})
+        let typesOfWaste = facility.typesOfWaste.compactMap({$0})
         let endOfPreviewIndex = typesOfWaste.count >= 3 ? 2 : typesOfWaste.count - 1
         let typesOfWasteToPreview = typesOfWaste[0...endOfPreviewIndex]
 

@@ -14,7 +14,6 @@ class UnavailableRegionViewController: UIViewController {
 
     static let identifier = String(describing: UnavailableRegionViewController.self)
 
-
     @IBOutlet weak var unavailableRegionTitle: UILabel! {
         didSet {
             unavailableRegionTitle.text = localized("unavailable_region_title")

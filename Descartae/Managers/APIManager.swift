@@ -9,6 +9,7 @@
 import Foundation
 import Apollo
 import Reachability
+import CoreLocation
 
 struct DataStore {
     static var wasteTypes: [WasteType] = []
@@ -33,14 +34,20 @@ struct APIManager {
 
         return false
     }
+
+    static private var userCoordinate: CLLocationCoordinate2D {
+        guard let userCoordinate = LocationManager.shared.location?.coordinate else { return CLLocationCoordinate2DMake(0, 0) }
+        return userCoordinate
+    }
+
     static var filteringByWasteTypes: [WasteType] = []
     static private let quantity: Int = 7
     static private var firstPageQuery: FacilitiesQuery = {
-        return FacilitiesQuery(quantity: quantity)
+        return FacilitiesQuery(quantity: quantity, latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)
     }()
 
     static private var nextPageQuery: FacilitiesQuery = {
-        return FacilitiesQuery(quantity: quantity)
+        return FacilitiesQuery(quantity: quantity, latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)
     }()
 
     static private var wasteTypesQuery = WasteTypesQuery()
@@ -87,7 +94,11 @@ struct APIManager {
         }
 
         let facilitiesQueryFragment = result?.data?.facilities?.items as? [FacilitiesQuery.Data.Facility.Item] ?? []
-        let typesOfWasteQueryFragment = result?.data?.typesOfWaste as? [FacilitiesQuery.Data.TypesOfWaste] ?? []
+        var typesOfWasteQueryFragment: [FacilitiesQuery.Data.TypesOfWaste] = []
+
+        if let typesOfWasteList = result?.data?.typesOfWaste {
+            typesOfWasteQueryFragment = typesOfWasteList.compactMap({$0})
+        }
 
         DataStore.wasteTypes = typesOfWasteQueryFragment.map({ $0.fragments.wasteType })
         let facilities = facilitiesQueryFragment.map({ $0.fragments.disposalFacility })

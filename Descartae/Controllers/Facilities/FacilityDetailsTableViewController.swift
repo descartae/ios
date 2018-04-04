@@ -11,6 +11,7 @@ import SafariServices
 import MapKit
 import CMMapLauncher
 
+// swiftlint:disable file_length
 class FacilityDetailsTableViewController: UITableViewController {
 
     // MARK: Nested types
@@ -338,7 +339,7 @@ class FacilityDetailsTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let typesOfWastePreview = segue.destination as? TypesOfWastePreviewViewController {
-            typesOfWastePreview.typesOfWaste = facility.typesOfWaste.flatMap { $0 }
+            typesOfWastePreview.typesOfWaste = facility.typesOfWaste.compactMap { $0 }
         }
     }
 

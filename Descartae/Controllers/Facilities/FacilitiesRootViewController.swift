@@ -89,7 +89,7 @@ class FacilitiesRootViewController: UIViewController {
         }
 
         navigationItem.backBarButtonItem?.title = localized("back")
-        navigationItem.title = localized("waste_disposal_facilities_title");
+        navigationItem.title = localized("waste_disposal_facilities_title")
 
         addObservers()
         setupLoadingStyle()

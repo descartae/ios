@@ -32,7 +32,6 @@ class EmptyStateViewController: UIViewController {
         }
     }
 
-
     var clearFilters: (() -> Void)?
 
     // MARK: Actions

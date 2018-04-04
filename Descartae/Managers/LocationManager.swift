@@ -83,6 +83,7 @@ extension LocationManager: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         _ = locationUpdateSubscriptions.map { $0() }
+        manager.stopUpdatingLocation()
     }
 
 }
