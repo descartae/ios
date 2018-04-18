@@ -90,7 +90,9 @@ class InfoTableViewController: UITableViewController {
     }
 
     func showReviewController() {
-        SKStoreReviewController.requestReview()
+        DispatchQueue.main.async {
+            SKStoreReviewController.requestReview()
+        }
     }
 
     func shareToFacebook() {
