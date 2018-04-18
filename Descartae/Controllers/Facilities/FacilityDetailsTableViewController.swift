@@ -269,7 +269,7 @@ class FacilityDetailsTableViewController: UITableViewController {
     }
 
     @IBAction func shareIt(_ sender: UIBarButtonItem) {
-        guard let shareURL = URL(string: "https://descartae.com/\(facility.id)") else {
+        guard let shareURL = URL(string: "https://descartae.com/facility.html?id=\(facility.id)") else {
             return
         }
 
