@@ -46,7 +46,7 @@ class InfoTableViewController: UITableViewController {
         }
     }
 
-    let aboutPage = "https://descartae.com/sobre"
+    let aboutPage = "https://descartae.com/"
     let shareURL = "https://descartae.com/"
 
     // MARK: Life cycle
