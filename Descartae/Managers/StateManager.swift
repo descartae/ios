@@ -27,7 +27,7 @@ struct StateManager {
 
     static var isPtBr: Bool {
         let preferredLanguage = Locale.preferredLanguages[0]
-        return preferredLanguage == "pt" || preferredLanguage == "pt_BR" || preferredLanguage == "pt_PT"
+        return preferredLanguage.contains("pt")
     }
 
     static var isEn: Bool {
