@@ -22,6 +22,7 @@ class FacilitiesRootViewController: UIViewController {
         }
     }
 
+    var lastLoadDate = Date()
     var filterButton: BBBadgeBarButtonItem!
     var currentViewOnContainer: UIViewController!
     var firstSegmentViewController: UIViewController!
@@ -161,6 +162,7 @@ class FacilitiesRootViewController: UIViewController {
     func loadData(isFiltering: Bool = false, shouldResetLocationSubscriptions: Bool = false) {
         SVProgressHUD.show()
         APIManager.loadData(completionHandler: { error in
+            if error == nil { self.lastLoadDate = Date() }
             if shouldResetLocationSubscriptions { self.locationManager.resetLocationUpdateSubscriptions() }
             self.handleState(isFiltering: isFiltering, error: error)
             DispatchQueue.main.async {
@@ -213,7 +215,10 @@ class FacilitiesRootViewController: UIViewController {
     }
 
     @objc func checkForRegionSupport() {
+        let lastLoadOffset = Calendar.current.dateComponents([.hour], from: lastLoadDate, to: Date()).hour
         if firstSegmentViewController == unavailableRegionViewController {
+            loadData()
+        } else if let lastLoadOffset = lastLoadOffset, lastLoadOffset >= 12 {
             loadData()
         }
     }

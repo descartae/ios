@@ -13,7 +13,7 @@ import CoreLocation
 extension DisposalFacility: Equatable {
 
     var wasteTypes: [WasteType] {
-        return self.typesOfWaste.flatMap({ $0?.fragments.wasteType })
+        return self.typesOfWaste.compactMap({ $0?.fragments.wasteType })
     }
 
     var distanceFromUser: String {
