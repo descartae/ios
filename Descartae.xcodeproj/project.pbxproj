@@ -481,8 +481,8 @@
 				99A650F41FC0B2B70076167D /* Frameworks */,
 				99A650F51FC0B2B70076167D /* Resources */,
 				4C493C48B8B4BE9C8B1E686A /* [CP] Embed Pods Frameworks */,
-				1E47F5169363360270B02DA4 /* [CP] Copy Pods Resources */,
 				997EBEA21FC0B5AC00BECF17 /* SwiftLint */,
+				99A67B522087CA7200D15DC8 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -501,8 +501,6 @@
 				99A651071FC0B2B70076167D /* Sources */,
 				99A651081FC0B2B70076167D /* Frameworks */,
 				99A651091FC0B2B70076167D /* Resources */,
-				B01E5F8148DCA5E12E89C242 /* [CP] Embed Pods Frameworks */,
-				057F4A1380F73D0C397CEBEC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -522,8 +520,6 @@
 				99A651121FC0B2B70076167D /* Sources */,
 				99A651131FC0B2B70076167D /* Frameworks */,
 				99A651141FC0B2B70076167D /* Resources */,
-				7583E6CE8A3DDFCFD82C7F1C /* [CP] Embed Pods Frameworks */,
-				C97CED5C6FA91C2FCEEC8255 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -624,36 +620,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		057F4A1380F73D0C397CEBEC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1E47F5169363360270B02DA4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Descartae/Pods-Descartae-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4C493C48B8B4BE9C8B1E686A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -694,21 +660,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Descartae/Pods-Descartae-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7583E6CE8A3DDFCFD82C7F1C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DescartaeUITests/Pods-DescartaeUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8189C407C85D7C27B09E88E9 /* [CP] Check Pods Manifest.lock */ = {
@@ -759,20 +710,19 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		B01E5F8148DCA5E12E89C242 /* [CP] Embed Pods Frameworks */ = {
+		99A67B522087CA7200D15DC8 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = Crashlytics;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DescartaeTests/Pods-DescartaeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 09ba3b372e8a95891ca73eed3f817f00336a4302 faa6b8df35847580b6560f7de81e5c83c94caa4c807135b040a2c071cd5c2585";
 		};
 		C0EC8A25AA08B482C5F007C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -790,21 +740,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C97CED5C6FA91C2FCEEC8255 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DescartaeUITests/Pods-DescartaeUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DE780484E7FABB2138E2E76F /* [CP] Check Pods Manifest.lock */ = {

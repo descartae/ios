@@ -11,7 +11,7 @@ import SafariServices
 import MapKit
 import CMMapLauncher
 
-// swiftlint:disable file_length
+// swiftlint:disable file_length type_body_length
 class FacilityDetailsTableViewController: UITableViewController {
 
     // MARK: Nested types

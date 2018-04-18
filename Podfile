@@ -4,6 +4,10 @@ inhibit_all_warnings!
 target 'Descartae' do
   use_frameworks!
 
+  # Crash reporting
+  pod 'Fabric'
+  pod 'Crashlytics'
+
   # Network
   pod 'SDWebImage', '~> 4'
   pod 'Apollo', '~> 0.7.0'
