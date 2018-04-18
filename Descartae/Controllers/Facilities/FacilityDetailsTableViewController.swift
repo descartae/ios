@@ -187,12 +187,12 @@ class FacilityDetailsTableViewController: UITableViewController {
     }
 
     func moveCenterByOffset(offset: CGPoint, from coordinate: CLLocationCoordinate2D) {
-        var p = mapView.convert(coordinate, toPointTo: mapView)
-        p.x += offset.x
-        p.y += offset.y
+        var point = mapView.convert(coordinate, toPointTo: mapView)
+        point.x += offset.x
+        point.y += offset.y
 
-        let c = mapView.convert(p, toCoordinateFrom: mapView)
-        mapView.setCenter(c, animated: true)
+        let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
+        mapView.setCenter(coordinate, animated: true)
     }
 
     func bindTableViewHeaderData() {
