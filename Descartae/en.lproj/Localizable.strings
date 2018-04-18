@@ -21,15 +21,15 @@
 "first_page_title" = "Disposal facilities";
 "first_page_subtitle" = "Finally you can find where to\ndiscard waste such as electronics,\nbatteries and furniture at the nearest facilities around you";
 "second_page_title" = "Made at the Library";
-"second_page_subtitle" = "That's right! The databases of Descartaê are maintened by the librarians\n volunteers of each city";
+"second_page_subtitle" = "That's right! The databases of Descartaê are maintened by the\nlibrarians volunteers of each city";
 "third_page_title" = "Join us!";
-"third_page_subtitle" = "Tap on the button below and\nlet your life easier and more sustainable";
+"third_page_subtitle" = "Tap on the button below and let\nyour life easier and more sustainable";
 "start_button_title" = "Start";
 
 // Location permission
 
 "enable_location_title" = "Enable location";
-"enable_location_subtitle" = "It is needed that you allow the usage of your\nlocation so we can find the\nwaste diposal facilities around you";
+"enable_location_subtitle" = "It is needed that you allow the\nusage of your location so we can find the nearby waste diposal facilities";
 "allow_location_button_title" = "Allow";
 "already_have_location_message" = "You already gave us permission to grab your location, but it is unavailable now. As soon as we can get it we will show the nearby waste disposal facilities";
 

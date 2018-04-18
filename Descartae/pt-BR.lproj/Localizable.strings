@@ -29,20 +29,20 @@
 // Location permission
 
 "enable_location_title" = "Habilitar localização";
-"enable_location_subtitle" = "Precisamos que você habilite sua\nlocalização para que possamos\nencontrar os pontos de coleta mais próximos";
-"allow_location_button_title" = "Allow";
-"already_have_location_message" = "You already gave us permission to grab your location, but it is unavailable now. As soon as we can get it we will show the nearby waste disposal facilities";
+"enable_location_subtitle" = "É necessário permitir o uso da sua\nlocalização para podermos encontrar os\npontos de coleta mais próximos de você";
+"allow_location_button_title" = "Permitir";
+"already_have_location_message" = "Você já nos deu permissão para usar sua localização, mas ela está indisponível agora. Assim que conseguirmos usá-la iremos mostrar os pontos de coleta mais próximos de você.";
 
 // Offline state
 
 "offline_state_title" = "Offline";
 "offline_state_subtitle" = "Parece que você está offline.\nToque no botão para atualizar.";
-"try_again_button_title" = "Try again";
+"try_again_button_title" = "Tentar novamente";
 
 // Empty state
 
 "empty_state_title" = "Ops, nada encontrado";
-"empty_state_subtitle" = "Não encontramos nenhum ponto de coleta\nperto de você que\nrecolha os tipos de lixo selecionados";
+"empty_state_subtitle" = "Não encontramos nenhum ponto de\ncoleta perto de você que recolha os\ntipos de lixo selecionados";
 "clear_filters_button_title" = "Limpar filtros";
 
 // Unavailable region
