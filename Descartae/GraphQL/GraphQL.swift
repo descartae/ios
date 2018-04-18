@@ -11,7 +11,7 @@ import Apollo
 
 struct GraphQL {
 
-    static let graphQLEndpoint = "http://beta-api.descartae.com/graphql"
+    static let graphQLEndpoint = "https://api.descartae.com/graphql"
     static let client = ApolloClient(url: URL(string: graphQLEndpoint)!) // swiftlint:disable:this force_unwrapping
 
 }

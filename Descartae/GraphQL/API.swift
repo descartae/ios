@@ -140,7 +140,7 @@ public final class AddFeedbackMutation: GraphQLMutation {
 
 public final class AddToWaitlistMutation: GraphQLMutation {
   public static let operationString =
-    "mutation AddToWaitlist($email: String!, $latitude: Float!, $longitude: Float!) {\n  addWaitingUser(user: {email: $email, coordinates: {latitude: $latitude, longitude: $longitude}}) {\n    __typename\n    success\n  }\n}"
+    "mutation AddToWaitlist($email: String!, $latitude: Float!, $longitude: Float!) {\n  addWaitingUser(input: {email: $email, coordinates: {latitude: $latitude, longitude: $longitude}}) {\n    __typename\n    success\n  }\n}"
 
   public var email: String
   public var latitude: Double
@@ -160,7 +160,7 @@ public final class AddToWaitlistMutation: GraphQLMutation {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("addWaitingUser", arguments: ["user": ["email": GraphQLVariable("email"), "coordinates": ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")]]], type: .object(AddWaitingUser.selections)),
+      GraphQLField("addWaitingUser", arguments: ["input": ["email": GraphQLVariable("email"), "coordinates": ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")]]], type: .nonNull(.object(AddWaitingUser.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -169,16 +169,16 @@ public final class AddToWaitlistMutation: GraphQLMutation {
       self.snapshot = snapshot
     }
 
-    public init(addWaitingUser: AddWaitingUser? = nil) {
-      self.init(snapshot: ["__typename": "Mutation", "addWaitingUser": addWaitingUser.flatMap { $0.snapshot }])
+    public init(addWaitingUser: AddWaitingUser) {
+      self.init(snapshot: ["__typename": "Mutation", "addWaitingUser": addWaitingUser.snapshot])
     }
 
-    public var addWaitingUser: AddWaitingUser? {
+    public var addWaitingUser: AddWaitingUser {
       get {
-        return (snapshot["addWaitingUser"] as? Snapshot).flatMap { AddWaitingUser(snapshot: $0) }
+        return AddWaitingUser(snapshot: snapshot["addWaitingUser"]! as! Snapshot)
       }
       set {
-        snapshot.updateValue(newValue?.snapshot, forKey: "addWaitingUser")
+        snapshot.updateValue(newValue.snapshot, forKey: "addWaitingUser")
       }
     }
 
