@@ -33,9 +33,14 @@ class FacilityDetailsTableViewController: UITableViewController {
 
     // MARK: Properties
 
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var facilityName: UILabel!
     @IBOutlet weak var facilityAddress: UILabel!
+    @IBOutlet weak var facilityNameHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var facilityAddressHeightConstraint: NSLayoutConstraint!
+
+    var headerViewDefaultHeight: CGFloat!
 
     @IBOutlet weak var routeButton: UIButton! {
         didSet {
@@ -132,6 +137,11 @@ class FacilityDetailsTableViewController: UITableViewController {
         bindTableViewHeaderData()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resizeElementsBasedOnContent()
+    }
+
     // MARK: Setup
 
     func setupTableView() {
@@ -198,8 +208,16 @@ class FacilityDetailsTableViewController: UITableViewController {
     func bindTableViewHeaderData() {
         setupMapView()
 
-        facilityName.text = facility.name
-        facilityAddress.text = facility.location.address
+        let facilityNameParagraph = NSMutableParagraphStyle()
+        facilityNameParagraph.lineSpacing = 1.5
+        let attributedName = NSAttributedString(string: facility.name, attributes: [NSAttributedStringKey.paragraphStyle: facilityNameParagraph])
+
+        let facilityAddressParagraph = NSMutableParagraphStyle()
+        facilityAddressParagraph.lineSpacing = 1
+        let attributedAddress = NSAttributedString(string: facility.location.address, attributes: [NSAttributedStringKey.paragraphStyle: facilityAddressParagraph])
+
+        facilityName.attributedText = attributedName
+        facilityAddress.attributedText = attributedAddress
 
         guard let routeCurrentTitle = routeButton.title(for: .normal) else {
             return
@@ -225,6 +243,33 @@ class FacilityDetailsTableViewController: UITableViewController {
         combination.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle], range: combinationRange)
 
         routeButton.setAttributedTitle(combination, for: .normal)
+    }
+
+    func resizeElementsBasedOnContent() {
+        if headerViewDefaultHeight == nil {
+            headerViewDefaultHeight = headerView.bounds.height
+        }
+
+        headerView.frame = CGRect(
+            x: headerView.frame.origin.x,
+            y: headerView.frame.origin.y,
+            width: headerView.frame.width,
+            height: calculateHeaderViewHeightBasedOnContent()
+        )
+
+        tableView.tableHeaderView = headerView
+        tableView.reloadData()
+    }
+
+    func calculateHeaderViewHeightBasedOnContent() -> CGFloat {
+        view.layoutIfNeeded()
+
+        let facilityNameHeightToFitContent = facilityName.bounds.height - facilityNameHeightConstraint.constant
+        let facilityAddressHeightToFitContent = facilityAddress.bounds.height - facilityAddressHeightConstraint.constant
+
+        return headerViewDefaultHeight +
+            facilityNameHeightToFitContent +
+            facilityAddressHeightToFitContent
     }
 
     // MARK: Actions
@@ -291,7 +336,9 @@ class FacilityDetailsTableViewController: UITableViewController {
             }
         }
 
-        present(activityViewController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     }
 
     func complimentForTheShare() {
