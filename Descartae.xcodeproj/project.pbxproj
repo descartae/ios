@@ -59,6 +59,7 @@
 		99A651101FC0B2B70076167D /* DescartaeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6510F1FC0B2B70076167D /* DescartaeTests.swift */; };
 		99A6511B1FC0B2B70076167D /* DescartaeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */; };
 		99A66645202B53DD0078989F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A66644202B53DD0078989F /* StringExtension.swift */; };
+		99A67B542087DA3E00D15DC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99A67B532087DA3D00D15DC8 /* GoogleService-Info.plist */; };
 		99C390EF1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */; };
 		99E004AF200E85D500FA43F6 /* FilterFacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E004AE200E85D500FA43F6 /* FilterFacilitiesViewController.swift */; };
 		99ED00A11FC5DCDD00AA4613 /* FacilityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */; };
@@ -155,6 +156,7 @@
 		99A6511A1FC0B2B70076167D /* DescartaeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartaeUITests.swift; sourceTree = "<group>"; };
 		99A6511C1FC0B2B70076167D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99A66644202B53DD0078989F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		99A67B532087DA3D00D15DC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99C390EE1FD59DA0000E0A36 /* OpenHoursTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursTableViewCell.swift; sourceTree = "<group>"; };
 		99E004AE200E85D500FA43F6 /* FilterFacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFacilitiesViewController.swift; sourceTree = "<group>"; };
 		99ED00A01FC5DCDD00AA4613 /* FacilityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableViewCell.xib; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				99A650FA1FC0B2B70076167D /* AppDelegate.swift */,
 				99A651011FC0B2B70076167D /* Assets.xcassets */,
 				99A651061FC0B2B70076167D /* Info.plist */,
+				99A67B532087DA3D00D15DC8 /* GoogleService-Info.plist */,
 				9973F6FA202A7AE400FAD2A9 /* Localizable.strings */,
 			);
 			path = Descartae;
@@ -594,6 +597,7 @@
 				99875ADA20223333003B34BF /* IntroContentView.xib in Resources */,
 				99826E6F1FD35D9C0090DF4D /* OpenHoursTodayTableViewCell.xib in Resources */,
 				9946708B200EB036000EDBB6 /* TypeOfWasteFilterTableViewCell.xib in Resources */,
+				99A67B542087DA3E00D15DC8 /* GoogleService-Info.plist in Resources */,
 				9946709B200EFB97000EDBB6 /* WasteTypeTableViewCell.xib in Resources */,
 				99A651021FC0B2B70076167D /* Assets.xcassets in Resources */,
 				99467094200EBA07000EDBB6 /* FilterWasteTypesSectionFooter.xib in Resources */,
@@ -636,10 +640,12 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/RazzleDazzle/RazzleDazzle.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -652,10 +658,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RazzleDazzle.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

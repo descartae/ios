@@ -6,7 +6,8 @@ target 'Descartae' do
 
   # Crash reporting
   pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Crashlytics', '~> 3.10'
+  pod 'Firebase/Core'
 
   # Network
   pod 'SDWebImage', '~> 4'
