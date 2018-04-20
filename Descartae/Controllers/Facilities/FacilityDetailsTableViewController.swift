@@ -41,6 +41,7 @@ class FacilityDetailsTableViewController: UITableViewController {
     @IBOutlet weak var facilityAddressHeightConstraint: NSLayoutConstraint!
 
     var headerViewDefaultHeight: CGFloat!
+    var isComingFromPortrait = true
 
     @IBOutlet weak var routeButton: UIButton! {
         didSet {
@@ -142,6 +143,22 @@ class FacilityDetailsTableViewController: UITableViewController {
         resizeElementsBasedOnContent()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: nil) { _ in
+            if size.height < size.width {
+                if self.isComingFromPortrait {
+                    self.moveCenterByOffset(offset: CGPoint(x: 0, y: -216), from: self.facility.location.location.coordinate, animated: false)
+                    self.isComingFromPortrait = false
+                }
+            } else {
+                if !self.isComingFromPortrait {
+                    self.moveCenterByOffset(offset: CGPoint(x: 0, y: -716), from: self.facility.location.location.coordinate, animated: false)
+                    self.isComingFromPortrait = true
+                }
+            }
+        }
+    }
+
     // MARK: Setup
 
     func setupTableView() {
@@ -182,9 +199,12 @@ class FacilityDetailsTableViewController: UITableViewController {
     }
 
     func setupMapView() {
-        let facilityLocation = facility.location.location
         mapView.delegate = self
+        setupAnnotation(-400)
+    }
 
+    private func setupAnnotation(_ yOffset: CGFloat, animated: Bool = true) {
+        let facilityLocation = facility.location.location
         let annotation = MKPointAnnotation()
         annotation.coordinate = facilityLocation.coordinate
 
@@ -193,16 +213,16 @@ class FacilityDetailsTableViewController: UITableViewController {
         let adjusted = mapView.regionThatFits(region)
         mapView.setRegion(adjusted, animated: false)
 
-        moveCenterByOffset(offset: CGPoint(x: 0, y: -400), from: facilityLocation.coordinate)
+        moveCenterByOffset(offset: CGPoint(x: 0, y: yOffset), from: facilityLocation.coordinate, animated: animated)
     }
 
-    func moveCenterByOffset(offset: CGPoint, from coordinate: CLLocationCoordinate2D) {
+    func moveCenterByOffset(offset: CGPoint, from coordinate: CLLocationCoordinate2D, animated: Bool = true) {
         var point = mapView.convert(coordinate, toPointTo: mapView)
         point.x += offset.x
         point.y += offset.y
 
         let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
-        mapView.setCenter(coordinate, animated: true)
+        mapView.setCenter(coordinate, animated: animated)
     }
 
     func bindTableViewHeaderData() {

@@ -35,6 +35,12 @@ class IntroContentView: UIView {
         super.awakeFromNib()
 
         switch DeviceType.current {
+        case .iPad, .iPad2, .iPad3, .iPad4, .iPadAir, .iPhone4S, .iPadPro9Inch, .iPadPro12Inch, .iPadPro10p5Inch:
+            onboardingImageHeight.constant = 160
+            onboardingImageWidth.constant = 160
+            onboardingImageTop.constant -= 20
+            titleTop.constant -= 16
+            startButtonTop.constant -= 8
         case .iPhoneSE, .iPhone5:
             onboardingImageHeight.constant = 200
             onboardingImageWidth.constant = 200
