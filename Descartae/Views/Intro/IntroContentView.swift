@@ -34,8 +34,30 @@ class IntroContentView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        let smallDevices: [DeviceType] = [
+            .iPhone3G,
+            .iPhone3GS,
+            .iPhone4,
+            .iPhone4S,
+            .iPad,
+            .iPad2,
+            .iPad3,
+            .iPad4,
+            .iPadMini,
+            .iPadMiniRetina,
+            .iPadMini3,
+            .iPadMini4,
+            .iPadAir,
+            .iPadAir2,
+            .iPadPro9Inch,
+            .iPadPro10p5Inch,
+            .iPadPro12Inch,
+            .simulator,
+            .notAvailable
+        ]
+
         switch DeviceType.current {
-        case .iPad, .iPad2, .iPad3, .iPad4, .iPadAir, .iPhone4S, .iPadPro9Inch, .iPadPro12Inch, .iPadPro10p5Inch:
+        case _ where smallDevices.contains(DeviceType.current):
             onboardingImageHeight.constant = 160
             onboardingImageWidth.constant = 160
             onboardingImageTop.constant -= 20
