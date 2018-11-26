@@ -223,28 +223,24 @@ public final class AddToWaitlistMutation: GraphQLMutation {
 
 public final class FacilitiesQuery: GraphQLQuery {
   public static let operationString =
-    "query facilities($quantity: Int!, $after: Cursor, $before: Cursor, $latitude: Float!, $longitude: Float!, $typesOfWasteToFilter: [ID]) {\n  typesOfWaste {\n    __typename\n    ...WasteType\n  }\n  facilities(filters: {cursor: {after: $after, before: $before, quantity: $quantity}, location: {near: {latitude: $latitude, longitude: $longitude}}, hasTypesOfWaste: $typesOfWasteToFilter}) {\n    __typename\n    cursors {\n      __typename\n      after\n      before\n    }\n    items {\n      __typename\n      ...DisposalFacility\n    }\n  }\n}"
+    "query facilities($quantity: Int!, $after: Cursor, $before: Cursor, $typesOfWasteToFilter: [ID]) {\n  typesOfWaste {\n    __typename\n    ...WasteType\n  }\n  facilities(filters: {cursor: {after: $after, before: $before, quantity: $quantity}, hasTypesOfWaste: $typesOfWasteToFilter}) {\n    __typename\n    cursors {\n      __typename\n      after\n      before\n    }\n    items {\n      __typename\n      ...DisposalFacility\n    }\n  }\n}"
 
   public static var requestString: String { return operationString.appending(WasteType.fragmentString).appending(DisposalFacility.fragmentString) }
 
   public var quantity: Int
   public var after: String?
   public var before: String?
-  public var latitude: Double
-  public var longitude: Double
   public var typesOfWasteToFilter: [GraphQLID?]?
 
-  public init(quantity: Int, after: String? = nil, before: String? = nil, latitude: Double, longitude: Double, typesOfWasteToFilter: [GraphQLID?]? = nil) {
+  public init(quantity: Int, after: String? = nil, before: String? = nil, typesOfWasteToFilter: [GraphQLID?]? = nil) {
     self.quantity = quantity
     self.after = after
     self.before = before
-    self.latitude = latitude
-    self.longitude = longitude
     self.typesOfWasteToFilter = typesOfWasteToFilter
   }
 
   public var variables: GraphQLMap? {
-    return ["quantity": quantity, "after": after, "before": before, "latitude": latitude, "longitude": longitude, "typesOfWasteToFilter": typesOfWasteToFilter]
+    return ["quantity": quantity, "after": after, "before": before, "typesOfWasteToFilter": typesOfWasteToFilter]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -252,7 +248,7 @@ public final class FacilitiesQuery: GraphQLQuery {
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("typesOfWaste", type: .list(.object(TypesOfWaste.selections))),
-      GraphQLField("facilities", arguments: ["filters": ["cursor": ["after": GraphQLVariable("after"), "before": GraphQLVariable("before"), "quantity": GraphQLVariable("quantity")], "location": ["near": ["latitude": GraphQLVariable("latitude"), "longitude": GraphQLVariable("longitude")]], "hasTypesOfWaste": GraphQLVariable("typesOfWasteToFilter")]], type: .object(Facility.selections)),
+      GraphQLField("facilities", arguments: ["filters": ["cursor": ["after": GraphQLVariable("after"), "before": GraphQLVariable("before"), "quantity": GraphQLVariable("quantity")], "hasTypesOfWaste": GraphQLVariable("typesOfWasteToFilter")]], type: .object(Facility.selections)),
     ]
 
     public var snapshot: Snapshot

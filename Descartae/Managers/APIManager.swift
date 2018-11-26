@@ -41,13 +41,13 @@ struct APIManager {
     }
 
     static var filteringByWasteTypes: [WasteType] = []
-    static private let quantity: Int = 7
+    static private let quantity: Int = 25
     static private var firstPageQuery: FacilitiesQuery = {
-        return FacilitiesQuery(quantity: quantity, latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)
+        return FacilitiesQuery(quantity: quantity)
     }()
 
     static private var nextPageQuery: FacilitiesQuery = {
-        return FacilitiesQuery(quantity: quantity, latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)
+        return FacilitiesQuery(quantity: quantity)
     }()
 
     static private var wasteTypesQuery = WasteTypesQuery()
